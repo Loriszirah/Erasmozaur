@@ -7,9 +7,9 @@ import java.sql.Statement;
 public class UserDAOPostgres extends UserDAO {
 	
 	public UserDAOPostgres() {
-		this.url = "jdbc:postgresql://localhost:5432/erasmozaur";
-		this.userDB = "postgres";
-		this.passwdDB = "saphar02";
+		this.url = System.getenv("DBurl");
+		this.userDB =System.getenv("DBuser");
+		this.passwdDB = System.getenv("DBpwd");
 		this.openConnection();
 	}
 }
