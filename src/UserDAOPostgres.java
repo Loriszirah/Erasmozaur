@@ -5,11 +5,19 @@ import java.sql.ResultSetMetaData;
 import java.sql.Statement;
 
 public class UserDAOPostgres extends UserDAO {
+	private static UserDAOPostgres DAOPostgres;
 	
-	public UserDAOPostgres() {
+	private UserDAOPostgres() {
 		this.url = System.getenv("DBurl");
 		this.userDB =System.getenv("DBuser");
 		this.passwdDB = System.getenv("DBpwd");
 		this.openConnection();
+	}
+	
+	public static UserDAOPostgres getUserDAOPostgres() {
+		if(UserDAOPostgres.DAOPostgres == null) {
+			UserDAOPostgres.DAOPostgres = new UserDAOPostgres();
+		}
+		return UserDAOPostgres.DAOPostgres;
 	}
 }
