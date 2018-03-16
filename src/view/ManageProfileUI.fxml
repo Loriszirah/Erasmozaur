@@ -61,7 +61,7 @@
             <PasswordField layoutX="264.0" layoutY="211.0" />
             <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="278.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../thats_denver_bro.png" />
+                  <Image url="@../../thats_denver_bro.png" />
                </image>
             </ImageView>
             <Label layoutX="168.0" layoutY="110.0" prefHeight="39.0" prefWidth="115.0" text="Welcome">
