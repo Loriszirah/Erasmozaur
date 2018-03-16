@@ -28,7 +28,7 @@ public abstract class UserDAO {
 				user = new User(result.getInt("id_user"), result.getString("username"), result.getString("password"), result.getInt("id_type_user"));
 			}
 		}catch(SQLException e) {
-		      e.printStackTrace();
+		      return null;
 		}
 		return user;
     }
@@ -40,11 +40,21 @@ public abstract class UserDAO {
 			}
 		    //Creation of a Statement object
 		    Statement state = conn.createStatement();
+		    // Check if the username already exist
+		    ResultSet exists = state.executeQuery("SELECT COUNT(*) as nb FROM Users WHERE username ='"+username+"';");
+		    if(exists.next()) {
+		    	if(exists.getInt("nb")>0) {
+		    		return false;
+		    	}
+		    }
 		    // Select the id of the type_user
 		    ResultSet result = state.executeQuery("SELECT id_type_user FROM Types_user WHERE name = '"+typeUser+"'");
 	    	int id=0;
 		    if(result.next()) {
 		    	id = result.getInt("id_type_user");
+		    }
+		    else {
+		    	return false;
 		    }
 		    //The object ResultSet contains the result of the SQL request
 		    state.executeUpdate("INSERT INTO Users (username, password, id_type_user) VALUES('"+username+"','"+password+"','"+Integer.toString(id)+"')");
