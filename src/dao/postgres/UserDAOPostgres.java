@@ -1,8 +1,11 @@
+package dao.postgres;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.Statement;
+
+import dao.UserDAO;
 
 public class UserDAOPostgres extends UserDAO {
 	private static UserDAOPostgres DAOPostgres;

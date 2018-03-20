@@ -1,13 +1,20 @@
+package controller;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.Statement;
 
+import dao.UserDAO;
+import javafx.fxml.FXML;
+
+import model.User;
+
 public class LoginFacade {
 	private User user;
 	private UserDAO UserDAO;
 	
+	@FXML
 	public boolean login(String username, String password) {
 		if(this.UserDAO == null) {
 			this.UserDAO = AbstractFactoryDAO.getUserDAO();

@@ -1,3 +1,4 @@
+package dao;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -5,11 +6,13 @@ import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+import model.User;
+
 public abstract class UserDAO {
-	String url;
-    String userDB;
-    String passwdDB;
-    Connection conn;
+	protected String url;
+    protected String userDB;
+    protected String passwdDB;
+    protected Connection conn;
     
     public User login(String username, String password) {
     	User user = null;
