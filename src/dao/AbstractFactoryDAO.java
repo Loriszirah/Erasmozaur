@@ -39,7 +39,7 @@ public abstract class AbstractFactoryDAO {
     /**
      * @return
      */
-    public void ReviewDAO() {
+    public ReviewDAO ReviewDAO() {
         // TODO implement here
         return null;
     }
@@ -47,7 +47,7 @@ public abstract class AbstractFactoryDAO {
     /**
      * @return
      */
-    public void ApplicationDAO() {
+    public ApplicationDAO ApplicationDAO() {
         // TODO implement here
         return null;
     }
@@ -55,7 +55,7 @@ public abstract class AbstractFactoryDAO {
     /**
      * @return
      */
-    public void CityDAO() {
+    public CityDAO CityDAO() {
         // TODO implement here
         return null;
     }
@@ -63,7 +63,7 @@ public abstract class AbstractFactoryDAO {
     /**
      * @return
      */
-    public void RoleDAO() {
+    public RoleDAO RoleDAO() {
         // TODO implement here
         return null;
     }
@@ -71,7 +71,7 @@ public abstract class AbstractFactoryDAO {
     /**
      * @return
      */
-    public void EvaluationDAO() {
+    public EvaluationDAO EvaluationDAO() {
         // TODO implement here
         return null;
     }

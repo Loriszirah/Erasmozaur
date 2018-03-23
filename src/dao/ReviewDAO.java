@@ -1,5 +1,6 @@
 package dao;
 import java.util.*;
+import model.*;
 
 /**
  * 
@@ -9,16 +10,16 @@ public interface ReviewDAO {
     /**
      * 
      */
-    public void createReview(universityId: int, userId: int, rating: int, description: String): Review;
+    public Review createReview(int universityId, int userId, int rating, String description);
 
     /**
      * 
      */
-    public void viewReview(id_review: int): Review;
+    public Review viewReview(int id_review);
 
     /**
      * 
      */
-    public void getAllReviews(): ArrayList<Review>;
+    public ArrayList<Review> getAllReviews();
 
 }

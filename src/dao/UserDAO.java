@@ -1,5 +1,6 @@
 package dao;
 import java.util.*;
+import model.*;
 
 /**
  * 
@@ -60,19 +61,19 @@ public interface UserDAO {
      * @param id_role 
      * @return
      */
-    public ArrayList<User> getAllUsers(int id_role);
+    public ArrayList<User> getAllUsersByRole(int id_role);
 
     /**
      * @param id_university 
      * @param id_role 
      * @return
      */
-    public ArrayList<User> getAllUsers(int id_university, int id_role);
+    public ArrayList<User> getAllUsersByUniversityRole(int id_university, int id_role);
 
     /**
      * @param id_university 
      * @return
      */
-    public ArrayList<User> getAllUsers(int id_university);
+    public ArrayList<User> getAllUsersByUniversity(int id_university);
 
 }
