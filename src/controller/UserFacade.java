@@ -1,16 +1,17 @@
-package dao.postgres;
+package controller;
 import java.util.*;
 
 /**
  * 
  */
-public class UserDAOPostgres implements UserDAO {
+public class UserFacade {
 
     /**
      * Default constructor
      */
-    public UserDAOPostgres() {
+    public UserFacade() {
     }
+
 
     /**
      * @param firstName 
@@ -35,16 +36,16 @@ public class UserDAOPostgres implements UserDAO {
     }
 
     /**
-     * @param id_user
+     * @param id_university
      */
-    public void updateUser(int id_user) {
+    public void joinUniversity(int id_university) {
         // TODO implement here
     }
 
     /**
-     * @param id_user
+     * 
      */
-    public void deleteUser(int id_user) {
+    public void updateUser() {
         // TODO implement here
     }
 
@@ -52,17 +53,18 @@ public class UserDAOPostgres implements UserDAO {
      * @param id_user 
      * @return
      */
-    public User viewUser(int id_user) {
+    public User deleteUser(void id_user) {
         // TODO implement here
         return null;
     }
 
     /**
-     * @param id_university 
-     * @param id_user
+     * @param id_user 
+     * @return
      */
-    public void joinUniversity(int id_university, int id_user) {
+    public User viewUser(void id_user) {
         // TODO implement here
+        return null;
     }
 
     /**
@@ -74,19 +76,10 @@ public class UserDAOPostgres implements UserDAO {
     }
 
     /**
-     * @param id_user 
+     * @param id_university 
      * @return
      */
-    public boolean checkIfExists(int id_user) {
-        // TODO implement here
-        return false;
-    }
-
-    /**
-     * @param id_role 
-     * @return
-     */
-    public ArrayList<User> getAllUsers(int id_role) {
+    public ArrayList<User> getAllUsers(int id_university) {
         // TODO implement here
         return null;
     }
@@ -102,10 +95,10 @@ public class UserDAOPostgres implements UserDAO {
     }
 
     /**
-     * @param id_university 
+     * @param id_role 
      * @return
      */
-    public ArrayList<User> getAllUsers(int id_university) {
+    public ArrayList<User> getAllUsers(int id_role) {
         // TODO implement here
         return null;
     }
