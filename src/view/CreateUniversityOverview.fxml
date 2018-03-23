@@ -11,8 +11,7 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
-<AnchorPane prefHeight="545.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/9.0.1">
+<AnchorPane prefHeight="545.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/9.0.4" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <TabPane layoutX="16.0" layoutY="127.0" prefHeight="404.0" prefWidth="550.0" tabClosingPolicy="UNAVAILABLE">
          <tabs>
@@ -60,13 +59,16 @@
                      <children>
                         <Button layoutX="202.0" layoutY="323.0" mnemonicParsing="false" text="Create" />
                         <Button layoutX="296.0" layoutY="323.0" mnemonicParsing="false" text="Cancel" />
-                        <Label layoutX="146.0" layoutY="274.0" text="Phone Number" />
+                        <Label layoutX="148.0" layoutY="274.0" text="Phone Number" />
                         <PasswordField layoutX="252.0" layoutY="270.0" />
-                        <Label layoutX="142.0" layoutY="242.0" text="Email" />
-                        <Label layoutX="146.0" layoutY="204.0" text="City" />
-                        <Label layoutX="146.0" layoutY="169.0" text="Country" />
-                        <Label layoutX="150.0" layoutY="143.0" text="Name" />
-                        <PasswordField layoutX="245.0" layoutY="237.0" />
+                        <Label layoutX="148.0" layoutY="231.0" text="Email" />
+                        <Label layoutX="147.0" layoutY="178.0" text="City" />
+                        <Label layoutX="147.0" layoutY="127.0" text="Country" />
+                        <Label layoutX="148.0" layoutY="72.0" text="Name" />
+                        <PasswordField layoutX="252.0" layoutY="222.0" />
+                        <PasswordField layoutX="252.0" layoutY="172.0" />
+                        <PasswordField layoutX="252.0" layoutY="120.0" />
+                        <PasswordField layoutX="254.0" layoutY="67.0" />
                      </children>
                   </AnchorPane>
                </content>
@@ -80,8 +82,5 @@
       </ImageView>
       <Label layoutX="134.0" layoutY="60.0" text="&lt;&lt;firstname&gt;&gt;+&lt;&lt;lastname&gt;&gt;" />
       <Button layoutX="313.0" layoutY="56.0" mnemonicParsing="false" text="Log out" />
-      <PasswordField layoutX="274.0" layoutY="221.0" />
-      <PasswordField layoutX="274.0" layoutY="260.0" />
-      <PasswordField layoutX="273.0" layoutY="177.0" />
    </children>
 </AnchorPane>
