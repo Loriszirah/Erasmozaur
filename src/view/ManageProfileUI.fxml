@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.SeparatorMenuItem?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox prefHeight="619.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/9.0.4" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <MenuBar VBox.vgrow="NEVER">
+         <menus>
+            <Menu mnemonicParsing="false" text="File">
+               <items>
+                  <MenuItem mnemonicParsing="false" text="New" />
+                  <MenuItem mnemonicParsing="false" text="Open…" />
+                  <Menu mnemonicParsing="false" text="Open Recent" />
+                  <SeparatorMenuItem mnemonicParsing="false" />
+                  <MenuItem mnemonicParsing="false" text="Close" />
+                  <MenuItem mnemonicParsing="false" text="Save" />
+                  <MenuItem mnemonicParsing="false" text="Save As…" />
+                  <MenuItem mnemonicParsing="false" text="Revert" />
+                  <SeparatorMenuItem mnemonicParsing="false" />
+                  <MenuItem mnemonicParsing="false" text="Preferences…" />
+                  <SeparatorMenuItem mnemonicParsing="false" />
+                  <MenuItem mnemonicParsing="false" text="Quit" />
+               </items>
+            </Menu>
+            <Menu mnemonicParsing="false" text="Edit">
+               <items>
+                  <MenuItem mnemonicParsing="false" text="Undo" />
+                  <MenuItem mnemonicParsing="false" text="Redo" />
+                  <SeparatorMenuItem mnemonicParsing="false" />
+                  <MenuItem mnemonicParsing="false" text="Cut" />
+                  <MenuItem mnemonicParsing="false" text="Copy" />
+                  <MenuItem mnemonicParsing="false" text="Paste" />
+                  <MenuItem mnemonicParsing="false" text="Delete" />
+                  <SeparatorMenuItem mnemonicParsing="false" />
+                  <MenuItem mnemonicParsing="false" text="Select All" />
+                  <MenuItem mnemonicParsing="false" text="Unselect All" />
+               </items>
+            </Menu>
+            <Menu mnemonicParsing="false" text="Help">
+               <items>
+                  <MenuItem mnemonicParsing="false" text="About MyHelloApp" />
+               </items>
+            </Menu>
+         </menus>
+      </MenuBar>
+      <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS">
+         <children>
+            <Label layoutX="153.0" layoutY="172.0" text="First Name" />
+            <Label layoutX="153.0" layoutY="214.0" text="Last Name" />
+            <PasswordField layoutX="264.0" layoutY="211.0" />
+            <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="278.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../thats_denver_bro.png" />
+               </image>
+            </ImageView>
+            <Label layoutX="168.0" layoutY="110.0" prefHeight="39.0" prefWidth="115.0" text="Welcome">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+            <Button layoutX="268.0" layoutY="502.0" mnemonicParsing="false" text="Cancel" />
+            <Label layoutX="154.0" layoutY="255.0" text="Email" />
+            <PasswordField layoutX="264.0" layoutY="250.0" />
+            <Label layoutX="153.0" layoutY="295.0" text="Username" />
+            <PasswordField layoutX="264.0" layoutY="290.0" />
+            <Label layoutX="153.0" layoutY="337.0" text="Birth Date" />
+            <PasswordField layoutX="264.0" layoutY="330.0" />
+            <Label layoutX="153.0" layoutY="375.0" text="Address" />
+            <PasswordField layoutX="264.0" layoutY="371.0" />
+            <Label layoutX="154.0" layoutY="417.0" text="University" />
+            <PasswordField layoutX="264.0" layoutY="412.0" />
+            <PasswordField layoutX="263.0" layoutY="167.0" />
+            <PasswordField layoutX="264.0" layoutY="450.0" />
+            <Label layoutX="153.0" layoutY="451.0" text="Role" />
+            <Button layoutX="461.0" layoutY="413.0" mnemonicParsing="false" text="Leave" />
+            <Button layoutX="357.0" layoutY="502.0" mnemonicParsing="false" text="Validate" />
+         </children>
+      </AnchorPane>
+   </children>
+</VBox>
