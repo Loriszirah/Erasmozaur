@@ -1,5 +1,7 @@
 package dao.postgres;
 import java.util.*;
+import dao.*;
+import model.*;
 
 /**
  * 
@@ -66,7 +68,7 @@ public class CourseDAOPostgres implements CourseDAO {
      * @param id_university 
      * @return
      */
-    public ArrayList<Course> getAllCourses(void id_university) {
+    public ArrayList<Course> getAllCoursesUniversity(int id_university) {
         // TODO implement here
         return null;
     }
@@ -75,7 +77,7 @@ public class CourseDAOPostgres implements CourseDAO {
      * @param id_scholarship 
      * @return
      */
-    public ArrayList<Course> getAllCourses(void id_scholarship) {
+    public ArrayList<Course> getAllCoursesScholarship(int id_scholarship) {
         // TODO implement here
         return null;
     }
@@ -84,7 +86,7 @@ public class CourseDAOPostgres implements CourseDAO {
      * @param id_agreement 
      * @return
      */
-    public ArrayList<Course> getAllCourses(void id_agreement) {
+    public ArrayList<Course> getAllCoursesAgreement(int id_agreement) {
         // TODO implement here
         return null;
     }

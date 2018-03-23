@@ -1,5 +1,6 @@
 package dao;
 import java.util.*;
+import model.*;
 
 /**
  * 
@@ -10,24 +11,24 @@ public interface CountryDAO {
      * @param name 
      * @return
      */
-    public country createCountry(String name);
+    public Country createCountry(String name);
 
     /**
      * @param country 
      * @return
      */
-    public void updateCountry(void country);
+    public void updateCountry(Country country);
 
     /**
      * @param country
      */
-    public void deleteCountry(void country);
+    public void deleteCountry(Country country);
 
     /**
      * @param id_country 
      * @return
      */
-    public country getCountry(int id_country);
+    public Country getCountry(int id_country);
 
     /**
      * @return

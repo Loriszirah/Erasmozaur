@@ -32,7 +32,4 @@ public class Agreement extends Application {
      */
     private String comment;
 
-
-
-
 }

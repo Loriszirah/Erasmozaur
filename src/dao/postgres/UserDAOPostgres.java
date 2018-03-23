@@ -1,5 +1,7 @@
 package dao.postgres;
 import java.util.*;
+import dao.*;
+import model.*;
 
 /**
  * 
@@ -86,7 +88,7 @@ public class UserDAOPostgres implements UserDAO {
      * @param id_role 
      * @return
      */
-    public ArrayList<User> getAllUsers(int id_role) {
+    public ArrayList<User> getAllUsersByRole(int id_role) {
         // TODO implement here
         return null;
     }
@@ -96,7 +98,7 @@ public class UserDAOPostgres implements UserDAO {
      * @param id_role 
      * @return
      */
-    public ArrayList<User> getAllUsers(int id_university, int id_role) {
+    public ArrayList<User> getAllUsersByUniversityRole(int id_university, int id_role) {
         // TODO implement here
         return null;
     }
@@ -105,7 +107,7 @@ public class UserDAOPostgres implements UserDAO {
      * @param id_university 
      * @return
      */
-    public ArrayList<User> getAllUsers(int id_university) {
+    public ArrayList<User> getAllUsersByUniversity(int id_university) {
         // TODO implement here
         return null;
     }

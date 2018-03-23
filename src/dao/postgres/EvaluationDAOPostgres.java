@@ -1,5 +1,7 @@
 package dao.postgres;
 import java.util.*;
+import dao.*;
+import model.*;
 
 /**
  * 

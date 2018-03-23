@@ -52,8 +52,4 @@ public class User {
      */
     private String address;
 
-
-
-
-
 }

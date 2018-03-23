@@ -31,7 +31,5 @@ public class Evaluation {
      * 
      */
     private String comment;
-
-
-
+    
 }

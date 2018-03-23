@@ -1,5 +1,7 @@
 package dao.postgres;
 import java.util.*;
+import dao.*;
+import model.*;
 
 /**
  * 
@@ -16,7 +18,7 @@ public class CountryDAOPostgres implements CountryDAO {
      * @param name 
      * @return
      */
-    public country createCountry(String name) {
+    public Country createCountry(String name) {
         // TODO implement here
         return null;
     }
@@ -25,15 +27,14 @@ public class CountryDAOPostgres implements CountryDAO {
      * @param country 
      * @return
      */
-    public void updateCountry(void country) {
+    public void updateCountry(Country country) {
         // TODO implement here
-        return null;
     }
 
     /**
      * @param country
      */
-    public void deleteCountry(void country) {
+    public void deleteCountry(Country country) {
         // TODO implement here
     }
 
@@ -41,7 +42,7 @@ public class CountryDAOPostgres implements CountryDAO {
      * @param id_country 
      * @return
      */
-    public country getCountry(int id_country) {
+    public Country getCountry(int id_country) {
         // TODO implement here
         return null;
     }

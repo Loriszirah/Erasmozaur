@@ -1,5 +1,6 @@
 package dao;
 import java.util.*;
+import model.*;
 
 /**
  * 
@@ -9,36 +10,36 @@ public interface ApplicationDAO {
     /**
      * 
      */
-    public void createApplication(userId: int, startDate: Date,  duration: int ,  comment: String): Application;
+    public Application createApplication(int userId, Date startDate, int duration , String comment);
 
     /**
      * 
      */
-    public void viewApplication(id_application: int): Application;
+    public Application viewApplication(int id_application);
 
     /**
      * 
      */
-    public void updateApplication(id_application: int);
+    public void updateApplication(int id_application);
 
     /**
      * 
      */
-    public void deleteApplication(id_application: int);
+    public void deleteApplication(int id_application);
 
     /**
      * 
      */
-    public void getAllApplications(): ArrayList<Application>;
+    public ArrayList<Application> getAllApplications();
 
     /**
      * 
      */
-    public void addStatusApplication(id_application: int, status: Boolean);
+    public void addStatusApplication(int id_application, boolean status);
 
     /**
      * 
      */
-    public void addDocumentToApplication(id_application: int, id_document: int);
+    public void addDocumentToApplication(int id_application, int id_document);
 
 }
