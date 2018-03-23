@@ -29,7 +29,7 @@ public class ScholarshipDAOPostgres implements ScholarshipDAO {
     /**
      * @param id_scholarship
      */
-    public void updateScholarship(*int id_scholarship) {
+    public void updateScholarship(int id_scholarship) {
         // TODO implement here
     }
 

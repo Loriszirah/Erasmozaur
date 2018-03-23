@@ -25,7 +25,7 @@ public class Scholarship {
     /**
      * 
      */
-    private Int duration;
+    private int duration;
 
     /**
      * 
