@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/9.0.1">
+   <children>
+      <Pane layoutX="10.0" layoutY="10.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="573.0" prefWidth="826.0">
+         <children>
+            <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="556.0" layoutY="52.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../thats_denver_bro.png" />
+               </image>
+            </ImageView>
+            <Label layoutX="94.0" layoutY="107.0" prefHeight="40.0" prefWidth="209.0" text="My applications">
+               <font>
+                  <Font size="28.0" />
+               </font>
+            </Label>
+            <TableView layoutX="94.0" layoutY="202.0" prefHeight="305.0" prefWidth="651.0">
+               <columns>
+                  <TableColumn prefWidth="238.40006256103516" text="University" />
+                  <TableColumn minWidth="0.0" prefWidth="139.199951171875" text="City" />
+                  <TableColumn minWidth="0.0" prefWidth="103.19998168945312" text="Country" />
+                  <TableColumn minWidth="0.0" prefWidth="90.39996337890625" text="Status" />
+                  <TableColumn minWidth="7.20001220703125" prefWidth="79.99993896484375" />
+               </columns>
+            </TableView>
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>
