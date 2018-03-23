@@ -1,5 +1,6 @@
 package controller;
 import java.util.*;
+import model.*;
 
 /**
  * 
@@ -28,14 +29,14 @@ public class ScholarshipFacade {
     /**
      * @param id_scholarship
      */
-    public void updateScholarship(Int id_scholarship) {
+    public void updateScholarship(int id_scholarship) {
         // TODO implement here
     }
 
     /**
      * @param id_scholarship
      */
-    public void deleteScholarship(Int id_scholarship) {
+    public void deleteScholarship(int id_scholarship) {
         // TODO implement here
     }
 
@@ -43,7 +44,7 @@ public class ScholarshipFacade {
      * @param id_scholarship 
      * @return
      */
-    public Scholarship viewScholarship(Int id_scholarship) {
+    public Scholarship viewScholarship(int id_scholarship) {
         // TODO implement here
         return null;
     }

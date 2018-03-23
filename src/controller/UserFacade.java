@@ -1,6 +1,6 @@
 package controller;
 import java.util.*;
-
+import model.*;
 /**
  * 
  */
@@ -53,7 +53,7 @@ public class UserFacade {
      * @param id_user 
      * @return
      */
-    public User deleteUser(void id_user) {
+    public User deleteUser(int id_user) {
         // TODO implement here
         return null;
     }
@@ -62,7 +62,7 @@ public class UserFacade {
      * @param id_user 
      * @return
      */
-    public User viewUser(void id_user) {
+    public User viewUser(int id_user) {
         // TODO implement here
         return null;
     }
@@ -79,7 +79,7 @@ public class UserFacade {
      * @param id_university 
      * @return
      */
-    public ArrayList<User> getAllUsers(int id_university) {
+    public ArrayList<User> getAllUsersByUniversity(int id_university) {
         // TODO implement here
         return null;
     }

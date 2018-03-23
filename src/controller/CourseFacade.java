@@ -1,5 +1,6 @@
 package controller;
 import java.util.*;
+import model.*;
 
 /**
  * 
@@ -58,7 +59,7 @@ public class CourseFacade {
      * @param id_university 
      * @return
      */
-    public ArrayList<Course> getAllCourses(void id_university) {
+    public ArrayList<Course> getAllCoursesByUniversity(int id_university) {
         // TODO implement here
         return null;
     }
@@ -67,7 +68,7 @@ public class CourseFacade {
      * @param id_scholarship 
      * @return
      */
-    public ArrayList<Course> getAllCourses(void id_scholarship) {
+    public ArrayList<Course> getAllCoursesByScolarship(int id_scholarship) {
         // TODO implement here
         return null;
     }
@@ -76,7 +77,7 @@ public class CourseFacade {
      * @param id_agreement 
      * @return
      */
-    public ArrayList<Course> getAllCourses(void id_agreement) {
+    public ArrayList<Course> getAllCoursesByAgreement(int id_agreement) {
         // TODO implement here
         return null;
     }
