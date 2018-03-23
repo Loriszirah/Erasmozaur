@@ -27,6 +27,4 @@ public class Document {
      */
     public String url;
 
-
-
 }

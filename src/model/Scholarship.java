@@ -41,9 +41,5 @@ public class Scholarship {
      * 
      */
     private String domain;
-
-
-
-
-
+    
 }

@@ -25,6 +25,6 @@ public class Review {
     /**
      * 
      */
-    private Int nbStars;
+    private int nbStars;
 
 }
