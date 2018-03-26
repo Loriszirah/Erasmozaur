@@ -7,11 +7,16 @@ import model.Review;
  * 
  */
 public class ReviewDAOPostgres implements ReviewDAO {
-
+ 
+ 	private static ReviewDAOPostgres instance = new ReviewDAOPostgres();
+	
+	public static ReviewDAOPostgres getReviewDAOPostgres() {
+		return ReviewDAOPostgres.instance;
+	}
     /**
      * Default constructor
      */
-    public ReviewDAOPostgres() {
+    private ReviewDAOPostgres() {
     }
 
 	public Review createReview(int universityId, int userId, int rating, String description) {

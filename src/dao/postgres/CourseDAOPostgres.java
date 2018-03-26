@@ -7,11 +7,17 @@ import model.*;
  * 
  */
 public class CourseDAOPostgres implements CourseDAO {
-
+    private static CourseDAOPostgres instance = new CourseDAOPostgres();
+	
+	
+	
+	public static CourseDAOPostgres getCourseDAOPostgres() {
+		return CourseDAOPostgres.instance;
+	}
     /**
      * Default constructor
      */
-    public CourseDAOPostgres() {
+    private CourseDAOPostgres() {
     }
 
     /**

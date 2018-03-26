@@ -7,11 +7,17 @@ import dao.*;
  * 
  */
 public class DocumentDAOPostgres implements DocumentDAO {
-
+    private static DocumentDAOPostgres instance = new DocumentDAOPostgres();
+	
+	
+	
+	public static DocumentDAOPostgres getDocumentDAOPostgres() {
+		return DocumentDAOPostgres.instance;
+	}
     /**
      * Default constructor
      */
-    public DocumentDAOPostgres() {
+    private DocumentDAOPostgres() {
     }
 
     /**
@@ -61,7 +67,7 @@ public class DocumentDAOPostgres implements DocumentDAO {
      * @param id_user 
      * @return
      */
-    public ArrayList<Document> getAllDocumentsByUser(int id_user) {
+    public ArrayList<Document> getAllDocumentsByDocument(int id_user) {
         // TODO implement here
         return null;
     }
@@ -74,5 +80,11 @@ public class DocumentDAOPostgres implements DocumentDAO {
         // TODO implement here
         return false;
     }
+    
+	@Override
+	public ArrayList<Document> getAllDocumentsByUser(int id_user) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
 }

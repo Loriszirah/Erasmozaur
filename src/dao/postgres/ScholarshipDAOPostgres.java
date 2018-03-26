@@ -7,11 +7,17 @@ import model.*;
  * 
  */
 public class ScholarshipDAOPostgres implements ScholarshipDAO {
-
+    private static ScholarshipDAOPostgres instance = new ScholarshipDAOPostgres();
+	
+	
+	
+	public static ScholarshipDAOPostgres getScholarshipDAOPostgres() {
+		return ScholarshipDAOPostgres.instance;
+	}
     /**
      * Default constructor
      */
-    public ScholarshipDAOPostgres() {
+    private ScholarshipDAOPostgres() {
     }
 
     /**

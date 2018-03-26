@@ -7,11 +7,17 @@ import model.*;
  * 
  */
 public class RoleDAOPostgres implements RoleDAO {
-
+    private static RoleDAOPostgres instance = new RoleDAOPostgres();
+	
+	
+	
+	public static RoleDAOPostgres getRoleDAOPostgres() {
+		return RoleDAOPostgres.instance;
+	}
     /**
      * Default constructor
      */
-    public RoleDAOPostgres() {
+    private RoleDAOPostgres() {
     }
 
     /**

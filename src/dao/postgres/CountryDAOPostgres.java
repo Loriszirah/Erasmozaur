@@ -7,11 +7,17 @@ import model.*;
  * 
  */
 public class CountryDAOPostgres implements CountryDAO {
-
+    private static CountryDAOPostgres instance = new CountryDAOPostgres();
+	
+	
+	
+	public static CountryDAOPostgres getCountryDAOPostgres() {
+		return CountryDAOPostgres.instance;
+	}
     /**
      * Default constructor
      */
-    public CountryDAOPostgres() {
+    private CountryDAOPostgres() {
     }
 
     /**
