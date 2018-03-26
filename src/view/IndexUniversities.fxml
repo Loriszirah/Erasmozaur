@@ -11,8 +11,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/9.0.1">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <ImageView fitHeight="145.0" fitWidth="142.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -24,13 +23,6 @@
             <Font name="System Bold" size="24.0" />
          </font>
       </Label>
-      <TableView layoutX="35.0" layoutY="186.0" prefHeight="200.0" prefWidth="529.0">
-        <columns>
-          <TableColumn prefWidth="380.0" text="University" />
-          <TableColumn minWidth="0.0" prefWidth="72.79998779296875" text="Details" />
-            <TableColumn minWidth="0.0" prefWidth="76.00002441406252" text="Join" />
-        </columns>
-      </TableView>
       <TabPane layoutX="-1.0" layoutY="131.0" prefHeight="270.0" prefWidth="600.0" tabClosingPolicy="UNAVAILABLE">
         <tabs>
           <Tab text="Information">
@@ -40,7 +32,16 @@
           </Tab>
           <Tab text="Universities">
             <content>
-              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <TableView layoutX="35.0" layoutY="20.0" prefHeight="200.0" prefWidth="529.0">
+                          <columns>
+                            <TableColumn prefWidth="380.0" text="University" />
+                            <TableColumn minWidth="0.0" prefWidth="72.79998779296875" text="Details" />
+                              <TableColumn minWidth="0.0" prefWidth="76.00002441406252" text="Join" />
+                          </columns>
+                        </TableView>
+                     </children></AnchorPane>
             </content>
           </Tab>
         </tabs>
