@@ -8,11 +8,8 @@ import javafx.scene.control.TextField;
 import main.MainApp;
 import facade.UserFacade;
 
-public class LoginOverviewController {
+public class LoginOverviewController extends MainController {
 	
-	private MainApp mainApp;
-	
-	private UserFacade userFacade;
 
 	@FXML
 	TextField usernameTextField;
@@ -25,7 +22,6 @@ public class LoginOverviewController {
      * The constructor is called before the initialize() method.
      */
     public LoginOverviewController() {
-    	userFacade = new UserFacade();
     }
 
     /**
@@ -42,25 +38,16 @@ public class LoginOverviewController {
     
     @FXML
     private void login(){
-    	String username = usernameTextField.getText();
-    	System.out.println("basic login - "+username);
-    	
     	if(userFacade.login(usernameTextField.getText(), passwordTextField.getText()))
     		System.out.println("Login Succesful!");
     	else
     		System.out.println("Login Failed!");
     }
     
-    /**
-     * Is called by the main application to give a reference back to itself.
-     * 
-     * @param mainApp
-     */
-    public void setMainApp(MainApp mainApp) {
-        this.mainApp = mainApp;
-
-        // Add observable list data to the table
-//        personTable.setItems(mainApp.getPersonData());
+    @FXML
+    private void register(){
+    	
     }
+    
     
 }
