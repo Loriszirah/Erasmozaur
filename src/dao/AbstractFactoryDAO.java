@@ -1,5 +1,6 @@
 package dao;
 import java.util.*;
+import dao.postgres.*;
 
 /**
  * 
@@ -15,10 +16,9 @@ public abstract class AbstractFactoryDAO {
     /**
      * @return
      */
-    public UserDAO UserDAO() {
-        // TODO implement here
-        return null;
-    }
+    public static UserDAO getUserDAO() {
+		return UserDAOPostgres.getUserDAOPostgres();
+	}
 
     /**
      * @return

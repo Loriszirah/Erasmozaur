@@ -7,12 +7,6 @@ import java.util.*;
 public class User {
 
     /**
-     * Default constructor
-     */
-    public User() {
-    }
-
-    /**
      * 
      */
     public int id_user;
@@ -51,5 +45,18 @@ public class User {
      * 
      */
     private String address;
-
+    
+    /**
+     * 
+     */
+    private Integer id_role;
+    
+    //
+    
+    public User(Integer id_user, String name, String password, Integer id_role) {
+		this.id_user = id_user;
+		this.firstName = name;
+		this.password = password;
+		this.id_role = id_role;
+	}
 }

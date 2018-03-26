@@ -75,5 +75,9 @@ public interface UserDAO {
      * @return
      */
     public ArrayList<User> getAllUsersByUniversity(int id_university);
+    
+    public boolean register(String username, String password, String role);
+    
+    public User login(String username, String password);
 
 }

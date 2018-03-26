@@ -1,17 +1,42 @@
 package controller;
 import java.util.*;
 import model.*;
+import dao.*;
+import javafx.fxml.FXML;
 /**
  * 
  */
 public class UserFacade {
-
+	private User user;
+	private UserDAO UserDAO;
+	
+	
     /**
      * Default constructor
      */
     public UserFacade() {
     }
-
+    
+    @FXML
+	public boolean login(String username, String password) {
+		if(this.UserDAO == null) {
+			this.UserDAO = AbstractFactoryDAO.getUserDAO();
+		}
+		this.user = this.UserDAO.login(username, password);
+		if(this.user == null) {
+			return false;
+		}
+		else {
+			return true;
+		}
+	}
+	
+	public boolean register(String username, String password, String typeUser) {
+		if(this.UserDAO == null) {
+			this.UserDAO = AbstractFactoryDAO.getUserDAO();
+		}
+		return this.UserDAO.register(username, password, typeUser);
+	}
 
     /**
      * @param firstName 
