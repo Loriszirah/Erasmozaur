@@ -9,6 +9,7 @@
 <?import javafx.scene.control.SeparatorMenuItem?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
 <VBox prefHeight="619.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/9.0.4" xmlns:fx="http://javafx.com/fxml/1">
    <children>
@@ -72,6 +73,11 @@
             <Label layoutX="153.0" layoutY="451.0" text="Role" />
             <Button fx:id="universityButton" layoutX="461.0" layoutY="413.0" mnemonicParsing="false" text="Leave" />
             <Button fx:id="validateButton" layoutX="357.0" layoutY="502.0" mnemonicParsing="false" text="Validate" />
+            <Label fx:id="labelManageProfile" layoutX="283.0" layoutY="102.0" text="Label">
+               <font>
+                  <Font size="36.0" />
+               </font>
+            </Label>
          </children>
       </AnchorPane>
    </children>
