@@ -31,5 +31,40 @@ public class Agreement extends Application {
      * 
      */
     private String comment;
+    
+    // Getters & Setters
 
+	public int getId_agreement() {
+		return id_agreement;
+	}
+
+	public void setId_agreement(int id_agreement) {
+		this.id_agreement = id_agreement;
+	}
+
+	public Date getStartDate() {
+		return startDate;
+	}
+
+	public void setStartDate(Date startDate) {
+		this.startDate = startDate;
+	}
+
+	public Date getEndDate() {
+		return endDate;
+	}
+
+	public void setEndDate(Date endDate) {
+		this.endDate = endDate;
+	}
+
+	public String getComment() {
+		return comment;
+	}
+
+	public void setComment(String comment) {
+		this.comment = comment;
+	}
+
+    
 }
