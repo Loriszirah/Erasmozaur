@@ -4,10 +4,11 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import main.MainApp;
 
 public class LoginOverviewController {
 	
-//	private MainApp mainApp;
+	private MainApp mainApp;
 
 	/**
      * The constructor.
@@ -32,8 +33,8 @@ public class LoginOverviewController {
      * 
      * @param mainApp
      */
-//    public void setMainApp(MainApp mainApp) {
-//        this.mainApp = mainApp;
+    public void setMainApp(MainApp mainApp) {
+        this.mainApp = mainApp;
 
         // Add observable list data to the table
 //        personTable.setItems(mainApp.getPersonData());
