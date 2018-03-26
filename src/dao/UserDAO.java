@@ -8,18 +8,6 @@ import model.*;
 public interface UserDAO {
 
     /**
-     * @param firstName 
-     * @param lastName 
-     * @param password 
-     * @param email 
-     * @param username 
-     * @param birthDate 
-     * @param address 
-     * @return
-     */
-    public User createUser(String firstName, String lastName, String password, String email, String username, Date birthDate, String address);
-
-    /**
      * 
      */
     public void leaveUniversity();
@@ -77,13 +65,18 @@ public interface UserDAO {
     public ArrayList<User> getAllUsersByUniversity(int id_university);
     
     /**
-     * 
-     * @param username
-     * @param password
+     * @param firstName 
+     * @param lastName 
+     * @param password 
      * @param role
+     * @param email 
+     * @param username 
+     * @param birthDate 
+     * @param address 
      * @return
      */
-    public boolean register(String username, String password, String role);
+    public User register(String firstName, String lastName, String password, String role, String email, String username, Date birthDate, String address);
+
     
     /**
      * 
