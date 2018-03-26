@@ -11,15 +11,21 @@ import facade.UserFacade;
 public class LoginOverviewController {
 	
 	private MainApp mainApp;
+	
+	private UserFacade userFacade;
 
 	@FXML
 	TextField usernameTextField;
+	
+	@FXML
+	TextField passwordTextField;
 	
 	/**
      * The constructor.
      * The constructor is called before the initialize() method.
      */
     public LoginOverviewController() {
+    	userFacade = new UserFacade();
     }
 
     /**
@@ -39,6 +45,10 @@ public class LoginOverviewController {
     	String username = usernameTextField.getText();
     	System.out.println("basic login - "+username);
     	
+    	if(userFacade.login(usernameTextField.getText(), passwordTextField.getText()))
+    		System.out.println("Login Succesful!");
+    	else
+    		System.out.println("Login Failed!");
     }
     
     /**
