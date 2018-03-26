@@ -29,8 +29,15 @@ public class UserFacade {
 		}
 	}
 	
-	public boolean register(String username, String password, String typeUser) {
-		return this.UserDAO.register(username, password, typeUser);
+	public boolean register(String firstName, String lastName, String password, String email, String username, Date birthDate,
+			String address, String role) {
+		try{
+			this.user = this.UserDAO.createUser(firstName, lastName, role, password, email, username, birthDate, address);
+			return true;
+		} catch(Exception e){
+			return false;
+		}
+		
 	}
 	
 	public User getCurrentUser(){

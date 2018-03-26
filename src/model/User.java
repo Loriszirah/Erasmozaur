@@ -51,7 +51,7 @@ public class User {
      */
     private Integer id_role;
     
-    //
+    // Constructors
     
     public User(Integer id_user, String name, String password, Integer id_role) {
 		this.id_user = id_user;
@@ -59,6 +59,21 @@ public class User {
 		this.password = password;
 		this.id_role = id_role;
 	}
+
+	public User(Integer id_user, String firstName, String lastName, String password, String email, String username, Date birthDate,
+			String address, Integer id_role) {
+		this.id_user = id_user;
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.password = password;
+		this.email = email;
+		this.username = username;
+		this.birthDate = birthDate;
+		this.address = address;
+		this.id_role = id_role;
+	}
+	
+	// Getters & Setters
 
 	public String getFirstName() {
 		return firstName;

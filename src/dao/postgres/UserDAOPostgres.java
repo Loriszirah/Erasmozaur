@@ -40,9 +40,49 @@ public class UserDAOPostgres implements UserDAO {
      * @param address 
      * @return
      */
-    public User createUser(String firstName, String lastName, String password, String email, String username, Date birthDate, String address) {
+	// TO BE IMPLEMENTED
+    public User createUser(String firstName, String lastName, String role, String password, String email, String username, Date birthDate, String address) {
         // TODO implement here
-        return null;
+    	try {
+			if(!this.conn.isValid(1)) {
+				openConnection();
+			}
+		    //Creation of a Statement object
+		    Statement state = conn.createStatement();
+		    // Check if the username already exist
+		    ResultSet exists = state.executeQuery("SELECT COUNT(*) as nb FROM Users WHERE username ='"+username+"';");
+		    if(exists.next()) {
+		    	if(exists.getInt("nb")>0) {
+		    		return null;
+		    	}
+		    }
+		    // Select the id of the type_user
+		    ResultSet result = state.executeQuery("SELECT id_type_user FROM Types_user WHERE name = '"+role+"'");
+	    	int id=0;
+		    if(result.next()) {
+		    	id = result.getInt("id_type_user");
+		    }
+		    else {
+		    	return null;
+		    }
+		    //The object ResultSet contains the result of the SQL request
+		    state.executeUpdate("INSERT INTO Users (username, password, firstname, lastname, email, address, id_type_user) VALUES('"+username+"','"+password+"','"+firstName+"','"+lastName+"','"+email+"','"+address+"','"+Integer.toString(id)+"')");
+		    
+		    //The object ResultSet contains the result of the SQL request
+		    result = state.executeQuery("SELECT * FROM users WHERE username='"+username+"'");
+		    //We get the MetaData
+			ResultSetMetaData resultMeta = result.getMetaData();
+			//Get the user in the database if exists and create the user
+			if(result.next()) {
+				User user = new User(result.getInt("id_user"), result.getString("firstName"), result.getString("lastName"), result.getString("password"), result.getString("email"), result.getString("username"), null, result.getString("address"), result.getInt("id_type_user"));
+				return user;
+			} else {
+				return null;
+			}
+    	}catch(SQLException e) {
+		      e.printStackTrace();
+		      return null;
+		}
     }
     
     public User login(String username, String password) {

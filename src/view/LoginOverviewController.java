@@ -53,7 +53,7 @@ public class LoginOverviewController extends MainController {
     @FXML
     private void register(){
     	System.out.println("A 'Register' action has been called!");
-    	registerUser = true;
+    	MainController.registerUser = true;
     	 try {  
     		 setSceneContent("ManageProfileUI");  
      } catch (IOException ex) {  
