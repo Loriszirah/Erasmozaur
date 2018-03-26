@@ -11,13 +11,13 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="545.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/9.0.4" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane prefHeight="452.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/9.0.4" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <TabPane layoutX="16.0" layoutY="127.0" prefHeight="404.0" prefWidth="550.0" tabClosingPolicy="UNAVAILABLE">
          <tabs>
             <Tab text="Information">
                <content>
-                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="197.0" prefWidth="550.0" />
                </content>
             </Tab>
             <Tab text="Scholarships">
@@ -75,12 +75,12 @@
             </Tab>
          </tabs>
       </TabPane>
-      <ImageView fitHeight="117.0" fitWidth="121.0" layoutX="10.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+      <Label fx:id="nameLabel" layoutX="132.0" layoutY="68.0" text="&lt;&lt;firstname&gt;&gt;+&lt;&lt;lastname&gt;&gt;" />
+      <Button fx:id="logOutButton" layoutX="329.0" layoutY="64.0" mnemonicParsing="false" text="Log out" />
+      <ImageView fitHeight="132.0" fitWidth="132.0" layoutX="10.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../thats_denver_bro.png" />
          </image>
       </ImageView>
-      <Label layoutX="134.0" layoutY="60.0" text="&lt;&lt;firstname&gt;&gt;+&lt;&lt;lastname&gt;&gt;" />
-      <Button layoutX="313.0" layoutY="56.0" mnemonicParsing="false" text="Log out" />
    </children>
 </AnchorPane>

@@ -3,8 +3,12 @@ package main;
 import javafx.application.Application;
 import javafx.stage.Stage;
 import view.LoginOverviewController;
+import view.MainController;
 
 import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 import javafx.fxml.FXML;
 
 import javafx.application.Application;
@@ -23,10 +27,16 @@ public class MainApp extends Application {
 	public void start(Stage primaryStage) {
 		this.primaryStage = primaryStage;
         this.primaryStage.setTitle("Erasmozaur");
+        
+        try {  
+            MainController.setSceneContentStartup(primaryStage);  
+         } catch (IOException ex) {  
+            Logger.getLogger(MainApp.class.getName()).log(Level.SEVERE, null, ex);  
+         }  
 
-        initRootLayout();
+//        initRootLayout();
 
-        showLoginOverview();
+//        showLoginOverview();
 	}
 	
 	/**
