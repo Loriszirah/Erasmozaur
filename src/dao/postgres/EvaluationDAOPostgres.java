@@ -7,7 +7,13 @@ import model.*;
  * 
  */
 public class EvaluationDAOPostgres implements EvaluationDAO {
-
+    private static EvaluationDAOPostgres instance = new EvaluationDAOPostgres();
+	
+	
+	
+	public static EvaluationDAOPostgres getEvaluationDAOPostgres() {
+		return EvaluationDAOPostgres.instance;
+	}
     /**
      * Default constructor
      */

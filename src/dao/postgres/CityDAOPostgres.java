@@ -7,7 +7,13 @@ import java.util.*;
  * 
  */
 public class CityDAOPostgres implements CityDAO {
-
+    private static CityDAOPostgres instance = new CityDAOPostgres();
+	
+	
+	
+	public static CityDAOPostgres getCityDAOPostgres() {
+		return CityDAOPostgres.instance;
+	}
     /**
      * Default constructor
      */

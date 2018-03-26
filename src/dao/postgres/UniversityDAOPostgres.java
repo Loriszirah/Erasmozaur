@@ -7,7 +7,13 @@ import dao.*;
  * 
  */
 public class UniversityDAOPostgres implements UniversityDAO {
-
+    private static UniversityDAOPostgres instance = new UniversityDAOPostgres();
+	
+	
+	
+	public static UniversityDAOPostgres getUniversityDAOPostgres() {
+		return UniversityDAOPostgres.instance;
+	}
     /**
      * Default constructor
      */

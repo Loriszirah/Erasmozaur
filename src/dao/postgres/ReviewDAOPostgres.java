@@ -7,7 +7,12 @@ import model.Review;
  * 
  */
 public class ReviewDAOPostgres implements ReviewDAO {
-
+ 
+ 	private static ReviewDAOPostgres instance = new ReviewDAOPostgres();
+	
+	public static ReviewDAOPostgres getReviewDAOPostgres() {
+		return ReviewDAOPostgres.instance;
+	}
     /**
      * Default constructor
      */

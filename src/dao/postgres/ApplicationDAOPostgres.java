@@ -7,7 +7,13 @@ import model.Application;
  * 
  */
 public class ApplicationDAOPostgres implements ApplicationDAO {
-
+ 	private static ApplicationDAOPostgres instance = new ApplicationDAOPostgres();
+	
+	
+	
+	public static ApplicationDAOPostgres getApplicationDAOPostgres() {
+		return ApplicationDAOPostgres.instance;
+	}
     /**
      * Default constructor
      */
