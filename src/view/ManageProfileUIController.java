@@ -8,7 +8,22 @@ import javafx.scene.control.TextField;
 import main.MainApp;
 import facade.UserFacade;
 
-public class ManageProfileUIController {
+public class ManageProfileUIController extends MainController{
+	
+	@FXML
+	TextField firstNameTextField;
+	
+	@FXML
+	TextField lastNameTextField;
+	
+	@FXML
+	TextField usernameTextField;
+	
+	@FXML
+	TextField emailTextField;
+	
+	@FXML
+	TextField addressTextField;
 	
 	/**
      * The constructor.
@@ -23,7 +38,18 @@ public class ManageProfileUIController {
      */
     @FXML
     private void initialize() {
-    	
+    	if(registerUser == false){
+    		// Insert default values of the form
+    		firstNameTextField.setText(userFacade.getCurrentUser().getFirstName());
+    		lastNameTextField.setText(userFacade.getCurrentUser().getLastName());
+    		usernameTextField.setText(userFacade.getCurrentUser().getUsername());
+    		emailTextField.setText(userFacade.getCurrentUser().getEmail());
+    		addressTextField.setText(userFacade.getCurrentUser().getAddress());
+    	}
+    	else{
+    		// Nothing to do!
+    		// The textFields will remain null
+    	}
     }
 
 }

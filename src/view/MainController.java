@@ -25,6 +25,7 @@ public abstract class MainController {
 		public final Logger LOGGER = Logger.getLogger(this.getClass().getName());  
 		private static final String UI_BASE_LOCATION = "/view/";  
 		private static final String FXML_PREFIX = ".fxml";
+		protected Boolean registerUser;
 		
 	// global user attributes
 		String username;
@@ -33,6 +34,7 @@ public abstract class MainController {
 	public MainController(){
 		username = "";
 		roleType = "";
+		registerUser = false;
 		
 		userFacade = new UserFacade();
 		

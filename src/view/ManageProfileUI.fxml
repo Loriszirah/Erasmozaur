@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox prefHeight="619.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/9.0.4" xmlns:fx="http://javafx.com/fxml/1">
+<VBox prefHeight="619.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <MenuBar VBox.vgrow="NEVER">
          <menus>
@@ -61,17 +61,17 @@
             <Label layoutX="154.0" layoutY="255.0" text="Email" />
             <PasswordField fx:id="emailTextField" layoutX="264.0" layoutY="250.0" />
             <Label layoutX="153.0" layoutY="295.0" text="Username" />
-            <PasswordField fx:id="usenameTextField" layoutX="264.0" layoutY="290.0" />
+            <PasswordField fx:id="usernameTextField" layoutX="264.0" layoutY="290.0" />
             <Label layoutX="153.0" layoutY="337.0" text="Birth Date" />
             <PasswordField fx:id="birthDateTextField" layoutX="264.0" layoutY="330.0" />
             <Label layoutX="153.0" layoutY="375.0" text="Address" />
-            <PasswordField fx:id="adressTextField" layoutX="264.0" layoutY="371.0" />
+            <PasswordField fx:id="addressTextField" layoutX="264.0" layoutY="371.0" />
             <Label layoutX="154.0" layoutY="417.0" text="University" />
-            <PasswordField fx:id="universitytextField" layoutX="264.0" layoutY="412.0" />
-            <PasswordField fx:id="firstNameTextFieldfirstNameTextField" layoutX="263.0" layoutY="167.0" />
+            <PasswordField fx:id="universityTextField" layoutX="264.0" layoutY="412.0" />
+            <PasswordField fx:id="firstNameTextField" layoutX="263.0" layoutY="167.0" />
             <PasswordField fx:id="roleTextField" layoutX="264.0" layoutY="450.0" />
             <Label layoutX="153.0" layoutY="451.0" text="Role" />
-            <Button fx:id="universityButton" layoutX="461.0" layoutY="413.0" mnemonicParsing="false" text="Leave" />
+            <Button fx:id="universityButton" layoutX="453.0" layoutY="413.0" mnemonicParsing="false" text="Join" />
             <Button fx:id="validateButton" layoutX="357.0" layoutY="502.0" mnemonicParsing="false" text="Validate" />
             <Label fx:id="labelManageProfile" layoutX="283.0" layoutY="102.0" text="Label">
                <font>

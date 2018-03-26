@@ -32,6 +32,10 @@ public class UserFacade {
 	public boolean register(String username, String password, String typeUser) {
 		return this.UserDAO.register(username, password, typeUser);
 	}
+	
+	public User getCurrentUser(){
+		return this.user;
+	}
 
     /**
      * @param firstName 
