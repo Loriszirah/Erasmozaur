@@ -6,90 +6,23 @@ import dao.postgres.*;
  * 
  */
 public abstract class AbstractFactoryDAO {
-
-    /**
-     * Default constructor
-     */
-    public AbstractFactoryDAO() {
-    }
-
-    /**
-     * @return
-     */
-    public static UserDAO getUserDAO() {
-		return UserDAOPostgres.getUserDAOPostgres();
+	/**
+	 * Method to get a factory of DAO
+	 * @param factory : a string describing the database to use
+	 * @return AbstractFactoryDAO
+	 */
+	public static AbstractFactoryDAO getFactory(){
+		return PostgresFactoryDAO.getInstance();
 	}
-
-    /**
-     * @return
-     */
-    public ScholarshipDAO ScholarshipDAO() {
-        // TODO implement here
-        return null;
-    }
-
-    /**
-     * @return
-     */
-    public UniversityDAO UniversityDAO() {
-        // TODO implement here
-        return null;
-    }
-
-    /**
-     * @return
-     */
-    public ReviewDAO ReviewDAO() {
-        // TODO implement here
-        return null;
-    }
-
-    /**
-     * @return
-     */
-    public ApplicationDAO ApplicationDAO() {
-        // TODO implement here
-        return null;
-    }
-
-    /**
-     * @return
-     */
-    public CityDAO CityDAO() {
-        // TODO implement here
-        return null;
-    }
-
-    /**
-     * @return
-     */
-    public RoleDAO RoleDAO() {
-        // TODO implement here
-        return null;
-    }
-
-    /**
-     * @return
-     */
-    public EvaluationDAO EvaluationDAO() {
-        // TODO implement here
-        return null;
-    }
-
-    /**
-     * @return
-     */
-    public DocumentDAO DocumentDAO() {
-        // TODO implement here
-        return null;
-    }
-
-    /**
-     * @return
-     */
-    public CourseDAO CourseDAO() {
-        // TODO implement here
-        return null;
-    }
-
+	
+    public abstract UserDAO getUserDAO();
+    public abstract ScholarshipDAO ScholarshipDAO();
+    public abstract UniversityDAO UniversityDAO();
+    public abstract ReviewDAO ReviewDAO();
+    public abstract ApplicationDAO ApplicationDAO();
+    public abstract CityDAO CityDAO();
+    public abstract RoleDAO RoleDAO();
+    public abstract EvaluationDAO EvaluationDAO();
+    public abstract DocumentDAO DocumentDAO();
+    public abstract CourseDAO CourseDAO();
 }

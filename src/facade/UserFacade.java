@@ -7,8 +7,9 @@ import javafx.fxml.FXML;
  * 
  */
 public class UserFacade {
+	private AbstractFactoryDAO factory = AbstractFactoryDAO.getFactory();
 	private User user;
-	private UserDAO UserDAO;
+	private UserDAO UserDAO = factory.getUserDAO();
 	
 	
     /**
@@ -19,9 +20,6 @@ public class UserFacade {
     
     @FXML
 	public boolean login(String username, String password) {
-		if(this.UserDAO == null) {
-			this.UserDAO = AbstractFactoryDAO.getUserDAO();
-		}
 		this.user = this.UserDAO.login(username, password);
 		if(this.user == null) {
 			return false;
@@ -32,9 +30,6 @@ public class UserFacade {
 	}
 	
 	public boolean register(String username, String password, String typeUser) {
-		if(this.UserDAO == null) {
-			this.UserDAO = AbstractFactoryDAO.getUserDAO();
-		}
 		return this.UserDAO.register(username, password, typeUser);
 	}
 
