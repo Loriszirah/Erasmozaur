@@ -5,7 +5,12 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import main.Context;
 import main.MainApp;
+
+import java.io.IOException;
+import java.util.logging.Level;
+
 import facade.UserFacade;
 
 public class LoginOverviewController extends MainController {
@@ -42,11 +47,17 @@ public class LoginOverviewController extends MainController {
     		System.out.println("Login Succesful!");
     	else
     		System.out.println("Login Failed!");
+    	
     }
     
     @FXML
     private void register(){
-    	
+    	System.out.println("Register method");
+    	 try {  
+             setSceneContent("ManageProfileUI");  
+           } catch (IOException ex) {  
+             LOGGER.log(Level.SEVERE, null, ex);  
+           }  	
     }
     
     
