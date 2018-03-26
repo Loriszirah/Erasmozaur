@@ -17,7 +17,7 @@ public class ApplicationDAOPostgres implements ApplicationDAO {
     /**
      * Default constructor
      */
-    public ApplicationDAOPostgres() {
+    private ApplicationDAOPostgres() {
     }
 
 	@Override

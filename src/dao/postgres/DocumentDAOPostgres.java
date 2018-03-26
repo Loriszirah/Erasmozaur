@@ -17,7 +17,7 @@ public class DocumentDAOPostgres implements DocumentDAO {
     /**
      * Default constructor
      */
-    public DocumentDAOPostgres() {
+    private DocumentDAOPostgres() {
     }
 
     /**

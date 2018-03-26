@@ -17,7 +17,7 @@ public class UniversityDAOPostgres implements UniversityDAO {
     /**
      * Default constructor
      */
-    public UniversityDAOPostgres() {
+    private UniversityDAOPostgres() {
     }
 
     /**

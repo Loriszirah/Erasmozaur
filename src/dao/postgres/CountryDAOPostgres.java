@@ -17,7 +17,7 @@ public class CountryDAOPostgres implements CountryDAO {
     /**
      * Default constructor
      */
-    public CountryDAOPostgres() {
+    private CountryDAOPostgres() {
     }
 
     /**

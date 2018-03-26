@@ -16,7 +16,7 @@ public class ReviewDAOPostgres implements ReviewDAO {
     /**
      * Default constructor
      */
-    public ReviewDAOPostgres() {
+    private ReviewDAOPostgres() {
     }
 
 	public Review createReview(int universityId, int userId, int rating, String description) {

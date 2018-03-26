@@ -17,7 +17,7 @@ public class RoleDAOPostgres implements RoleDAO {
     /**
      * Default constructor
      */
-    public RoleDAOPostgres() {
+    private RoleDAOPostgres() {
     }
 
     /**

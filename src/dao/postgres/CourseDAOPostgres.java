@@ -17,7 +17,7 @@ public class CourseDAOPostgres implements CourseDAO {
     /**
      * Default constructor
      */
-    public CourseDAOPostgres() {
+    private CourseDAOPostgres() {
     }
 
     /**

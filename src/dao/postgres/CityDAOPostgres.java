@@ -17,7 +17,7 @@ public class CityDAOPostgres implements CityDAO {
     /**
      * Default constructor
      */
-    public CityDAOPostgres() {
+    private CityDAOPostgres() {
     }
 
     /**

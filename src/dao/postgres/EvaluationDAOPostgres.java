@@ -17,7 +17,7 @@ public class EvaluationDAOPostgres implements EvaluationDAO {
     /**
      * Default constructor
      */
-    public EvaluationDAOPostgres() {
+    private EvaluationDAOPostgres() {
     }
 
     /**

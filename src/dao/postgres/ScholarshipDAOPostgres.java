@@ -17,7 +17,7 @@ public class ScholarshipDAOPostgres implements ScholarshipDAO {
     /**
      * Default constructor
      */
-    public ScholarshipDAOPostgres() {
+    private ScholarshipDAOPostgres() {
     }
 
     /**
