@@ -7,21 +7,9 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.text.Font?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/9.0.4" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <ImageView fitHeight="145.0" fitWidth="142.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../../thats_denver_bro.png" />
-         </image>
-      </ImageView>
-      <Label layoutX="143.0" layoutY="62.0" prefHeight="26.0" prefWidth="243.0" text="First name last name">
-         <font>
-            <Font name="System Bold" size="24.0" />
-         </font>
-      </Label>
-      <Button layoutX="507.0" layoutY="67.0" mnemonicParsing="false" text="Log out" />
       <TableView layoutX="52.0" layoutY="147.0" prefHeight="200.0" prefWidth="516.0">
         <columns>
           <TableColumn prefWidth="85.0" text="Responsible" />
@@ -32,5 +20,12 @@
             <TableColumn prefWidth="85.0" />
         </columns>
       </TableView>
+      <Label layoutX="122.0" layoutY="58.0" text="&lt;&lt;firstname&gt;&gt;+&lt;&lt;lastname&gt;&gt;" />
+      <Button fx:id="logOutButton" layoutX="319.0" layoutY="54.0" mnemonicParsing="false" text="Log out" />
+      <ImageView fitHeight="132.0" fitWidth="132.0" layoutY="1.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../thats_denver_bro.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>

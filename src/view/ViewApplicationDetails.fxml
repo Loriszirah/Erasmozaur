@@ -8,8 +8,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane prefHeight="442.0" prefWidth="586.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/9.0.1">
+<AnchorPane prefHeight="442.0" prefWidth="586.0" xmlns="http://javafx.com/javafx/9.0.4" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <Label layoutX="132.0" layoutY="68.0" text="&lt;&lt;firstname&gt;&gt;+&lt;&lt;lastname&gt;&gt;" />
       <Button layoutX="311.0" layoutY="64.0" mnemonicParsing="false" text="Log out" />
@@ -24,17 +23,17 @@
          </font>
       </Label>
       <Label layoutX="160.0" layoutY="163.0" prefHeight="18.0" prefWidth="58.0" text="Type" />
-      <Label layoutX="160.0" layoutY="195.0" prefHeight="18.0" prefWidth="58.0" text="First Name" />
-      <Label layoutX="160.0" layoutY="227.0" prefHeight="18.0" prefWidth="58.0" text="Last Name" />
+      <Label layoutX="160.0" layoutY="195.0" prefHeight="18.0" prefWidth="74.0" text="First Name" />
+      <Label layoutX="160.0" layoutY="227.0" prefHeight="18.0" prefWidth="74.0" text="Last Name" />
       <Label layoutX="159.0" layoutY="258.0" prefHeight="18.0" prefWidth="58.0" text="Email" />
-      <Label layoutX="160.0" layoutY="290.0" prefHeight="18.0" prefWidth="58.0" text="Username" />
-      <Label layoutX="160.0" layoutY="322.0" prefHeight="18.0" prefWidth="58.0" text="Telephone" />
-      <TextField layoutX="247.0" layoutY="159.0" />
-      <TextField layoutX="247.0" layoutY="191.0" />
-      <TextField layoutX="247.0" layoutY="223.0" />
-      <TextField layoutX="247.0" layoutY="254.0" />
-      <TextField layoutX="247.0" layoutY="286.0" />
-      <TextField layoutX="247.0" layoutY="318.0" />
+      <Label layoutX="160.0" layoutY="290.0" prefHeight="18.0" prefWidth="74.0" text="Username" />
+      <Label layoutX="160.0" layoutY="322.0" prefHeight="18.0" prefWidth="65.0" text="Telephone" />
+      <TextField fx:id="typeApplicationTextField" layoutX="247.0" layoutY="159.0" />
+      <TextField fx:id="firstNameApplicationTextView" layoutX="247.0" layoutY="191.0" />
+      <TextField fx:id="lastNameApplicationtextField" layoutX="247.0" layoutY="223.0" />
+      <TextField fx:id="emailApplicationTextField" layoutX="247.0" layoutY="254.0" />
+      <TextField fx:id="usernameApplicationTextField" layoutX="247.0" layoutY="286.0" />
+      <TextField fx:id="telephoneApplicationTextField" layoutX="247.0" layoutY="318.0" />
       <Button layoutX="214.0" layoutY="364.0" mnemonicParsing="false" text="Accept" />
       <Button layoutX="284.0" layoutY="364.0" mnemonicParsing="false" text="Refuse" />
    </children>

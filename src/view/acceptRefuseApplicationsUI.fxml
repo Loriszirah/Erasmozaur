@@ -63,11 +63,6 @@
                   <Image url="@../thats_denver_bro.png" />
                </image>
             </ImageView>
-            <Label layoutX="92.0" layoutY="72.0" prefHeight="39.0" prefWidth="330.0" text="Accept/Refuse Application">
-               <font>
-                  <Font size="24.0" />
-               </font>
-            </Label>
             <Text layoutX="281.0" layoutY="183.0" strokeType="OUTSIDE" strokeWidth="0.0" text="&lt;&lt;firstname&gt;&gt;" wrappingWidth="127.21875" />
             <Text layoutX="283.0" layoutY="224.0" strokeType="OUTSIDE" strokeWidth="0.0" text="&lt;&lt;lastname&gt;&gt;" wrappingWidth="127.21875" />
             <Label layoutX="103.0" layoutY="246.0" text="Application date :" />
@@ -91,6 +86,13 @@
                </font>
             </Button>
             <Text layoutX="283.0" layoutY="297.0" strokeType="OUTSIDE" strokeWidth="0.0" text="&lt;&lt;applicationmessage&gt;&gt;" wrappingWidth="163.50543212890625" />
+            <Label layoutX="138.0" layoutY="67.0" text="Accept/Refuse an application" />
+            <Button fx:id="logOutButton" layoutX="335.0" layoutY="63.0" mnemonicParsing="false" text="Log out" />
+            <ImageView fitHeight="132.0" fitWidth="132.0" layoutX="16.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../thats_denver_bro.png" />
+               </image>
+            </ImageView>
          </children>
       </AnchorPane>
    </children>

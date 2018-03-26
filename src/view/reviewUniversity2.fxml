@@ -8,22 +8,11 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.text.Font?>
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/9.0.4" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Label layoutX="130.0" layoutY="82.0" text="&lt;&lt;University&gt;&gt;">
-         <font>
-            <Font name="System Bold" size="24.0" />
-         </font>
-      </Label>
       <Label layoutX="155.0" layoutY="179.0" text="Rating" />
       <Label layoutX="155.0" layoutY="216.0" prefWidth="50.0" text="Description" />
-      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="320.0" layoutY="22.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../../thats_denver_bro.png" />
-         </image>
-      </ImageView>
       <Button layoutX="270.0" layoutY="323.0" mnemonicParsing="false" text="Submit review" />
       <DropdownButton layoutX="244.0" layoutY="179.0">
           <items>
@@ -40,5 +29,12 @@
           </items>
       </DropdownButton>
       <TextArea layoutX="237.0" layoutY="216.0" prefHeight="90.0" prefWidth="272.0" />
+      <Label fx:id="universiteTextField" layoutX="138.0" layoutY="67.0" text="&lt;&lt;universite&gt;&gt;" />
+      <Button fx:id="logOutButton" layoutX="335.0" layoutY="63.0" mnemonicParsing="false" text="Log out" />
+      <ImageView fitHeight="132.0" fitWidth="132.0" layoutX="16.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../thats_denver_bro.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>

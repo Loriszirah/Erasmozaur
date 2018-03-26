@@ -54,10 +54,10 @@ public class LoginOverviewController extends MainController {
     private void register(){
     	System.out.println("Register method");
     	 try {  
-             setSceneContent("ManageProfileUI");  
-           } catch (IOException ex) {  
-             LOGGER.log(Level.SEVERE, null, ex);  
-           }  	
+    		 setSceneContent("ManageProfileUI");  
+     } catch (IOException ex) {  
+    	 	LOGGER.log(Level.SEVERE, null, ex);  
+     }  	
     }
     
     
