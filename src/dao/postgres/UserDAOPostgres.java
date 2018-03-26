@@ -17,7 +17,7 @@ public class UserDAOPostgres implements UserDAO {
     protected String userDB;
     protected String passwdDB;
     protected Connection conn;
-    private static UserDAOPostgres DAOPostgres;
+    private static UserDAOPostgres instance = new UserDAOPostgres();
 	
 	private UserDAOPostgres() {
 		this.url = System.getenv("DBurl");
@@ -27,10 +27,7 @@ public class UserDAOPostgres implements UserDAO {
 	}
 	
 	public static UserDAOPostgres getUserDAOPostgres() {
-		if(UserDAOPostgres.DAOPostgres == null) {
-			UserDAOPostgres.DAOPostgres = new UserDAOPostgres();
-		}
-		return UserDAOPostgres.DAOPostgres;
+		return UserDAOPostgres.instance;
 	}
 	
     /**
