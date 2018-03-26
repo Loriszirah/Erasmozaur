@@ -4,12 +4,17 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import main.MainApp;
+import facade.UserFacade;
 
 public class LoginOverviewController {
 	
 	private MainApp mainApp;
 
+	@FXML
+	TextField usernameTextField;
+	
 	/**
      * The constructor.
      * The constructor is called before the initialize() method.
@@ -24,8 +29,16 @@ public class LoginOverviewController {
     @FXML
     private void initialize() {
         // Initialize the person table with the two columns.
+    	
 //        firstNameColumn.setCellValueFactory(cellData -> cellData.getValue().firstNameProperty());
 //        lastNameColumn.setCellValueFactory(cellData -> cellData.getValue().lastNameProperty());
+    }
+    
+    @FXML
+    private void login(){
+    	String username = usernameTextField.getText();
+    	System.out.println("basic login - "+username);
+    	
     }
     
     /**

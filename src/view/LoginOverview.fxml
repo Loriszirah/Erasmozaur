@@ -18,14 +18,14 @@
       </Label>
       <Label layoutX="155.0" layoutY="179.0" text="User name" />
       <Label layoutX="155.0" layoutY="216.0" prefWidth="50.0" text="Password" />
-      <PasswordField layoutX="243.0" layoutY="212.0" />
-      <TextField layoutX="243.0" layoutY="175.0" />
+      <PasswordField fx:id="passwordTextField" layoutX="243.0" layoutY="212.0" />
+      <TextField fx:id="usernameTextField" layoutX="243.0" layoutY="175.0" />
       <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="271.0" layoutY="25.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../thats_denver_bro.png" />
          </image>
       </ImageView>
-      <Button layoutX="274.0" layoutY="256.0" mnemonicParsing="false" text="Sign in" />
+      <Button fx:id="loginButton" layoutX="274.0" layoutY="256.0" mnemonicParsing="false" onMouseClicked="#login" text="Sign in" />
       <Label layoutX="161.0" layoutY="327.0" text="Not register yet?" />
       <Button layoutX="270.0" layoutY="323.0" mnemonicParsing="false" text="Register" />
    </children>
