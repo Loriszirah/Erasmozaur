@@ -10,11 +10,10 @@ DROP TABLE IF EXISTS Applications CASCADE;
 DROP TABLE IF EXISTS Agreements CASCADE;
 DROP TABLE IF EXISTS Courses CASCADE;
 DROP TABLE IF EXISTS Evaluations CASCADE;
-DROP TABLE IF EXISTS Include CASCADE;
-DROP TABLE IF EXISTS Correspond CASCADE;
-DROP TABLE IF EXISTS UnversitiesCourses CASCADE;
+DROP TABLE IF EXISTS DocumentsApplications CASCADE;
+DROP TABLE IF EXISTS EvaluationsCourses CASCADE;
 DROP TABLE IF EXISTS ScholarshipsCourses CASCADE;
-DROP TABLE IF EXISTS Have CASCADE;
+DROP TABLE IF EXISTS AgreementsCourses CASCADE;
 
 /*
 	Table Roles
@@ -37,7 +36,7 @@ CREATE TABLE Users (
 	firstname varchar(40) NOT NULL,
 	lastname varchar(40) NOT NULL,
 	email varchar(100) NOT NULL,
-	birthdate varchar(40),
+	birthdate Date,
 	address varchar(100),
 	id_role INTEGER NOT NULL,
 	CONSTRAINT users_email_unique UNIQUE (email),
@@ -140,12 +139,12 @@ CREATE TABLE Applications (
 /*
 	Table between Documents and Applications
 */
-CREATE TABLE Include (
+CREATE TABLE DocumentsApplications (
 	id_document INTEGER NOT NULL,
 	id_application INTEGER NOT NULL,
-	CONSTRAINT pk_include PRIMARY KEY (id_document, id_application),
-	CONSTRAINT fk_include_documents FOREIGN KEY (id_document) REFERENCES Documents(id_document),
-	CONSTRAINT fk_include_application FOREIGN KEY (id_application) REFERENCES Applications(id_application)
+	CONSTRAINT pk_documentsApplications PRIMARY KEY (id_document, id_application),
+	CONSTRAINT fk_documentsApplications_documents FOREIGN KEY (id_document) REFERENCES Documents(id_document),
+	CONSTRAINT fk_documentsApplications_application FOREIGN KEY (id_application) REFERENCES Applications(id_application)
 );
 
 /*
@@ -170,8 +169,10 @@ CREATE TABLE Courses (
 	id_course SERIAL,
 	name varchar(60) NOT NULL,
 	specialization varchar(60),
+	id_university INTEGER NOT NULL,
 	CONSTRAINT pk_courses PRIMARY KEY (id_course),
-	CONSTRAINT courses_name_unique UNIQUE (name)
+	CONSTRAINT courses_name_unique UNIQUE (name),
+	CONSTRAINT fk_courses_universities FOREIGN KEY (id_university) REFERENCES Universities(id_university)
 );
 
 /*
@@ -192,23 +193,12 @@ CREATE TABLE Evaluations (
 /*
 	Table between Evaluations and Courses
 */
-CREATE TABLE Correspond (
+CREATE TABLE EvaluationsCourses (
 	id_course INTEGER NOT NULL,
 	id_evaluation INTEGER NOT NULL,
-	CONSTRAINT pk_correspond PRIMARY KEY (id_course, id_evaluation),
-	CONSTRAINT fk_correspond_courses FOREIGN KEY (id_course) REFERENCES Courses(id_course),
-	CONSTRAINT fk_correspond_evaluations FOREIGN KEY (id_evaluation) REFERENCES Evaluations(id_evaluation)
-);
-
-/*
-	Table between Universities and Courses
-*/
-CREATE TABLE UnversitiesCourses (
-	id_university INTEGER NOT NULL,
-	id_course INTEGER NOT NULL,
-	CONSTRAINT pk_universitiesCourses PRIMARY KEY (id_course, id_university),
-	CONSTRAINT fk_universitiesCourses_courses FOREIGN KEY (id_course) REFERENCES Courses(id_course),
-	CONSTRAINT fk_universitiesCourses_universities FOREIGN KEY (id_university) REFERENCES Universities(id_university)
+	CONSTRAINT pk_evaluationsCourses PRIMARY KEY (id_course, id_evaluation),
+	CONSTRAINT fk_evaluationsCourses_courses FOREIGN KEY (id_course) REFERENCES Courses(id_course),
+	CONSTRAINT fk_evaluationsCourses_evaluations FOREIGN KEY (id_evaluation) REFERENCES Evaluations(id_evaluation)
 );
 
 /*
@@ -225,12 +215,12 @@ CREATE TABLE ScholarshipsCourses (
 /*
 	Table between Agreements and Courses
 */
-CREATE TABLE Have (
+CREATE TABLE AgreementsCourses (
 	id_agreement INTEGER NOT NULL,
 	id_course INTEGER NOT NULL,
-	CONSTRAINT pk_have PRIMARY KEY (id_course, id_agreement),
-	CONSTRAINT fk_have_courses FOREIGN KEY (id_course) REFERENCES Courses(id_course),
-	CONSTRAINT fk_have_scholarships FOREIGN KEY (id_agreement) REFERENCES Agreements(id_agreement)
+	CONSTRAINT pk_agreementsCourses PRIMARY KEY (id_course, id_agreement),
+	CONSTRAINT fk_agreementsCourses_courses FOREIGN KEY (id_course) REFERENCES Courses(id_course),
+	CONSTRAINT fk_agreementsCourses_scholarships FOREIGN KEY (id_agreement) REFERENCES Agreements(id_agreement)
 );
 
 -- Inserting Roles 
@@ -240,6 +230,6 @@ INSERT INTO Roles(name) VALUES('Responsible');
 INSERT INTO Roles(name) VALUES('Admin');
 
 -- Inserting Users
-INSERT INTO Users(username,password,id_role) VALUES('Melvil','pwd',(SELECT id_role FROM Roles WHERE name = 'Tutor'));
-INSERT INTO Users(username,password,id_role) VALUES('Godefroi','pwd',(SELECT id_role FROM Roles WHERE name = 'Responsible'));
-INSERT INTO Users(username,password,id_role) VALUES('Loris','pwd',(SELECT id_role FROM Roles WHERE name = 'Student'));
+INSERT INTO Users(username,password,firstname,lastname,email,id_role) VALUES('Melvil','pwd','Melvil','Donnart','melvil.donnart@gmail.com',(SELECT id_role FROM Roles WHERE name = 'Tutor'));
+INSERT INTO Users(username,password,firstname,lastname,email,id_role) VALUES('Godefroi','pwd','Godefroi','Roussel','godefroi.roussel@gmail.com',(SELECT id_role FROM Roles WHERE name = 'Responsible'));
+INSERT INTO Users(username,password,firstname,lastname,email,id_role) VALUES('Loris','pwd','Loris','Zirah','loris.zirah@gmail.com',(SELECT id_role FROM Roles WHERE name = 'Student'));
