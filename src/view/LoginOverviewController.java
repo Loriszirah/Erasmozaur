@@ -52,7 +52,8 @@ public class LoginOverviewController extends MainController {
     
     @FXML
     private void register(){
-    	System.out.println("Register method");
+    	System.out.println("A 'Register' action has been called!");
+    	MainController.registerUser = true;
     	 try {  
     		 setSceneContent("ManageProfileUI");  
      } catch (IOException ex) {  

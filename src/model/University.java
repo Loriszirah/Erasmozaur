@@ -27,4 +27,29 @@ public class University {
      */
     private String address;
 
+	public int getId_university() {
+		return id_university;
+	}
+
+	public void setId_university(int id_university) {
+		this.id_university = id_university;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getAddress() {
+		return address;
+	}
+
+	public void setAddress(String address) {
+		this.address = address;
+	}
+
+    
 }

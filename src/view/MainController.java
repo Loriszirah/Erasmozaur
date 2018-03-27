@@ -20,11 +20,12 @@ import facade.UserFacade;
 public abstract class MainController {
 	
 	// global application attributes
-		protected MainApp mainApp;
-		protected UserFacade userFacade;
+		protected static MainApp mainApp;
+		protected static UserFacade userFacade;
 		public final Logger LOGGER = Logger.getLogger(this.getClass().getName());  
 		private static final String UI_BASE_LOCATION = "/view/";  
 		private static final String FXML_PREFIX = ".fxml";
+		protected static Boolean registerUser = false;
 		
 	// global user attributes
 		String username;
