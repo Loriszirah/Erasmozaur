@@ -7,17 +7,18 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/9.0.4" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <TableView layoutX="52.0" layoutY="147.0" prefHeight="200.0" prefWidth="516.0">
+      <TableView layoutX="54.0" layoutY="166.0" prefHeight="200.0" prefWidth="516.0">
         <columns>
-          <TableColumn prefWidth="85.0" text="Responsible" />
-          <TableColumn prefWidth="88.0" text="First Name" />
-            <TableColumn prefWidth="82.0" text="Last Name" />
-            <TableColumn prefWidth="90.0" />
-            <TableColumn prefWidth="84.0" />
-            <TableColumn prefWidth="85.0" />
+          <TableColumn fx:id="responsibleColumn" prefWidth="85.0" text="Responsible" />
+          <TableColumn fx:id="firstNameColumn" prefWidth="88.0" text="First Name" />
+            <TableColumn fx:id="lastNameColumn" prefWidth="82.0" text="Last Name" />
+            <TableColumn fx:id="detailsColumn" prefWidth="90.0" />
+            <TableColumn fx:id="acceptColumn" prefWidth="84.0" />
+            <TableColumn fx:id="refuseColumn" prefWidth="85.0" />
         </columns>
       </TableView>
       <Label layoutX="122.0" layoutY="58.0" text="&lt;&lt;firstname&gt;&gt;+&lt;&lt;lastname&gt;&gt;" />
@@ -27,5 +28,10 @@
             <Image url="@../../thats_denver_bro.png" />
          </image>
       </ImageView>
+      <Label layoutX="174.0" layoutY="122.0" text="Manage the new responsibles">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>
