@@ -47,19 +47,20 @@ public class LoginOverviewController extends MainController {
     
     @FXML
     private void login(){
-    	if(userFacade.login(usernameTextField.getText(), passwordTextField.getText())) {
+    	if((!(usernameTextField.getText().equals("")) && !(passwordTextField.getText().equals(""))) && userFacade.login(usernameTextField.getText(), passwordTextField.getText())) {
     		System.out.println("Login Succesful!");
-		 try {
-			setSceneContent("manageProfileUI");
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} 
+			 try {
+				setSceneContent("manageProfileUI");
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} 
     	}
-    	else
+    	else{
     		System.out.println("Login Failed!");
-    		errorMessage.setText("Error, wrong credentials");
+    		errorMessage.setText("Login Failed! Wrong credentials!");
 		errorMessage.setTextFill(Color.RED);
+    	}
     }
     
     @FXML

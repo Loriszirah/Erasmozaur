@@ -40,7 +40,6 @@ public class UserDAOPostgres implements UserDAO {
      * @param address 
      * @return
      */
-	// TO BE IMPLEMENTED
     public User createUser(String firstName, String lastName, String role, String password, String email, String username, Date birthDate, String address) {
         // TODO implement here
     	try {
@@ -66,7 +65,7 @@ public class UserDAOPostgres implements UserDAO {
 		    	return null;
 		    }
 		    //The object ResultSet contains the result of the SQL request
-		    state.executeUpdate("INSERT INTO Users (username, password, firstname, lastname, email, address, id_type_user) VALUES('"+username+"','"+password+"','"+firstName+"','"+lastName+"','"+email+"','"+address+"','"+Integer.toString(id)+"')");
+		    state.executeUpdate("INSERT INTO Users (username, password, firstname, lastname, email, address, id_role) VALUES('"+username+"','"+password+"','"+firstName+"','"+lastName+"','"+email+"','"+address+"','"+Integer.toString(id)+"')");
 		    
 		    //The object ResultSet contains the result of the SQL request
 		    result = state.executeQuery("SELECT * FROM users WHERE username='"+username+"'");
@@ -74,7 +73,7 @@ public class UserDAOPostgres implements UserDAO {
 			ResultSetMetaData resultMeta = result.getMetaData();
 			//Get the user in the database if exists and create the user
 			if(result.next()) {
-				User user = new User(result.getInt("id_user"), result.getString("firstName"), result.getString("lastName"), result.getString("password"), result.getString("email"), result.getString("username"), null, result.getString("address"), result.getInt("id_type_user"));
+				User user = new User(result.getInt("id_user"), result.getString("firstName"), result.getString("lastName"), result.getString("password"), result.getString("email"), result.getString("username"), null, result.getString("address"), result.getInt("id_role"));
 				return user;
 			} else {
 				return null;
@@ -99,7 +98,10 @@ public class UserDAOPostgres implements UserDAO {
 			ResultSetMetaData resultMeta = result.getMetaData();
 			//Get the user in the database if exists and create the user
 			if(result.next()) {
-				user = new User(result.getInt("id_user"), result.getString("username"), result.getString("password"), result.getInt("id_type_user"));
+				user = new User(result.getInt("id_user"), result.getString("firstname"), result.getString("lastname"), result.getString("password"), result.getString("email"), result.getString("username"), null, result.getString("address"), result.getInt("id_role"));
+			} else {
+				System.out.println("'User' does not exist!");
+				user = null;
 			}
 		}catch(SQLException e) {
 		      return null;

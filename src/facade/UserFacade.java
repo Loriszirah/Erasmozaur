@@ -8,7 +8,7 @@ import javafx.fxml.FXML;
  */
 public class UserFacade {
 	private AbstractFactoryDAO factory = AbstractFactoryDAO.getFactory();
-	private User user;
+	private static User user;
 	private UserDAO UserDAO = factory.getUserDAO();
 	
 	
@@ -18,13 +18,17 @@ public class UserFacade {
     public UserFacade() {
     }
     
-    @FXML
 	public boolean login(String username, String password) {
-		this.user = this.UserDAO.login(username, password);
-		if(this.user == null) {
+		try{
+			UserFacade.user = this.UserDAO.login(username, password);
+		}catch(Exception ex){
+			System.out.println("Exception was caught in the login!");
+		}
+		if(UserFacade.user == null) {
 			return false;
 		}
 		else {
+			System.out.println("The following User has succesfully logged in - "+UserFacade.user.getUsername());
 			return true;
 		}
 	}
@@ -32,7 +36,7 @@ public class UserFacade {
 	public boolean register(String firstName, String lastName, String password, String email, String username, Date birthDate,
 			String address, String role) {
 		try{
-			this.user = this.UserDAO.createUser(firstName, lastName, role, password, email, username, birthDate, address);
+			UserFacade.user = this.UserDAO.createUser(firstName, lastName, role, password, email, username, birthDate, address);
 			return true;
 		} catch(Exception e){
 			return false;
@@ -41,7 +45,7 @@ public class UserFacade {
 	}
 	
 	public User getCurrentUser(){
-		return this.user;
+		return UserFacade.user;
 	}
 
     /**
