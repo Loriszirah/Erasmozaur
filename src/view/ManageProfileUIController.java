@@ -63,11 +63,12 @@ public class ManageProfileUIController extends MainController{
     @FXML 
     private void submitForm() {
     	System.out.println("The form has been submitted!");
-    	if(userFacade.register(firstNameTextField.getText(), lastNameTextField.getText(), emailTextField.getText(), usernameTextField.getText(), null, addressTextField.getText(), "Student")){
-    		System.out.println("The 'Register' request was succesful!");
-    	} else { 
-    		System.out.println("The 'Register' request failed!");
-    	}
+    	//if(userFacade.register(firstNameTextField.getText(), lastNameTextField.getText(), passwordTextField.getText(), emailTextField.getText(), usernameTextField.getText(), null, addressTextField.getText(), "Student")){
+    	//	System.out.println("The 'Register' request was succesful!");
+    //	} else { 
+    //		System.out.println("The 'Register' request failed!");
+    	//}
+    	// TODO : change the register for updateProfile()
     }
     @FXML
     private void  cancelButton() {
