@@ -16,17 +16,18 @@
             <Font name="System Bold" size="24.0" />
          </font>
       </Label>
-      <Label layoutX="155.0" layoutY="179.0" text="User name" />
-      <Label layoutX="155.0" layoutY="216.0" prefHeight="17.0" prefWidth="67.0" text="Password" />
-      <PasswordField fx:id="passwordTextField" layoutX="243.0" layoutY="212.0" />
-      <TextField fx:id="usernameTextField" layoutX="243.0" layoutY="175.0" />
+      <Label layoutX="171.0" layoutY="223.0" text="User name" />
+      <Label layoutX="171.0" layoutY="260.0" prefHeight="17.0" prefWidth="67.0" text="Password" />
+      <PasswordField fx:id="passwordTextField" layoutX="259.0" layoutY="256.0" />
+      <TextField fx:id="usernameTextField" layoutX="259.0" layoutY="219.0" />
       <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="271.0" layoutY="25.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../thats_denver_bro.png" />
          </image>
       </ImageView>
-      <Button fx:id="loginButton" layoutX="274.0" layoutY="256.0" mnemonicParsing="false" onMouseClicked="#login" text="Sign in" />
+      <Button fx:id="loginButton" layoutX="361.0" layoutY="323.0" mnemonicParsing="false" onMouseClicked="#login" text="Sign in" />
       <Label layoutX="161.0" layoutY="327.0" text="Not register yet?" />
       <Button fx:id="registerButton" layoutX="270.0" layoutY="323.0" mnemonicParsing="false" onMouseClicked="#register" text="Register" />
+      <Label fx:id="errorMessage" layoutX="209.0" layoutY="175.0" text="Please enter your credentials" />
    </children>
 </AnchorPane>
