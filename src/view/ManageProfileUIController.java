@@ -6,6 +6,11 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import main.MainApp;
+
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 import facade.UserFacade;
 
 public class ManageProfileUIController extends MainController{
@@ -65,6 +70,10 @@ public class ManageProfileUIController extends MainController{
     	} else { 
     		System.out.println("The 'Register' request failed!");
     	}
+    }
+    @FXML
+    private void  cancelButton() {
+	
     }
 
 }
