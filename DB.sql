@@ -238,3 +238,5 @@ INSERT INTO Users(username,password,firstname,lastname,email,id_role) VALUES('Lo
 INSERT INTO Countries(name) VALUES('France');
 INSERT INTO Cities(name, id_country) VALUES('Montpellier', (SELECT id_country FROM countries WHERE name = 'France'));
 INSERT INTO Universities(name,address,id_city,id_responsible) VALUES('Polytech Montpellier','Rond Point Donut',(SELECT id_city FROM cities WHERE name = 'Montpellier'), (SELECT id_user FROM users WHERE email = 'loris.zirah@gmail.com'));
+INSERT INTO Universities(name,address,id_city,id_responsible) VALUES('Polytech Marseille','Rond Point Donut',(SELECT id_city FROM cities WHERE name = 'Montpellier'), (SELECT id_user FROM users WHERE email = 'loris.zirah@gmail.com'));
+INSERT INTO Scholarships(description ,duration ,stardate ,enddate,domain ,id_sending_university ,id_receiving_university) VALUES ('Nice Scholarship',3, '2018-04-02', '2018-06-02', 'Computer science', (SELECT id_university FROM universities WHERE name = 'Polytech Montpellier'),(SELECT id_university FROM universities WHERE name = 'Polytech Marseille'))

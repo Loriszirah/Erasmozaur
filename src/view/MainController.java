@@ -44,6 +44,7 @@ public abstract class MainController {
 	public MainController(){
 		userFacade = new UserFacade();
 		universityFacade = new UniversityFacade();
+		scholarshipFacade = new ScholarshipFacade();
 	}
 	
 	/**

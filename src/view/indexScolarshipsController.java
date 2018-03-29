@@ -60,14 +60,17 @@ public class indexScolarshipsController extends MainController{
     	
     
     	usernameLabel.setText(userFacade.getCurrentUser().getUsername());
-    	
+	//ScholarshipFacade scholarshipFacade = null;
+	if(scholarshipFacade == null) {
+		System.out.println("yoyoyoyo");
+	}
     	scholarships = FXCollections.observableArrayList(scholarshipFacade.getAllScholarship());
-    	
-    	universityColumn.setCellValueFactory(new PropertyValueFactory<Scholarship, String>("name"));
+    
+    	universityColumn.setCellValueFactory(new PropertyValueFactory<Scholarship, String>("description"));
     	durationColumn.setCellValueFactory(new PropertyValueFactory<Scholarship, String>("duration"));
-    	startDateColumn.setCellValueFactory(new PropertyValueFactory<Scholarship, String>("startDate"));
-    	endDateColumn.setCellValueFactory(new PropertyValueFactory<Scholarship, String>("endDate"));
-    	domaineColumn.setCellValueFactory(new PropertyValueFactory<Scholarship, String>("country"));
+    	startDateColumn.setCellValueFactory(new PropertyValueFactory<Scholarship, String>("StarDate"));
+    	endDateColumn.setCellValueFactory(new PropertyValueFactory<Scholarship, String>("EndDate"));
+    	domaineColumn.setCellValueFactory(new PropertyValueFactory<Scholarship, String>("domaine"));
     	buttonColumn.setCellFactory(ActionButtonTableCell.<Scholarship>forTableColumn("Details", (Scholarship u) -> {
 //    		joinUniversityTable.getItems().remove(u);
     		entityId = u.getId_scholarship();

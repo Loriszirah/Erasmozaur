@@ -29,13 +29,27 @@ public class ScholarshipPresenter {
      */
     public Date endDate;
 
-	public ScholarshipPresenter(int id_scolarship, String name, String duration, Date startDate, Date endDate) {
+    /**
+     * 
+     */
+    public String domain;
+
+	public String getDomain() {
+		return domain;
+	}
+
+	public void setDomain(String domain) {
+		this.domain = domain;
+	}
+
+	public ScholarshipPresenter(int id_scolarship, String name, String duration, Date startDate, Date endDate, String domain) {
 		super();
 		this.id_scolarship = id_scolarship;
 		this.name = name;
 		this.duration = duration;
 		this.startDate = startDate;
 		this.endDate = endDate;
+		this.domain = domain;
 
 	}
 
