@@ -12,9 +12,9 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="396.0" prefWidth="596.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.IndexUniversitiesController">
+<AnchorPane prefHeight="396.0" prefWidth="596.0" xmlns="http://javafx.com/javafx/9.0.4" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.IndexUniversitiesController">
    <children>
-      <ImageView fitHeight="106.0" fitWidth="110.0" layoutX="27.0" layoutY="32.0" pickOnBounds="true" preserveRatio="true"></ImageView>
+      <ImageView fitHeight="106.0" fitWidth="110.0" layoutX="27.0" layoutY="32.0" pickOnBounds="true" preserveRatio="true" />
       <TableView fx:id="joinUniversityTable" layoutX="33.0" layoutY="150.0" prefHeight="200.0" prefWidth="529.0">
          <columns>
             <TableColumn fx:id="universityColumn" prefWidth="232.79997634887695" text="University" />
@@ -23,14 +23,12 @@
             <TableColumn fx:id="actionColumn" minWidth="0.0" prefWidth="93.5999755859375" />
          </columns>
       </TableView>
-      <Label fx:id="usernameLabel" layoutX="143.0" layoutY="57.0" text="&lt;&lt;username&gt;&gt;" />
-      <Button fx:id="logOutButton" layoutX="256.0" layoutY="53.0" mnemonicParsing="false" text="Log out" />
-      <ImageView fitHeight="132.0" fitWidth="132.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="106.0" fitWidth="110.0" layoutX="28.0" layoutY="32.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../thats_denver_bro.png" />
          </image>
       </ImageView>
-      <MenuBar  prefHeight="29.0" prefWidth="600.0">
+      <MenuBar prefHeight="29.0" prefWidth="600.0">
          <menus>
             <Menu mnemonicParsing="false" text="Go to">
                <items>
