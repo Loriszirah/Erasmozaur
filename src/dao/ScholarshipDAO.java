@@ -36,6 +36,8 @@ public interface ScholarshipDAO {
      * @return
      */
     public ArrayList<Scholarship> getAllScholarships();
+    
+    public ArrayList<Scholarship> getAllScholarshipsByUniversity(int id_sending_university);
 
     /**
      * @param id_user 
