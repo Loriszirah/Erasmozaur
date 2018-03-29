@@ -19,7 +19,7 @@
             <Image url="@../../thats_denver_bro.png" />
          </image>
       </ImageView>
-      <MenuBar  prefHeight="29.0" prefWidth="600.0">
+      <MenuBar prefHeight="29.0" prefWidth="600.0">
          <menus>
             <Menu mnemonicParsing="false" text="Go to">
                <items>
@@ -48,6 +48,6 @@
         </columns>
       </TableView>
       <Label fx:id="usernameLabel" layoutX="219.0" layoutY="78.0" text="&lt;&lt;firstname&gt;&gt;+&lt;&lt;lastname&gt;&gt;" />
-      <Button fx:id="logoutButton" layoutX="428.0" layoutY="73.0" mnemonicParsing="false" text="Log out" />
+            <Button fx:id="logoutButton" layoutX="428.0" layoutY="73.0" onAction="#logout" mnemonicParsing="false" text="Log out" />
    </children>
 </AnchorPane>

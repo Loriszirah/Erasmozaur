@@ -43,7 +43,7 @@
             </Button>
             <Text layoutX="289.0" layoutY="251.0" strokeType="OUTSIDE" strokeWidth="0.0" text="&lt;&lt;applicationmessage&gt;&gt;" wrappingWidth="163.50543212890625" />
             <Label fx:id="usernameLabel" layoutX="209.0" layoutY="68.0" text="&lt;&lt;firstname&gt;&gt;+&lt;&lt;lastname&gt;&gt;" />
-            <Button fx:id="logoutButton" layoutX="418.0" layoutY="63.0" mnemonicParsing="false" text="Log out" />
+            <Button fx:id="logoutButton" layoutX="418.0" layoutY="63.0" onAction="#logout" mnemonicParsing="false" text="Log out" />
             <ImageView fitHeight="106.0" fitWidth="110.0" layoutX="32.0" layoutY="32.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../thats_denver_bro.png" />

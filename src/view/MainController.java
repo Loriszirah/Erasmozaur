@@ -5,6 +5,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -91,7 +92,7 @@ public abstract class MainController {
     	return MainController.userFacade;
     }
     
-    public static void logout() throws IOException{
+    public void logout() throws IOException{
     	System.gc();
     	setSceneContent("LoginOverview");
     }
@@ -154,8 +155,9 @@ public abstract class MainController {
     			setSceneContent("IndexScholarships"); 
     		} catch (IOException e) { 
     			e.printStackTrace(); 
-    		}  
+    		} 
     }
+   
 }
 
 
