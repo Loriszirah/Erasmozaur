@@ -77,16 +77,6 @@ public interface UserDAO {
      */
     public User createUser(String firstName, String lastName, String password, String email, String username, Date birthDate, String address, String role);
     
-
-    /**
-     * 
-     * @param username
-     * @param password
-     * @param role
-     * @return
-     */
-    public boolean register(String username, String password, String role);
-    
     /**
      * 
      * @param username

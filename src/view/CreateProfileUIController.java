@@ -98,7 +98,6 @@ public class CreateProfileUIController extends MainController{
     
     @FXML
     private void submitForm() {
-    	System.out.println("The form has been submitted!");
     	boolean emptyField = false;
     	if(passwordTextField.getText().isEmpty()) {
     		emptyField = true;
