@@ -18,8 +18,8 @@
       </Label>
       <Label layoutX="171.0" layoutY="223.0" text="User name" />
       <Label layoutX="171.0" layoutY="260.0" prefHeight="17.0" prefWidth="67.0" text="Password" />
+         <TextField fx:id="usernameTextField" layoutX="259.0" layoutY="219.0" />
       <PasswordField fx:id="passwordTextField" layoutX="259.0" layoutY="256.0" />
-      <TextField fx:id="usernameTextField" layoutX="259.0" layoutY="219.0" />
       <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="271.0" layoutY="25.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../thats_denver_bro.png" />
