@@ -49,9 +49,7 @@ public class ManageUniversityUIController extends MainController{
      */
     @FXML
     private void initialize() throws IOException {
-    	System.out.println("entityId(2) - "+MainController.entityId);
     	if(entityId != 0){
-    		System.out.println("entityId(3) - "+MainController.entityId);
     		university = universityFacade.viewUniversityPresenter(entityId);
     		System.out.println(university.getName());
     		if(university != null){

@@ -86,7 +86,7 @@ public class CityDAOPostgres extends AbstractDAOPostgres implements CityDAO {
 		    
 		    ResultSet exists = state.executeQuery("SELECT name FROM Cities;");
 		    String nameCity;
-		    if(exists.next()) {
+		    while(exists.next()) {
 		    	nameCity = exists.getString("name");
 		    	cities.add(new City(nameCity));
 		    }

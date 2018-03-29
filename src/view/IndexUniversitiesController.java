@@ -94,10 +94,16 @@ public class IndexUniversitiesController extends MainController{
     	
     	// if we have results, we place them in the table
     	if(universities.size() > 0){
+    		System.out.println("Size - "+universities.size());
 	    	joinUniversityTable.setItems(universities);
 	    	joinUniversityTable.getColumns().addAll(universityColumn, cityColumn, countryColumn, actionColumn);
     	}
     }
+    
+    public void createUniversity() throws IOException{
+    	setSceneContent("CreateUniversityOverview");
+    }
+    
 }
 
 

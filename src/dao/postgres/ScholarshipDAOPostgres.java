@@ -62,7 +62,7 @@ public class ScholarshipDAOPostgres extends AbstractDAOPostgres implements Schol
     /**
      * @param id_scholarship
      */
-    public void updateScholarship(int id_scholarship) {
+    public void updateScholarship(Scholarship scholarship) {
         // TODO implement here
     }
 
@@ -97,7 +97,7 @@ public class ScholarshipDAOPostgres extends AbstractDAOPostgres implements Schol
 
 			ResultSet exists = state.executeQuery("SELECT * FROM Scholarships;");
 
-			if(exists.next()) {
+			while(exists.next()) {
 				scholarships.add(new Scholarship(exists.getInt("id_scholarship"),exists.getString("description"),exists.getInt("duration"),exists.getDate("startdate"),exists.getDate("enddate"),exists.getString("domain"),exists.getInt("id_sending_university"),exists.getInt("id_receiving_university") ));
 			}
 		}catch(SQLException e) {
@@ -120,7 +120,7 @@ public class ScholarshipDAOPostgres extends AbstractDAOPostgres implements Schol
 
 			ResultSet exists = state.executeQuery("SELECT * FROM Scholarships WHERE id_sending_university = "+id_sending_university+";");
 
-			if(exists.next()) {
+			while(exists.next()) {
 				scholarships.add(new Scholarship(exists.getInt("id_scholarship"),exists.getString("description"),exists.getInt("duration"),exists.getDate("startdate"),exists.getDate("enddate"),exists.getString("domain"),exists.getInt("id_sending_university"),exists.getInt("id_receiving_university") ));
 			}
 		}catch(SQLException e) {
