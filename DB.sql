@@ -112,13 +112,11 @@ CREATE TABLE Scholarships (
 	id_scholarship SERIAL,
 	description text NOT NULL,
 	duration INTEGER NOT NULL,
-	stardate DATE NOT NULL,
+	startdate DATE NOT NULL,
 	enddate DATE NOT NULL,
 	domain varchar(40),
-	id_sending_university INTEGER NOT NULL,
 	id_receiving_university INTEGER NOT NULL,
 	CONSTRAINT pk_scholarships PRIMARY KEY (id_scholarship),
-	CONSTRAINT fk_scholarships_sending_universities FOREIGN KEY (id_sending_university) REFERENCES Universities(id_university),
 	CONSTRAINT fk_scholarships_receiving_universities FOREIGN KEY (id_receiving_university) REFERENCES Universities(id_university)
 );
 
@@ -239,4 +237,4 @@ INSERT INTO Countries(name) VALUES('France');
 INSERT INTO Cities(name, id_country) VALUES('Montpellier', (SELECT id_country FROM countries WHERE name = 'France'));
 INSERT INTO Universities(name,address,id_city,id_responsible) VALUES('Polytech Montpellier','Rond Point Donut',(SELECT id_city FROM cities WHERE name = 'Montpellier'), (SELECT id_user FROM users WHERE email = 'loris.zirah@gmail.com'));
 INSERT INTO Universities(name,address,id_city,id_responsible) VALUES('Polytech Marseille','Rond Point Donut',(SELECT id_city FROM cities WHERE name = 'Montpellier'), (SELECT id_user FROM users WHERE email = 'loris.zirah@gmail.com'));
-INSERT INTO Scholarships(description ,duration ,stardate ,enddate,domain ,id_sending_university ,id_receiving_university) VALUES ('Nice Scholarship',3, '2018-04-02', '2018-06-02', 'Computer science', (SELECT id_university FROM universities WHERE name = 'Polytech Montpellier'),(SELECT id_university FROM universities WHERE name = 'Polytech Marseille'))
+INSERT INTO Scholarships(description ,duration ,startdate ,enddate,domain ,id_receiving_university) VALUES ('IG3 - Scholarship',3, '2018-04-02', '2018-06-02', 'Computer science', (SELECT id_university FROM universities WHERE name = 'Polytech Montpellier'))
