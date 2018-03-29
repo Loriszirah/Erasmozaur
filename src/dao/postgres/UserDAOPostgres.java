@@ -91,6 +91,28 @@ public class UserDAOPostgres extends AbstractDAOPostgres implements UserDAO {
 		return user;
     }
  
+    public boolean isResponsibleOfUniversity(int id_user) {
+    	try{
+    		if(!this.conn.isValid(1)) {
+				openConnection();
+			}
+		    //Creation of a Statement object
+		    Statement state = conn.createStatement();
+		    
+	    	// Check if the user is responsible of a university
+		    ResultSet exists = state.executeQuery("SELECT COUNT(*) as nb FROM Users us "+
+		    									  "INNER JOIN Universities un ON un.id_responsible = us.id_user "+
+		    									  "WHERE id_user ='"+id_user+"';");
+		    if(exists.next()) {
+		    	return exists.getInt("nb")>0;
+		    }
+    	} catch(SQLException e) {
+		      e.printStackTrace();
+		      return false;
+		}
+    	return false;
+    }
+    
     public void leaveUniversity() {
         // TODO implement here
     }

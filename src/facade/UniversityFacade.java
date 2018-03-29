@@ -30,10 +30,24 @@ public class UniversityFacade {
      * @param address 
      * @return
      */
-    public University createUniversity(String name, String address) {
-        // TODO implement here
-        return null;
+    public University createUniversity(String name, String address, String city, int id_responsible) throws Exception{
+    	if(checkIfExistsWithName(name)) {
+    		throw new Exception("A university with this name already exists");
+    	}
+    	
+    	University university = null;
+		university = universityDAO.createUniversity(name, address, city, id_responsible);
+    	return university;
     }
+    
+    /**
+     * Check if a university already exists with this name
+     * @param username 
+     * @return true if a university already exists with this name, false otherwise
+     */
+	private boolean checkIfExistsWithName(String name) {
+		return universityDAO.checkIfExistsWithName(name);
+	}
 
     /**
      * @return

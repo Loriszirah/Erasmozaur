@@ -14,7 +14,7 @@ public interface UniversityDAO {
      * @return
      * @throws Exception 
      */
-    public University createUniversity(String name, String address, String city) throws Exception;
+    public University createUniversity(String name, String address, String city, int id_responsible) throws Exception;
 
     /**
      * @param id_university 
@@ -52,5 +52,12 @@ public interface UniversityDAO {
      * @return
      */
     public boolean checkIfExists(int id_university);
+    
+    /**
+     * Check if a university already exists with this name
+     * @param username 
+     * @return true if a university already exists with this name, false otherwise
+     */
+    public boolean checkIfExistsWithName(String name);
 
 }

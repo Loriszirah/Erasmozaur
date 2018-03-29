@@ -11,7 +11,31 @@ public class User {
      */
     public int id_user;
 
-    /**
+    public int getId() {
+		return id_user;
+	}
+
+	public void setId(int id_user) {
+		this.id_user = id_user;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	public Integer getId_role() {
+		return id_role;
+	}
+
+	public void setId_role(Integer id_role) {
+		this.id_role = id_role;
+	}
+
+	/**
      * 
      */
     private String firstName;

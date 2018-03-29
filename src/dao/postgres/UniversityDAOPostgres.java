@@ -1,6 +1,4 @@
 package dao.postgres;
-import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -34,15 +32,15 @@ public class UniversityDAOPostgres extends AbstractDAOPostgres implements Univer
 	 * @return
 	 * @throws Exception 
 	 */
-	public University createUniversity(String name, String address, String city) throws Exception {
+	public University createUniversity(String name, String address, String city, int id_responsible) throws Exception {
 		try {
 			if(!this.conn.isValid(1)) {
 				openConnection();
 			}
 			// Creation of a Statement object
 			Statement state = conn.createStatement();
-
-			// Select the id of the type_user
+			
+			// Select the id of the city
 			ResultSet result = state.executeQuery("SELECT id_city FROM Cities WHERE name = '"+city+"'");
 			int id=0;
 			if(result.next()) {
@@ -50,15 +48,16 @@ public class UniversityDAOPostgres extends AbstractDAOPostgres implements Univer
 			} else {
 				throw new Exception("Problem in the selection of a city");
 			}
+			
 			//The object ResultSet contains the result of the SQL request
-			state.executeUpdate("INSERT INTO Universities (name, address, id_city) VALUES('"+name+"','"+address+"','"+id+"')");
+			state.executeUpdate("INSERT INTO Universities (name, address, id_city, id_responsible) VALUES('"+name+"','"+address+"','"+id+"','"+id_responsible+"')");
 
 			// The object ResultSet contains the result of the SQL request
 			result = state.executeQuery("SELECT * FROM cities WHERE name='"+name+"'");
 
 			// Get the user in the database if exists and create the user
 			if(result.next()) {
-				University university = new University(result.getInt("id_university"), result.getString("name"), result.getString("address"), result.getInt("id_city"));
+				University university = new University(result.getInt("id_university"), result.getString("name"), result.getString("address"), result.getInt("id_city"), id_responsible);
 				return university;
 			}
 		}catch(SQLException e) {
@@ -86,11 +85,13 @@ public class UniversityDAOPostgres extends AbstractDAOPostgres implements Univer
 			String nameUniversity;
 			String addressUniversity;
 			int id_city;
+			int id_responsible;
 			if(exists.next()) {
 				nameUniversity = exists.getString("name");
 				addressUniversity = exists.getString("address");
 				id_city = exists.getInt("id_city");
-				university = new University(id_university,nameUniversity,addressUniversity,id_city);
+				id_responsible = exists.getInt("id_responsible");
+				university = new University(id_university,nameUniversity,addressUniversity,id_city,id_responsible);
 			}
 		}catch(SQLException e) {
 			e.printStackTrace();
@@ -168,12 +169,14 @@ public class UniversityDAOPostgres extends AbstractDAOPostgres implements Univer
 			String nameUniversity;
 			String addressUniversity;
 			int id_city;
+			int id_responsible;
 			if(exists.next()) {
 				id_university = exists.getInt("id_university");
 				nameUniversity = exists.getString("name");
 				addressUniversity = exists.getString("address");
 				id_city = exists.getInt("id_city");
-				universities.add(new University(id_university,nameUniversity,addressUniversity,id_city));
+				id_responsible = exists.getInt("id_responsible");
+				universities.add(new University(id_university,nameUniversity,addressUniversity,id_city, id_responsible));
 			}
 		}catch(SQLException e) {
 			e.printStackTrace();
@@ -219,6 +222,26 @@ public class UniversityDAOPostgres extends AbstractDAOPostgres implements Univer
 		return universities;
 	}
 
+	public boolean checkIfExistsWithName(String name) {
+		try{
+    		if(!this.conn.isValid(1)) {
+				openConnection();
+			}
+		    //Creation of a Statement object
+		    Statement state = conn.createStatement();
+		    
+	    	// Check if the username already exist
+		    ResultSet exists = state.executeQuery("SELECT COUNT(*) as nb FROM Universities WHERE name ='"+name+"';");
+		    if(exists.next()) {
+		    	return exists.getInt("nb")>0;
+		    }
+    	} catch(SQLException e) {
+		      e.printStackTrace();
+		      return false;
+		}
+    	return false;
+	}
+	
 	/**
 	 * @param id_university 
 	 * @return

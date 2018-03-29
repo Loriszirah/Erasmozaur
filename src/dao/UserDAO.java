@@ -33,6 +33,13 @@ public interface UserDAO {
     public boolean checkIfExistsWithEmail(String email);
     
     /**
+     * Check if the user with this id is responsible of a university
+     * @param id_user
+     * @return True is the user is already responsible of a university, false otherwise
+     */
+    public boolean isResponsibleOfUniversity(int id_user);
+    
+    /**
      * @param id_user
      */
     public void deleteUser(int id_user);
