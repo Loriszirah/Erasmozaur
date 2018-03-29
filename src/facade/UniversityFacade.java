@@ -5,12 +5,12 @@ import model.*;
 /**
  * 
  */
-public class UniveristyFacade {
+public class UniversityFacade {
 
     /**
      * Default constructor
      */
-    public UniveristyFacade() {
+    public UniversityFacade() {
     }
 
 
