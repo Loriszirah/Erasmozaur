@@ -43,9 +43,6 @@ public class ManageProfileUIController extends MainController{
 	@FXML
 	Button joinUniversityButton;
 	
-	@FXML
-	ChoiceBox roles;
-	
 	protected RoleFacade rf = new RoleFacade();
 	protected ArrayList<Role> rolesAL;
 	
@@ -71,11 +68,12 @@ public class ManageProfileUIController extends MainController{
 	    		emailTextField.setText(userFacade.getCurrentUser().getEmail());
 	    		addressTextField.setText(userFacade.getCurrentUser().getAddress());
 	    }
-    	else{ // Register UI
-    		rolesAL = rf.getAllRoles();
-    		for(Role role : rolesAL) {
-    			roles.getItems().add(role.getName());
-    		}
+    	else{
+    		try {
+				setSceneContent("LoginOverview");
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
     	}
     }
     

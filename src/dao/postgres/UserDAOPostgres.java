@@ -40,8 +40,7 @@ public class UserDAOPostgres implements UserDAO {
      * @param address 
      * @return
      */
-    public User createUser(String firstName, String lastName, String role, String password, String email, String username, Date birthDate, String address) {
-        // TODO implement here
+    public User createUser(String firstName, String lastName, String password, String email, String username, Date birthDate, String address, String role) {
     	try {
 			if(!this.conn.isValid(1)) {
 				openConnection();
@@ -56,10 +55,10 @@ public class UserDAOPostgres implements UserDAO {
 		    	}
 		    }
 		    // Select the id of the type_user
-		    ResultSet result = state.executeQuery("SELECT id_type_user FROM Types_user WHERE name = '"+role+"'");
+		    ResultSet result = state.executeQuery("SELECT id_role FROM Roles WHERE name = '"+role+"'");
 	    	int id=0;
 		    if(result.next()) {
-		    	id = result.getInt("id_type_user");
+		    	id = result.getInt("id_role");
 		    }
 		    else {
 		    	return null;
@@ -124,16 +123,16 @@ public class UserDAOPostgres implements UserDAO {
 		    	}
 		    }
 		    // Select the id of the type_user
-		    ResultSet result = state.executeQuery("SELECT id_type_user FROM Types_user WHERE name = '"+role+"'");
+		    ResultSet result = state.executeQuery("SELECT id_role FROM Roles WHERE name = '"+role+"'");
 	    	int id=0;
 		    if(result.next()) {
-		    	id = result.getInt("id_type_user");
+		    	id = result.getInt("id_role");
 		    }
 		    else {
 		    	return false;
 		    }
 		    //The object ResultSet contains the result of the SQL request
-		    state.executeUpdate("INSERT INTO Users (username, password, id_type_user) VALUES('"+username+"','"+password+"','"+Integer.toString(id)+"')");
+		    state.executeUpdate("INSERT INTO Users (username, password, id_role) VALUES('"+username+"','"+password+"','"+Integer.toString(id)+"')");
 		    
     	}catch(SQLException e) {
 		      e.printStackTrace();

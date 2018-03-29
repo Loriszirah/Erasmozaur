@@ -36,7 +36,7 @@ public class UserFacade {
 	public boolean register(String firstName, String lastName, String password, String email, String username, Date birthDate,
 			String address, String role) {
 		try{
-			UserFacade.user = this.UserDAO.createUser(firstName, lastName, role, password, email, username, birthDate, address);
+			UserFacade.user = this.UserDAO.createUser(firstName, lastName, password, email, username, birthDate, address, role);
 			return true;
 		} catch(Exception e){
 			return false;
