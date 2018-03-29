@@ -30,7 +30,25 @@ public class UserDAOPostgres implements UserDAO {
 		return UserDAOPostgres.instance;
 	}
 	
+<<<<<<< Updated upstream
     public User createUser(String firstName, String lastName, String password, String email, String username, Date birthDate, String address, String role) throws Exception {
+=======
+    /**
+     * @param firstName 
+     * @param lastName 
+     * @param password 
+     * @param email 
+     * @param username 
+     * @param birthDate 
+     * @param address 
+     * @return
+     */
+    public User createUser(String firstName, String lastName, String password, String email, String username, Date birthDate, String address, 
+    		String role) throws Exception {
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
+>>>>>>> Stashed changes
     	try {
 			if(!this.conn.isValid(1)) {
 				openConnection();
@@ -39,9 +57,21 @@ public class UserDAOPostgres implements UserDAO {
 		    Statement state = conn.createStatement();
 		    
 		    if (checkIfExistsWithUsername(username)){
+<<<<<<< Updated upstream
+<<<<<<< Updated upstream
 		    	throw new Exception("A user is already existing with this username");
 		    }
 		    		    
+=======
+		    	throw new Exception("A user is already existing with this usermail");
+		    }
+		    
+>>>>>>> Stashed changes
+=======
+		    	throw new Exception("A user is already existing with this usermail");
+		    }
+		    
+>>>>>>> Stashed changes
 		    if (checkIfExistsWithEmail(email)){
 		    	throw new Exception("A user is already existing with this email");
 		    }

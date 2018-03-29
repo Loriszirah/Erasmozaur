@@ -88,7 +88,11 @@ public interface UserDAO {
      * @param username 
      * @param birthDate 
      * @param address 
+<<<<<<< Updated upstream
      * @return the user that has been created
+=======
+     * @return
+>>>>>>> Stashed changes
      * @throws Exception 
      */
     public User createUser(String firstName, String lastName, String password, String email, String username, Date birthDate, String address, String role) throws Exception;
