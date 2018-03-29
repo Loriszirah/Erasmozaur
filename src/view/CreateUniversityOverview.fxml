@@ -2,85 +2,55 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.PasswordField?>
-<?import javafx.scene.control.Tab?>
-<?import javafx.scene.control.TabPane?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.SeparatorMenuItem?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
 <AnchorPane prefHeight="452.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/9.0.4" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <TabPane layoutX="16.0" layoutY="127.0" prefHeight="404.0" prefWidth="550.0" tabClosingPolicy="UNAVAILABLE">
-         <tabs>
-            <Tab text="Information">
-               <content>
-                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="197.0" prefWidth="550.0" />
-               </content>
-            </Tab>
-            <Tab text="Scholarships">
-               <content>
-                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                     <children>
-                        <TableView layoutX="22.0" layoutY="14.0" prefHeight="221.0" prefWidth="506.0">
-                           <columns>
-                              <TableColumn prefWidth="125.5999698638916" text="Receiving University" />
-                              <TableColumn prefWidth="62.4000244140625" text="Duration" />
-                              <TableColumn prefWidth="66.39996337890625" text="Start Date" />
-                              <TableColumn prefWidth="61.5999755859375" text="End Date" />
-                              <TableColumn prefWidth="62.4000244140625" text="Domain" />
-                              <TableColumn prefWidth="62.4000244140625" />
-                           </columns>
-                        </TableView>
-                     </children>
-                  </AnchorPane>
-               </content>
-            </Tab>
-            <Tab text="Applications">
-               <content>
-                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
-               </content>
-            </Tab>
-            <Tab text="Agreements">
-               <content>
-                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
-               </content>
-            </Tab>
-            <Tab text="Reviews">
-               <content>
-                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
-               </content>
-            </Tab>
-            <Tab text="University">
-               <content>
-                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="283.0" prefWidth="550.0">
-                     <children>
-                        <Button layoutX="202.0" layoutY="323.0" mnemonicParsing="false" text="Create" />
-                        <Button layoutX="296.0" layoutY="323.0" mnemonicParsing="false" text="Cancel" />
-                        <Label layoutX="148.0" layoutY="274.0" text="Phone Number" />
-                        <PasswordField layoutX="252.0" layoutY="270.0" />
-                        <Label layoutX="148.0" layoutY="231.0" text="Email" />
-                        <Label layoutX="147.0" layoutY="178.0" text="City" />
-                        <Label layoutX="147.0" layoutY="127.0" text="Country" />
-                        <Label layoutX="148.0" layoutY="72.0" text="Name" />
-                        <PasswordField layoutX="252.0" layoutY="222.0" />
-                        <PasswordField layoutX="252.0" layoutY="172.0" />
-                        <PasswordField layoutX="252.0" layoutY="120.0" />
-                        <PasswordField layoutX="254.0" layoutY="67.0" />
-                     </children>
-                  </AnchorPane>
-               </content>
-            </Tab>
-         </tabs>
-      </TabPane>
-      <Label fx:id="nameLabel" layoutX="132.0" layoutY="68.0" text="&lt;&lt;firstname&gt;&gt;+&lt;&lt;lastname&gt;&gt;" />
-      <Button fx:id="logOutButton" layoutX="329.0" layoutY="64.0" mnemonicParsing="false" text="Log out" />
-      <ImageView fitHeight="132.0" fitWidth="132.0" layoutX="10.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">
+      <AnchorPane layoutX="25.0" layoutY="68.0" minHeight="0.0" minWidth="0.0" prefHeight="283.0" prefWidth="550.0">
+         <children>
+            <Button layoutX="202.0" layoutY="323.0" mnemonicParsing="false" text="Create" />
+            <Button layoutX="296.0" layoutY="323.0" mnemonicParsing="false" text="Cancel" />
+            <Label layoutX="148.0" layoutY="274.0" text="Phone Number" />
+            <PasswordField layoutX="252.0" layoutY="270.0" />
+            <Label layoutX="148.0" layoutY="231.0" text="Email" />
+            <Label layoutX="147.0" layoutY="178.0" text="City" />
+            <Label layoutX="147.0" layoutY="127.0" text="Country" />
+            <Label layoutX="148.0" layoutY="72.0" text="Name" />
+            <PasswordField layoutX="252.0" layoutY="222.0" />
+            <PasswordField layoutX="252.0" layoutY="172.0" />
+            <PasswordField layoutX="252.0" layoutY="120.0" />
+            <PasswordField layoutX="254.0" layoutY="67.0" />
+         </children>
+      </AnchorPane>
+      <ImageView fitHeight="106.0" fitWidth="110.0" layoutX="28.0" layoutY="32.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../thats_denver_bro.png" />
          </image>
       </ImageView>
+      <MenuBar prefHeight="29.0" prefWidth="600.0">
+         <menus>
+            <Menu mnemonicParsing="false" text="Go to">
+               <items>
+                  <MenuItem mnemonicParsing="false" onAction="#universitiesClicked" text="Universities" />
+                  <MenuItem mnemonicParsing="false" onAction="#applicationsClicked" text="Applications" />
+                  <MenuItem mnemonicParsing="false" onAction="#evaluationsClicked" text="Evaluations" />
+                  <SeparatorMenuItem mnemonicParsing="false" />
+                  <MenuItem mnemonicParsing="false" onAction="#manageProfileClicked" text="Manage profile" />
+                  <SeparatorMenuItem mnemonicParsing="false" />
+                  <MenuItem mnemonicParsing="false" onAction="#logoutMenuClicked" text="Logout" />
+                  <MenuItem mnemonicParsing="false" onAction="#QuitAppClicked" text="Quit the app" />
+               </items>
+            </Menu>
+         </menus>
+      </MenuBar>
+      <Label fx:id="usernameLabel" layoutX="219.0" layoutY="78.0" text="&lt;&lt;firstname&gt;&gt;+&lt;&lt;lastname&gt;&gt;" />
+      <Button fx:id="logoutButton" layoutX="428.0" layoutY="73.0" mnemonicParsing="false" text="Log out" />
    </children>
 </AnchorPane>

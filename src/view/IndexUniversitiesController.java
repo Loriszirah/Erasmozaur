@@ -58,7 +58,7 @@ public class IndexUniversitiesController extends MainController{
      */
     @FXML
     private void initialize() {
-    	// universities = (ObservableList<UniversityPresenter>) universityFacade.getAllUniversities();
+    	universities = (ObservableList<UniversityPresenter>) universityFacade.getAllUniversitiesPresenter();
     	
    /* 	universityColumn.setCellValueFactory(new PropertyValueFactory<UniversityPresenter, String>("name"));
     	cityColumn.setCellValueFactory(new PropertyValueFactory<UniversityPresenter, String>("city"));

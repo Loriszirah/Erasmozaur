@@ -2,64 +2,50 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.Tab?>
-<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.SeparatorMenuItem?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane xmlns="http://javafx.com/javafx/9.0.4" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/9.0.4" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <TabPane layoutX="6.0" layoutY="117.0" prefHeight="278.0" prefWidth="550.0" tabClosingPolicy="UNAVAILABLE">
-        <tabs>
-          <Tab text="Information">
-            <content>
-              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
-            </content>
-          </Tab>
-          <Tab text="Scholarships">
-            <content>
-              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                     <children>
-                        <TableView layoutX="22.0" layoutY="14.0" prefHeight="221.0" prefWidth="506.0">
-                          <columns>
-                            <TableColumn prefWidth="125.5999698638916" text="Receiving University" />
-                            <TableColumn prefWidth="62.4000244140625" text="Duration" />
-                              <TableColumn prefWidth="66.39996337890625" text="Start Date" />
-                              <TableColumn prefWidth="61.5999755859375" text="End Date" />
-                              <TableColumn prefWidth="62.4000244140625" text="Domain" />
-                              <TableColumn prefWidth="62.4000244140625" />
-                          </columns>
-                        </TableView>
-                     </children>
-                  </AnchorPane>
-            </content>
-          </Tab>
-            <Tab text="Applications">
-               <content>
-                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
-               </content>
-            </Tab>
-            <Tab text="Agreements">
-               <content>
-                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
-               </content>
-            </Tab>
-            <Tab text="Reviews">
-               <content>
-                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
-               </content>
-            </Tab>
-        </tabs>
-      </TabPane>
-      <Label layoutX="122.0" layoutY="57.0" text="&lt;&lt;firstname&gt;&gt;+&lt;&lt;lastname&gt;&gt;" />
-      <Button fx:id="logOutButton" layoutX="319.0" layoutY="53.0" mnemonicParsing="false" text="Log out" />
-      <ImageView fitHeight="132.0" fitWidth="132.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="106.0" fitWidth="110.0" layoutX="28.0" layoutY="32.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../thats_denver_bro.png" />
          </image>
       </ImageView>
+      <MenuBar prefHeight="29.0" prefWidth="600.0">
+         <menus>
+            <Menu mnemonicParsing="false" text="Go to">
+               <items>
+                  <MenuItem mnemonicParsing="false" onAction="#universitiesClicked" text="Universities" />
+                  <MenuItem mnemonicParsing="false" onAction="#applicationsClicked" text="Applications" />
+                  <MenuItem mnemonicParsing="false" onAction="#evaluationsClicked" text="Evaluations" />
+                  <SeparatorMenuItem mnemonicParsing="false" />
+                  <MenuItem mnemonicParsing="false" onAction="#manageProfileClicked" text="Manage profile" />
+                  <SeparatorMenuItem mnemonicParsing="false" />
+                  <MenuItem mnemonicParsing="false" onAction="#logoutMenuClicked" text="Logout" />
+                  <MenuItem mnemonicParsing="false" onAction="#QuitAppClicked" text="Quit the app" />
+               </items>
+            </Menu>
+         </menus>
+      </MenuBar>
+      <TableView layoutX="13.0" layoutY="130.0" prefHeight="246.0" prefWidth="565.0">
+        <columns>
+          <TableColumn prefWidth="138.0" text="Receiving University" />
+          <TableColumn prefWidth="61.0" text="Duration" />
+            <TableColumn text="Start Date" />
+            <TableColumn prefWidth="72.0" text="End Date" />
+            <TableColumn text="Domain" />
+            <TableColumn prefWidth="72.0" />
+        </columns>
+      </TableView>
+      <Label fx:id="usernameLabel" layoutX="219.0" layoutY="78.0" text="&lt;&lt;firstname&gt;&gt;+&lt;&lt;lastname&gt;&gt;" />
+      <Button fx:id="logoutButton" layoutX="428.0" layoutY="73.0" mnemonicParsing="false" text="Log out" />
    </children>
 </AnchorPane>

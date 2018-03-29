@@ -17,7 +17,7 @@
             <Font size="29.0" />
          </font>
       </Label>
-      <MenuBar prefHeight="29.0" prefWidth="600.0">
+      <MenuBar maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="29.0" prefWidth="600.0">
          <menus>
             <Menu mnemonicParsing="false" text="Go to">
                <items>
