@@ -60,6 +60,7 @@ public class IndexUniversitiesController extends MainController{
      */
     @FXML
     private void initialize() {
+    	usernameLabel.setText(userFacade.getCurrentUser().getUsername());
     	universities = FXCollections.observableArrayList(universityFacade.getAllUniversitiesPresenter());
     	
     	universityColumn.setCellValueFactory(new PropertyValueFactory<UniversityPresenter, String>("name"));
@@ -68,7 +69,11 @@ public class IndexUniversitiesController extends MainController{
     	actionColumn.setCellFactory(ActionButtonTableCell.<UniversityPresenter>forTableColumn("Details", (UniversityPresenter u) -> {
 //    		joinUniversityTable.getItems().remove(u);
     		entityId = u.getId_university();
-//    		setSceneContent("IndexScholarships");
+    		try {
+				setSceneContent("HomePageUI");
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
     	    return u;
     	}));  
     	// Model for a 'Remove' button inside a TableView
@@ -77,7 +82,10 @@ public class IndexUniversitiesController extends MainController{
 //    	    return p;
 //    	}));   
     	
+    	// refresh and clear the lines in the table
     	joinUniversityTable.getColumns().clear();
+    	
+    	// if we have results, we place them in the table
     	if(universities.size() > 0){
 	    	joinUniversityTable.setItems(universities);
 	    	joinUniversityTable.getColumns().addAll(universityColumn, cityColumn, countryColumn, actionColumn);
