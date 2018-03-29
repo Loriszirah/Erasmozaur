@@ -34,6 +34,7 @@ public abstract class MainController {
 	// global utility variables
 		protected static String username;
 		protected static String roleType;
+		protected static int entityId;
 		
 		
 	public MainController(){
