@@ -116,9 +116,8 @@ public class ManageProfileUIController extends MainController{
     @FXML
     private void logoutMenu() {
     		try {
-				setSceneContent("LoginOverview");
+				setSceneContent("HomePageUI");
 			} catch (IOException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
     }

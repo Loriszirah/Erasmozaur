@@ -9,13 +9,12 @@ import model.*;
 /**
  * 
  */
-public class EvaluationDAOPostgres implements EvaluationDAO {
+public class EvaluationDAOPostgres extends AbstractDAOPostgres implements EvaluationDAO {
     private static EvaluationDAOPostgres instance = new EvaluationDAOPostgres();
     protected String url;
     protected String userDB;
     protected String passwdDB;
     protected Connection conn;
-	
 	
 	public static EvaluationDAOPostgres getEvaluationDAOPostgres() {
 		return EvaluationDAOPostgres.instance;
@@ -24,10 +23,8 @@ public class EvaluationDAOPostgres implements EvaluationDAO {
      * Default constructor
      */
     private EvaluationDAOPostgres() {
-    	this.url = System.getenv("DBurl");
-		this.userDB =System.getenv("DBuser");
-		this.passwdDB = System.getenv("DBpwd");
-		this.openConnection();
+    	super();
+    	this.openConnection();
     }
     
     /**

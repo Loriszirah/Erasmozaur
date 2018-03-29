@@ -9,13 +9,12 @@ import dao.*;
 /**
  * 
  */
-public class DocumentDAOPostgres implements DocumentDAO {
+public class DocumentDAOPostgres extends AbstractDAOPostgres implements DocumentDAO {
     private static DocumentDAOPostgres instance = new DocumentDAOPostgres();
     protected String url;
     protected String userDB;
     protected String passwdDB;
     protected Connection conn;
-	
 	
 	public static DocumentDAOPostgres getDocumentDAOPostgres() {
 		return DocumentDAOPostgres.instance;
@@ -24,10 +23,8 @@ public class DocumentDAOPostgres implements DocumentDAO {
      * Default constructor
      */
     private DocumentDAOPostgres() {
-    	this.url = System.getenv("DBurl");
-		this.userDB =System.getenv("DBuser");
-		this.passwdDB = System.getenv("DBpwd");
-		this.openConnection();
+    	super();
+    	this.openConnection();
     }
     
     /**

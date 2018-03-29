@@ -12,32 +12,18 @@ import dao.*;
 /**
  * 
  */
-public class UniversityDAOPostgres implements UniversityDAO {
-	private static UniversityDAOPostgres instance = new UniversityDAOPostgres();
-	protected String url;
-	protected String userDB;
-	protected String passwdDB;
-	protected Connection conn;
-
-	// This function connect you to the Database
-	public void openConnection() {
-		try {
-			this.conn = DriverManager.getConnection(url, userDB, passwdDB);
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-	}
-
+public class UniversityDAOPostgres extends AbstractDAOPostgres implements UniversityDAO {
+    private static UniversityDAOPostgres instance = new UniversityDAOPostgres();
+	
 	public static UniversityDAOPostgres getUniversityDAOPostgres() {
 		return UniversityDAOPostgres.instance;
 	}
-	/**
-	 * Default constructor
-	 */
-	private UniversityDAOPostgres() {
-		this.url = System.getenv("DBurl");
-		this.userDB =System.getenv("DBuser");
-		this.passwdDB = System.getenv("DBpwd");
+	
+    /**
+     * Default constructor
+     */
+    private UniversityDAOPostgres() {
+    	super();
 		this.openConnection();
 	}
 
@@ -86,8 +72,31 @@ public class UniversityDAOPostgres implements UniversityDAO {
 	 * @return
 	 */
 	public University viewUniversity(int id_university) {
-		// TODO implement here
-		return null;
+		University university = null;
+		try {
+			if(!this.conn.isValid(1)) {
+				openConnection();
+			}
+			//Creation of a Statement object
+			Statement state = conn.createStatement();
+			// Check if the username already exist
+
+			ResultSet exists = state.executeQuery("SELECT * FROM Universities WHERE id_university = "+id_university+";");
+
+			String nameUniversity;
+			String addressUniversity;
+			int id_city;
+			if(exists.next()) {
+				nameUniversity = exists.getString("name");
+				addressUniversity = exists.getString("address");
+				id_city = exists.getInt("id_city");
+				university = new University(id_university,nameUniversity,addressUniversity,id_city);
+			}
+		}catch(SQLException e) {
+			e.printStackTrace();
+			return null;
+		}
+		return university;
 	}
 
 	/**

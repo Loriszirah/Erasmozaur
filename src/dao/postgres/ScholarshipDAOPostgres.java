@@ -11,22 +11,8 @@ import model.*;
 /**
  * 
  */
-public class ScholarshipDAOPostgres implements ScholarshipDAO {
+public class ScholarshipDAOPostgres extends AbstractDAOPostgres implements ScholarshipDAO {
     private static ScholarshipDAOPostgres instance = new ScholarshipDAOPostgres();
-	
-	protected String url;
-	protected String userDB;
-	protected String passwdDB;
-	protected Connection conn;
-
-	// This function connect you to the Database
-	public void openConnection() {
-		try {
-			this.conn = DriverManager.getConnection(url, userDB, passwdDB);
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-	}
 	
 	public static ScholarshipDAOPostgres getScholarshipDAOPostgres() {
 		return ScholarshipDAOPostgres.instance;
@@ -35,10 +21,8 @@ public class ScholarshipDAOPostgres implements ScholarshipDAO {
      * Default constructor
      */
     private ScholarshipDAOPostgres() {
-    	this.url = System.getenv("DBurl");
-		this.userDB =System.getenv("DBuser");
-		this.passwdDB = System.getenv("DBpwd");
-		this.openConnection();
+    	super();
+    	this.openConnection();
     }
 
     /**
@@ -102,6 +86,29 @@ public class ScholarshipDAOPostgres implements ScholarshipDAO {
     public ArrayList<Scholarship> getAllScholarships() {
         // TODO implement here
         return null;
+    }
+    
+
+    public ArrayList<Scholarship> getAllScholarshipsByUniversity(int id_sending_university) {
+    	ArrayList<Scholarship> scholarships = new ArrayList<Scholarship>();
+		try {
+			if(!this.conn.isValid(1)) {
+				openConnection();
+			}
+			//Creation of a Statement object
+			Statement state = conn.createStatement();
+			// Check if the username already exist
+
+			ResultSet exists = state.executeQuery("SELECT * FROM Scholarships WHERE id_sending_university = "+id_sending_university+";");
+
+			if(exists.next()) {
+				scholarships.add(new Scholarship(exists.getInt("id_scholarship"),exists.getString("description"),exists.getInt("duration"),exists.getDate("startdate"),exists.getDate("enddate"),exists.getString("domain"),exists.getInt("id_sending_university"),exists.getInt("id_receiving_university") ));
+			}
+		}catch(SQLException e) {
+			e.printStackTrace();
+			return null;
+		}
+		return scholarships;
     }
 
     /**
