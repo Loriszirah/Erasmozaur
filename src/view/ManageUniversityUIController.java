@@ -16,16 +16,16 @@ public class ManageUniversityUIController extends MainController{
 	Label universityNameLabel;
 	
 	@FXML
-	Text addressLabel;
+	Label addressLabel;
 	
 	@FXML
-	Text responsibleLabel;
+	Label responsibleLabel;
 	
 	@FXML
-	Text cityLabel;
+	Label cityLabel;
 	
 	@FXML 
-	Text countryLabel;
+	Label countryLabel;
 	
 	@FXML
 	TextField coursesTextField;
@@ -51,12 +51,12 @@ public class ManageUniversityUIController extends MainController{
     private void initialize() throws IOException {
     	if(entityId != 0){
     		university = universityFacade.viewUniversityPresenter(entityId);
-    		System.out.println(university.getName());
     		if(university != null){
-//	    		universityNameLabel.setText(university.getName());
-//	    		cityLabel.setText(university.getCity());
-//	    		countryLabel.setText(university.getCountry());
-//	    		addressLabel.setText(university.getAddress());
+	    		universityNameLabel.setText(university.getName());
+	    		cityLabel.setText(university.getCity());
+	    		responsibleLabel.setText(university.getResponsible());
+	    		countryLabel.setText(university.getCountry());
+	    		addressLabel.setText(university.getAddress());
     		} else { 
     			setSceneContent("IndexUniversities");
     		}

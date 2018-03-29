@@ -16,6 +16,11 @@ public class UniversityPresenter {
      * 
      */
     private String address;
+    
+    /**
+     * 
+     */
+    private String responsible;
 
     /**
      * 
@@ -27,11 +32,12 @@ public class UniversityPresenter {
      */
     private String country;
 
-	public UniversityPresenter(int id_university, String name, String address, String city, String country) {
+	public UniversityPresenter(int id_university, String name, String address, String responsible, String city, String country) {
 		super();
 		this.id_university = id_university;
 		this.name = name;
 		this.address = address;
+		this.responsible = responsible;
 		this.city = city;
 		this.country = country;
 	}
@@ -76,5 +82,12 @@ public class UniversityPresenter {
 		this.address = address;
 	}
     
+	public String getResponsible() {
+		return responsible;
+	}
+
+	public void setResponsible(String responsible) {
+		this.responsible = responsible;
+	}
 	
 }

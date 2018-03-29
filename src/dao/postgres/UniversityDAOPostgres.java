@@ -114,20 +114,22 @@ public class UniversityDAOPostgres extends AbstractDAOPostgres implements Univer
 			Statement state = conn.createStatement();
 			// Check if the username already exist
 
-			ResultSet exists = state.executeQuery("SELECT id_university, address, Universities.name nameUniversity, Cities.name cityName, Countries.name countryName "
-					+ "FROM Universities, Cities, Countries "
+			ResultSet exists = state.executeQuery("SELECT id_university, Universities.address, Users.firstname userFirstName, Users.lastname userLastName, Universities.name nameUniversity, Cities.name cityName, Countries.name countryName "
+					+ "FROM Universities, Cities, Countries, Users "
 					+ "WHERE Universities.id_city = Cities.id_city "
 					+ "AND Cities.id_country = Countries.id_country "
-					+ "AND id_university = "+id_university+";");
+					+ "AND id_university = "+id_university+" "
+					+ "AND Universities.id_responsible = Users.id_user;");
 
-			String nameUniversity, addressUniversity, cityName, countryName;
+			String nameUniversity, addressUniversity, cityName, countryName, responsibleName;
 			if(exists.next()) {
 				nameUniversity = exists.getString("nameUniversity");
 				addressUniversity = exists.getString("address");
+				responsibleName = exists.getString("userFirstName")+" "+exists.getString("userLastName");
 				cityName = exists.getString("cityName");
 				countryName = exists.getString("countryName");
 				
-				universityPresenter = new UniversityPresenter(id_university,nameUniversity,addressUniversity,cityName,countryName);
+				universityPresenter = new UniversityPresenter(id_university,nameUniversity,addressUniversity, responsibleName, cityName,countryName);
 			}
 		}catch(SQLException e) {
 			e.printStackTrace();
@@ -199,21 +201,23 @@ public class UniversityDAOPostgres extends AbstractDAOPostgres implements Univer
 			Statement state = conn.createStatement();
 			// Check if the username already exist
 
-			ResultSet exists = state.executeQuery("SELECT id_university, address, Universities.name nameUniversity, Cities.name cityName, Countries.name countryName "
-					+ "FROM Universities, Cities, Countries "
+			ResultSet exists = state.executeQuery("SELECT id_university, Universities.address, Users.firstname userFirstName, Users.lastname userLastName, Universities.name nameUniversity, Cities.name cityName, Countries.name countryName "
+					+ "FROM Universities, Cities, Countries, Users "
 					+ "WHERE Universities.id_city = Cities.id_city "
-					+ "AND Cities.id_country = Countries.id_country ;");
+					+ "AND Cities.id_country = Countries.id_country "
+					+ "AND Universities.id_responsible = Users.id_user;");
 
 			int id_university;
-			String nameUniversity, address, nameCity, nameCountry;
+			String nameUniversity, address, nameCity, nameCountry, responsibleName;
 			
 			while(exists.next()) {
 				id_university = exists.getInt("id_university");
 				nameUniversity = exists.getString("nameUniversity");
 				address = exists.getString("address");
+				responsibleName = exists.getString("userFirstName")+" "+exists.getString("userLastName");
 				nameCity = exists.getString("cityName");
 				nameCountry = exists.getString("countryName");
-				universities.add(new UniversityPresenter(id_university, nameUniversity, address, nameCity, nameCountry));
+				universities.add(new UniversityPresenter(id_university, nameUniversity, address, responsibleName, nameCity, nameCountry));
 			}
 		}catch(SQLException e) {
 			e.printStackTrace();

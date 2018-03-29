@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
@@ -15,10 +16,6 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.ManageUniversityUIController">
    <children>
-      <Text layoutX="138.0" layoutY="94.0" strokeType="OUTSIDE" strokeWidth="0.0" text="UniversityName" wrappingWidth="324.7700514793396">
-         <font>
-            <Font size="23.0" />
-         </font></Text>
       <ImageView fitHeight="106.0" fitWidth="110.0" layoutX="29.0" layoutY="32.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../thats_denver_bro.png" />
@@ -42,28 +39,7 @@
             </Menu>
          </menus>
       </MenuBar>
-      <Button fx:id="logoutButton" layoutX="481.0" layoutY="72.0" mnemonicParsing="false" text="Log out" />
-      <Text fx:id="cityLabel" layoutX="221.0" layoutY="230.0" strokeType="OUTSIDE" strokeWidth="0.0" text="UniversityCity" wrappingWidth="324.7700514793396">
-         <font>
-            <Font size="16.0" />
-         </font>
-      </Text>
-      <Text fx:id="reponsibleLabel" layoutX="221.0" layoutY="190.0" strokeType="OUTSIDE" strokeWidth="0.0" text="UniversityResponsible" wrappingWidth="324.7700514793396">
-         <font>
-            <Font size="16.0" />
-         </font>
-      </Text>
-      <Text fx:id="addressLabel" layoutX="221.0" layoutY="150.0" strokeType="OUTSIDE" strokeWidth="0.0" text="UniversityAddress" wrappingWidth="324.7700514793396">
-         <font>
-            <Font size="16.0" />
-         </font>
-      </Text>
-      <Button fx:id="backButton" layoutX="481.0" layoutY="432.0" mnemonicParsing="false" text="Back" />
-      <Text fx:id="countryLabel" layoutX="221.0" layoutY="270.0" strokeType="OUTSIDE" strokeWidth="0.0" text="UniversityCountry" wrappingWidth="324.7700514793396">
-         <font>
-            <Font size="16.0" />
-         </font>
-      </Text>
+      <Button fx:id="backButton" layoutX="477.0" layoutY="72.0" mnemonicParsing="false" text="Back" />
       <Text layoutX="90.0" layoutY="230.0" strokeType="OUTSIDE" strokeWidth="0.0" text="City :" wrappingWidth="133.7700515985489">
          <font>
             <Font size="16.0" />
@@ -79,18 +55,43 @@
             <Font size="16.0" />
          </font>
       </Text>
-      <Text layoutX="90.0" layoutY="270.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Country :" wrappingWidth="133.7700515985489">
+      <Text layoutX="90.0" layoutY="269.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Country :" wrappingWidth="133.7700515985489">
          <font>
             <Font size="16.0" />
          </font>
       </Text>
-      <Text layoutX="90.0" layoutY="301.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Courses :" wrappingWidth="133.7700515985489">
+      <Text layoutX="90.0" layoutY="313.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Courses :" wrappingWidth="133.7700515985489">
          <font>
             <Font size="16.0" />
          </font>
       </Text>
-      <TextField fx:id="coursesTextField" layoutX="224.0" layoutY="285.0" />
-      <ListView fx:id="coursesListView" layoutX="221.0" layoutY="333.0" prefHeight="135.0" prefWidth="200.0" />
-      <Button fx:id="addACourseButton" layoutX="424.0" layoutY="285.0" mnemonicParsing="false" text="Add a course" />
+      <TextField fx:id="coursesTextField" layoutX="219.0" layoutY="445.0" />
+      <ListView fx:id="coursesListView" layoutX="219.0" layoutY="291.0" prefHeight="135.0" prefWidth="200.0" />
+      <Button fx:id="addACourseButton" layoutX="391.0" layoutY="445.0" mnemonicParsing="false" text="Add a course" />
+      <Label fx:id="universityNameLabel" layoutX="178.0" layoutY="67.0" prefHeight="14.0" prefWidth="285.0" text="University name">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
+      </Label>
+      <Label fx:id="addressLabel" layoutX="221.0" layoutY="130.0" text="University address">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+      <Label fx:id="responsibleLabel" layoutX="221.0" layoutY="170.0" text="University responsible">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+      <Label fx:id="cityLabel" layoutX="221.0" layoutY="210.0" text="University city">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+      <Label fx:id="countryLabel" layoutX="221.0" layoutY="250.0" text="University country">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

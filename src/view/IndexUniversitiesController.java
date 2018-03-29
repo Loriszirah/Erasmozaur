@@ -73,9 +73,7 @@ public class IndexUniversitiesController extends MainController{
     	countryColumn.setCellValueFactory(new PropertyValueFactory<UniversityPresenter, String>("country"));
     	actionColumn.setCellFactory(ActionButtonTableCell.<UniversityPresenter>forTableColumn("Details", (UniversityPresenter u) -> {
 //    		joinUniversityTable.getItems().remove(u);
-    		System.out.println(u.getName()+" - "+u.getId_university());
     		MainController.entityId = u.getId_university();
-    		System.out.println("entityId(1) - "+MainController.entityId);
     		try {
 				setSceneContent("manageUniversityUI");
 			} catch (IOException e) {
@@ -83,6 +81,7 @@ public class IndexUniversitiesController extends MainController{
 			}
     	    return u;
     	}));  
+    	
     	// Model for a 'Remove' button inside a TableView
 //    	actionColumn.setCellFactory(ActionButtonTableCell.<Person>forTableColumn("Remove", (Person p) -> {
 //    		joinUniversityTable.getItems().remove(p);
@@ -94,7 +93,6 @@ public class IndexUniversitiesController extends MainController{
     	
     	// if we have results, we place them in the table
     	if(universities.size() > 0){
-    		System.out.println("Size - "+universities.size());
 	    	joinUniversityTable.setItems(universities);
 	    	joinUniversityTable.getColumns().addAll(universityColumn, cityColumn, countryColumn, actionColumn);
     	}
