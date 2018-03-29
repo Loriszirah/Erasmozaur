@@ -39,6 +39,7 @@ public class UserFacade {
 			UserFacade.user = this.UserDAO.createUser(firstName, lastName, password, email, username, birthDate, address, role);
 			return true;
 		} catch(Exception e){
+			e.printStackTrace();
 			return false;
 		}
 		

@@ -1,4 +1,5 @@
 package dao;
+import java.sql.SQLException;
 import java.util.*;
 import model.*;
 
@@ -74,8 +75,9 @@ public interface UserDAO {
      * @param birthDate 
      * @param address 
      * @return
+     * @throws Exception 
      */
-    public User createUser(String firstName, String lastName, String password, String email, String username, Date birthDate, String address, String role);
+    public User createUser(String firstName, String lastName, String password, String email, String username, Date birthDate, String address, String role) throws Exception;
     
     /**
      * 
