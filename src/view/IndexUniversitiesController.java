@@ -1,4 +1,5 @@
 package view;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
@@ -11,6 +12,7 @@ import main.MainApp;
 import model.Role;
 import model.University;
 import model.User;
+import presenters.UniversityPresenter;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -20,19 +22,28 @@ import facade.UniversityFacade;
  
 
 public class IndexUniversitiesController extends MainController{
+
 	@FXML
-	TableView<String> universitiesTableViews;
-	@FXML
-	TableColumn universitiesColumn;
+	TableView<UniversityPresenter> joinUniversityTable = new TableView<UniversityPresenter>();
 	
 	@FXML
-	TableColumn joinColumn;
+	TableColumn universityColumn;
 	
 	@FXML
-	TableColumn detailsColumn;
+	TableColumn cityColumn;
 	
-	protected UniversityFacade universityFacade;
-	protected ArrayList<University> universitiesList;
+	@FXML
+	TableColumn countryColumn;
+	
+	@FXML
+	TableColumn actionColumn;
+	
+	@FXML
+	Label usernameLabel;
+	
+	
+	
+	protected ObservableList<UniversityPresenter> universities;
 
 	/**
      * The constructor.
@@ -47,13 +58,16 @@ public class IndexUniversitiesController extends MainController{
      */
     @FXML
     private void initialize() {
-        // Initialize the university table with the two columns.
-    	universityFacade = new UniversityFacade();
-    	universitiesList = universityFacade.getAllUniversities();
-		for(University university : universitiesList) {
-			System.out.println(university);
-		}
-
+    	universities = (ObservableList<UniversityPresenter>) universityFacade.getAllUniversities();
+    	
+    	universityColumn.setCellValueFactory(new PropertyValueFactory<UniversityPresenter, String>("name"));
+    	cityColumn.setCellValueFactory(new PropertyValueFactory<UniversityPresenter, String>("city"));
+    	countryColumn.setCellValueFactory(new PropertyValueFactory<UniversityPresenter, String>("country"));
+    	
+    	if(universities.size() > 0){
+	    	joinUniversityTable.setItems(universities);
+	    	joinUniversityTable.getColumns().addAll(universityColumn, cityColumn, countryColumn);
+    	}
     }
 }
 

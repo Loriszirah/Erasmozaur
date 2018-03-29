@@ -15,6 +15,7 @@ import main.Context;
 import java.io.IOException;
 import java.util.logging.Logger;
 
+import facade.UniversityFacade;
 import facade.UserFacade;
 
 public abstract class MainController {
@@ -22,20 +23,25 @@ public abstract class MainController {
 	// global application attributes
 		protected static MainApp mainApp;
 		protected static UserFacade userFacade;
+		protected static UniversityFacade universityFacade;
+		
+	// controller attributes
 		public final Logger LOGGER = Logger.getLogger(this.getClass().getName());  
 		private static final String UI_BASE_LOCATION = "/view/";  
 		private static final String FXML_PREFIX = ".fxml";
 		protected static Boolean registerUser = false;
 		
-	// global user attributes
-		String username;
-		String roleType;
+	// global utility variables
+		protected static String username;
+		protected static String roleType;
+		
 		
 	public MainController(){
 		username = "";
 		roleType = "";
 		
 		userFacade = new UserFacade();
+		universityFacade = new UniversityFacade();
 		
 	}
 	
@@ -77,10 +83,15 @@ public abstract class MainController {
      * @param mainApp
      */
     public void setMainApp(MainApp mainApp) {
-        this.mainApp = mainApp;
+        MainController.mainApp = mainApp;
     }
 
     public static UserFacade getUserFacade() {
     	return MainController.userFacade;
+    }
+    
+    public static void logout() throws IOException{
+    	System.gc();
+    	setSceneContent("LoginOverview");
     }
 }

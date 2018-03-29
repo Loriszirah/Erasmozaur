@@ -73,6 +73,12 @@ public class User {
 		this.id_role = id_role;
 	}
 	
+	// Destructor
+	@Override
+	  public void finalize() {
+	    System.out.println("User instance will be cleaned!");
+	  }
+	
 	// Getters & Setters
 
 	public String getFirstName() {
