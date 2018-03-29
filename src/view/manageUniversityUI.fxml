@@ -13,7 +13,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/9.0.4" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <Text layoutX="138.0" layoutY="94.0" strokeType="OUTSIDE" strokeWidth="0.0" text="UniversityName" wrappingWidth="324.7700514793396">
          <font>
@@ -43,23 +43,23 @@
          </menus>
       </MenuBar>
       <Button fx:id="logoutButton" layoutX="481.0" layoutY="72.0" mnemonicParsing="false" text="Log out" />
-      <Text fx:id="CityLabel" layoutX="221.0" layoutY="230.0" strokeType="OUTSIDE" strokeWidth="0.0" text="UniversityCity" wrappingWidth="324.7700514793396">
+      <Text fx:id="cityLabel" layoutX="221.0" layoutY="230.0" strokeType="OUTSIDE" strokeWidth="0.0" text="UniversityCity" wrappingWidth="324.7700514793396">
          <font>
             <Font size="16.0" />
          </font>
       </Text>
-      <Text fx:id="ReponsibleLabel" layoutX="221.0" layoutY="190.0" strokeType="OUTSIDE" strokeWidth="0.0" text="UniversityResponsible" wrappingWidth="324.7700514793396">
+      <Text fx:id="reponsibleLabel" layoutX="221.0" layoutY="190.0" strokeType="OUTSIDE" strokeWidth="0.0" text="UniversityResponsible" wrappingWidth="324.7700514793396">
          <font>
             <Font size="16.0" />
          </font>
       </Text>
-      <Text fx:id="AddressLabel" layoutX="221.0" layoutY="150.0" strokeType="OUTSIDE" strokeWidth="0.0" text="UniversityAddress" wrappingWidth="324.7700514793396">
+      <Text fx:id="addressLabel" layoutX="221.0" layoutY="150.0" strokeType="OUTSIDE" strokeWidth="0.0" text="UniversityAddress" wrappingWidth="324.7700514793396">
          <font>
             <Font size="16.0" />
          </font>
       </Text>
       <Button fx:id="backButton" layoutX="481.0" layoutY="432.0" mnemonicParsing="false" text="Back" />
-      <Text fx:id="CountryLabel" layoutX="221.0" layoutY="270.0" strokeType="OUTSIDE" strokeWidth="0.0" text="UniversityCountry" wrappingWidth="324.7700514793396">
+      <Text fx:id="countryLabel" layoutX="221.0" layoutY="270.0" strokeType="OUTSIDE" strokeWidth="0.0" text="UniversityCountry" wrappingWidth="324.7700514793396">
          <font>
             <Font size="16.0" />
          </font>
@@ -89,8 +89,8 @@
             <Font size="16.0" />
          </font>
       </Text>
-      <TextField fx:id="coursestextField" layoutX="224.0" layoutY="285.0" />
-      <ListView fx:id="coursesListView" layoutX="224.0" layoutY="344.0" prefHeight="135.0" prefWidth="200.0" />
-      <Button fx:id="addACourse" layoutX="424.0" layoutY="285.0" mnemonicParsing="false" text="Add a course" />
+      <TextField fx:id="coursesTextField" layoutX="224.0" layoutY="285.0" />
+      <ListView fx:id="coursesListView" layoutX="221.0" layoutY="333.0" prefHeight="135.0" prefWidth="200.0" />
+      <Button fx:id="addACourseButton" layoutX="424.0" layoutY="285.0" mnemonicParsing="false" text="Add a course" />
    </children>
 </AnchorPane>

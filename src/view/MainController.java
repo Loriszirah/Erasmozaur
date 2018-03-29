@@ -42,6 +42,7 @@ public abstract class MainController {
 	public MainController(){
 		username = "";
 		roleType = "";
+		entityId = 0;
 		
 		userFacade = new UserFacade();
 		universityFacade = new UniversityFacade();
