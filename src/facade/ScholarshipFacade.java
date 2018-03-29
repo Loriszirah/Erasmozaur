@@ -28,9 +28,8 @@ public class ScholarshipFacade {
      * @param endDate 
      * @return
      */
-    public Scholarship createScholarship(String description, int duration, Date startDate, Date endDate) {
-        // TODO implement here
-        return null;
+    public Scholarship createScholarship(String description, int duration, Date startDate, Date endDate, String domain, int id_sending_university, int id_receiving_university) {
+        return scholarshipDAO.createScholarship(description, duration, startDate, endDate, domain, id_sending_university, id_receiving_university);
     }
 
     /**

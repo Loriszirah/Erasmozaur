@@ -86,8 +86,25 @@ public class ScholarshipDAOPostgres extends AbstractDAOPostgres implements Schol
      * @return
      */
     public ArrayList<Scholarship> getAllScholarships() {
-        // TODO implement here
-        return null;
+    	ArrayList<Scholarship> scholarships = new ArrayList<Scholarship>();
+		try {
+			if(!this.conn.isValid(1)) {
+				openConnection();
+			}
+			//Creation of a Statement object
+			Statement state = conn.createStatement();
+			// Check if the username already exist
+
+			ResultSet exists = state.executeQuery("SELECT * FROM Scholarships;");
+
+			if(exists.next()) {
+				scholarships.add(new Scholarship(exists.getInt("id_scholarship"),exists.getString("description"),exists.getInt("duration"),exists.getDate("startdate"),exists.getDate("enddate"),exists.getString("domain"),exists.getInt("id_sending_university"),exists.getInt("id_receiving_university") ));
+			}
+		}catch(SQLException e) {
+			e.printStackTrace();
+			return null;
+		}
+		return scholarships;
     }
     
 
