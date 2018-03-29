@@ -9,8 +9,8 @@ public interface RoleDAO {
 
     /**
      * Create a role
-     * @param name 
-     * @param description 
+     * @param name Name of the new role
+     * @param description Description of the role
      * @return the role created
      */
     public Role createRole(String name, String description);

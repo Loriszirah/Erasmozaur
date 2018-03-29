@@ -8,8 +8,9 @@ import model.*;
 public interface CityDAO {
 
     /**
-     * @param name 
-     * @return
+     * Create a city
+     * @param name : Name of the city
+     * @return The city created
      */
     public City createCity(String name);
 
