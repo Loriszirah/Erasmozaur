@@ -10,22 +10,28 @@ public class UniversityPresenter {
     /**
      * 
      */
-    public String name;
-
-    /**
-     * 
-     */
-    public String city;
+    private String name;
     
     /**
      * 
      */
-    public String country;
+    private String address;
 
-	public UniversityPresenter(int id_university, String name, String city, String country) {
+    /**
+     * 
+     */
+    private String city;
+    
+    /**
+     * 
+     */
+    private String country;
+
+	public UniversityPresenter(int id_university, String name, String address, String city, String country) {
 		super();
 		this.id_university = id_university;
 		this.name = name;
+		this.address = address;
 		this.city = city;
 		this.country = country;
 	}

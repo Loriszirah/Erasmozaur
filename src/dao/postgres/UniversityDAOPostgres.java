@@ -98,6 +98,42 @@ public class UniversityDAOPostgres extends AbstractDAOPostgres implements Univer
 		}
 		return university;
 	}
+	
+	/**
+	 * @param id_university 
+	 * @return
+	 */
+	public UniversityPresenter viewUniversityPresenter(int id_university) {
+		UniversityPresenter universityPresenter = null;
+		try {
+			if(!this.conn.isValid(1)) {
+				openConnection();
+			}
+			//Creation of a Statement object
+			Statement state = conn.createStatement();
+			// Check if the username already exist
+
+			ResultSet exists = state.executeQuery("SELECT id_university, address, Universities.name nameUniversity, Cities.name cityName, Countries.name countryName "
+					+ "FROM Universities, Cities, Countries "
+					+ "WHERE Universities.id_city = Cities.id_city "
+					+ "AND Cities.id_country = Countries.id_country "
+					+ "AND id_university = "+id_university+";");
+
+			String nameUniversity, addressUniversity, cityName, countryName;
+			if(exists.next()) {
+				nameUniversity = exists.getString("nameUniversity");
+				addressUniversity = exists.getString("address");
+				cityName = exists.getString("cityName");
+				countryName = exists.getString("countryName");
+				
+				universityPresenter = new UniversityPresenter(id_university,nameUniversity,addressUniversity,cityName,countryName);
+			}
+		}catch(SQLException e) {
+			e.printStackTrace();
+			return null;
+		}
+		return universityPresenter;
+	}
 
 	/**
 	 * @param id_university
@@ -160,21 +196,21 @@ public class UniversityDAOPostgres extends AbstractDAOPostgres implements Univer
 			Statement state = conn.createStatement();
 			// Check if the username already exist
 
-			ResultSet exists = state.executeQuery("SELECT id_university, Universities.name nameUniversity, Cities.name cityName, Countries.name countryName "
+			ResultSet exists = state.executeQuery("SELECT id_university, address, Universities.name nameUniversity, Cities.name cityName, Countries.name countryName "
 					+ "FROM Universities, Cities, Countries "
 					+ "WHERE Universities.id_city = Cities.id_city "
 					+ "AND Cities.id_country = Countries.id_country ;");
 
 			int id_university;
-			String nameUniversity, nameCity, nameCountry;
-
-			int id_city;
+			String nameUniversity, address, nameCity, nameCountry;
+			
 			if(exists.next()) {
 				id_university = exists.getInt("id_university");
 				nameUniversity = exists.getString("nameUniversity");
+				address = exists.getString("address");
 				nameCity = exists.getString("cityName");
 				nameCountry = exists.getString("countryName");
-				universities.add(new UniversityPresenter(id_university, nameUniversity, nameCity, nameCountry));
+				universities.add(new UniversityPresenter(id_university, nameUniversity, address, nameCity, nameCountry));
 			}
 		}catch(SQLException e) {
 			e.printStackTrace();
