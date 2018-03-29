@@ -2,17 +2,19 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.SeparatorMenuItem?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="442.0" prefWidth="586.0" xmlns="http://javafx.com/javafx/9.0.4" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/9.0.4" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Label layoutX="132.0" layoutY="68.0" text="&lt;&lt;firstname&gt;&gt;+&lt;&lt;lastname&gt;&gt;" />
-      <Button layoutX="311.0" layoutY="64.0" mnemonicParsing="false" text="Log out" />
-      <ImageView fitHeight="106.0" fitWidth="110.0" layoutX="24.0" layoutY="19.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="106.0" fitWidth="110.0" layoutX="28.0" layoutY="32.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../thats_denver_bro.png" />
          </image>
@@ -36,5 +38,25 @@
       <TextField fx:id="telephoneApplicationTextField" layoutX="247.0" layoutY="318.0" />
       <Button layoutX="214.0" layoutY="364.0" mnemonicParsing="false" text="Accept" />
       <Button layoutX="284.0" layoutY="364.0" mnemonicParsing="false" text="Refuse" />
+      <MenuBar  prefHeight="29.0" prefWidth="600.0">
+         <menus>
+            <Menu mnemonicParsing="false" text="Go to">
+               <items>
+                  <MenuItem mnemonicParsing="false" onAction="#applicationsClicked" text="Applications" />
+  				  <MenuItem mnemonicParsing="false" onAction="#evaluationsClicked" text="Evaluations" />
+                  <MenuItem mnemonicParsing="false" onAction="#reviewsClicked" text="Reviews" />    
+                  <MenuItem mnemonicParsing="false" onAction="#scolarshipsClicked" text="Scolarships" />       
+                  <MenuItem mnemonicParsing="false" onAction="#universitiesClicked" text="Universities" />
+                  <SeparatorMenuItem mnemonicParsing="false" />
+                  <MenuItem mnemonicParsing="false" onAction="#manageProfileClicked" text="Manage profile" />
+                  <SeparatorMenuItem mnemonicParsing="false" />
+                  <MenuItem mnemonicParsing="false" onAction="#logoutMenuClicked" text="Logout" />
+                  <MenuItem mnemonicParsing="false" onAction="#QuitAppClicked" text="Quit the app" />
+               </items>
+            </Menu>
+         </menus>
+      </MenuBar>
+      <Label fx:id="usernameLabel" layoutX="212.0" layoutY="77.0" text="&lt;&lt;firstname&gt;&gt;+&lt;&lt;lastname&gt;&gt;" />
+      <Button fx:id="logoutButton" layoutX="421.0" layoutY="72.0" mnemonicParsing="false" text="Log out" />
    </children>
 </AnchorPane>

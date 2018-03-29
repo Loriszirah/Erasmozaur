@@ -1,6 +1,10 @@
 package dao.postgres;
 import dao.*;
 import model.City;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
 import java.util.*;
 
 /**
@@ -8,7 +12,10 @@ import java.util.*;
  */
 public class CityDAOPostgres implements CityDAO {
     private static CityDAOPostgres instance = new CityDAOPostgres();
-	
+    protected String url;
+    protected String userDB;
+    protected String passwdDB;
+    protected Connection conn;
 	
 	
 	public static CityDAOPostgres getCityDAOPostgres() {
@@ -18,6 +25,21 @@ public class CityDAOPostgres implements CityDAO {
      * Default constructor
      */
     private CityDAOPostgres() {
+    	this.url = System.getenv("DBurl");
+		this.userDB =System.getenv("DBuser");
+		this.passwdDB = System.getenv("DBpwd");
+		this.openConnection();
+    }
+    
+    /**
+     *  This function connect you to the Database
+     */
+    public void openConnection() {
+    	try {
+			this.conn = DriverManager.getConnection(url, userDB, passwdDB);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
     }
 
     /**
