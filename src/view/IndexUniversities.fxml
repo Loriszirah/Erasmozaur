@@ -14,7 +14,7 @@
 
 <AnchorPane prefHeight="396.0" prefWidth="596.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.IndexUniversitiesController">
    <children>
-      <ImageView fitHeight="106.0" fitWidth="110.0" layoutX="27.0" layoutY="32.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="106.0" fitWidth="110.0" layoutX="27.0" layoutY="32.0" pickOnBounds="true" preserveRatio="true"></ImageView>
       <TableView fx:id="joinUniversityTable" layoutX="33.0" layoutY="150.0" prefHeight="200.0" prefWidth="529.0">
          <columns>
             <TableColumn fx:id="universityColumn" prefWidth="232.79997634887695" text="University" />
