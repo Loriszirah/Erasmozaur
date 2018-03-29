@@ -19,6 +19,20 @@ public interface UserDAO {
     public void updateUser(int id_user);
 
     /**
+     * Check if a user already exists with this username
+     * @param username 
+     * @return true if a user already exists with this username, false otherwise
+     */	
+    public boolean checkIfExistsWithUsername(String username);
+    
+    /**
+     * Check if a user already exists with this email
+     * @param email 
+     * @return true if a user already exists with this email, false otherwise
+     */
+    public boolean checkIfExistsWithEmail(String email);
+    
+    /**
      * @param id_user
      */
     public void deleteUser(int id_user);
@@ -74,7 +88,7 @@ public interface UserDAO {
      * @param username 
      * @param birthDate 
      * @param address 
-     * @return
+     * @return the user that has been created
      * @throws Exception 
      */
     public User createUser(String firstName, String lastName, String password, String email, String username, Date birthDate, String address, String role) throws Exception;

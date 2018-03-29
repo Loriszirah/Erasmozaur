@@ -46,7 +46,10 @@ public class CreateProfileUIController extends MainController{
 	ChoiceBox roles;
 	
 	@FXML
-	Text emptyTextField;
+	ChoiceBox universities;
+	
+	@FXML
+	Text errorTextField;
 	
 	@FXML
 	ImageView emailWarning;
@@ -136,26 +139,30 @@ public class CreateProfileUIController extends MainController{
     	else {
     		lastNameWarning.setVisible(false);
     	}
-    	
+    	    	    	
     	if(!emptyField) {
-	    	if(userFacade.register(firstNameTextField.getText(), lastNameTextField.getText(), passwordTextField.getText(), emailTextField.getText(), usernameTextField.getText(), null, addressTextField.getText(), roles.getValue().toString())){
-	    		System.out.println("The 'Register' request was succesful!");
-	    		try {
-					setSceneContent("LoginOverview");
-				} catch (IOException e) {
-					e.printStackTrace();
-				}
-	    	} else {
-	    		System.out.println("The 'Register' request failed!");
-	    	}
+    		try{
+    			if(userFacade.register(firstNameTextField.getText(), lastNameTextField.getText(), passwordTextField.getText(), emailTextField.getText(), usernameTextField.getText(), null, addressTextField.getText(), roles.getValue().toString())){
+		    		System.out.println("The 'Register' request was succesful!");
+		    		try {
+						setSceneContent("LoginOverview");
+					} catch (IOException e) {
+						e.printStackTrace();
+					}
+		    	} else {
+		    		System.out.println("The 'Register' request failed!");
+		    	}
+	    	} catch(Exception e){
+	    		errorTextField.setText(e.getMessage());
+			}
     	}
     	else{
-    		emptyTextField.setText("Missing fields");
+    		errorTextField.setText("Missing fields");
     	}
     }
     
     @FXML
-    private void  cancelButton() {
+    private void cancelButton() {
     	try {
 			setSceneContent("LoginOverview");
 		} catch (IOException e) {
