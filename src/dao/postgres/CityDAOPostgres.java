@@ -39,42 +39,25 @@ public class CityDAOPostgres extends AbstractDAOPostgres implements CityDAO {
 		}
     }
 
-    /**
-     * @param name 
-     * @return
-     */
     public City createCity(String name) {
         // TODO implement here
         return null;
     }
 
-    /**
-     * @param city 
-     * @return
-     */
+
     public void updateCity(City city) {
         // TODO implement here
     }
 
-    /**
-     * @param city
-     */
     public void deleteCity(City city) {
         // TODO implement here
     }
 
-    /**
-     * @param id_city 
-     * @return
-     */
     public City getCity(int id_city) {
         // TODO implement here
         return null;
     }
 
-    /**
-     * @return
-     */
     public ArrayList<City> indexCities() {
     	ArrayList<City> cities = new ArrayList<City>();
     	try {
