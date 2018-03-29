@@ -68,7 +68,7 @@ public class ScholarshipFacade {
      * @return
      */
     public ArrayList<Scholarship> getAllScholarshipByUniversities(int id_university) {
-        return scholarshipDAO.
+        return scholarshipDAO.getAllScholarshipsByUniversity(id_university);
     }
 
 }

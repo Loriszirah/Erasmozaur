@@ -121,38 +121,5 @@ public class ScholarshipDAOPostgres extends AbstractDAOPostgres implements Schol
         // TODO implement here
         return false;
     }
-	@Override
-	public ArrayList<ScholarshipPresenter> getAllScholarshipsPresenterByUniversity(int id_sending_university) {
-		ArrayList<ScholarshipPresenter> scholarshipsPresenter = new ArrayList<ScholarshipPresenter>();
-		try {
-			if(!this.conn.isValid(1)) {
-				openConnection();
-			}
-			//Creation of a Statement object
-			Statement state = conn.createStatement();
-			// Check if the username already exist
-
-			ResultSet exists = state.executeQuery("SELECT id_university, address, Universities.name nameUniversity, Cities.name cityName, Countries.name countryName "
-					+ "FROM Universities, Cities, Countries "
-					+ "WHERE Universities.id_city = Cities.id_city "
-					+ "AND Cities.id_country = Countries.id_country ;");
-
-			int id_university;
-			String nameUniversity, address, nameCity, nameCountry;
-			
-			if(exists.next()) {
-				id_university = exists.getInt("id_university");
-				nameUniversity = exists.getString("nameUniversity");
-				address = exists.getString("address");
-				nameCity = exists.getString("cityName");
-				nameCountry = exists.getString("countryName");
-				universities.add(new UniversityPresenter(id_university, nameUniversity, address, nameCity, nameCountry));
-			}
-		}catch(SQLException e) {
-			e.printStackTrace();
-			return null;
-		}
-		return universities;
-	}
 
 }
