@@ -23,6 +23,11 @@ public interface UniversityDAO {
     public University viewUniversity(int id_university);
 
     /**
+     * @param id_university 
+     * @return
+     */
+    public UniversityPresenter viewUniversityPresenter(int id_university);
+    /**
      * @param id_university
      */
     public void updateUniversity(int id_university);
