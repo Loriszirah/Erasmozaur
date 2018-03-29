@@ -9,14 +9,14 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="398.0" prefWidth="596.0" xmlns="http://javafx.com/javafx/9.0.4" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.LoginOverviewController">
+<AnchorPane prefHeight="398.0" prefWidth="596.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.LoginOverviewController">
    <children>
       <Label layoutX="130.0" layoutY="82.0" text="Welcome">
          <font>
             <Font name="System Bold" size="24.0" />
          </font>
       </Label>
-      <Label layoutX="171.0" layoutY="223.0" text="User name" />
+      <Label layoutX="171.0" layoutY="223.0" text="Username" />
       <Label layoutX="171.0" layoutY="260.0" prefHeight="17.0" prefWidth="67.0" text="Password" />
          <TextField fx:id="usernameTextField" layoutX="259.0" layoutY="219.0" />
       <PasswordField fx:id="passwordTextField" layoutX="259.0" layoutY="256.0" />

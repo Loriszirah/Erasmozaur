@@ -45,15 +45,17 @@ public class UserDAOPostgres implements UserDAO {
 			if(!this.conn.isValid(1)) {
 				openConnection();
 			}
-		    //Creation of a Statement object
+		    // Creation of a Statement object
 		    Statement state = conn.createStatement();
-		    // Check if the username already exist
-		    ResultSet exists = state.executeQuery("SELECT COUNT(*) as nb FROM Users WHERE username ='"+username+"';");
-		    if(exists.next()) {
-		    	if(exists.getInt("nb")>0) {
-		    		return null;
-		    	}
+		    
+		    if(checkIfExistsWithUsername(username)) {
+		    	return null;
 		    }
+		    
+		    if(checkIfExistsWithEmail(email)) {
+		    	return null;
+		    }
+		    
 		    // Select the id of the type_user
 		    ResultSet result = state.executeQuery("SELECT id_role FROM Roles WHERE name = '"+role+"'");
 	    	int id=0;
@@ -63,14 +65,17 @@ public class UserDAOPostgres implements UserDAO {
 		    else {
 		    	return null;
 		    }
-		    //The object ResultSet contains the result of the SQL request
+		    
+		    // The object ResultSet contains the result of the SQL request
 		    state.executeUpdate("INSERT INTO Users (username, password, firstname, lastname, email, address, id_role) VALUES('"+username+"','"+password+"','"+firstName+"','"+lastName+"','"+email+"','"+address+"','"+Integer.toString(id)+"')");
 		    
-		    //The object ResultSet contains the result of the SQL request
+		    // The object ResultSet contains the result of the SQL request
 		    result = state.executeQuery("SELECT * FROM users WHERE username='"+username+"'");
-		    //We get the MetaData
+		    
+		    // We get the MetaData
 			ResultSetMetaData resultMeta = result.getMetaData();
-			//Get the user in the database if exists and create the user
+			
+			// Get the user in the database if exists and create the user
 			if(result.next()) {
 				User user = new User(result.getInt("id_user"), result.getString("firstName"), result.getString("lastName"), result.getString("password"), result.getString("email"), result.getString("username"), null, result.getString("address"), result.getInt("id_role"));
 				return user;
@@ -89,13 +94,16 @@ public class UserDAOPostgres implements UserDAO {
 			if(!this.conn.isValid(1)) {
 				openConnection();
 			}
-		    //Creation of a Statement object
+		    // Creation of a Statement object
 		    Statement state = conn.createStatement();
-		    //The object ResultSet contains the result of the SQL request
+		    
+		    // The object ResultSet contains the result of the SQL request
 		    ResultSet result = state.executeQuery("SELECT * FROM users WHERE username='"+username+"' and password='"+password+"'");
-		    //We get the MetaData
+		    
+		    // We get the MetaData
 			ResultSetMetaData resultMeta = result.getMetaData();
-			//Get the user in the database if exists and create the user
+			
+			// Get the user in the database if exists and create the user
 			if(result.next()) {
 				user = new User(result.getInt("id_user"), result.getString("firstname"), result.getString("lastname"), result.getString("password"), result.getString("email"), result.getString("username"), null, result.getString("address"), result.getInt("id_role"));
 			} else {
@@ -106,39 +114,6 @@ public class UserDAOPostgres implements UserDAO {
 		      return null;
 		}
 		return user;
-    }
-    
-    public boolean register(String username, String password, String role) {
-    	try {
-			if(!this.conn.isValid(1)) {
-				openConnection();
-			}
-		    //Creation of a Statement object
-		    Statement state = conn.createStatement();
-		    // Check if the username already exist
-		    ResultSet exists = state.executeQuery("SELECT COUNT(*) as nb FROM Users WHERE username ='"+username+"';");
-		    if(exists.next()) {
-		    	if(exists.getInt("nb")>0) {
-		    		return false;
-		    	}
-		    }
-		    // Select the id of the type_user
-		    ResultSet result = state.executeQuery("SELECT id_role FROM Roles WHERE name = '"+role+"'");
-	    	int id=0;
-		    if(result.next()) {
-		    	id = result.getInt("id_role");
-		    }
-		    else {
-		    	return false;
-		    }
-		    //The object ResultSet contains the result of the SQL request
-		    state.executeUpdate("INSERT INTO Users (username, password, id_role) VALUES('"+username+"','"+password+"','"+Integer.toString(id)+"')");
-		    
-    	}catch(SQLException e) {
-		      e.printStackTrace();
-		      return false;
-		}
-    	return true;
     }
     
     // This function connect you to the Database
@@ -179,7 +154,65 @@ public class UserDAOPostgres implements UserDAO {
         // TODO implement here
         return null;
     }
-
+   
+    /**
+     * @param username 
+     * @return true if a user already exists with this username, false otherwise
+     */
+    public boolean checkIfExistsWithUsername(String username) {
+    	try{
+    		if(!this.conn.isValid(1)) {
+				openConnection();
+			}
+		    //Creation of a Statement object
+		    Statement state = conn.createStatement();
+		    
+	    	// Check if the username already exist
+		    ResultSet exists = state.executeQuery("SELECT COUNT(*) as nb FROM Users WHERE username ='"+username+"';");
+		    if(exists.next()) {
+		    	if(exists.getInt("nb")>0) {
+		    		return false;
+		    	}
+		    }
+		    else {
+		    	return true;
+		    }
+    	} catch(SQLException e) {
+		      e.printStackTrace();
+		      return false;
+		}
+    	return false;
+    }
+    
+   /**
+    * @param email 
+    * @return true if a user already exists with this email, false otherwise
+    */
+    public boolean checkIfExistsWithEmail(String email) {
+    	try{
+    		if(!this.conn.isValid(1)) {
+				openConnection();
+			}
+		    //Creation of a Statement object
+		    Statement state = conn.createStatement();
+		    
+	    	// Check if the email already exist
+		    ResultSet exists = state.executeQuery("SELECT COUNT(*) as nb FROM Users WHERE email ='"+email+"';");
+		    if(exists.next()) {
+		    	if(exists.getInt("nb")>0) {
+		    		return false;
+		    	}
+		    }
+		    else {
+		    	return true;
+		    }
+    	} catch(SQLException e) {
+		      e.printStackTrace();
+		      return false;
+		}
+    	return false;
+    }
+    
     /**
      * @param id_university 
      * @param id_user

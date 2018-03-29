@@ -107,6 +107,7 @@ public class CreateProfileUIController extends MainController{
     	else {
     		passwordWarning.setVisible(false);
     	}
+    	
     	if(emailTextField.getText().isEmpty()) {
     		emptyField = true;
     		emailWarning.setVisible(true);
@@ -114,6 +115,7 @@ public class CreateProfileUIController extends MainController{
     	else {
     		emailWarning.setVisible(false);
     	}
+    	
     	if(usernameTextField.getText().isEmpty()) {
     		emptyField = true;
     		usernameWarning.setVisible(true);
@@ -121,18 +123,21 @@ public class CreateProfileUIController extends MainController{
     	else {
     		usernameWarning.setVisible(false);
     	}
+    	
     	if(firstNameTextField.getText().isEmpty()) {
     		firstNameWarning.setVisible(true);
     	}
     	else {
     		firstNameWarning.setVisible(false);
     	}
+    	
     	if(lastNameTextField.getText().isEmpty()) {
     		lastNameWarning.setVisible(true);
     	}
     	else {
     		lastNameWarning.setVisible(false);
     	}
+    	
     	if(!emptyField) {
 	    	if(userFacade.register(firstNameTextField.getText(), lastNameTextField.getText(), passwordTextField.getText(), emailTextField.getText(), usernameTextField.getText(), null, addressTextField.getText(), roles.getValue().toString())){
 	    		System.out.println("The 'Register' request was succesful!");
@@ -141,7 +146,7 @@ public class CreateProfileUIController extends MainController{
 				} catch (IOException e) {
 					e.printStackTrace();
 				}
-	    	} else { 
+	    	} else {
 	    		System.out.println("The 'Register' request failed!");
 	    	}
     	}
@@ -152,7 +157,10 @@ public class CreateProfileUIController extends MainController{
     
     @FXML
     private void  cancelButton() {
-	
+    	try {
+			setSceneContent("LoginOverview");
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
     }
-
 }
