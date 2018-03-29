@@ -1,6 +1,7 @@
 package dao;
 import java.util.*;
 import model.*;
+import presenters.UniversityPresenter;
 
 /**
  * 
@@ -35,6 +36,11 @@ public interface UniversityDAO {
      * @return
      */
     public ArrayList<University> getAllUniversities();
+    
+    /**
+	 * @return
+	 */
+	public ArrayList<UniversityPresenter> getAllUniversitiesPresenter();
 
     /**
      * @param id_university 

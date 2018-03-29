@@ -5,6 +5,7 @@ import dao.AbstractFactoryDAO;
 import dao.RoleDAO;
 import dao.UniversityDAO;
 import model.*;
+import presenters.UniversityPresenter;
 
 /**
  * 
@@ -35,9 +36,14 @@ public class UniversityFacade {
      * @return
      */
     public ArrayList<University> getAllUniversities() {
-    	System.out.println("2");
         return universityDAO.getAllUniversities();
-
+    }
+    
+    /**
+     * @return
+     */
+    public ArrayList<UniversityPresenter> getAllUniversitiesPresenter() {
+        return universityDAO.getAllUniversitiesPresenter();
     }
 
     /**
