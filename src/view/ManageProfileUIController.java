@@ -96,6 +96,12 @@ public class ManageProfileUIController extends MainController{
     
     @FXML
     private void joinUniversity() {
+	try {
+		setSceneContent("indexUniversities");
+	} catch (IOException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
     	leaveUniversityButton.setVisible(true);
     	joinUniversityButton.setVisible(false);
     }

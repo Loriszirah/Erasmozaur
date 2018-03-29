@@ -1,12 +1,17 @@
 package facade;
 import java.util.*;
+
+import dao.AbstractFactoryDAO;
+import dao.RoleDAO;
+import dao.UniversityDAO;
 import model.*;
 
 /**
  * 
  */
 public class UniversityFacade {
-
+	private AbstractFactoryDAO factory = AbstractFactoryDAO.getFactory();
+	private UniversityDAO universityDAO = factory.getUniversityDAO();
     /**
      * Default constructor
      */
@@ -30,8 +35,9 @@ public class UniversityFacade {
      * @return
      */
     public ArrayList<University> getAllUniversities() {
-        // TODO implement here
-        return null;
+    	System.out.println("2");
+        return universityDAO.getAllUniversities();
+
     }
 
     /**
