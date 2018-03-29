@@ -1,11 +1,36 @@
+package dao.postgres;
+import java.util.*;
+import dao.*;
+import model.*;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
+import java.sql.SQLException;
+import java.sql.Statement;
 
-     * @param username 
-     * @param birthDate 
-     * @param address 
-     * @return
-     */
-    public User createUser(String firstName, String lastName, String password, String email, String username, Date birthDate, String address, 
-    		String role) throws Exception {
+/**
+ * 
+ */
+public class UserDAOPostgres implements UserDAO {
+	protected String url;
+    protected String userDB;
+    protected String passwdDB;
+    protected Connection conn;
+    private static UserDAOPostgres instance = new UserDAOPostgres();
+	
+	private UserDAOPostgres() {
+		this.url = System.getenv("DBurl");
+		this.userDB =System.getenv("DBuser");
+		this.passwdDB = System.getenv("DBpwd");
+		this.openConnection();
+	}
+	
+	public static UserDAOPostgres getUserDAOPostgres() {
+		return UserDAOPostgres.instance;
+	}
+	
+    public User createUser(String firstName, String lastName, String password, String email, String username, Date birthDate, String address, String role) throws Exception {
     	try {
 			if(!this.conn.isValid(1)) {
 				openConnection();
@@ -13,21 +38,16 @@
 		    // Creation of a Statement object
 		    Statement state = conn.createStatement();
 		    
-		    if (checkIfExistsWithUsername(username)){
-		    	throw new Exception("A user is already existing with this usermail");
+		    if (checkIfExistsWithUsername(username)) {	    
+			    if (checkIfExistsWithEmail(email)){
+			    	throw new Exception("Email and username are already taken");
+			    }
+			    else {
+			    	throw new Exception("Username is already taken");
+			    }
 		    }
-		    		    
-=======
-		    	throw new Exception("A user is already existing with this usermail");
-		    }
-		    
-		    if (checkIfExistsWithEmail(email)){
-		    	throw new Exception("A user is already existing with this email");
-		    }
-		    
->>>>>>> Stashed changes
-		    if (checkIfExistsWithEmail(email)){
-		    	throw new Exception("A user is already existing with this email");
+		    else if(checkIfExistsWithEmail(email)) {
+		    	throw new Exception("Email is already taken");
 		    }
 		    
 		    // Select the id of the type_user
