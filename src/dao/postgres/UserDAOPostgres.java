@@ -4,7 +4,6 @@
      * @param address 
      * @return
      */
-    public User createUser(String firstName, String lastName, String password, String email, String username, Date birthDate, String address, String role) {
     public User createUser(String firstName, String lastName, String password, String email, String username, Date birthDate, String address, 
     		String role) throws Exception {
     	try {
@@ -14,8 +13,6 @@
 		    // Creation of a Statement object
 		    Statement state = conn.createStatement();
 		    
-		    if(checkIfExistsWithUsername(username)) {
-		    	return null;
 		    if (checkIfExistsWithUsername(username)){
 		    	throw new Exception("A user is already existing with this usermail");
 		    }
@@ -24,8 +21,6 @@
 		    	throw new Exception("A user is already existing with this usermail");
 		    }
 		    
-		    if(checkIfExistsWithEmail(email)) {
-		    	return null;
 		    if (checkIfExistsWithEmail(email)){
 		    	throw new Exception("A user is already existing with this email");
 		    }
