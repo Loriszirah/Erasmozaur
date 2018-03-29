@@ -9,7 +9,8 @@ public class University {
     /**
      * Default constructor
      */
-    public University() {
+    public University(String name) {
+    	this.name = name;
     }
 
     /**

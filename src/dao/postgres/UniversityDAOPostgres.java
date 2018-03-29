@@ -1,4 +1,9 @@
 package dao.postgres;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.*;
 import model.*;
 import dao.*;
@@ -8,8 +13,19 @@ import dao.*;
  */
 public class UniversityDAOPostgres implements UniversityDAO {
     private static UniversityDAOPostgres instance = new UniversityDAOPostgres();
+    protected String url;
+    protected String userDB;
+    protected String passwdDB;
+    protected Connection conn;
 	
-	
+ // This function connect you to the Database
+    public void openConnection() {
+    	try {
+			this.conn = DriverManager.getConnection(url, userDB, passwdDB);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+    }
 	
 	public static UniversityDAOPostgres getUniversityDAOPostgres() {
 		return UniversityDAOPostgres.instance;
@@ -18,6 +34,10 @@ public class UniversityDAOPostgres implements UniversityDAO {
      * Default constructor
      */
     private UniversityDAOPostgres() {
+    	this.url = System.getenv("DBurl");
+		this.userDB =System.getenv("DBuser");
+		this.passwdDB = System.getenv("DBpwd");
+		this.openConnection();
     }
 
     /**
@@ -57,8 +77,32 @@ public class UniversityDAOPostgres implements UniversityDAO {
      * @return
      */
     public ArrayList<University> getAllUniversities() {
-        // TODO implement here
-        return null;
+  System.out.println("1");
+    		ArrayList<University> universities = new ArrayList<University>();
+System.out.println("3");
+     	try {
+			if(!this.conn.isValid(1)) {
+				openConnection();
+				System.out.println("good");
+			}
+			System.out.println("done");
+		    //Creation of a Statement object
+		    Statement state = conn.createStatement();
+		    // Check if the username already exist
+
+		    ResultSet exists = state.executeQuery("SELECT name FROM Universities;");
+
+		    String nameUniversity;
+		    if(exists.next()) {
+		    	nameUniversity = exists.getString("name");
+		    	System.out.println("yoyo" + nameUniversity);
+		    	universities.add(new University(nameUniversity));
+		    }
+    	}catch(SQLException e) {
+		      e.printStackTrace();
+		      return null;
+		}
+        return universities;
     }
 
     /**

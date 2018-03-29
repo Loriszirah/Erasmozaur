@@ -34,7 +34,7 @@ public class PostgresFactoryDAO extends AbstractFactoryDAO {
 	@Override
 	public UniversityDAO getUniversityDAO() {
 		// TODO Auto-generated method stub
-		return null;
+		return UniversityDAOPostgres.getUniversityDAOPostgres();
 	}
 
 	@Override

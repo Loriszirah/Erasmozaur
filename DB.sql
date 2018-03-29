@@ -233,3 +233,8 @@ INSERT INTO Roles(name) VALUES('Admin');
 INSERT INTO Users(username,password,firstname,lastname,email,id_role) VALUES('Melvil','pwd','Melvil','Donnart','melvil.donnart@gmail.com',(SELECT id_role FROM Roles WHERE name = 'Tutor'));
 INSERT INTO Users(username,password,firstname,lastname,email,id_role) VALUES('Godefroi','pwd','Godefroi','Roussel','godefroi.roussel@gmail.com',(SELECT id_role FROM Roles WHERE name = 'Responsible'));
 INSERT INTO Users(username,password,firstname,lastname,email,id_role) VALUES('Loris','pwd','Loris','Zirah','loris.zirah@gmail.com',(SELECT id_role FROM Roles WHERE name = 'Student'));
+
+
+INSERT INTO Countries(name) VALUES('France')
+INSERT INTO Cities(name, id_country) VALUES('Montpellier', (SELECT id_country FROM countries WHERE name = 'France'))
+INSERT INTO Universities(name,address,id_city,id_responsible) VALUES('Polytech Montpellier','Rond Point Donut',(SELECT id_city FROM cities WHERE name = 'Montpellier'), (SELECT id_user FROM users WHERE email = 'loris.zirah@gmail.com'));
