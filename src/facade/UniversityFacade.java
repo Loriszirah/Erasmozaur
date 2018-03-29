@@ -52,8 +52,15 @@ public class UniversityFacade {
      * @return
      */
     public University viewUniversity(int id_university) {
-        // TODO implement here
-        return null;
+        return universityDAO.viewUniversity(id_university);
+    }
+    
+    /**
+     * @param id_university 
+     * @return
+     */
+    public UniversityPresenter viewUniversityPresenter(int id_university) {
+        return universityDAO.viewUniversityPresenter(id_university);
     }
 
     /**
