@@ -26,7 +26,7 @@
                   <MenuItem mnemonicParsing="false" onAction="#applicationsClicked" text="Applications" />
   				  <MenuItem mnemonicParsing="false" onAction="#evaluationsClicked" text="Evaluations" />
                   <MenuItem mnemonicParsing="false" onAction="#reviewsClicked" text="Reviews" />    
-                  <MenuItem mnemonicParsing="false" onAction="#scolarshipsClicked" text="Scolarships" />       
+                  <MenuItem mnemonicParsing="false" onAction="#scholarshipsClicked" text="Scholarships" />       
                   <MenuItem mnemonicParsing="false" onAction="#universitiesClicked" text="Universities" />
                   <SeparatorMenuItem mnemonicParsing="false" />
                   <MenuItem mnemonicParsing="false" onAction="#manageProfileClicked" text="Manage profile" />
@@ -39,12 +39,12 @@
       </MenuBar>
       <TableView fx:id="scolarshipsTableView" layoutX="13.0" layoutY="130.0" prefHeight="246.0" prefWidth="565.0">
         <columns>
-          <TableColumn fx:id="universityColumn" prefWidth="55.0" text="Receiving University" />
+          <TableColumn fx:id="universityColumn" prefWidth="134.0" text="Receiving University" />
           <TableColumn fx:id="durationColumn" prefWidth="64.0" text="Duration" />
-            <TableColumn fx:id="startDateColumn" prefWidth="76.0" text="Start Date" />
-            <TableColumn fx:id="endDateColumn" prefWidth="60.0" text="End Date" />
-             <TableColumn fx:id="domaineColumn" prefWidth="72.0" text="Domaine" />
-            <TableColumn fx:id="buttonColumn" prefWidth="93.0" />
+            <TableColumn fx:id="startDateColumn" prefWidth="88.0" text="Start Date" />
+            <TableColumn fx:id="endDateColumn" prefWidth="76.0" text="End Date" />
+             <TableColumn fx:id="domaineColumn" prefWidth="102.0" text="Domain" />
+            <TableColumn fx:id="buttonColumn" prefWidth="100.0" />
         </columns>
       </TableView>
       <Label fx:id="usernameLabel" layoutX="219.0" layoutY="78.0" text="&lt;&lt;firstname&gt;&gt;+&lt;&lt;lastname&gt;&gt;" />

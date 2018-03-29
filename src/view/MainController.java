@@ -149,7 +149,7 @@ public abstract class MainController {
     		}  
     }
     @FXML 
-    private void scolarshipsClicked(ActionEvent event){ 
+    private void scholarshipsClicked(ActionEvent event){ 
     		try { 
     			setSceneContent("IndexScholarships"); 
     		} catch (IOException e) { 

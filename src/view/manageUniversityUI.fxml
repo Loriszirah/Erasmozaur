@@ -28,7 +28,7 @@
                   <MenuItem mnemonicParsing="false" onAction="#applicationsClicked" text="Applications" />
   				  <MenuItem mnemonicParsing="false" onAction="#evaluationsClicked" text="Evaluations" />
                   <MenuItem mnemonicParsing="false" onAction="#reviewsClicked" text="Reviews" />    
-                  <MenuItem mnemonicParsing="false" onAction="#scolarshipsClicked" text="Scolarships" />       
+                  <MenuItem mnemonicParsing="false" onAction="#scholarshipsClicked" text="Scholarships" />       
                   <MenuItem mnemonicParsing="false" onAction="#universitiesClicked" text="Universities" />
                   <SeparatorMenuItem mnemonicParsing="false" />
                   <MenuItem mnemonicParsing="false" onAction="#manageProfileClicked" text="Manage profile" />
