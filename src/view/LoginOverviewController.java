@@ -52,14 +52,13 @@ public class LoginOverviewController extends MainController {
 			 try {
 				setSceneContent("manageProfileUI");
 			} catch (IOException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			} 
     	}
     	else{
     		System.out.println("Login Failed!");
     		errorMessage.setText("Login Failed! Wrong credentials!");
-		errorMessage.setTextFill(Color.RED);
+    		errorMessage.setTextFill(Color.RED);
     	}
     }
     
@@ -67,11 +66,11 @@ public class LoginOverviewController extends MainController {
     private void register(){
     	System.out.println("A 'Register' action has been called!");
     	MainController.registerUser = true;
-    	 try {  
+    	 try {
     		 setSceneContent("createProfileUI");  
-     } catch (IOException ex) {  
-    	 	LOGGER.log(Level.SEVERE, null, ex);  
-     }  	
+	     } catch (IOException ex) {  
+	    	 	LOGGER.log(Level.SEVERE, null, ex);  
+	     }  	
     }
     
     

@@ -75,7 +75,7 @@ public interface UserDAO {
      * @param address 
      * @return
      */
-    public User createUser(String firstName, String lastName, String role, String password, String email, String username, Date birthDate, String address);
+    public User createUser(String firstName, String lastName, String password, String email, String username, Date birthDate, String address, String role);
     
 
     /**
