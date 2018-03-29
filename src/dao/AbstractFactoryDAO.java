@@ -16,13 +16,13 @@ public abstract class AbstractFactoryDAO {
 	}
 	
     public abstract UserDAO getUserDAO();
-    public abstract ScholarshipDAO ScholarshipDAO();
-    public abstract UniversityDAO UniversityDAO();
-    public abstract ReviewDAO ReviewDAO();
-    public abstract ApplicationDAO ApplicationDAO();
-    public abstract CityDAO CityDAO();
-    public abstract RoleDAO RoleDAO();
-    public abstract EvaluationDAO EvaluationDAO();
-    public abstract DocumentDAO DocumentDAO();
-    public abstract CourseDAO CourseDAO();
+    public abstract ScholarshipDAO getScholarshipDAO();
+    public abstract UniversityDAO getUniversityDAO();
+    public abstract ReviewDAO getReviewDAO();
+    public abstract ApplicationDAO getApplicationDAO();
+    public abstract CityDAO getCityDAO();
+    public abstract RoleDAO getRoleDAO();
+    public abstract EvaluationDAO getEvaluationDAO();
+    public abstract DocumentDAO getDocumentDAO();
+    public abstract CourseDAO getCourseDAO();
 }

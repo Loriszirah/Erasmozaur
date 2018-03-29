@@ -50,7 +50,7 @@ public abstract class MainController {
     
     public static void setSceneContentStartup(Stage stage) throws IOException{  
         Context.getInstance().setCurrentStage(stage);  
-        setSceneContent("LoginOverview");  
+        setSceneContent("LoginOverview");
       }  
       public static Parent setSceneContent(String pageName) throws IOException {  
         Stage currentStage = Context.getInstance().getCurrentStage();  
@@ -80,4 +80,7 @@ public abstract class MainController {
         this.mainApp = mainApp;
     }
 
+    public static UserFacade getUserFacade() {
+    	return MainController.userFacade;
+    }
 }

@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="595.0" prefWidth="697.0" xmlns="http://javafx.com/javafx/9.0.4" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="595.0" prefWidth="697.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.ManageProfileUIController">
    <children>
       <Label layoutX="153.0" layoutY="172.0" text="First Name" />
       <Label layoutX="153.0" layoutY="214.0" text="Last Name" />
@@ -16,7 +16,8 @@
       <Label layoutX="153.0" layoutY="341.0" text="Address" />
       <Label layoutX="154.0" layoutY="383.0" text="University" />
       <Label layoutX="156.0" layoutY="418.0" text="Role" />
-      <Button fx:id="universityButton" layoutX="453.0" layoutY="378.0" mnemonicParsing="false" text="Join" />
+      <Button fx:id="leaveUniversityButton" layoutX="452.0" layoutY="379.0" mnemonicParsing="false" onMouseClicked="#leaveUniversity" text="Leave" visible="false" />
+      <Button fx:id="joinUniversityButton" layoutX="453.0" layoutY="378.0" mnemonicParsing="false" onMouseClicked="#joinUniversity" text="Join" />
       <Label layoutX="283.0" layoutY="92.0" text="My profile">
          <font>
             <Font size="36.0" />

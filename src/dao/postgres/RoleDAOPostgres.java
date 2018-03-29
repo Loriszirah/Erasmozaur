@@ -1,4 +1,9 @@
 package dao.postgres;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.*;
 import dao.RoleDAO;
 import model.*;
@@ -8,8 +13,10 @@ import model.*;
  */
 public class RoleDAOPostgres implements RoleDAO {
     private static RoleDAOPostgres instance = new RoleDAOPostgres();
-	
-	
+    protected String url;
+    protected String userDB;
+    protected String passwdDB;
+    protected Connection conn;
 	
 	public static RoleDAOPostgres getRoleDAOPostgres() {
 		return RoleDAOPostgres.instance;
@@ -18,6 +25,19 @@ public class RoleDAOPostgres implements RoleDAO {
      * Default constructor
      */
     private RoleDAOPostgres() {
+    	this.url = System.getenv("DBurl");
+		this.userDB =System.getenv("DBuser");
+		this.passwdDB = System.getenv("DBpwd");
+		this.openConnection();
+    }
+    
+ // This function connect you to the Database
+    public void openConnection() {
+    	try {
+			this.conn = DriverManager.getConnection(url, userDB, passwdDB);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
     }
 
     /**
@@ -57,8 +77,25 @@ public class RoleDAOPostgres implements RoleDAO {
      * @return
      */
     public ArrayList<Role> getAllRoles() {
-        // TODO implement here
-        return null;
+    	ArrayList<Role> roles = new ArrayList<Role>();
+    	try {
+			if(!this.conn.isValid(1)) {
+				openConnection();
+			}
+		    //Creation of a Statement object
+		    Statement state = conn.createStatement();
+		    // Check if the username already exist
+		    ResultSet exists = state.executeQuery("SELECT name FROM Roles;");
+		    String nameRole;
+		    if(exists.next()) {
+		    	nameRole = exists.getString("name");
+		    	System.out.println("yoyo" + nameRole);
+		    	roles.add(new Role(nameRole));
+		    }
+    	}catch(SQLException e) {
+		      e.printStackTrace();
+		      return null;
+		}
+        return roles;
     }
-
 }

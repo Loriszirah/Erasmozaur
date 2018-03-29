@@ -1,7 +1,7 @@
 package dao;
 import java.util.*;
 
-import dao.postgres.UserDAOPostgres;
+import dao.postgres.*;
 
 /**
  * 
@@ -21,60 +21,60 @@ public class PostgresFactoryDAO extends AbstractFactoryDAO {
 	}
 
     @Override
-    public dao.UserDAO getUserDAO() {
+    public UserDAO getUserDAO() {
 		return UserDAOPostgres.getUserDAOPostgres();
 	}
 
 	@Override
-	public dao.ScholarshipDAO ScholarshipDAO() {
+	public ScholarshipDAO getScholarshipDAO() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public dao.UniversityDAO UniversityDAO() {
+	public UniversityDAO getUniversityDAO() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public dao.ReviewDAO ReviewDAO() {
+	public ReviewDAO getReviewDAO() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public dao.ApplicationDAO ApplicationDAO() {
+	public ApplicationDAO getApplicationDAO() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public dao.CityDAO CityDAO() {
+	public CityDAO getCityDAO() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public dao.RoleDAO RoleDAO() {
+	public RoleDAO getRoleDAO() {
+		// TODO Auto-generated method stub
+		return RoleDAOPostgres.getRoleDAOPostgres();
+	}
+
+	@Override
+	public EvaluationDAO getEvaluationDAO() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public dao.EvaluationDAO EvaluationDAO() {
+	public DocumentDAO getDocumentDAO() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public dao.DocumentDAO DocumentDAO() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public dao.CourseDAO CourseDAO() {
+	public CourseDAO getCourseDAO() {
 		// TODO Auto-generated method stub
 		return null;
 	}

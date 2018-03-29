@@ -1,16 +1,22 @@
 package view;
 
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import main.MainApp;
+import model.Role;
+import model.User;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import facade.RoleFacade;
 import facade.UserFacade;
 
 public class ManageProfileUIController extends MainController{
@@ -31,6 +37,18 @@ public class ManageProfileUIController extends MainController{
 	@FXML
 	TextField addressTextField;
 	
+	@FXML
+	Button leaveUniversityButton;
+	
+	@FXML
+	Button joinUniversityButton;
+	
+	@FXML
+	ChoiceBox roles;
+	
+	protected RoleFacade rf = new RoleFacade();
+	protected ArrayList<Role> rolesAL;
+	
 	/**
      * The constructor.
      * The constructor is called before the initialize() method.
@@ -44,19 +62,20 @@ public class ManageProfileUIController extends MainController{
      */
     @FXML
     private void initialize() {
-    	if(registerUser != null){
-	    	if(registerUser == false){
+    	User currentUser = MainController.getUserFacade().getCurrentUser();
+    	if(currentUser != null){
 	    		// Insert default values of the form
 	    		firstNameTextField.setText(userFacade.getCurrentUser().getFirstName());
 	    		lastNameTextField.setText(userFacade.getCurrentUser().getLastName());
 	    		usernameTextField.setText(userFacade.getCurrentUser().getUsername());
 	    		emailTextField.setText(userFacade.getCurrentUser().getEmail());
 	    		addressTextField.setText(userFacade.getCurrentUser().getAddress());
-	    	}
-	    	else{
-	    		// Nothing to do!
-	    		// The textFields will remain null
-	    	}
+	    }
+    	else{ // Register UI
+    		rolesAL = rf.getAllRoles();
+    		for(Role role : rolesAL) {
+    			roles.getItems().add(role.getName());
+    		}
     	}
     }
     
@@ -73,6 +92,18 @@ public class ManageProfileUIController extends MainController{
     @FXML
     private void  cancelButton() {
 	
+    }
+    
+    @FXML
+    private void joinUniversity() {
+    	leaveUniversityButton.setVisible(true);
+    	joinUniversityButton.setVisible(false);
+    }
+    
+    @FXML
+    private void leaveUniversity() {
+    	leaveUniversityButton.setVisible(false);
+    	joinUniversityButton.setVisible(true);
     }
 
 }

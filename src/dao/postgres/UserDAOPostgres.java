@@ -143,7 +143,7 @@ public class UserDAOPostgres implements UserDAO {
     }
     
     // This function connect you to the Database
-        public void openConnection() {
+    public void openConnection() {
     	try {
 			this.conn = DriverManager.getConnection(url, userDB, passwdDB);
 		} catch (SQLException e) {

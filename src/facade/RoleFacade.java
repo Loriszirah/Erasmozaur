@@ -1,5 +1,8 @@
 package facade;
 import java.util.*;
+
+import dao.AbstractFactoryDAO;
+import dao.RoleDAO;
 import model.*;
 
 /**
@@ -7,6 +10,9 @@ import model.*;
  */
 public class RoleFacade {
 
+	private AbstractFactoryDAO factory = AbstractFactoryDAO.getFactory();
+	private RoleDAO roleDAO = factory.getRoleDAO();
+	
     /**
      * Default constructor
      */
@@ -51,8 +57,7 @@ public class RoleFacade {
      * @return
      */
     public ArrayList<Role> getAllRoles() {
-        // TODO implement here
-        return null;
+        return roleDAO.getAllRoles();
     }
 
 }
