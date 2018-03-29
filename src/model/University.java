@@ -9,14 +9,17 @@ public class University {
     /**
      * Default constructor
      */
-    public University(String name) {
+    public University(int id_university, String name, String address, int id_city) {
+    	this.id_university = id_university;
     	this.name = name;
+    	this.address = address;
+    	this.id_city = id_city;
     }
 
     /**
      * 
      */
-    public int id_university;
+    private int id_university;
 
     /**
      * 
@@ -27,6 +30,11 @@ public class University {
      * 
      */
     private String address;
+    
+    /**
+     * 
+     */
+    private int id_city;
 
 	public int getId_university() {
 		return id_university;

@@ -11,8 +11,9 @@ public interface UniversityDAO {
      * @param name 
      * @param address 
      * @return
+     * @throws Exception 
      */
-    public University createUniversity(String name, String address);
+    public University createUniversity(String name, String address, String city) throws Exception;
 
     /**
      * @param id_university 

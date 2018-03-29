@@ -43,10 +43,40 @@ public class UniversityDAOPostgres implements UniversityDAO {
     /**
      * @param name 
      * @param address 
+     * @param city
      * @return
+     * @throws Exception 
      */
-    public University createUniversity(String name, String address) {
-        // TODO implement here
+    public University createUniversity(String name, String address, String city) throws Exception {
+    	try {
+			if(!this.conn.isValid(1)) {
+				openConnection();
+			}
+		    // Creation of a Statement object
+		    Statement state = conn.createStatement();
+		    
+		    // Select the id of the type_user
+		    ResultSet result = state.executeQuery("SELECT id_city FROM Cities WHERE name = '"+city+"'");
+	    	int id=0;
+		    if(result.next()) {
+		    	id = result.getInt("id_city");
+		    } else {
+		    	throw new Exception("Problem in the selection of a city");
+		    }
+		    //The object ResultSet contains the result of the SQL request
+		    state.executeUpdate("INSERT INTO Universities (name, address, id_city) VALUES('"+name+"','"+address+"','"+id+"')");
+		    
+		    // The object ResultSet contains the result of the SQL request
+		    result = state.executeQuery("SELECT * FROM cities WHERE name='"+name+"'");
+			
+			// Get the user in the database if exists and create the user
+			if(result.next()) {
+				University university = new University(result.getInt("id_university"), result.getString("name"), result.getString("address"), result.getInt("id_city"));
+				return university;
+			}
+    	}catch(SQLException e) {
+		      e.printStackTrace();
+		}
         return null;
     }
 
@@ -77,9 +107,7 @@ public class UniversityDAOPostgres implements UniversityDAO {
      * @return
      */
     public ArrayList<University> getAllUniversities() {
-  System.out.println("1");
     		ArrayList<University> universities = new ArrayList<University>();
-System.out.println("3");
      	try {
 			if(!this.conn.isValid(1)) {
 				openConnection();
@@ -90,13 +118,18 @@ System.out.println("3");
 		    Statement state = conn.createStatement();
 		    // Check if the username already exist
 
-		    ResultSet exists = state.executeQuery("SELECT name FROM Universities;");
+		    ResultSet exists = state.executeQuery("SELECT * FROM Universities;");
 
+		    int id_university;
 		    String nameUniversity;
+		    String addressUniversity;
+		    int id_city;
 		    if(exists.next()) {
+		    	id_university = exists.getInt("id_university");
 		    	nameUniversity = exists.getString("name");
-		    	System.out.println("yoyo" + nameUniversity);
-		    	universities.add(new University(nameUniversity));
+		    	addressUniversity = exists.getString("address");
+		    	id_city = exists.getInt("id_city");
+		    	universities.add(new University(id_university,nameUniversity,addressUniversity,id_city));
 		    }
     	}catch(SQLException e) {
 		      e.printStackTrace();
