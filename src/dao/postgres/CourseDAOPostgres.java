@@ -34,6 +34,10 @@ public class CourseDAOPostgres implements CourseDAO {
 	 * Default constructor
 	 */
 	private CourseDAOPostgres() {
+		this.url = System.getenv("DBurl");
+		this.userDB =System.getenv("DBuser");
+		this.passwdDB = System.getenv("DBpwd");
+		this.openConnection();
 	}
 
 	/**
