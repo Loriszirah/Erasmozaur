@@ -47,7 +47,7 @@ public class HomePageUIController extends MainController {
     @FXML 
     private void universitiesClicked(ActionEvent event){ 
        try { 
-      setSceneContent("ManageUniversities"); 
+      setSceneContent("IndexUniversities"); 
     } catch (IOException e) { 
       e.printStackTrace(); 
     }  

@@ -58,16 +58,16 @@ public class IndexUniversitiesController extends MainController{
      */
     @FXML
     private void initialize() {
-    	universities = (ObservableList<UniversityPresenter>) universityFacade.getAllUniversities();
+    	// universities = (ObservableList<UniversityPresenter>) universityFacade.getAllUniversities();
     	
-    	universityColumn.setCellValueFactory(new PropertyValueFactory<UniversityPresenter, String>("name"));
+   /* 	universityColumn.setCellValueFactory(new PropertyValueFactory<UniversityPresenter, String>("name"));
     	cityColumn.setCellValueFactory(new PropertyValueFactory<UniversityPresenter, String>("city"));
     	countryColumn.setCellValueFactory(new PropertyValueFactory<UniversityPresenter, String>("country"));
     	
     	if(universities.size() > 0){
 	    	joinUniversityTable.setItems(universities);
 	    	joinUniversityTable.getColumns().addAll(universityColumn, cityColumn, countryColumn);
-    	}
+    	}*/
     }
 }
 
