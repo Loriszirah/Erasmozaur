@@ -82,7 +82,7 @@ public class UserDAOPostgres implements UserDAO {
 		return null;
     }
     
-    public User login(String username, String password) throws SQLException {
+    public User login(String username, String password) {
     	User user = null;
 		try {
 			if(!this.conn.isValid(1)) {
