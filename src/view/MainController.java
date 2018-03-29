@@ -60,8 +60,7 @@ public abstract class MainController {
           scene = new Scene(page);  
           currentStage.setScene(scene);  
           currentStage.setTitle("Erasmozaur");  
-          currentStage.setWidth(800);  
-          currentStage.setHeight(600);  
+          
         } else {  
           currentStage.getScene().setRoot(page);  
         }  

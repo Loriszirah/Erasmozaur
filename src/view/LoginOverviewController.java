@@ -50,7 +50,7 @@ public class LoginOverviewController extends MainController {
     	if((!(usernameTextField.getText().equals("")) && !(passwordTextField.getText().equals(""))) && userFacade.login(usernameTextField.getText(), passwordTextField.getText())) {
     		System.out.println("Login Succesful!");
 			 try {
-				setSceneContent("manageProfileUI");
+				setSceneContent("HomePageUI");
 			} catch (IOException e) {
 				e.printStackTrace();
 			} 
