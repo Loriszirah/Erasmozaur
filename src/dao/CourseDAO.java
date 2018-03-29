@@ -12,7 +12,7 @@ public interface CourseDAO {
      * @param specialization 
      * @return
      */
-    public Course createCourse(String name, String specialization);
+    public Course createCourse(String name, String specialization, int id_university);
 
     /**
      * @param id_course

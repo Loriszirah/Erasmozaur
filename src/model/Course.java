@@ -8,14 +8,19 @@ public class Course {
 
     /**
      * Default constructor
+     * @param j 
+     * @param string2 
+     * @param string 
+     * @param i 
      */
-    public Course() {
+    public Course(int id_course, String name, String specialization, int id_university) {
+    	
     }
 
     /**
      * 
      */
-    public int id_course;
+    private int id_course;
 
     /**
      * 
@@ -26,6 +31,11 @@ public class Course {
      * 
      */
     private String specialization;
+    
+    /**
+     * 
+     */
+    private int id_university;
 
 	public int getId_course() {
 		return id_course;
