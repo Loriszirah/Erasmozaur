@@ -1,7 +1,9 @@
 package dao.postgres;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.*;
 import dao.*;
 import model.*;
@@ -46,9 +48,29 @@ public class ScholarshipDAOPostgres implements ScholarshipDAO {
      * @param endDate 
      * @return
      */
-    public Scholarship createScholarship(String description, int duration, Date startDate, Date endDate) {
-        // TODO implement here
-        return null;
+    public Scholarship createScholarship(String description, int duration, Date startDate, Date endDate, String domain, int id_sending_university, int id_receiving_university) {
+    	try {
+			if(!this.conn.isValid(1)) {
+				openConnection();
+			}
+			// Creation of a Statement object
+			Statement state = conn.createStatement();
+
+			//The object ResultSet contains the result of the SQL request
+			state.executeUpdate("INSERT INTO Scholarships (description, duration, startDate, endDate, domain, id_sending_university, id_receiving_university) VALUES('"+description+"','"+duration+"','"+startDate+"','"+endDate+"','"+domain+"','"+id_sending_university+"','"+id_receiving_university+"')");
+
+			// The object ResultSet contains the result of the SQL request
+			ResultSet result = state.executeQuery("SELECT * FROM Scholarships WHERE id_sending_university="+id_sending_university+" AND id_receiving_university = "+id_receiving_university+" AND startdate='"+startDate+"'");
+
+			// Get the user in the database if exists and create the user
+			if(result.next()) {
+				Scholarship scholarship = new Scholarship(result.getInt("id_scholarship"), result.getString("description"), result.getInt("duration"), result.getDate("startdate"), result.getDate("enddate"), result.getString("domain"), result.getInt(id_sending_university), result.getInt(id_receiving_university));
+				return scholarship;
+			}
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}
+		return null;
     }
 
     /**

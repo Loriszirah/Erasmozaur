@@ -14,7 +14,7 @@ public interface ScholarshipDAO {
      * @param endDate 
      * @return
      */
-    public Scholarship createScholarship(String description, int duration, Date startDate, Date endDate);
+    public Scholarship createScholarship(String description, int duration, Date startDate, Date endDate, String domain, int id_sending_university, int id_receiving_university);
 
     /**
      * @param id_scholarship
