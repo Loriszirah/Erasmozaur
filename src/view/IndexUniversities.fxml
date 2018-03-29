@@ -25,9 +25,9 @@
                      <children>
                         <TableView fx:id="universitiesTableViews" layoutX="35.0" layoutY="20.0" prefHeight="200.0" prefWidth="529.0">
                           <columns>
-                            <TableColumn prefWidth="380.0" text="University" />
-                            <TableColumn minWidth="0.0" prefWidth="72.79998779296875" text="Details" />
-                              <TableColumn minWidth="0.0" prefWidth="76.00002441406252" text="Join" />
+                            <TableColumn fx:id="universitiesColumn" prefWidth="380.0" text="University" />
+                            <TableColumn fx:id="detailsColumn" minWidth="0.0" prefWidth="72.79998779296875" text="Details" />
+                              <TableColumn fx:id="joinColumn" minWidth="0.0" prefWidth="76.00002441406252" text="Join" />
                           </columns>
                         </TableView>
                      </children></AnchorPane>
