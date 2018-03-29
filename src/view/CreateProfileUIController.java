@@ -11,6 +11,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
 import main.MainApp;
 import model.Role;
+import model.University;
 import model.User;
 
 import java.io.IOException;
@@ -20,6 +21,7 @@ import java.util.logging.Logger;
 
 
 import facade.RoleFacade;
+import facade.UniversityFacade;
 import facade.UserFacade;
 
 public class CreateProfileUIController extends MainController{
@@ -43,10 +45,13 @@ public class CreateProfileUIController extends MainController{
 	TextField addressTextField;
 	
 	@FXML
-	ChoiceBox roles;
+	ChoiceBox<String> roles;
 	
 	@FXML
-	Text emptyTextField;
+	ChoiceBox<String> universities;
+	
+	@FXML
+	Text errorTextField;
 	
 	@FXML
 	ImageView emailWarning;
@@ -64,7 +69,9 @@ public class CreateProfileUIController extends MainController{
 	ImageView lastNameWarning;
 	
 	protected ArrayList<Role> rolesAL;
-	protected RoleFacade rf = new RoleFacade();
+	protected ArrayList<University> universitiesAL;
+	protected RoleFacade roleFacade = new RoleFacade();
+	protected UniversityFacade universityFacade = new UniversityFacade();
 	
 	/**
      * The constructor.
@@ -81,11 +88,25 @@ public class CreateProfileUIController extends MainController{
     private void initialize() {
     	User currentUser = MainController.getUserFacade().getCurrentUser();
     	if(currentUser == null){
-    		rolesAL = rf.getAllRoles();
+    		// Filling the Choice box of roles
+    		rolesAL = roleFacade.getAllRoles();
     		for(Role role : rolesAL) {
     			roles.getItems().add(role.getName());
     		}
     		roles.setValue(roles.getItems().get(0));
+    		
+    		// Filling the Choice box of universities
+    		universitiesAL = universityFacade.getAllUniversities();
+    		if(!universitiesAL.isEmpty()) {
+	    		for(University university : universitiesAL) {
+	    			universities.getItems().add(university.getName());
+	    		}
+	    		universities.setValue(universities.getItems().get(0));
+    		}
+    		else {
+    			universities.getItems().add("No university");
+    			universities.setDisable(true);
+    		}
     	}
     	else {
     		try {
@@ -136,26 +157,30 @@ public class CreateProfileUIController extends MainController{
     	else {
     		lastNameWarning.setVisible(false);
     	}
-    	
+    	    	    	
     	if(!emptyField) {
-	    	if(userFacade.register(firstNameTextField.getText(), lastNameTextField.getText(), passwordTextField.getText(), emailTextField.getText(), usernameTextField.getText(), null, addressTextField.getText(), roles.getValue().toString())){
-	    		System.out.println("The 'Register' request was succesful!");
-	    		try {
-					setSceneContent("LoginOverview");
-				} catch (IOException e) {
-					e.printStackTrace();
-				}
-	    	} else {
-	    		System.out.println("The 'Register' request failed!");
-	    	}
+    		try{
+    			if(userFacade.register(firstNameTextField.getText(), lastNameTextField.getText(), passwordTextField.getText(), emailTextField.getText(), usernameTextField.getText(), null, addressTextField.getText(), roles.getValue().toString())){
+		    		System.out.println("The 'Register' request was succesful!");
+		    		try {
+						setSceneContent("LoginOverview");
+					} catch (IOException e) {
+						e.printStackTrace();
+					}
+		    	} else {
+		    		System.out.println("The 'Register' request failed!");
+		    	}
+	    	} catch(Exception e){
+	    		errorTextField.setText(e.getMessage());
+			}
     	}
     	else{
-    		emptyTextField.setText("Missing fields");
+    		errorTextField.setText("Missing fields");
     	}
     }
     
     @FXML
-    private void  cancelButton() {
+    private void cancelButton() {
     	try {
 			setSceneContent("LoginOverview");
 		} catch (IOException e) {

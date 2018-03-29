@@ -34,18 +34,49 @@ public class UserFacade {
 	}
 	
 	public boolean register(String firstName, String lastName, String password, String email, String username, Date birthDate,
-			String address, String role) {
+			String address, String role) throws Exception{
+    	
+    	if(checkIfExistsWithEmail(email)) {
+    		if(checkIfExistsWithUsername(username)) {
+    			throw new Exception("Username and email are already taken");
+    		}
+    		else {
+    			throw new Exception("Email is already taken");
+    		}
+    	}
+    	else if(checkIfExistsWithUsername(username)) {
+    		throw new Exception("Username is already taken");
+    	}
+		
 		try{
 			UserFacade.user = this.UserDAO.createUser(firstName, lastName, password, email, username, birthDate, address, role);
 			return true;
 		} catch(Exception e){
+			e.printStackTrace();
 			return false;
-		}
-		
+		}	
 	}
 	
 	public User getCurrentUser(){
 		return UserFacade.user;
+	}
+	
+	/**
+     * Check if a user already exists with this username
+     * @param username 
+     * @return true if a user already exists with this username, false otherwise
+     */
+	private boolean checkIfExistsWithUsername(String username) {
+		return UserDAO.checkIfExistsWithUsername(username);
+	}
+	
+	/**
+     * Check if a user already exists with this email
+     * @param email 
+     * @return true if a user already exists with this email, false otherwise
+     */
+	private boolean checkIfExistsWithEmail(String email) {
+		return UserDAO.checkIfExistsWithEmail(email);
 	}
 
     /**

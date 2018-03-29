@@ -21,6 +21,7 @@ public class RoleDAOPostgres implements RoleDAO {
 	public static RoleDAOPostgres getRoleDAOPostgres() {
 		return RoleDAOPostgres.instance;
 	}
+	
     /**
      * Default constructor
      */
@@ -31,7 +32,9 @@ public class RoleDAOPostgres implements RoleDAO {
 		this.openConnection();
     }
     
- // This function connect you to the Database
+    /**
+     *  This function connect you to the Database
+     */
     public void openConnection() {
     	try {
 			this.conn = DriverManager.getConnection(url, userDB, passwdDB);
@@ -40,42 +43,24 @@ public class RoleDAOPostgres implements RoleDAO {
 		}
     }
 
-    /**
-     * @param name 
-     * @param description 
-     * @return
-     */
     public Role createRole(String name, String description) {
         // TODO implement here
         return null;
     }
 
-    /**
-     * @param id_role 
-     * @return
-     */
     public Role viewRole(int id_role) {
         // TODO implement here
         return null;
     }
 
-    /**
-     * @param id_role
-     */
     public void updateRole(int id_role) {
         // TODO implement here
     }
 
-    /**
-     * @param id_role
-     */
     public void deleteRole(int id_role) {
         // TODO implement here
     }
 
-    /**
-     * @return
-     */
     public ArrayList<Role> getAllRoles() {
     	ArrayList<Role> roles = new ArrayList<Role>();
     	try {
@@ -84,12 +69,11 @@ public class RoleDAOPostgres implements RoleDAO {
 			}
 		    //Creation of a Statement object
 		    Statement state = conn.createStatement();
-		    // Check if the username already exist
+		    
 		    ResultSet exists = state.executeQuery("SELECT name FROM Roles;");
 		    String nameRole;
 		    if(exists.next()) {
 		    	nameRole = exists.getString("name");
-		    	System.out.println("yoyo" + nameRole);
 		    	roles.add(new Role(nameRole));
 		    }
     	}catch(SQLException e) {

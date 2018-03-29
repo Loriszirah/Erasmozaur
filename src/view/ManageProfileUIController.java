@@ -4,6 +4,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
+import javafx.scene.control.MenuItem;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -42,6 +43,8 @@ public class ManageProfileUIController extends MainController{
 	
 	@FXML
 	Button joinUniversityButton;
+	
+	
 	
 	protected RoleFacade rf = new RoleFacade();
 	protected ArrayList<Role> rolesAL;
@@ -108,6 +111,16 @@ public class ManageProfileUIController extends MainController{
     private void leaveUniversity() {
     	leaveUniversityButton.setVisible(false);
     	joinUniversityButton.setVisible(true);
+    }
+    
+    @FXML
+    private void logoutMenu() {
+    		try {
+				setSceneContent("LoginOverview");
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
     }
 
 }

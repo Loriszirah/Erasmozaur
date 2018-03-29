@@ -60,33 +60,31 @@
       </MenuBar>
       <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="595.0" prefWidth="697.0" VBox.vgrow="ALWAYS">
          <children>
-            <Label layoutX="153.0" layoutY="172.0" text="First Name*" />
-            <Label layoutX="153.0" layoutY="214.0" text="Last Name*" />
-            <Button fx:id="cancelButton" layoutX="253.0" layoutY="540.0" mnemonicParsing="false" text="Cancel" />
-            <Label layoutX="154.0" layoutY="255.0" text="Email*" />
-            <Label layoutX="153.0" layoutY="295.0" text="Username*" />
-            <Label layoutX="153.0" layoutY="337.0" text="Password*" />
-            <Label layoutX="153.0" layoutY="375.0" text="Address" />
-            <Label layoutX="154.0" layoutY="417.0" text="University" />
-            <Label layoutX="153.0" layoutY="451.0" text="Role" />
-            <Button fx:id="universityButton" layoutX="453.0" layoutY="409.0" mnemonicParsing="false" text="Join" />
+            <Label layoutX="165.0" layoutY="175.0" text="First Name*" />
+            <Label layoutX="165.0" layoutY="217.0" text="Last Name*" />
+            <Button layoutX="253.0" layoutY="540.0" mnemonicParsing="false" onMouseClicked="#cancelButton" text="Cancel" />
+            <Label layoutX="166.0" layoutY="258.0" text="Email*" />
+            <Label layoutX="165.0" layoutY="298.0" text="Username*" />
+            <Label layoutX="165.0" layoutY="340.0" text="Password*" />
+            <Label layoutX="165.0" layoutY="378.0" text="Address" />
+            <Label layoutX="166.0" layoutY="420.0" text="University" />
+            <Label layoutX="165.0" layoutY="461.0" text="Role" />
             <Button fx:id="validateButton" layoutX="373.0" layoutY="540.0" mnemonicParsing="false" onMouseClicked="#submitForm" text="Validate" />
             <Label layoutX="283.0" layoutY="77.0" text="Register">
                <font>
                   <Font size="36.0" />
                </font>
             </Label>
-            <Text fx:id="emptyTextField" fill="#e22626" layoutX="264.0" layoutY="150.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="167.1999979019165" />
-            <TextField fx:id="lastNameTextField" layoutX="274.0" layoutY="209.0" />
-            <TextField fx:id="firstNameTextField" layoutX="274.0" layoutY="167.0" />
-            <TextField fx:id="emailTextField" layoutX="274.0" layoutY="250.0" />
-            <TextField fx:id="usernameTextField" layoutX="274.0" layoutY="290.0" />
-            <TextField fx:id="addressTextField" layoutX="274.0" layoutY="370.0" />
-            <PasswordField fx:id="passwordTextField" layoutX="274.0" layoutY="332.0" />
-            <Label fx:id="universityLabel" layoutX="274.0" layoutY="417.0" text="Label" />
-            <DatePicker layoutX="276.0" layoutY="489.0" prefHeight="27.0" prefWidth="167.0" />
-            <Label layoutX="157.0" layoutY="494.0" text="Birth date" />
-            <ChoiceBox fx:id="roles" layoutX="273.0" layoutY="447.0" prefWidth="150.0" />
+            <Text fx:id="errorTextField" fill="#e22626" layoutX="165.0" layoutY="143.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="369.59996128082275" />
+            <TextField fx:id="lastNameTextField" layoutX="274.0" layoutY="209.0" prefHeight="26.0" prefWidth="190.0" />
+            <TextField fx:id="firstNameTextField" layoutX="274.0" layoutY="167.0" prefHeight="26.0" prefWidth="190.0" />
+            <TextField fx:id="emailTextField" layoutX="274.0" layoutY="250.0" prefHeight="26.0" prefWidth="190.0" />
+            <TextField fx:id="usernameTextField" layoutX="274.0" layoutY="290.0" prefHeight="26.0" prefWidth="190.0" />
+            <TextField fx:id="addressTextField" layoutX="274.0" layoutY="370.0" prefHeight="26.0" prefWidth="190.0" />
+            <PasswordField fx:id="passwordTextField" layoutX="274.0" layoutY="332.0" prefHeight="26.0" prefWidth="190.0" />
+            <DatePicker layoutX="264.0" layoutY="488.0" prefHeight="27.0" prefWidth="198.0" />
+            <Label layoutX="161.0" layoutY="493.0" text="Birth date" />
+            <ChoiceBox fx:id="roles" layoutX="265.0" layoutY="447.0" prefHeight="28.0" prefWidth="142.0" />
             <ImageView fx:id="firstNameWarning" layoutX="435.0" layoutY="173.0" visible="false">
                <image>
                   <Image url="@../../../../Downloads/warning.png" />
@@ -112,6 +110,7 @@
                   <Image url="@../../../../Downloads/warning.png" />
                </image>
             </ImageView>
+            <ChoiceBox fx:id="universities" layoutX="267.0" layoutY="412.0" prefHeight="28.0" prefWidth="198.0" />
          </children>
       </AnchorPane>
    </children>

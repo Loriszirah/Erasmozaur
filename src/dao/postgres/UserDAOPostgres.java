@@ -30,17 +30,7 @@ public class UserDAOPostgres implements UserDAO {
 		return UserDAOPostgres.instance;
 	}
 	
-    /**
-     * @param firstName 
-     * @param lastName 
-     * @param password 
-     * @param email 
-     * @param username 
-     * @param birthDate 
-     * @param address 
-     * @return
-     */
-    public User createUser(String firstName, String lastName, String password, String email, String username, Date birthDate, String address, String role) {
+    public User createUser(String firstName, String lastName, String password, String email, String username, Date birthDate, String address, String role) throws Exception {
     	try {
 			if(!this.conn.isValid(1)) {
 				openConnection();
@@ -48,12 +38,16 @@ public class UserDAOPostgres implements UserDAO {
 		    // Creation of a Statement object
 		    Statement state = conn.createStatement();
 		    
-		    if(checkIfExistsWithUsername(username)) {
-		    	return null;
+		    if (checkIfExistsWithUsername(username)) {	    
+			    if (checkIfExistsWithEmail(email)){
+			    	throw new Exception("Email and username are already taken");
+			    }
+			    else {
+			    	throw new Exception("Username is already taken");
+			    }
 		    }
-		    
-		    if(checkIfExistsWithEmail(email)) {
-		    	return null;
+		    else if(checkIfExistsWithEmail(email)) {
+		    	throw new Exception("Email is already taken");
 		    }
 		    
 		    // Select the id of the type_user
@@ -61,31 +55,24 @@ public class UserDAOPostgres implements UserDAO {
 	    	int id=0;
 		    if(result.next()) {
 		    	id = result.getInt("id_role");
+		    } else {
+		    	throw new Exception("Problem in the selection of a role");
 		    }
-		    else {
-		    	return null;
-		    }
-		    
-		    // The object ResultSet contains the result of the SQL request
+		    //The object ResultSet contains the result of the SQL request
 		    state.executeUpdate("INSERT INTO Users (username, password, firstname, lastname, email, address, id_role) VALUES('"+username+"','"+password+"','"+firstName+"','"+lastName+"','"+email+"','"+address+"','"+Integer.toString(id)+"')");
 		    
 		    // The object ResultSet contains the result of the SQL request
 		    result = state.executeQuery("SELECT * FROM users WHERE username='"+username+"'");
-		    
-		    // We get the MetaData
-			ResultSetMetaData resultMeta = result.getMetaData();
 			
 			// Get the user in the database if exists and create the user
 			if(result.next()) {
 				User user = new User(result.getInt("id_user"), result.getString("firstName"), result.getString("lastName"), result.getString("password"), result.getString("email"), result.getString("username"), null, result.getString("address"), result.getInt("id_role"));
 				return user;
-			} else {
-				return null;
 			}
     	}catch(SQLException e) {
 		      e.printStackTrace();
-		      return null;
 		}
+		return null;
     }
     
     public User login(String username, String password) {
@@ -99,24 +86,20 @@ public class UserDAOPostgres implements UserDAO {
 		    
 		    // The object ResultSet contains the result of the SQL request
 		    ResultSet result = state.executeQuery("SELECT * FROM users WHERE username='"+username+"' and password='"+password+"'");
-		    
-		    // We get the MetaData
-			ResultSetMetaData resultMeta = result.getMetaData();
 			
 			// Get the user in the database if exists and create the user
 			if(result.next()) {
 				user = new User(result.getInt("id_user"), result.getString("firstname"), result.getString("lastname"), result.getString("password"), result.getString("email"), result.getString("username"), null, result.getString("address"), result.getInt("id_role"));
-			} else {
-				System.out.println("'User' does not exist!");
-				user = null;
 			}
 		}catch(SQLException e) {
-		      return null;
+			e.printStackTrace();
 		}
 		return user;
     }
     
-    // This function connect you to the Database
+    /**
+     *  This function connect you to the Database
+     */
     public void openConnection() {
     	try {
 			this.conn = DriverManager.getConnection(url, userDB, passwdDB);
@@ -125,40 +108,23 @@ public class UserDAOPostgres implements UserDAO {
 		}
     }
 
-    /**
-     * 
-     */
     public void leaveUniversity() {
         // TODO implement here
     }
 
-    /**
-     * @param id_user
-     */
     public void updateUser(int id_user) {
         // TODO implement here
     }
 
-    /**
-     * @param id_user
-     */
     public void deleteUser(int id_user) {
         // TODO implement here
     }
 
-    /**
-     * @param id_user 
-     * @return
-     */
     public User viewUser(int id_user) {
         // TODO implement here
         return null;
     }
    
-    /**
-     * @param username 
-     * @return true if a user already exists with this username, false otherwise
-     */
     public boolean checkIfExistsWithUsername(String username) {
     	try{
     		if(!this.conn.isValid(1)) {
@@ -170,12 +136,7 @@ public class UserDAOPostgres implements UserDAO {
 	    	// Check if the username already exist
 		    ResultSet exists = state.executeQuery("SELECT COUNT(*) as nb FROM Users WHERE username ='"+username+"';");
 		    if(exists.next()) {
-		    	if(exists.getInt("nb")>0) {
-		    		return false;
-		    	}
-		    }
-		    else {
-		    	return true;
+		    	return exists.getInt("nb")>0;
 		    }
     	} catch(SQLException e) {
 		      e.printStackTrace();
@@ -184,10 +145,6 @@ public class UserDAOPostgres implements UserDAO {
     	return false;
     }
     
-   /**
-    * @param email 
-    * @return true if a user already exists with this email, false otherwise
-    */
     public boolean checkIfExistsWithEmail(String email) {
     	try{
     		if(!this.conn.isValid(1)) {
@@ -196,15 +153,9 @@ public class UserDAOPostgres implements UserDAO {
 		    //Creation of a Statement object
 		    Statement state = conn.createStatement();
 		    
-	    	// Check if the email already exist
-		    ResultSet exists = state.executeQuery("SELECT COUNT(*) as nb FROM Users WHERE email ='"+email+"';");
-		    if(exists.next()) {
-		    	if(exists.getInt("nb")>0) {
-		    		return false;
-		    	}
-		    }
-		    else {
-		    	return true;
+		    ResultSet existsEmail = state.executeQuery("SELECT COUNT(*) as nb FROM Users WHERE email ='"+email+"';");
+		    if(existsEmail.next()) {
+		    	return existsEmail.getInt("nb")>0;
 		    }
     	} catch(SQLException e) {
 		      e.printStackTrace();
@@ -212,58 +163,34 @@ public class UserDAOPostgres implements UserDAO {
 		}
     	return false;
     }
-    
-    /**
-     * @param id_university 
-     * @param id_user
-     */
+
     public void joinUniversity(int id_university, int id_user) {
         // TODO implement here
     }
 
-    /**
-     * @return
-     */
+
     public ArrayList<User> getAllUsers() {
         // TODO implement here
         return null;
     }
 
-    /**
-     * @param id_user 
-     * @return
-     */
     public boolean checkIfExists(int id_user) {
         // TODO implement here
         return false;
     }
 
-    /**
-     * @param id_role 
-     * @return
-     */
     public ArrayList<User> getAllUsersByRole(int id_role) {
         // TODO implement here
         return null;
     }
 
-    /**
-     * @param id_university 
-     * @param id_role 
-     * @return
-     */
     public ArrayList<User> getAllUsersByUniversityRole(int id_university, int id_role) {
         // TODO implement here
         return null;
     }
 
-    /**
-     * @param id_university 
-     * @return
-     */
     public ArrayList<User> getAllUsersByUniversity(int id_university) {
         // TODO implement here
         return null;
     }
-
 }
