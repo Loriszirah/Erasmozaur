@@ -34,9 +34,8 @@ public class RoleFacade {
      * @param id_role 
      * @return
      */
-    public Role viewRole(int id_role) {
-        // TODO implement here
-        return null;
+    public Role getRole(int id_role) {
+        return roleDAO.viewRole(id_role);
     }
 
     /**

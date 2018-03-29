@@ -8,15 +8,20 @@ public class Role {
 
     /**
      * Default constructor
+     * @param id_role 
+     * @param name 
+     * @param description
      */
-    public Role(String name) {
+    public Role(int id_role, String name, String description) {
+    	this.id_role = id_role;
     	this.name = name;
+    	this.description = description;
     }
 
     /**
      * 
      */
-    public int id_role;
+    private int id_role;
 
     /**
      * 
