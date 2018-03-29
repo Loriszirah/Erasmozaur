@@ -5,19 +5,18 @@ import java.io.IOException;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import main.ActionButtonTableCell;
-import presenters.ScholarshipPresenter;
-import presenters.ScholarshipPresenter;
-import presenters.UniversityPresenter;
+import model.Scholarship;
 import facade.ScholarshipFacade;
 
 public class indexScolarshipsController extends MainController{
 	@FXML
-	TableView<ScholarshipPresenter> scolarshipsTableView = new TableView<ScholarshipPresenter>();
+	TableView<Scholarship> scolarshipsTableView = new TableView<Scholarship>();
 	
 	@FXML
 	TableColumn universityColumn;
@@ -37,8 +36,13 @@ public class indexScolarshipsController extends MainController{
 	@FXML
 	TableColumn buttonColumn;
 	
+	@FXML
+	Label usernameLabel;
 	
-	protected ObservableList<ScholarshipPresenter> scholarships;
+	@FXML
+	Button logoutButton;
+
+	protected ObservableList<Scholarship> scholarships;
 
 	/**
      * The constructor.
@@ -55,19 +59,18 @@ public class indexScolarshipsController extends MainController{
     private void initialize() {
     	
     
+    	usernameLabel.setText(userFacade.getCurrentUser().getUsername());
     	
+    	scholarships = FXCollections.observableArrayList(ScholarshipFacade.getAllScholarship());
     	
-    	
-    	scholarships = FXCollections.observableArrayList(ScholarshipFacade.getAllScolarshipsPresenter());
-    	
-    	universityColumn.setCellValueFactory(new PropertyValueFactory<ScholarshipPresenter, String>("name"));
-    	durationColumn.setCellValueFactory(new PropertyValueFactory<ScholarshipPresenter, String>("duration"));
-    	startDateColumn.setCellValueFactory(new PropertyValueFactory<ScholarshipPresenter, String>("startDate"));
-    	endDateColumn.setCellValueFactory(new PropertyValueFactory<ScholarshipPresenter, String>("endDate"));
-    	domaineColumn.setCellValueFactory(new PropertyValueFactory<ScholarshipPresenter, String>("country"));
-    	buttonColumn.setCellFactory(ActionButtonTableCell.<ScholarshipPresenter>forTableColumn("Details", (ScholarshipPresenter u) -> {
+    	universityColumn.setCellValueFactory(new PropertyValueFactory<Scholarship, String>("name"));
+    	durationColumn.setCellValueFactory(new PropertyValueFactory<Scholarship, String>("duration"));
+    	startDateColumn.setCellValueFactory(new PropertyValueFactory<Scholarship, String>("startDate"));
+    	endDateColumn.setCellValueFactory(new PropertyValueFactory<Scholarship, String>("endDate"));
+    	domaineColumn.setCellValueFactory(new PropertyValueFactory<Scholarship, String>("country"));
+    	buttonColumn.setCellFactory(ActionButtonTableCell.<Scholarship>forTableColumn("Details", (Scholarship u) -> {
 //    		joinUniversityTable.getItems().remove(u);
-    		entityId = u.getId_scolarship();
+    		entityId = u.getId_scholarship();
     		try {
 				setSceneContent("HomePageUI");
 			} catch (IOException e) {

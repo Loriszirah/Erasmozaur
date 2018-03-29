@@ -59,7 +59,7 @@ public class ScholarshipFacade {
     /**
      * @return
      */
-    public ArrayList<Scholarship> getAllScholarship() {
+    public  ArrayList<Scholarship> getAllScholarship() {
         // TODO implement here
         return null;
     }

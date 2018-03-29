@@ -37,14 +37,14 @@
             </Menu>
          </menus>
       </MenuBar>
-      <TableView fx:id="universityColumn" layoutX="13.0" layoutY="130.0" prefHeight="246.0" prefWidth="565.0">
+      <TableView fx:id="scolarshipsTableView" layoutX="13.0" layoutY="130.0" prefHeight="246.0" prefWidth="565.0">
         <columns>
-          <TableColumn prefWidth="138.0" text="Receiving University" />
-          <TableColumn prefWidth="61.0" text="Duration" />
-            <TableColumn text="Start Date" />
-            <TableColumn prefWidth="72.0" text="End Date" />
+          <TableColumn fx:id="universityColumn" prefWidth="138.0" text="Receiving University" />
+          <TableColumn fx:id="durationColumn" prefWidth="61.0" text="Duration" />
+            <TableColumn fx:id="startDateColumn" text="Start Date" />
+            <TableColumn fx:id="endDateColumn" prefWidth="72.0" text="End Date" />
             <TableColumn text="Domain" />
-            <TableColumn prefWidth="72.0" />
+            <TableColumn fx:id="buttonColumn" prefWidth="133.0" />
         </columns>
       </TableView>
       <Label fx:id="usernameLabel" layoutX="219.0" layoutY="78.0" text="&lt;&lt;firstname&gt;&gt;+&lt;&lt;lastname&gt;&gt;" />

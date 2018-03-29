@@ -80,7 +80,7 @@ public class UniversityFacade {
     }
     
     public ArrayList<City> getAllCities(){
-    	return cityDAO.indexCities();
+    		return cityDAO.indexCities();
     }
 
 }
