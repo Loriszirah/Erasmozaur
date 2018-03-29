@@ -2,6 +2,7 @@ package facade;
 import java.util.*;
 
 import dao.AbstractFactoryDAO;
+import dao.DocumentDAO;
 import dao.ScholarshipDAO;
 import model.*;
 
