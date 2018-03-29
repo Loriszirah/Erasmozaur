@@ -11,12 +11,8 @@ import model.*;
 /**
  * 
  */
-public class RoleDAOPostgres implements RoleDAO {
+public class RoleDAOPostgres extends AbstractDAOPostgres implements RoleDAO {
     private static RoleDAOPostgres instance = new RoleDAOPostgres();
-    protected String url;
-    protected String userDB;
-    protected String passwdDB;
-    protected Connection conn;
 	
 	public static RoleDAOPostgres getRoleDAOPostgres() {
 		return RoleDAOPostgres.instance;
@@ -26,9 +22,7 @@ public class RoleDAOPostgres implements RoleDAO {
      * Default constructor
      */
     private RoleDAOPostgres() {
-    	this.url = System.getenv("DBurl");
-		this.userDB =System.getenv("DBuser");
-		this.passwdDB = System.getenv("DBpwd");
+    	super();
 		this.openConnection();
     }
     

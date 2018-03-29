@@ -9,7 +9,7 @@ import model.Application;
 /**
  * 
  */
-public class ApplicationDAOPostgres implements ApplicationDAO {
+public class ApplicationDAOPostgres extends AbstractDAOPostgres implements ApplicationDAO {
  	private static ApplicationDAOPostgres instance = new ApplicationDAOPostgres();
  	protected String url;
     protected String userDB;
@@ -24,10 +24,8 @@ public class ApplicationDAOPostgres implements ApplicationDAO {
      * Default constructor
      */
     private ApplicationDAOPostgres() {
-    	this.url = System.getenv("DBurl");
-		this.userDB =System.getenv("DBuser");
-		this.passwdDB = System.getenv("DBpwd");
-		this.openConnection();
+    	super();
+    	this.openConnection();
     }
     
     /**

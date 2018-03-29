@@ -12,17 +12,11 @@ import java.sql.Statement;
 /**
  * 
  */
-public class UserDAOPostgres implements UserDAO {
-	protected String url;
-    protected String userDB;
-    protected String passwdDB;
-    protected Connection conn;
+public class UserDAOPostgres extends AbstractDAOPostgres implements UserDAO {
     private static UserDAOPostgres instance = new UserDAOPostgres();
 	
 	private UserDAOPostgres() {
-		this.url = System.getenv("DBurl");
-		this.userDB =System.getenv("DBuser");
-		this.passwdDB = System.getenv("DBpwd");
+		super();
 		this.openConnection();
 	}
 	
@@ -96,18 +90,7 @@ public class UserDAOPostgres implements UserDAO {
 		}
 		return user;
     }
-    
-    /**
-     *  This function connect you to the Database
-     */
-    public void openConnection() {
-    	try {
-			this.conn = DriverManager.getConnection(url, userDB, passwdDB);
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-    }
-
+ 
     public void leaveUniversity() {
         // TODO implement here
     }

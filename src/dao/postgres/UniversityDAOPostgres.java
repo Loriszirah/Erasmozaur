@@ -12,32 +12,18 @@ import dao.*;
 /**
  * 
  */
-public class UniversityDAOPostgres implements UniversityDAO {
-	private static UniversityDAOPostgres instance = new UniversityDAOPostgres();
-	protected String url;
-	protected String userDB;
-	protected String passwdDB;
-	protected Connection conn;
-
-	// This function connect you to the Database
-	public void openConnection() {
-		try {
-			this.conn = DriverManager.getConnection(url, userDB, passwdDB);
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-	}
-
+public class UniversityDAOPostgres extends AbstractDAOPostgres implements UniversityDAO {
+    private static UniversityDAOPostgres instance = new UniversityDAOPostgres();
+	
 	public static UniversityDAOPostgres getUniversityDAOPostgres() {
 		return UniversityDAOPostgres.instance;
 	}
-	/**
-	 * Default constructor
-	 */
-	private UniversityDAOPostgres() {
-		this.url = System.getenv("DBurl");
-		this.userDB =System.getenv("DBuser");
-		this.passwdDB = System.getenv("DBpwd");
+	
+    /**
+     * Default constructor
+     */
+    private UniversityDAOPostgres() {
+    	super();
 		this.openConnection();
 	}
 

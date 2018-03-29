@@ -10,25 +10,19 @@ import java.util.*;
 /**
  * 
  */
-public class CityDAOPostgres implements CityDAO {
+public class CityDAOPostgres extends AbstractDAOPostgres implements CityDAO {
     private static CityDAOPostgres instance = new CityDAOPostgres();
-    protected String url;
-    protected String userDB;
-    protected String passwdDB;
-    protected Connection conn;
-	
-	
+    
 	public static CityDAOPostgres getCityDAOPostgres() {
 		return CityDAOPostgres.instance;
 	}
+	
     /**
      * Default constructor
      */
     private CityDAOPostgres() {
-    	this.url = System.getenv("DBurl");
-		this.userDB =System.getenv("DBuser");
-		this.passwdDB = System.getenv("DBpwd");
-		this.openConnection();
+    	super();
+    	this.openConnection();
     }
     
     /**
@@ -79,7 +73,6 @@ public class CityDAOPostgres implements CityDAO {
      * @return
      */
     public ArrayList<City> indexCities() {
-        // TODO implement here
         return null;
     }
 
