@@ -48,12 +48,12 @@ public class ManageUniversityUIController extends MainController{
     @FXML
     private void initialize() throws IOException {
     	if(entityId != 0){
-//    		university = universityFacade.viewUniversityPresenter(entityId);
+    		university = universityFacade.viewUniversityPresenter(entityId);
     		if(university != null){
 	    		universityNameLabel.setText(university.getName());
 	    		cityLabel.setText(university.getCity());
 	    		countryLabel.setText(university.getCountry());
-//	    		addressLabel.setText(university.getAddress());
+	    		addressLabel.setText(university.getAddress());
     		} else { 
     			setSceneContent("IndexUniversities");
     		}
