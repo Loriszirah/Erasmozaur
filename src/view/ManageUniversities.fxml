@@ -86,13 +86,15 @@
             <Image url="@../../thats_denver_bro.png" />
          </image>
       </ImageView>
-      <MenuBar layoutX="-1.0" prefHeight="29.0" prefWidth="600.0">
+      <MenuBar  prefHeight="29.0" prefWidth="600.0">
          <menus>
             <Menu mnemonicParsing="false" text="Go to">
                <items>
-                  <MenuItem mnemonicParsing="false" onAction="#universitiesClicked" text="Universities" />
                   <MenuItem mnemonicParsing="false" onAction="#applicationsClicked" text="Applications" />
-                  <MenuItem mnemonicParsing="false" onAction="#evaluationsClicked" text="Evaluations" />
+  				  <MenuItem mnemonicParsing="false" onAction="#evaluationsClicked" text="Evaluations" />
+                  <MenuItem mnemonicParsing="false" onAction="#reviewsClicked" text="Reviews" />    
+                  <MenuItem mnemonicParsing="false" onAction="#scolarshipsClicked" text="Scolarships" />       
+                  <MenuItem mnemonicParsing="false" onAction="#universitiesClicked" text="Universities" />
                   <SeparatorMenuItem mnemonicParsing="false" />
                   <MenuItem mnemonicParsing="false" onAction="#manageProfileClicked" text="Manage profile" />
                   <SeparatorMenuItem mnemonicParsing="false" />

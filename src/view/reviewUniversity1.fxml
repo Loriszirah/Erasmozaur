@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/9.0.4" xmlns:fx="http://javafx.com/fxml/1">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/9.0.4" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.reviewUniversityController">
    <children>
       <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS">
          <children>
@@ -30,22 +30,24 @@
                   <Image url="@../../thats_denver_bro.png" />
                </image>
             </ImageView>
-            <MenuBar prefHeight="29.0" prefWidth="600.0">
-               <menus>
-                  <Menu mnemonicParsing="false" text="Go to">
-                     <items>
-                        <MenuItem mnemonicParsing="false" onAction="#universitiesClicked" text="Universities" />
-                        <MenuItem mnemonicParsing="false" onAction="#applicationsClicked" text="Applications" />
-                        <MenuItem mnemonicParsing="false" onAction="#evaluationsClicked" text="Evaluations" />
-                        <SeparatorMenuItem mnemonicParsing="false" />
-                        <MenuItem mnemonicParsing="false" onAction="#manageProfileClicked" text="Manage profile" />
-                        <SeparatorMenuItem mnemonicParsing="false" />
-                        <MenuItem mnemonicParsing="false" onAction="#logoutMenuClicked" text="Logout" />
-                        <MenuItem mnemonicParsing="false" onAction="#QuitAppClicked" text="Quit the app" />
-                     </items>
-                  </Menu>
-               </menus>
-            </MenuBar>
+           <MenuBar  prefHeight="29.0" prefWidth="600.0">
+         <menus>
+            <Menu mnemonicParsing="false" text="Go to">
+               <items>
+                  <MenuItem mnemonicParsing="false" onAction="#applicationsClicked" text="Applications" />
+  				  <MenuItem mnemonicParsing="false" onAction="#evaluationsClicked" text="Evaluations" />
+                  <MenuItem mnemonicParsing="false" onAction="#reviewsClicked" text="Reviews" />    
+                  <MenuItem mnemonicParsing="false" onAction="#scolarshipsClicked" text="Scolarships" />       
+                  <MenuItem mnemonicParsing="false" onAction="#universitiesClicked" text="Universities" />
+                  <SeparatorMenuItem mnemonicParsing="false" />
+                  <MenuItem mnemonicParsing="false" onAction="#manageProfileClicked" text="Manage profile" />
+                  <SeparatorMenuItem mnemonicParsing="false" />
+                  <MenuItem mnemonicParsing="false" onAction="#logoutMenuClicked" text="Logout" />
+                  <MenuItem mnemonicParsing="false" onAction="#QuitAppClicked" text="Quit the app" />
+               </items>
+            </Menu>
+         </menus>
+      </MenuBar>
             <Label fx:id="usernameLabel" layoutX="219.0" layoutY="78.0" text="&lt;&lt;firstname&gt;&gt;+&lt;&lt;lastname&gt;&gt;" />
             <Button fx:id="logoutButton" layoutX="428.0" layoutY="73.0" mnemonicParsing="false" text="Log out" />
          </children>

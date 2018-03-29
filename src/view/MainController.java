@@ -133,10 +133,28 @@ public abstract class MainController {
      } 
     @FXML 
     private void applicationsClicked(ActionEvent event){ 
-       try { 
-      setSceneContent("manageApplicationUser"); 
-    } catch (IOException e) { 
-      e.printStackTrace(); 
-    }  
+    		try { 
+    			setSceneContent("manageApplicationUser"); 
+    		} catch (IOException e) { 
+    			e.printStackTrace(); 
+    		}  
     } 
+    @FXML 
+    private void reviewsClicked(ActionEvent event){ 
+    		try { 
+    			setSceneContent("reviewUniversity1"); 
+    		} catch (IOException e) { 
+    			e.printStackTrace(); 
+    		}  
+    }
+    @FXML 
+    private void scolarshipsClicked(ActionEvent event){ 
+    		try { 
+    			setSceneContent("IndexScholarships"); 
+    		} catch (IOException e) { 
+    			e.printStackTrace(); 
+    		}  
+    }
 }
+
+

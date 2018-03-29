@@ -12,20 +12,22 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/9.0.4" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/9.0.4" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.indexScolarshipsController">
    <children>
       <ImageView fitHeight="106.0" fitWidth="110.0" layoutX="28.0" layoutY="32.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../thats_denver_bro.png" />
          </image>
       </ImageView>
-      <MenuBar prefHeight="29.0" prefWidth="600.0">
+      <MenuBar  prefHeight="29.0" prefWidth="600.0">
          <menus>
             <Menu mnemonicParsing="false" text="Go to">
                <items>
-                  <MenuItem mnemonicParsing="false" onAction="#universitiesClicked" text="Universities" />
                   <MenuItem mnemonicParsing="false" onAction="#applicationsClicked" text="Applications" />
-                  <MenuItem mnemonicParsing="false" onAction="#evaluationsClicked" text="Evaluations" />
+  				  <MenuItem mnemonicParsing="false" onAction="#evaluationsClicked" text="Evaluations" />
+                  <MenuItem mnemonicParsing="false" onAction="#reviewsClicked" text="Reviews" />    
+                  <MenuItem mnemonicParsing="false" onAction="#scolarshipsClicked" text="Scolarships" />       
+                  <MenuItem mnemonicParsing="false" onAction="#universitiesClicked" text="Universities" />
                   <SeparatorMenuItem mnemonicParsing="false" />
                   <MenuItem mnemonicParsing="false" onAction="#manageProfileClicked" text="Manage profile" />
                   <SeparatorMenuItem mnemonicParsing="false" />

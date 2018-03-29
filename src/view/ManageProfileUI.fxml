@@ -38,13 +38,15 @@
       <Label layoutX="108.0" layoutY="387.0" text="Birth date" />
       <Button fx:id="cancelButton" layoutX="190.0" layoutY="435.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="90.0" text="Cancel" />
       <Button fx:id="validateButton" layoutX="337.0" layoutY="435.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="90.0" text="Validate" />
-      <MenuBar layoutX="3.0" prefHeight="29.0" prefWidth="600.0">
+     <MenuBar  prefHeight="29.0" prefWidth="600.0">
          <menus>
             <Menu mnemonicParsing="false" text="Go to">
                <items>
-                  <MenuItem mnemonicParsing="false" onAction="#universitiesClicked" text="Universities" />
                   <MenuItem mnemonicParsing="false" onAction="#applicationsClicked" text="Applications" />
-                  <MenuItem mnemonicParsing="false" onAction="#evaluationsClicked" text="Evaluations" />
+  				  <MenuItem mnemonicParsing="false" onAction="#evaluationsClicked" text="Evaluations" />
+                  <MenuItem mnemonicParsing="false" onAction="#reviewsClicked" text="Reviews" />    
+                  <MenuItem mnemonicParsing="false" onAction="#scolarshipsClicked" text="Scolarships" />       
+                  <MenuItem mnemonicParsing="false" onAction="#universitiesClicked" text="Universities" />
                   <SeparatorMenuItem mnemonicParsing="false" />
                   <MenuItem mnemonicParsing="false" onAction="#manageProfileClicked" text="Manage profile" />
                   <SeparatorMenuItem mnemonicParsing="false" />
