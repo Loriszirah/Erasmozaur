@@ -170,7 +170,7 @@ public class UniversityDAOPostgres extends AbstractDAOPostgres implements Univer
 			String addressUniversity;
 			int id_city;
 			int id_responsible;
-			if(exists.next()) {
+			while(exists.next()) {
 				id_university = exists.getInt("id_university");
 				nameUniversity = exists.getString("name");
 				addressUniversity = exists.getString("address");
@@ -207,7 +207,7 @@ public class UniversityDAOPostgres extends AbstractDAOPostgres implements Univer
 			int id_university;
 			String nameUniversity, address, nameCity, nameCountry;
 			
-			if(exists.next()) {
+			while(exists.next()) {
 				id_university = exists.getInt("id_university");
 				nameUniversity = exists.getString("nameUniversity");
 				address = exists.getString("address");

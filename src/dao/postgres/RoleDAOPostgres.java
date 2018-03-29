@@ -87,7 +87,7 @@ public class RoleDAOPostgres extends AbstractDAOPostgres implements RoleDAO {
 		    ResultSet exists = state.executeQuery("SELECT name FROM Roles;");
 		    String nameRole, description;
 		    int id_role;
-		    if(exists.next()) {
+		    while(exists.next()) {
 		    	id_role = exists.getInt("id_role");
 		    	nameRole = exists.getString("name");
 		    	description = exists.getString("description");

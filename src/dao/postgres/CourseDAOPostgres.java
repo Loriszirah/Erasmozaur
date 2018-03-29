@@ -114,7 +114,7 @@ public class CourseDAOPostgres extends AbstractDAOPostgres implements CourseDAO 
 
 			String name, specialization;
 			int id_course;
-			if(exists.next()) {
+			while(exists.next()) {
 				id_course = exists.getInt("id_course");
 				name = exists.getString("name");
 				specialization = exists.getString("specialization");
