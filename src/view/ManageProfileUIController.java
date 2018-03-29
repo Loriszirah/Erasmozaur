@@ -44,7 +44,9 @@ public class ManageProfileUIController extends MainController{
      */
     @FXML
     private void initialize() {
+    	System.out.println("1");
     	if(registerUser != null){
+    		System.out.println("2");
 	    	if(registerUser == false){
 	    		// Insert default values of the form
 	    		firstNameTextField.setText(userFacade.getCurrentUser().getFirstName());
