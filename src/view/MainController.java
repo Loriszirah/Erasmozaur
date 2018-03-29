@@ -17,6 +17,7 @@ import main.Context;
 import java.io.IOException;
 import java.util.logging.Logger;
 
+import facade.ScholarshipFacade;
 import facade.UniversityFacade;
 import facade.UserFacade;
 
@@ -26,6 +27,7 @@ public abstract class MainController {
 		protected static MainApp mainApp;
 		protected static UserFacade userFacade;
 		protected static UniversityFacade universityFacade;
+		protected static ScholarshipFacade scholarshipFacade;
 		
 	// controller attributes
 		public final Logger LOGGER = Logger.getLogger(this.getClass().getName());  

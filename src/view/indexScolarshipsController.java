@@ -61,7 +61,7 @@ public class indexScolarshipsController extends MainController{
     
     	usernameLabel.setText(userFacade.getCurrentUser().getUsername());
     	
-    	scholarships = FXCollections.observableArrayList(ScholarshipFacade.getAllScholarship());
+    	scholarships = FXCollections.observableArrayList(scholarshipFacade.getAllScholarship());
     	
     	universityColumn.setCellValueFactory(new PropertyValueFactory<Scholarship, String>("name"));
     	durationColumn.setCellValueFactory(new PropertyValueFactory<Scholarship, String>("duration"));
