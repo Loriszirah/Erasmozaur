@@ -1,54 +1,12 @@
-package dao.postgres;
-import java.util.*;
-import dao.*;
-import model.*;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.ResultSetMetaData;
-import java.sql.SQLException;
-import java.sql.Statement;
 
-/**
- * 
- */
-public class UserDAOPostgres implements UserDAO {
-	protected String url;
-    protected String userDB;
-    protected String passwdDB;
-    protected Connection conn;
-    private static UserDAOPostgres instance = new UserDAOPostgres();
-	
-	private UserDAOPostgres() {
-		this.url = System.getenv("DBurl");
-		this.userDB =System.getenv("DBuser");
-		this.passwdDB = System.getenv("DBpwd");
-		this.openConnection();
-	}
-	
-	public static UserDAOPostgres getUserDAOPostgres() {
-		return UserDAOPostgres.instance;
-	}
-	
-<<<<<<< Updated upstream
-    public User createUser(String firstName, String lastName, String password, String email, String username, Date birthDate, String address, String role) throws Exception {
-=======
-    /**
-     * @param firstName 
-     * @param lastName 
-     * @param password 
-     * @param email 
      * @param username 
      * @param birthDate 
      * @param address 
      * @return
      */
+    public User createUser(String firstName, String lastName, String password, String email, String username, Date birthDate, String address, String role) {
     public User createUser(String firstName, String lastName, String password, String email, String username, Date birthDate, String address, 
     		String role) throws Exception {
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
     	try {
 			if(!this.conn.isValid(1)) {
 				openConnection();
@@ -56,19 +14,20 @@ public class UserDAOPostgres implements UserDAO {
 		    // Creation of a Statement object
 		    Statement state = conn.createStatement();
 		    
+		    if(checkIfExistsWithUsername(username)) {
+		    	return null;
 		    if (checkIfExistsWithUsername(username)){
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-		    	throw new Exception("A user is already existing with this username");
+		    	throw new Exception("A user is already existing with this usermail");
 		    }
 		    		    
 =======
 		    	throw new Exception("A user is already existing with this usermail");
 		    }
 		    
->>>>>>> Stashed changes
-=======
-		    	throw new Exception("A user is already existing with this usermail");
+		    if(checkIfExistsWithEmail(email)) {
+		    	return null;
+		    if (checkIfExistsWithEmail(email)){
+		    	throw new Exception("A user is already existing with this email");
 		    }
 		    
 >>>>>>> Stashed changes
