@@ -11,34 +11,19 @@ import model.*;
 /**
  * 
  */
-public class CourseDAOPostgres implements CourseDAO {
-	private static CourseDAOPostgres instance = new CourseDAOPostgres();
-	protected String url;
-	protected String userDB;
-	protected String passwdDB;
-	protected Connection conn;
-
-	// This function connect you to the Database
-	public void openConnection() {
-		try {
-			this.conn = DriverManager.getConnection(url, userDB, passwdDB);
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-	}
-
+public class CourseDAOPostgres extends AbstractDAOPostgres implements CourseDAO {
+    private static CourseDAOPostgres instance = new CourseDAOPostgres();
+	
 	public static CourseDAOPostgres getCourseDAOPostgres() {
 		return CourseDAOPostgres.instance;
 	}
-	/**
-	 * Default constructor
-	 */
-	private CourseDAOPostgres() {
-		this.url = System.getenv("DBurl");
-		this.userDB =System.getenv("DBuser");
-		this.passwdDB = System.getenv("DBpwd");
-		this.openConnection();
-	}
+    /**
+     * Default constructor
+     */
+    private CourseDAOPostgres() {
+    	super();
+    	openConnection();
+    }
 
 	/**
 	 * @param name 

@@ -9,13 +9,12 @@ import model.*;
 /**
  * 
  */
-public class CountryDAOPostgres implements CountryDAO {
+public class CountryDAOPostgres extends AbstractDAOPostgres implements CountryDAO {
     private static CountryDAOPostgres instance = new CountryDAOPostgres();
     protected String url;
     protected String userDB;
     protected String passwdDB;
     protected Connection conn;
-	
 	
 	public static CountryDAOPostgres getCountryDAOPostgres() {
 		return CountryDAOPostgres.instance;
@@ -24,10 +23,8 @@ public class CountryDAOPostgres implements CountryDAO {
      * Default constructor
      */
     private CountryDAOPostgres() {
-    	this.url = System.getenv("DBurl");
-		this.userDB =System.getenv("DBuser");
-		this.passwdDB = System.getenv("DBpwd");
-		this.openConnection();
+    	super();
+    	this.openConnection();
     }
     
     /**

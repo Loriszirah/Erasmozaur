@@ -1,28 +1,21 @@
 package view;
 
 import javafx.fxml.FXML;
-import javafx.scene.Node;
 import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.Label;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
-import main.MainApp;
 import model.Role;
 import model.University;
 import model.User;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+
 
 
 import facade.RoleFacade;
 import facade.UniversityFacade;
-import facade.UserFacade;
 
 public class CreateProfileUIController extends MainController{
 	
@@ -51,7 +44,7 @@ public class CreateProfileUIController extends MainController{
 	ChoiceBox<String> universities;
 	
 	@FXML
-	Text errorTextField;
+	Text errorText;
 	
 	@FXML
 	ImageView emailWarning;
@@ -117,6 +110,9 @@ public class CreateProfileUIController extends MainController{
     	}
     }
     
+    /**
+     * Check if the required fields are empty and try to register. If the register succedeed, it's redirect to the login view
+     */
     @FXML
     private void submitForm() {
     	boolean emptyField = false;
@@ -171,14 +167,17 @@ public class CreateProfileUIController extends MainController{
 		    		System.out.println("The 'Register' request failed!");
 		    	}
 	    	} catch(Exception e){
-	    		errorTextField.setText(e.getMessage());
+	    		errorText.setText(e.getMessage());
 			}
     	}
     	else{
-    		errorTextField.setText("Missing fields");
+    		errorText.setText("Missing fields");
     	}
     }
     
+    /**
+     * Cancel the register phase and redirect to the login view
+     */
     @FXML
     private void cancelButton() {
     	try {

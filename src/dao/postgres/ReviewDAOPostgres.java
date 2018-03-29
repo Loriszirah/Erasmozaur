@@ -9,7 +9,7 @@ import model.Review;
 /**
  * 
  */
-public class ReviewDAOPostgres implements ReviewDAO {
+public class ReviewDAOPostgres extends AbstractDAOPostgres implements ReviewDAO {
  
  	private static ReviewDAOPostgres instance = new ReviewDAOPostgres();
  	protected String url;
@@ -24,10 +24,8 @@ public class ReviewDAOPostgres implements ReviewDAO {
      * Default constructor
      */
     private ReviewDAOPostgres() {
-    	this.url = System.getenv("DBurl");
-		this.userDB =System.getenv("DBuser");
-		this.passwdDB = System.getenv("DBpwd");
-		this.openConnection();
+    	super();
+    	this.openConnection();
     }
     
     /**

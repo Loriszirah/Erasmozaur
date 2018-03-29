@@ -11,22 +11,8 @@ import model.*;
 /**
  * 
  */
-public class ScholarshipDAOPostgres implements ScholarshipDAO {
+public class ScholarshipDAOPostgres extends AbstractDAOPostgres implements ScholarshipDAO {
     private static ScholarshipDAOPostgres instance = new ScholarshipDAOPostgres();
-	
-	protected String url;
-	protected String userDB;
-	protected String passwdDB;
-	protected Connection conn;
-
-	// This function connect you to the Database
-	public void openConnection() {
-		try {
-			this.conn = DriverManager.getConnection(url, userDB, passwdDB);
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-	}
 	
 	public static ScholarshipDAOPostgres getScholarshipDAOPostgres() {
 		return ScholarshipDAOPostgres.instance;
@@ -35,10 +21,8 @@ public class ScholarshipDAOPostgres implements ScholarshipDAO {
      * Default constructor
      */
     private ScholarshipDAOPostgres() {
-    	this.url = System.getenv("DBurl");
-		this.userDB =System.getenv("DBuser");
-		this.passwdDB = System.getenv("DBpwd");
-		this.openConnection();
+    	super();
+    	this.openConnection();
     }
 
     /**
