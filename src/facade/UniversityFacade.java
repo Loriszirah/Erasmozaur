@@ -3,6 +3,7 @@ import java.util.*;
 
 import dao.AbstractFactoryDAO;
 import dao.CityDAO;
+import dao.CountryDAO;
 import dao.RoleDAO;
 import dao.UniversityDAO;
 import model.*;
@@ -15,6 +16,7 @@ public class UniversityFacade {
 	private AbstractFactoryDAO factory = AbstractFactoryDAO.getFactory();
 	private UniversityDAO universityDAO = factory.getUniversityDAO();
     private CityDAO cityDAO = factory.getCityDAO();
+    private CountryDAO countryDAO = factory.getCountryDAO();
 	
 	/**
      * Default constructor

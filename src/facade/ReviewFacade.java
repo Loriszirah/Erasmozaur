@@ -1,12 +1,17 @@
 package facade;
 import java.util.*;
+
+import dao.AbstractFactoryDAO;
+import dao.ReviewDAO;
+import dao.ScholarshipDAO;
 import model.*;
 
 /**
  * 
  */
 public class ReviewFacade {
-
+	private AbstractFactoryDAO factory = AbstractFactoryDAO.getFactory();
+	private ReviewDAO reviewDAO = factory.getReviewDAO();
     /**
      * Default constructor
      */

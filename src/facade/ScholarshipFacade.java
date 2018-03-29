@@ -1,11 +1,18 @@
 package facade;
 import java.util.*;
+
+import dao.AbstractFactoryDAO;
+import dao.CityDAO;
+import dao.ScholarshipDAO;
+import dao.UniversityDAO;
 import model.*;
 
 /**
  * 
  */
 public class ScholarshipFacade {
+	private AbstractFactoryDAO factory = AbstractFactoryDAO.getFactory();
+	private ScholarshipDAO scholarshipDAO = factory.getScholarshipDAO();
 
     /**
      * Default constructor
@@ -55,6 +62,13 @@ public class ScholarshipFacade {
     public ArrayList<Scholarship> getAllScholarship() {
         // TODO implement here
         return null;
+    }
+    
+    /**
+     * @return
+     */
+    public ArrayList<Scholarship> getAllScholarshipByUniversities(int id_university) {
+        return scholarshipDAO.
     }
 
 }

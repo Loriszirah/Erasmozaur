@@ -1,5 +1,8 @@
 package facade;
 import java.util.*;
+
+import dao.AbstractFactoryDAO;
+import dao.ScholarshipDAO;
 import model.*;
 
 /**
@@ -7,6 +10,8 @@ import model.*;
  */
 public class EvaluationFacade {
 
+	private AbstractFactoryDAO factory = AbstractFactoryDAO.getFactory();
+	private EvaluationDAO evaluationDAO = factory.getEvaluationDAO();
     /**
      * Default constructor
      */

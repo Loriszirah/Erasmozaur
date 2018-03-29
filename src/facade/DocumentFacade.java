@@ -1,11 +1,17 @@
 package facade;
 import java.util.*;
+
+import dao.AbstractFactoryDAO;
+import dao.ScholarshipDAO;
 import model.*;
 
 /**
  * 
  */
 public class DocumentFacade {
+	
+	private AbstractFactoryDAO factory = AbstractFactoryDAO.getFactory();
+	private DocumentDAO documentDAO = factory.getDocumentDAO();
 
     /**
      * Default constructor
