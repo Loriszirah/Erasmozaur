@@ -11,10 +11,6 @@ import model.*;
  */
 public class CountryDAOPostgres extends AbstractDAOPostgres implements CountryDAO {
     private static CountryDAOPostgres instance = new CountryDAOPostgres();
-    protected String url;
-    protected String userDB;
-    protected String passwdDB;
-    protected Connection conn;
 	
 	public static CountryDAOPostgres getCountryDAOPostgres() {
 		return CountryDAOPostgres.instance;

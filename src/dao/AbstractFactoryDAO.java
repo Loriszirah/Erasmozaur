@@ -21,6 +21,7 @@ public abstract class AbstractFactoryDAO {
     public abstract ReviewDAO getReviewDAO();
     public abstract ApplicationDAO getApplicationDAO();
     public abstract CityDAO getCityDAO();
+    public abstract CountryDAO getCountryDAO();
     public abstract RoleDAO getRoleDAO();
     public abstract EvaluationDAO getEvaluationDAO();
     public abstract DocumentDAO getDocumentDAO();

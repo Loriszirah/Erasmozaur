@@ -27,55 +27,51 @@ public class PostgresFactoryDAO extends AbstractFactoryDAO {
 
 	@Override
 	public ScholarshipDAO getScholarshipDAO() {
-		// TODO Auto-generated method stub
-		return null;
+		return ScholarshipDAOPostgres.getScholarshipDAOPostgres();
 	}
 
 	@Override
 	public UniversityDAO getUniversityDAO() {
-		// TODO Auto-generated method stub
 		return UniversityDAOPostgres.getUniversityDAOPostgres();
 	}
 
 	@Override
 	public ReviewDAO getReviewDAO() {
-		// TODO Auto-generated method stub
-		return null;
+		return ReviewDAOPostgres.getReviewDAOPostgres();
 	}
 
 	@Override
 	public ApplicationDAO getApplicationDAO() {
-		// TODO Auto-generated method stub
-		return null;
+		return ApplicationDAOPostgres.getApplicationDAOPostgres();
 	}
 
 	@Override
 	public CityDAO getCityDAO() {
-		// TODO Auto-generated method stub
-		return null;
+		return CityDAOPostgres.getCityDAOPostgres();
+	}
+	
+	@Override
+	public CountryDAO getCountryDAO() {
+		return CountryDAOPostgres.getCountryDAOPostgres();
 	}
 
 	@Override
 	public RoleDAO getRoleDAO() {
-		// TODO Auto-generated method stub
 		return RoleDAOPostgres.getRoleDAOPostgres();
 	}
 
 	@Override
 	public EvaluationDAO getEvaluationDAO() {
-		// TODO Auto-generated method stub
-		return null;
+		return EvaluationDAOPostgres.getEvaluationDAOPostgres();
 	}
 
 	@Override
 	public DocumentDAO getDocumentDAO() {
-		// TODO Auto-generated method stub
-		return null;
+		return DocumentDAOPostgres.getDocumentDAOPostgres();
 	}
 
 	@Override
 	public CourseDAO getCourseDAO() {
-		// TODO Auto-generated method stub
-		return null;
+		return CourseDAOPostgres.getCourseDAOPostgres();
 	}
 }
