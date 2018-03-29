@@ -86,8 +86,31 @@ public class UniversityDAOPostgres implements UniversityDAO {
 	 * @return
 	 */
 	public University viewUniversity(int id_university) {
-		// TODO implement here
-		return null;
+		University university = null;
+		try {
+			if(!this.conn.isValid(1)) {
+				openConnection();
+			}
+			//Creation of a Statement object
+			Statement state = conn.createStatement();
+			// Check if the username already exist
+
+			ResultSet exists = state.executeQuery("SELECT * FROM Universities WHERE id_university = "+id_university+";");
+
+			String nameUniversity;
+			String addressUniversity;
+			int id_city;
+			if(exists.next()) {
+				nameUniversity = exists.getString("name");
+				addressUniversity = exists.getString("address");
+				id_city = exists.getInt("id_city");
+				university = new University(id_university,nameUniversity,addressUniversity,id_city);
+			}
+		}catch(SQLException e) {
+			e.printStackTrace();
+			return null;
+		}
+		return university;
 	}
 
 	/**
