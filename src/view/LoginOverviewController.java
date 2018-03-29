@@ -52,7 +52,7 @@ public class LoginOverviewController extends MainController {
     		username = userFacade.getCurrentUser().getUsername();
 //    		roleType = userFacade.getRoleType();
 			 try {
-				setSceneContent("HomePageUI");
+				setSceneContent("CreateUniversityOverview");
 			} catch (IOException e) {
 				e.printStackTrace();
 			} 

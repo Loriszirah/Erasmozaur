@@ -1,10 +1,13 @@
 package dao.postgres;
 import dao.*;
 import model.City;
+import model.Role;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.*;
 
 /**
@@ -73,7 +76,25 @@ public class CityDAOPostgres extends AbstractDAOPostgres implements CityDAO {
      * @return
      */
     public ArrayList<City> indexCities() {
-        return null;
+    	ArrayList<City> cities = new ArrayList<City>();
+    	try {
+			if(!this.conn.isValid(1)) {
+				openConnection();
+			}
+		    //Creation of a Statement object
+		    Statement state = conn.createStatement();
+		    
+		    ResultSet exists = state.executeQuery("SELECT name FROM Cities;");
+		    String nameCity;
+		    if(exists.next()) {
+		    	nameCity = exists.getString("name");
+		    	cities.add(new City(nameCity));
+		    }
+    	}catch(SQLException e) {
+		      e.printStackTrace();
+		      return null;
+		}
+        return cities;
     }
 
 }

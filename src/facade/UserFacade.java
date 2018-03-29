@@ -2,7 +2,6 @@ package facade;
 import java.util.*;
 import model.*;
 import dao.*;
-import javafx.fxml.FXML;
 /**
  * 
  */
@@ -77,6 +76,10 @@ public class UserFacade {
      */
 	private boolean checkIfExistsWithEmail(String email) {
 		return UserDAO.checkIfExistsWithEmail(email);
+	}
+	
+	public boolean isResponsibleOfUniversity(int id) {
+		return UserDAO.isResponsibleOfUniversity(id);
 	}
 
     /**

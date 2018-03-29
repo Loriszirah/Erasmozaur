@@ -1,5 +1,6 @@
 package view;
 import java.io.IOException;
+import java.util.ArrayList;
 
 import facade.UniversityFacade;
 import javafx.fxml.FXML;
@@ -7,8 +8,7 @@ import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
-import model.Role;
-import model.University;
+import model.City;
 import model.User;
 
 public class CreateUniversityUIController extends MainController {
@@ -20,15 +20,45 @@ public class CreateUniversityUIController extends MainController {
 	TextField addressTextField;
 	
 	@FXML
-	ChoiceBox citiesChoiceBox;
+	ChoiceBox<String> citiesChoiceBox;
 	
 	@FXML
 	ImageView nameWarning;
-	
+
 	@FXML
 	Text errorText;
 	
 	protected UniversityFacade universityFacade = new UniversityFacade();
+	protected ArrayList<City> citiesAL;
+	protected User currentUser = MainController.getUserFacade().getCurrentUser();
+	
+	/**
+     * Initializes the controller class. This method is automatically called
+     * after the fxml file has been loaded.
+     */
+    @FXML
+    private void initialize() {
+    	if(currentUser == null){
+    		try {
+				setSceneContent("LoginOverview");
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+    	}
+    	else {
+    		citiesAL = universityFacade.getAllCities();
+    		if(!citiesAL.isEmpty()) {
+	    		for(City city : citiesAL) {
+	    			citiesChoiceBox.getItems().add(city.getName());
+	    		}
+	    		citiesChoiceBox.setValue(citiesChoiceBox.getItems().get(0));
+    		}
+    		else {
+    			citiesChoiceBox.getItems().add("No university");
+    			citiesChoiceBox.setDisable(true);
+    		}
+    	}
+    }
 	
 	@FXML
 	public void createUniversityButton() {
@@ -38,37 +68,18 @@ public class CreateUniversityUIController extends MainController {
     	}
 		else {
 			try{
-    			if(universityFacade.createUniversity(firstNameTextField.getText(), lastNameTextField.getText(), passwordTextField.getText(), emailTextField.getText(), usernameTextField.getText(), null, addressTextField.getText(), roles.getValue().toString())){
-		    		System.out.println("The 'Register' request was succesful!");
-		    		try {
-						setSceneContent("LoginOverview");
-					} catch (IOException e) {
-						e.printStackTrace();
-					}
-		    	} else {
-		    		System.out.println("The 'Register' request failed!");
-		    	}
+    			universityFacade.createUniversity(nameTextField.getText(), addressTextField.getText(), citiesChoiceBox.getValue().toString(), currentUser.getId());
+	    		System.out.println("The university has been created");
+	    		try {
+					setSceneContent("IndexUniversities");
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
 	    	} catch(Exception e){
 	    		errorText.setText(e.getMessage());
 			}
 		}
 	}
-	
-	/**
-     * Initializes the controller class. This method is automatically called
-     * after the fxml file has been loaded.
-     */
-    @FXML
-    private void initialize() {
-    	User currentUser = MainController.getUserFacade().getCurrentUser();
-    	if(currentUser == null){
-    		try {
-				setSceneContent("LoginOverview");
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-    	}
-    }
 	
 	@FXML
 	public void cancelCreateUniversityButton() {

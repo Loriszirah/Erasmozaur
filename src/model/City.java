@@ -9,7 +9,8 @@ public class City {
     /**
      * Default constructor
      */
-    public City() {
+    public City(String name) {
+    	this.name = name;
     }
 
     /**

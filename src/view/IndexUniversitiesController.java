@@ -43,10 +43,12 @@ public class IndexUniversitiesController extends MainController{
 	@FXML
 	Label usernameLabel;
 	
-	
+	@FXML
+	Button createUniversityButton;
 	
 	protected ObservableList<UniversityPresenter> universities;
-
+	protected User currentUser = MainController.getUserFacade().getCurrentUser();
+	
 	/**
      * The constructor.
      * The constructor is called before the initialize() method.
@@ -60,7 +62,10 @@ public class IndexUniversitiesController extends MainController{
      */
     @FXML
     private void initialize() {
-    	usernameLabel.setText(userFacade.getCurrentUser().getUsername());
+    	if(MainController.getUserFacade().isResponsibleOfUniversity(currentUser.getId())) {
+			createUniversityButton.setVisible(false);
+    	}
+    	usernameLabel.setText(currentUser.getUsername());
     	universities = FXCollections.observableArrayList(universityFacade.getAllUniversitiesPresenter());
     	
     	universityColumn.setCellValueFactory(new PropertyValueFactory<UniversityPresenter, String>("name"));
@@ -68,9 +73,11 @@ public class IndexUniversitiesController extends MainController{
     	countryColumn.setCellValueFactory(new PropertyValueFactory<UniversityPresenter, String>("country"));
     	actionColumn.setCellFactory(ActionButtonTableCell.<UniversityPresenter>forTableColumn("Details", (UniversityPresenter u) -> {
 //    		joinUniversityTable.getItems().remove(u);
-    		entityId = u.getId_university();
+    		System.out.println(u.getName()+" - "+u.getId_university());
+    		MainController.entityId = u.getId_university();
+    		System.out.println("entityId(1) - "+MainController.entityId);
     		try {
-				setSceneContent("HomePageUI");
+				setSceneContent("manageUniversityUI");
 			} catch (IOException e) {
 				e.printStackTrace();
 			}

@@ -34,19 +34,14 @@ public abstract class MainController {
 		protected static Boolean registerUser = false;
 		
 	// global utility variables
-		protected static String username;
-		protected static String roleType;
-		protected static int entityId;
+		protected static String username = "";
+		protected static String roleType = "";
+		protected static int entityId = 0;
 		
 		
 	public MainController(){
-		username = "";
-		roleType = "";
-		entityId = 0;
-		
 		userFacade = new UserFacade();
 		universityFacade = new UniversityFacade();
-		
 	}
 	
 	/**
