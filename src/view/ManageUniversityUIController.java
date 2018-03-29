@@ -6,6 +6,8 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
+import javafx.scene.text.Text;
+import model.Course;
 import presenters.UniversityPresenter;
 
 public class ManageUniversityUIController extends MainController{
@@ -14,22 +16,22 @@ public class ManageUniversityUIController extends MainController{
 	Label universityNameLabel;
 	
 	@FXML
-	Label addressLabel;
+	Text addressLabel;
 	
 	@FXML
-	Label responsibleLabel;
+	Text responsibleLabel;
 	
 	@FXML
-	Label cityLabel;
+	Text cityLabel;
 	
 	@FXML 
-	Label countryLabel;
+	Text countryLabel;
 	
 	@FXML
 	TextField coursesTextField;
 	
 	@FXML
-	ListView coursesListView;
+	ListView<Course> coursesListView;
 	
 	protected UniversityPresenter university;
 	
@@ -47,13 +49,16 @@ public class ManageUniversityUIController extends MainController{
      */
     @FXML
     private void initialize() throws IOException {
+    	System.out.println("entityId(2) - "+MainController.entityId);
     	if(entityId != 0){
+    		System.out.println("entityId(3) - "+MainController.entityId);
     		university = universityFacade.viewUniversityPresenter(entityId);
+    		System.out.println(university.getName());
     		if(university != null){
-	    		universityNameLabel.setText(university.getName());
-	    		cityLabel.setText(university.getCity());
-	    		countryLabel.setText(university.getCountry());
-	    		addressLabel.setText(university.getAddress());
+//	    		universityNameLabel.setText(university.getName());
+//	    		cityLabel.setText(university.getCity());
+//	    		countryLabel.setText(university.getCountry());
+//	    		addressLabel.setText(university.getAddress());
     		} else { 
     			setSceneContent("IndexUniversities");
     		}

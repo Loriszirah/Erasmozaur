@@ -73,9 +73,11 @@ public class IndexUniversitiesController extends MainController{
     	countryColumn.setCellValueFactory(new PropertyValueFactory<UniversityPresenter, String>("country"));
     	actionColumn.setCellFactory(ActionButtonTableCell.<UniversityPresenter>forTableColumn("Details", (UniversityPresenter u) -> {
 //    		joinUniversityTable.getItems().remove(u);
-    		entityId = u.getId_university();
+    		System.out.println(u.getName()+" - "+u.getId_university());
+    		MainController.entityId = u.getId_university();
+    		System.out.println("entityId(1) - "+MainController.entityId);
     		try {
-				setSceneContent("HomePageUI");
+				setSceneContent("manageUniversityUI");
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
