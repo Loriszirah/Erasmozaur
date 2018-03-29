@@ -13,6 +13,7 @@ public class CourseFacade {
 
 	private AbstractFactoryDAO factory = AbstractFactoryDAO.getFactory();
 	private CourseDAO courseDAO = factory.getCourseDAO();
+	
     /**
      * Default constructor
      */
@@ -21,9 +22,10 @@ public class CourseFacade {
 
 
     /**
+     * Create a course
      * @param name 
      * @param specialization 
-     * @return
+     * @return the course with the specified arguments
      */
     public Course createCourse(String name, String specialization) {
         // TODO implement here
@@ -38,6 +40,7 @@ public class CourseFacade {
     }
 
     /**
+     * Delete a course
      * @param id_course
      */
     public void deleteCourse(int id_course) {
@@ -46,7 +49,7 @@ public class CourseFacade {
 
     /**
      * @param id_course 
-     * @return
+     * @return the course corresponding to the given id
      */
     public Course viewCourse(int id_course) {
         // TODO implement here
@@ -54,7 +57,7 @@ public class CourseFacade {
     }
 
     /**
-     * @return
+     * @return an array list of all the courses
      */
     public ArrayList<Course> getAllCourses() {
         // TODO implement here
@@ -63,7 +66,7 @@ public class CourseFacade {
 
     /**
      * @param id_university 
-     * @return
+     * @return an array list of all the courses of the given university
      */
     public ArrayList<Course> getAllCoursesByUniversity(int id_university) {
         // TODO implement here
@@ -72,7 +75,7 @@ public class CourseFacade {
 
     /**
      * @param id_scholarship 
-     * @return
+     * @return an array list of all the courses of the given scholarship
      */
     public ArrayList<Course> getAllCoursesByScolarship(int id_scholarship) {
         // TODO implement here
@@ -81,11 +84,10 @@ public class CourseFacade {
 
     /**
      * @param id_agreement 
-     * @return
+     * @return an array list of all the courses of the given agreement
      */
     public ArrayList<Course> getAllCoursesByAgreement(int id_agreement) {
         // TODO implement here
         return null;
     }
-
 }

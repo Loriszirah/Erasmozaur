@@ -34,7 +34,7 @@ public class ScholarshipDAOPostgres extends AbstractDAOPostgres implements Schol
      * @param endDate 
      * @return
      */
-    public Scholarship createScholarship(String description, int duration, Date startDate, Date endDate, String domain, int id_sending_university, int id_receiving_university) {
+    public Scholarship createScholarship(String description, int duration, Date startDate, Date endDate, String domain, int id_receiving_university) {
     	try {
 			if(!this.conn.isValid(1)) {
 				openConnection();
@@ -43,14 +43,14 @@ public class ScholarshipDAOPostgres extends AbstractDAOPostgres implements Schol
 			Statement state = conn.createStatement();
 
 			//The object ResultSet contains the result of the SQL request
-			state.executeUpdate("INSERT INTO Scholarships (description, duration, startDate, endDate, domain, id_sending_university, id_receiving_university) VALUES('"+description+"','"+duration+"','"+startDate+"','"+endDate+"','"+domain+"','"+id_sending_university+"','"+id_receiving_university+"')");
+			state.executeUpdate("INSERT INTO Scholarships (description, duration, startDate, endDate, domain, id_receiving_university) VALUES('"+description+"','"+duration+"','"+startDate+"','"+endDate+"','"+domain+"','"+id_receiving_university+"')");
 
 			// The object ResultSet contains the result of the SQL request
-			ResultSet result = state.executeQuery("SELECT * FROM Scholarships WHERE id_sending_university="+id_sending_university+" AND id_receiving_university = "+id_receiving_university+" AND startdate='"+startDate+"'");
+			ResultSet result = state.executeQuery("SELECT * FROM Scholarships WHERE id_receiving_university = "+id_receiving_university+" AND startdate='"+startDate+"'");
 
 			// Get the user in the database if exists and create the user
 			if(result.next()) {
-				Scholarship scholarship = new Scholarship(result.getInt("id_scholarship"), result.getString("description"), result.getInt("duration"), result.getDate("startdate"), result.getDate("enddate"), result.getString("domain"), result.getInt(id_sending_university), result.getInt(id_receiving_university));
+				Scholarship scholarship = new Scholarship(result.getInt("id_scholarship"), result.getString("description"), result.getInt("duration"), result.getDate("startdate"), result.getDate("enddate"), result.getString("domain"), result.getInt(id_receiving_university));
 				return scholarship;
 			}
 		}catch(SQLException e) {
@@ -98,7 +98,7 @@ public class ScholarshipDAOPostgres extends AbstractDAOPostgres implements Schol
 			ResultSet exists = state.executeQuery("SELECT * FROM Scholarships;");
 
 			while(exists.next()) {
-				scholarships.add(new Scholarship(exists.getInt("id_scholarship"),exists.getString("description"),exists.getInt("duration"),exists.getDate("startdate"),exists.getDate("enddate"),exists.getString("domain"),exists.getInt("id_sending_university"),exists.getInt("id_receiving_university") ));
+				scholarships.add(new Scholarship(exists.getInt("id_scholarship"),exists.getString("description"),exists.getInt("duration"),exists.getDate("startdate"),exists.getDate("enddate"),exists.getString("domain"),exists.getInt("id_receiving_university") ));
 			}
 		}catch(SQLException e) {
 			e.printStackTrace();
@@ -121,7 +121,7 @@ public class ScholarshipDAOPostgres extends AbstractDAOPostgres implements Schol
 			ResultSet exists = state.executeQuery("SELECT * FROM Scholarships WHERE id_sending_university = "+id_sending_university+";");
 
 			while(exists.next()) {
-				scholarships.add(new Scholarship(exists.getInt("id_scholarship"),exists.getString("description"),exists.getInt("duration"),exists.getDate("startdate"),exists.getDate("enddate"),exists.getString("domain"),exists.getInt("id_sending_university"),exists.getInt("id_receiving_university") ));
+				scholarships.add(new Scholarship(exists.getInt("id_scholarship"),exists.getString("description"),exists.getInt("duration"),exists.getDate("startdate"),exists.getDate("enddate"),exists.getString("domain"),exists.getInt("id_receiving_university") ));
 			}
 		}catch(SQLException e) {
 			e.printStackTrace();

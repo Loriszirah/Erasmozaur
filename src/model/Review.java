@@ -50,5 +50,4 @@ public class Review {
 	public void setNbStars(int nbStars) {
 		this.nbStars = nbStars;
 	}
-
 }

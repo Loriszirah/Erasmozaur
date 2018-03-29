@@ -26,9 +26,10 @@ public class UniversityFacade {
 
 
     /**
+     * Create a university
      * @param name 
      * @param address 
-     * @return
+     * @return the university with the given parameters
      */
     public University createUniversity(String name, String address, String city, int id_responsible) throws Exception{
     	if(checkIfExistsWithName(name)) {
@@ -50,14 +51,14 @@ public class UniversityFacade {
 	}
 
     /**
-     * @return
+     * @return an array list of all the universities
      */
     public ArrayList<University> getAllUniversities() {
         return universityDAO.getAllUniversities();
     }
     
     /**
-     * @return
+     * @return an array list of type UniversityPresenter of all the universities
      */
     public ArrayList<UniversityPresenter> getAllUniversitiesPresenter() {
         return universityDAO.getAllUniversitiesPresenter();
@@ -65,7 +66,7 @@ public class UniversityFacade {
 
     /**
      * @param id_university 
-     * @return
+     * @return the university with the given id
      */
     public University viewUniversity(int id_university) {
         return universityDAO.viewUniversity(id_university);
@@ -73,13 +74,14 @@ public class UniversityFacade {
     
     /**
      * @param id_university 
-     * @return
+     * @return the universityPresenter of the university with the given id
      */
     public UniversityPresenter viewUniversityPresenter(int id_university) {
         return universityDAO.viewUniversityPresenter(id_university);
     }
 
     /**
+     * Delete a university
      * @param id_university
      */
     public void deleteUniversity(int id_university) {
@@ -93,8 +95,10 @@ public class UniversityFacade {
         // TODO implement here
     }
     
+    /**
+     * @return an array list of all the cities
+     */
     public ArrayList<City> getAllCities(){
     		return cityDAO.indexCities();
     }
-
 }

@@ -65,6 +65,4 @@ public class Agreement extends Application {
 	public void setComment(String comment) {
 		this.comment = comment;
 	}
-
-    
 }

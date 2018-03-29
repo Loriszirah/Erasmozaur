@@ -22,10 +22,11 @@ public class DocumentFacade {
 
 
     /**
+     * Create a document
      * @param name 
      * @param url 
      * @param id_user 
-     * @return
+     * @return the document with the given parameters
      */
     public Document createDocument(String name, String url, int id_user) {
         // TODO implement here
@@ -40,6 +41,7 @@ public class DocumentFacade {
     }
 
     /**
+     * Delete a document
      * @param id_document
      */
     public void deleteDocument(int id_document) {
@@ -48,7 +50,7 @@ public class DocumentFacade {
 
     /**
      * @param id_user 
-     * @return
+     * @return the document with the given id
      */
     public Document viewDocument(int id_user) {
         // TODO implement here
@@ -57,7 +59,7 @@ public class DocumentFacade {
 
     /**
      * @param id_application 
-     * @return
+     * @return an array list of all the documents of the given application
      */
     public ArrayList<Document> getAllDocumentsByApplication(int id_application) {
         // TODO implement here
@@ -66,11 +68,10 @@ public class DocumentFacade {
 
     /**
      * @param id_user 
-     * @return
+     * @return an array list of all the documents of the given user
      */
     public ArrayList<Document> getAllDocumentsByUser(int id_user) {
         // TODO implement here
         return null;
     }
-
 }

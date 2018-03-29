@@ -21,9 +21,10 @@ public class RoleFacade {
 
 
     /**
+     * Create a role
      * @param name 
      * @param description 
-     * @return
+     * @return the role with the given parameters
      */
     public Role createRole(String name, String description) {
         // TODO implement here
@@ -31,8 +32,9 @@ public class RoleFacade {
     }
 
     /**
+     * Return a role
      * @param id_role 
-     * @return
+     * @return the role with the given id
      */
     public Role getRole(int id_role) {
         return roleDAO.viewRole(id_role);
@@ -46,6 +48,7 @@ public class RoleFacade {
     }
 
     /**
+     * Delete a role
      * @param id_role
      */
     public void deleteRole(int id_role) {
@@ -53,7 +56,7 @@ public class RoleFacade {
     }
 
     /**
-     * @return
+     * @return an array list of all the roles
      */
     public ArrayList<Role> getAllRoles() {
         return roleDAO.getAllRoles();

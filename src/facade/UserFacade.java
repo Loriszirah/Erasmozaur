@@ -7,9 +7,8 @@ import dao.*;
  */
 public class UserFacade {
 	private AbstractFactoryDAO factory = AbstractFactoryDAO.getFactory();
-	private static User user;
+	private static User currentUser;
 	private UserDAO UserDAO = factory.getUserDAO();
-	
 	
     /**
      * Default constructor
@@ -19,15 +18,15 @@ public class UserFacade {
     
 	public boolean login(String username, String password) {
 		try{
-			UserFacade.user = this.UserDAO.login(username, password);
+			UserFacade.currentUser = this.UserDAO.login(username, password);
 		}catch(Exception ex){
 			System.out.println("Exception was caught in the login!");
 		}
-		if(UserFacade.user == null) {
+		if(UserFacade.currentUser == null) {
 			return false;
 		}
 		else {
-			System.out.println("The following User has succesfully logged in - "+UserFacade.user.getUsername());
+			System.out.println("The following User has succesfully logged in - "+UserFacade.currentUser.getUsername());
 			return true;
 		}
 	}
@@ -48,7 +47,7 @@ public class UserFacade {
     	}
 		
 		try{
-			UserFacade.user = this.UserDAO.createUser(firstName, lastName, password, email, username, birthDate, address, role);
+			UserFacade.currentUser = this.UserDAO.createUser(firstName, lastName, password, email, username, birthDate, address, role);
 			return true;
 		} catch(Exception e){
 			e.printStackTrace();
@@ -57,7 +56,7 @@ public class UserFacade {
 	}
 	
 	public User getCurrentUser(){
-		return UserFacade.user;
+		return UserFacade.currentUser;
 	}
 	
 	/**
@@ -98,13 +97,14 @@ public class UserFacade {
     }
 
     /**
-     * 
+     * Leave the university that theh user belongs to
      */
     public void leaveUniversity() {
         // TODO implement here
     }
 
     /**
+     * Join the university with the given id
      * @param id_university
      */
     public void joinUniversity(int id_university) {
@@ -119,17 +119,16 @@ public class UserFacade {
     }
 
     /**
+     * Delete a user
      * @param id_user 
-     * @return
      */
-    public User deleteUser(int id_user) {
+    public void deleteUser(int id_user) {
         // TODO implement here
-        return null;
     }
 
     /**
      * @param id_user 
-     * @return
+     * @return the user with the given id
      */
     public User viewUser(int id_user) {
         // TODO implement here
@@ -137,7 +136,7 @@ public class UserFacade {
     }
 
     /**
-     * @return
+     * @return an array list of all the users
      */
     public ArrayList<User> getAllUsers() {
         // TODO implement here
@@ -146,7 +145,7 @@ public class UserFacade {
 
     /**
      * @param id_university 
-     * @return
+     * @return an array list of all the users in the given university
      */
     public ArrayList<User> getAllUsersByUniversity(int id_university) {
         // TODO implement here
@@ -156,20 +155,19 @@ public class UserFacade {
     /**
      * @param id_university 
      * @param id_role 
-     * @return
+     * @return an array list of all the users of the given university who have the given role
      */
-    public ArrayList<User> getAllUsers(int id_university, int id_role) {
+    public ArrayList<User> getAllUsersByUniversityByRole(int id_university, int id_role) {
         // TODO implement here
         return null;
     }
 
     /**
      * @param id_role 
-     * @return
+     * @return an array list of all the users who have the given role
      */
     public ArrayList<User> getAllUsers(int id_role) {
         // TODO implement here
         return null;
     }
-
 }

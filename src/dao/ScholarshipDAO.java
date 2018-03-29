@@ -19,7 +19,7 @@ public interface ScholarshipDAO {
      * @param id_receiving_university The id of the university receiving the student
      * @return the scholarship with all these informations
      */
-    public Scholarship createScholarship(String description, int duration, Date startDate, Date endDate, String domain, int id_sending_university, int id_receiving_university);
+    public Scholarship createScholarship(String description, int duration, Date startDate, Date endDate, String domain, int id_receiving_university);
 
     /**
      * Update the scholarship

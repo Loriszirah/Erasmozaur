@@ -60,5 +60,4 @@ public class Course {
 	public void setSpecialization(String specialization) {
 		this.specialization = specialization;
 	}
-
 }

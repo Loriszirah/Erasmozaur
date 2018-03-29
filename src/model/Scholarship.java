@@ -6,29 +6,28 @@ import java.util.*;
  */
 public class Scholarship {
 
-    /**
-     * Default constructor
-     * @param l 
-     * @param k 
-     * @param string2 
-     * @param date2 
-     * @param date 
-     * @param j 
-     * @param string 
-     * @param i 
-     */
-    public Scholarship(int id_scholarship, String description, int duration, java.sql.Date startDate, java.sql.Date endDate, String domain, int id_sending_university, int id_receiving_university) {
+	// Constructors 
+	
+	/**
+	 * @param id_scholarship
+	 * @param description
+	 * @param duration
+	 * @param startDate
+	 * @param endDate
+	 * @param domain
+	 * @param id_receiving_university
+	 */
+    public Scholarship(int id_scholarship, String description, int duration, java.sql.Date startDate, java.sql.Date endDate, String domain, int id_receiving_university) {
     	this.id_scholarship = id_scholarship;
     	this.description = description;
     	this.duration = duration;
     	this.startDate = startDate;
     	this.endDate = endDate;
     	this.domain = domain;
-    	this.id_sending_university = id_sending_university;
     	this.id_receiving_university = id_receiving_university;
     }
 
-    /**
+	/**
      * 
      */
     private int id_scholarship;
@@ -61,11 +60,6 @@ public class Scholarship {
     /**
      * 
      */
-    private int id_sending_university;
-    
-    /**
-     * 
-     */
     private int id_receiving_university;
 
 	public int getId_scholarship() {
@@ -84,6 +78,14 @@ public class Scholarship {
 		this.description = description;
 	}
 
+    public int getId_receiving_university() {
+		return id_receiving_university;
+	}
+
+	public void setId_receiving_university(int id_receiving_university) {
+		this.id_receiving_university = id_receiving_university;
+	}
+	
 	public int getDuration() {
 		return duration;
 	}
@@ -114,6 +116,5 @@ public class Scholarship {
 
 	public void setDomain(String domain) {
 		this.domain = domain;
-	}
-    
+	}  
 }
