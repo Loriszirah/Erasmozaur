@@ -1,13 +1,14 @@
 package test;
 
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 import static org.junit.jupiter.api.Assertions.*;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
+
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Date;
+import java.util.Calendar;
+import java.sql.Date;
 
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
@@ -17,30 +18,19 @@ import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import dao.AbstractFactoryDAO;
 import dao.postgres.RoleDAOPostgres;
 import dao.postgres.UserDAOPostgres;
 import model.Role;
 import model.User;
 
 class UserTest {
-	
+	AbstractFactoryDAO factory = AbstractFactoryDAO.getFactory();
+	UserDAOPostgres userDAO = UserDAOPostgres.getUserDAOPostgres();
 
 	@BeforeAll
 	static void setUpBeforeClass() throws Exception {
-		String url;
-	    String userDB;
-	    String passwdDB;
-	    Connection conn;
-	    
-		url = System.getenv("DBurl");
-		userDB =System.getenv("DBuser");
-		passwdDB = System.getenv("DBpwd");
 
-	    	try {
-				DriverManager.getConnection(url, userDB, passwdDB);
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
 	}
 
 	@AfterAll
@@ -57,46 +47,42 @@ class UserTest {
 
 	@Test
 	@DisplayName("Create a user : ")
+	@Disabled
 	void testCreateUser() {
-		UserDAOPostgres userDAO = UserDAOPostgres.getUserDAOPostgres();
-		
-		Date date = null;
-	    SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/MM/yyyy");
-	    String date1 = "22/06/1996";
-	    try {
-	        date = simpleDateFormat.parse(date1);
-	      } catch (ParseException e) {
-	        e.printStackTrace();
-	      }
-	    
-		// cas de test 1
-	    User user;
+		//Cas de test 1
 		try {
-			user = userDAO.createUser("Fabien", "Turgut", "pwd", "fabien.turgut@gmail.com", "FabTur", date, "Polytech Montpellier", "Student");
-			assertEquals(new User(user.getId(), "Fabien", "Turgut", "pwd", "fabien.turgut@gmail.com", "FabTur", date, "Polytech Montpellier", 2), user);
+			User user = userDAO.createUser("Fabien", "Turgut", "pwd", "fabien5@gmail.com", "Fab5", null, "Polytech Montpellier", "Student");
+			User userToVerify = new User(user.getId(), "Fabien", "Turgut", "pwd", "fabien5@gmail.com", "Fab5", null, "Polytech Montpellier", 2);
+			assertTrue("Both objects are equals.", user.equals(userToVerify));
 		} catch (Exception e) {
 			fail("Fail to create an user in database");
 		}
-		
-	}
-
-	@Test
-	@DisplayName("Get a user : ")
-	@Disabled("Not yet implemented")
-	void testGetUserDAOPostgres() {
-		fail("Not yet implemented");
 	}
 
 	@Test
 	@DisplayName("Login")
 	void testLogin() {
-		fail("Not yet implemented");
+		//Cas de test 1
+		User user = userDAO.viewUser(1);
+		User userConnected = userDAO.login("Melvil", "pwd");
+		assertTrue("The login was good", user.equals(userConnected));
+
+		//Cas de test2
+		User userConnected2 = userDAO.login("Melvil", "nothing");
+		assertTrue("The login failed", userConnected2 == null);
+
 	}
 
 	@Test
 	@DisplayName("Is responsible of university ?")
 	void testIsResponsibleOfUniversity() {
-		fail("Not yet implemented");
+		//Cas de test 1
+		User user = userDAO.viewUser(3);
+		assertTrue("The user is responsible", userDAO.isResponsibleOfUniversity(user.getId()));
+
+		//Cas de test 2
+		User user2 = userDAO.viewUser(1);
+		assertFalse("The user isn't responsible", userDAO.isResponsibleOfUniversity(user2.getId()));
 	}
 
 	@Test
@@ -123,19 +109,34 @@ class UserTest {
 	@Test
 	@DisplayName("Get a user")
 	void testViewUser() {
-		fail("Not yet implemented");
+		//Cas de test 1
+		User user = userDAO.viewUser(26);
+		User userToVerify = new User(26, "Fabien", "Turgut", "pwd", "fabien5@gmail.com", "Fab5", null, "Polytech Montpellier", 2); 
+		assertTrue("The user is well retrieve from the database", user.equals(userToVerify));
+
+		//Cas de test 2
+		User user2 = userDAO.viewUser(1500);
+		assertTrue("The user doesn't exist", user2 == null);
 	}
 
 	@Test
 	@DisplayName("Check a user already exists with this username")
 	void testCheckIfExistsWithUsername() {
-		fail("Not yet implemented");
+		//Cas de test 1
+		assertTrue("The username 'Melvil' already exists in the database", userDAO.checkIfExistsWithUsername("Melvil"));
+
+		//Cas de test 2
+		assertFalse("The username 'Stratulat' doesn't exists in the database", userDAO.checkIfExistsWithUsername("Stratulat"));
 	}
 
 	@Test
 	@DisplayName("Check a user already exists with this email")
 	void testCheckIfExistsWithEmail() {
-		fail("Not yet implemented");
+		//Cas de test 1
+		assertTrue("The email 'melvil.donnart@gmail.com' already exists in the database", userDAO.checkIfExistsWithEmail("melvil.donnart@gmail.com"));
+
+		//Cas de test 2
+		assertFalse("The username 'stratulat@gmail.com' doesn't exists in the database", userDAO.checkIfExistsWithEmail("stratulat@gmail.com"));
 	}
 
 	@Test
@@ -147,30 +148,35 @@ class UserTest {
 
 	@Test
 	@DisplayName("Get all users")
+	@Disabled("Not yet implemented")
 	void testGetAllUsers() {
 		fail("Not yet implemented");
 	}
 
 	@Test
 	@DisplayName("Check if a user exist")
+	@Disabled("Not yet implemented")
 	void testCheckIfExists() {
 		fail("Not yet implemented");
 	}
 
 	@Test
 	@DisplayName("Get all users by role")
+	@Disabled("Not yet implemented")
 	void testGetAllUsersByRole() {
 		fail("Not yet implemented");
 	}
 
 	@Test
 	@DisplayName("Get all users by university role")
+	@Disabled("Not yet implemented")
 	void testGetAllUsersByUniversityRole() {
 		fail("Not yet implemented");
 	}
 
 	@Test
 	@DisplayName("Get all users by university")
+	@Disabled("Not yet implemented")
 	void testGetAllUsersByUniversity() {
 		fail("Not yet implemented");
 	}

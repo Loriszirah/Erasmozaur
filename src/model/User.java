@@ -151,4 +151,19 @@ public class User {
 	public void setAddress(String address) {
 		this.address = address;
 	}
+	
+	public boolean equals(User user) {
+		if ( //this.getAddress().equals(user.getAddress()) &&
+				this.getUsername().equals(user.getUsername())
+				&& this.getEmail().equals(user.getEmail()) 
+				&& this.getFirstName().equals(user.getFirstName()) 
+				&& this.getLastName().equals(user.getLastName())
+				&& this.getPassword().equals(user.getPassword()) 
+				&& this.getId_role() == user.getId_role()
+				) {
+			return true;
+		}
+		return false;
+		
+	}
 }
