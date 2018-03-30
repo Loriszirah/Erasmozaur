@@ -2,6 +2,13 @@ package test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
@@ -10,10 +17,30 @@ import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import dao.postgres.RoleDAOPostgres;
+import dao.postgres.UserDAOPostgres;
+import model.Role;
+import model.User;
+
 class UserTest {
+	
 
 	@BeforeAll
 	static void setUpBeforeClass() throws Exception {
+		String url;
+	    String userDB;
+	    String passwdDB;
+	    Connection conn;
+	    
+		url = System.getenv("DBurl");
+		userDB =System.getenv("DBuser");
+		passwdDB = System.getenv("DBpwd");
+
+	    	try {
+				DriverManager.getConnection(url, userDB, passwdDB);
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
 	}
 
 	@AfterAll
@@ -31,20 +58,26 @@ class UserTest {
 	@Test
 	@DisplayName("Create a user : ")
 	void testCreateUser() {
-		MaClasse2 mc = new MaClasse2(1,1);
-
+		UserDAOPostgres userDAO = UserDAOPostgres.getUserDAOPostgres();
+		
+		Date date = null;
+	    SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/MM/yyyy");
+	    String date1 = "22/06/1996";
+	    try {
+	        date = simpleDateFormat.parse(date1);
+	      } catch (ParseException e) {
+	        e.printStackTrace();
+	      }
+	    
 		// cas de test 1
-		assertEquals(2,mc.sommer());
-
-		// cas de test 2
+	    User user;
 		try {
-			mc.setA(0);
-			mc.setB(0);
-			mc.sommer();    
-			fail("Une exception de type IllegalStateException aurait du etre levee");
-		} catch (IllegalStateException ise) {
+			user = userDAO.createUser("Fabien", "Turgut", "pwd", "fabien.turgut@gmail.com", "FabTur", date, "Polytech Montpellier", "Student");
+			assertEquals(new User(user.getId(), "Fabien", "Turgut", "pwd", "fabien.turgut@gmail.com", "FabTur", date, "Polytech Montpellier", 2), user);
+		} catch (Exception e) {
+			fail("Fail to create an user in database");
 		}
-		fail("Not yet implemented");
+		
 	}
 
 	@Test
