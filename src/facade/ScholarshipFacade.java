@@ -7,6 +7,7 @@ import dao.ScholarshipDAO;
 import dao.UniversityDAO;
 import model.*;
 import presenters.ScholarshipPresenter;
+import presenters.UniversityPresenter;
 
 /**
  * 
@@ -55,7 +56,7 @@ public class ScholarshipFacade {
      */
     public Scholarship viewScholarship(int id_scholarship) {
         // TODO implement here
-        return null;
+        return scholarshipDAO.viewScholarship(id_scholarship);
     }
 
     /**
@@ -70,6 +71,10 @@ public class ScholarshipFacade {
      */
     public ArrayList<Scholarship> indexScholarships() {
     	return scholarshipDAO.getAllScholarships();
+    }
+    
+    public ScholarshipPresenter viewScholarshipPresenter(int id_scholarship) {
+        return scholarshipDAO.viewScholarshipPresenter(id_scholarship);
     }
     
     /**

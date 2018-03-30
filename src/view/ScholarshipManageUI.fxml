@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.SeparatorMenuItem?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="538.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/9.0.4" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.ScholarshipViewUIController">
+   <children>
+      <ImageView fitHeight="106.0" fitWidth="110.0" layoutX="29.0" layoutY="32.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../thats_denver_bro.png" />
+         </image>
+      </ImageView>
+      <MenuBar prefHeight="29.0" prefWidth="600.0">
+         <menus>
+            <Menu mnemonicParsing="false" text="Go to">
+               <items>
+                  <MenuItem mnemonicParsing="false" onAction="#applicationsClicked" text="Applications" />
+                  <MenuItem mnemonicParsing="false" onAction="#evaluationsClicked" text="Evaluations" />
+                  <MenuItem mnemonicParsing="false" onAction="#reviewsClicked" text="Reviews" />
+                  <MenuItem mnemonicParsing="false" onAction="#scholarshipsClicked" text="Scholarships" />
+                  <MenuItem mnemonicParsing="false" onAction="#universitiesClicked" text="Universities" />
+                  <SeparatorMenuItem mnemonicParsing="false" />
+                  <MenuItem mnemonicParsing="false" onAction="#manageProfileClicked" text="Manage profile" />
+                  <SeparatorMenuItem mnemonicParsing="false" />
+                  <MenuItem mnemonicParsing="false" onAction="#logoutMenuClicked" text="Logout" />
+                  <MenuItem mnemonicParsing="false" onAction="#QuitAppClicked" text="Quit the app" />
+               </items>
+            </Menu>
+         </menus>
+      </MenuBar>
+      <Button fx:id="backButton" layoutX="521.0" layoutY="72.0" mnemonicParsing="false" text="Back" />
+      <Text layoutX="82.0" layoutY="270.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Duration :" wrappingWidth="133.7700515985489">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Text>
+      <Text layoutX="82.0" layoutY="199.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Description :" wrappingWidth="133.7700515985489">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Text>
+      <Text layoutX="82.0" layoutY="156.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Receiving university :" wrappingWidth="175.7700514793396">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Text>
+      <Label layoutX="178.0" layoutY="67.0" prefHeight="14.0" prefWidth="285.0" text="Scholarship">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
+      </Label>
+      <Label fx:id="countryLabel" layoutX="321.0" layoutY="254.0" text="months">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+      <ListView fx:id="descriptionScholarship" layoutX="254.0" layoutY="183.0" prefHeight="46.0" prefWidth="238.0" />
+      <Text layoutX="82.0" layoutY="316.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Start Date :" wrappingWidth="133.7700515985489">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Text>
+      <Text layoutX="82.0" layoutY="356.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Domain :" wrappingWidth="133.7700515985489">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Text>
+      <Text layoutX="82.0" layoutY="392.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Courses :" wrappingWidth="133.7700515985489">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Text>
+      <DatePicker fx:id="startDateScholarship" layoutX="253.0" layoutY="297.0" />
+      <ChoiceBox fx:id="listCoursesScholarship" layoutX="254.0" layoutY="457.0" prefWidth="150.0" />
+      <ChoiceBox fx:id="domainScholarship" layoutX="254.0" layoutY="337.0" prefWidth="150.0" />
+      <ListView fx:id="coursesScholarship" layoutX="257.0" layoutY="376.0" prefHeight="64.0" prefWidth="255.0" />
+      <Button layoutX="429.0" layoutY="457.0" mnemonicParsing="false" text="Add Course" />
+      <Button layoutX="468.0" layoutY="72.0" mnemonicParsing="false" text="Save" />
+      <Label layoutX="269.0" layoutY="142.0" text="Label">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>
