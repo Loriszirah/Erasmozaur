@@ -4,12 +4,6 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 import static org.junit.jupiter.api.Assertions.*;
 
-
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.sql.Date;
-
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
@@ -19,9 +13,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import dao.AbstractFactoryDAO;
-import dao.postgres.RoleDAOPostgres;
 import dao.postgres.UserDAOPostgres;
-import model.Role;
 import model.User;
 
 class UserTest {
@@ -51,8 +43,8 @@ class UserTest {
 	void testCreateUser() {
 		//Cas de test 1
 		try {
-			User user = userDAO.createUser("Fabien", "Turgut", "pwd", "fabien5@gmail.com", "Fab5", null, "Polytech Montpellier", "Student");
-			User userToVerify = new User(user.getId(), "Fabien", "Turgut", "pwd", "fabien5@gmail.com", "Fab5", null, "Polytech Montpellier", 2);
+			User user = userDAO.createUser("Fabien", "Turgut", "pwd", "fabien@gmail.com", "Fab", null, "Polytech Montpellier", "Student");
+			User userToVerify = new User(user.getId(), "Fabien", "Turgut", "pwd", "fabien@gmail.com", "Fab", null, "Polytech Montpellier", 2);
 			assertTrue("Both objects are equals.", user.equals(userToVerify));
 		} catch (Exception e) {
 			fail("Fail to create an user in database");
@@ -110,8 +102,8 @@ class UserTest {
 	@DisplayName("Get a user")
 	void testViewUser() {
 		//Cas de test 1
-		User user = userDAO.viewUser(26);
-		User userToVerify = new User(26, "Fabien", "Turgut", "pwd", "fabien5@gmail.com", "Fab5", null, "Polytech Montpellier", 2); 
+		User user = userDAO.viewUser(1);
+		User userToVerify = new User(1, "Melvil", "Donnart", "pwd", "melvil@gmail.com", "Melvil", null, "null", 1); 
 		assertTrue("The user is well retrieve from the database", user.equals(userToVerify));
 
 		//Cas de test 2
@@ -126,7 +118,7 @@ class UserTest {
 		assertTrue("The username 'Melvil' already exists in the database", userDAO.checkIfExistsWithUsername("Melvil"));
 
 		//Cas de test 2
-		assertFalse("The username 'Stratulat' doesn't exists in the database", userDAO.checkIfExistsWithUsername("Stratulat"));
+		assertFalse("The username 'Clément' doesn't exists in the database", userDAO.checkIfExistsWithUsername("Clément"));
 	}
 
 	@Test
@@ -136,7 +128,7 @@ class UserTest {
 		assertTrue("The email 'melvil.donnart@gmail.com' already exists in the database", userDAO.checkIfExistsWithEmail("melvil.donnart@gmail.com"));
 
 		//Cas de test 2
-		assertFalse("The username 'stratulat@gmail.com' doesn't exists in the database", userDAO.checkIfExistsWithEmail("stratulat@gmail.com"));
+		assertFalse("The username 'clement@gmail.com' doesn't exists in the database", userDAO.checkIfExistsWithEmail("clement@gmail.com"));
 	}
 
 	@Test
