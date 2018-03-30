@@ -2,6 +2,7 @@ package dao;
 import java.util.*;
 import model.*;
 import presenters.ScholarshipPresenter;
+import presenters.UniversityPresenter;
 
 /**
  * 
@@ -45,7 +46,11 @@ public interface ScholarshipDAO {
      * @return a list of scholarships
      */
     public ArrayList<Scholarship> getAllScholarships();
-    
+    /**
+     * @param id_university 
+     * @return
+     */
+    public ScholarshipPresenter viewScholarshipPresenter(int id_university);
     /**
      * List all scholarships presenters 
      * @return a list of scholarships presenters

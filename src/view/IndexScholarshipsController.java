@@ -79,7 +79,7 @@ public class IndexScholarshipsController extends MainController{
 //    		joinUniversityTable.getItems().remove(u);
     		entityId = s.getId_scolarship();
     		try {
-				setSceneContent("HomePageUI");
+				setSceneContent("ScholarshipViewUI");
 			} catch (IOException e) {
 				e.printStackTrace();
 			}

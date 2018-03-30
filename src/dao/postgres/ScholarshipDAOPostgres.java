@@ -78,8 +78,40 @@ public class ScholarshipDAOPostgres extends AbstractDAOPostgres implements Schol
      * @return
      */
     public Scholarship viewScholarship(int id_scholarship) {
-        // TODO implement here
-        return null;
+    	Scholarship scholarship = null;
+		try {
+			if(!this.conn.isValid(1)) {
+				openConnection();
+			}
+			//Creation of a Statement object
+			Statement state = conn.createStatement();
+			// Check if the username already exist
+
+			ResultSet exists = state.executeQuery("SELECT id_scholarship, description, duration, startdate, enddate, domain, Universities.name universityName "
+					+ "FROM Scholarships, Universities, Users "
+					+ "WHERE Scholarships.id_receiving_university = Universities.id_university"
+					+ "AND "
+					+ " AND Universities.id_university =" +id_scholarship);
+
+			String nameUniversity, descriptionScholarship, domainScholarship;
+			java.sql.Date enddateScholarship;
+			java.sql.Date startdateScholarship;
+			int durationScholarship;
+			if(exists.next()) {
+				nameUniversity = exists.getString("nameUniversity");
+				descriptionScholarship = exists.getString("description");
+				durationScholarship = exists.getInt("duration");
+				startdateScholarship = exists.getDate("startdate");
+				enddateScholarship = exists.getDate("enddate");
+				domainScholarship = exists.getString("domain");
+
+				scholarship = new Scholarship(id_scholarship, descriptionScholarship,durationScholarship, startdateScholarship, enddateScholarship, domainScholarship,id_scholarship);
+			}
+		}catch(SQLException e) {
+			e.printStackTrace();
+			return null;
+		}
+		return scholarship;
     }
 
     /**
@@ -167,6 +199,45 @@ public class ScholarshipDAOPostgres extends AbstractDAOPostgres implements Schol
 		}
 		return scholarships;
     }
+    /**
+	 * @param id_university 
+	 * @return
+	 */
+	public ScholarshipPresenter viewScholarshipPresenter(int id_university) {
+		ScholarshipPresenter scholarshipPresenter = null;
+		try {
+			if(!this.conn.isValid(1)) {
+				openConnection();
+			}
+			//Creation of a Statement object
+			Statement state = conn.createStatement();
+			// Check if the username already exist
+
+			ResultSet exists = state.executeQuery("SELECT id_scholarship, description, duration, startdate, enddate, domain, Universities.name universityName "
+					+ "FROM Scholarships, Universities, Users "
+					+ "WHERE Scholarships.id_receiving_university = Universities.id_university"
+					+ " AND Scholarships.id_scholarship =" +id_university);
+
+			String nameUniversity, descriptionScholarship, domainScholarship;
+			java.sql.Date enddateScholarship;
+			java.sql.Date startdateScholarship;
+			int id_scholarship, durationScholarship;
+			if(exists.next()) {
+				nameUniversity = exists.getString("universityname");
+				descriptionScholarship = exists.getString("description");
+				durationScholarship = exists.getInt("duration");
+				startdateScholarship = exists.getDate("startdate");
+				enddateScholarship = exists.getDate("enddate");
+				domainScholarship = exists.getString("domain");
+
+				scholarshipPresenter = new ScholarshipPresenter(1,descriptionScholarship,durationScholarship, startdateScholarship, enddateScholarship, domainScholarship, nameUniversity);
+			}
+		}catch(SQLException e) {
+			e.printStackTrace();
+			return null;
+		}
+		return scholarshipPresenter;
+	}
 
     /**
      * @param id_user 
