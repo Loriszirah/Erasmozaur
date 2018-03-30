@@ -97,5 +97,16 @@ public class ScholarshipViewUIController extends MainController {
 		}
 
 	}
+	@FXML
+	private void applyButton() {
+		try {
+			setSceneContent("CreateScholarshipUI");
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+	}
+	
 	 
 }

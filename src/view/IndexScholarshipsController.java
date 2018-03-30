@@ -98,8 +98,6 @@ public class IndexScholarshipsController extends MainController{
 //    		scholarshipsTableView.getColumns().add(domaineColumn);
 //    		scholarshipsTableView.getColumns().add(buttonColumn);
     	}
-    
     }
-    
 	
 }
