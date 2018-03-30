@@ -9,8 +9,12 @@ public class Application {
     /**
      * Default constructor
      */
-    public Application() {
-    }
+    public Application(Date date, String comment, int id_student, int id_scholarship) {
+    	this.date = date;
+    	this.comment = comment;
+    	this.id_student = id_student;
+    	this.id_scholarship = id_scholarship;
+   }
 
     /**
      * 
@@ -26,6 +30,16 @@ public class Application {
      * 
      */
     public String comment;
+
+    /**
+     * 
+     */
+    public int id_student;
+
+    /**
+     * 
+     */
+    public int id_scholarship;
 
     // Getters & Setters
     

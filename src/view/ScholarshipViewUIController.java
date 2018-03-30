@@ -17,9 +17,15 @@ import javafx.scene.text.Text;
 import model.Scholarship;
 import presenters.ScholarshipPresenter;
 import presenters.UniversityPresenter;
+import model.Scholarship;
+import presenters.ScholarshipPresenter;
+import facade.ScholarshipFacade;
 
 public class ScholarshipViewUIController extends MainController {
-
+	@FXML
+	Button applyButton;
+	@FXML
+	Button backButton;
 	@FXML
 	Label nameScholarship;
 	
@@ -41,6 +47,9 @@ public class ScholarshipViewUIController extends MainController {
 	@FXML
 	ChoiceBox listCoursesScholarship;
 	
+	String universityName;
+	
+	int idScolar;
 	
 	@FXML
 	ListView<String> coursesScholarship = new ListView<String>();
@@ -61,6 +70,8 @@ public class ScholarshipViewUIController extends MainController {
 			scholarship = scholarshipFacade.viewScholarshipPresenter(entityId);
     		if(scholarship != null){
     			// setting the labels
+    			idScolar = scholarship.getId_scolarship();
+    			universityName = scholarship.getUniversityName();
     			nameScholarship.setText(scholarship.getUniversityName());
     			descriptionScholarship.setText(scholarship.getDescription());
     			String duration = String.valueOf(scholarship.getDuration());
@@ -74,13 +85,13 @@ public class ScholarshipViewUIController extends MainController {
 	    		
     			//setting the courses in the ListView
 	    		
-    			ObservableList<String> courses = FXCollections.observableArrayList(courseFacade.getAllCoursesFullNamesByUniversity(entityId));
-	    		if(!courses.isEmpty()){
-	    			listCoursesScholarship.getItems().clear();
-	    			listCoursesScholarship.setItems(courses);
-	    		}
-    		} else { 
-    			setSceneContent("IndexUniversities");
+    			//ObservableList<String> courses = FXCollections.observableArrayList(courseFacade.getAllCoursesFullNamesByUniversity(entityId));
+	    		//if(!courses.isEmpty()){
+	    	//		listCoursesScholarship.getItems().clear();
+	    	//		listCoursesScholarship.setItems(courses);
+	    	//	}
+    		//} else { 
+    		//	setSceneContent("IndexUniversities");
     		}
     	} else { 
     		setSceneContent("IndexUniversities");
@@ -100,7 +111,9 @@ public class ScholarshipViewUIController extends MainController {
 	@FXML
 	private void applyButton() {
 		try {
-			setSceneContent("CreateScholarshipUI");
+    		MainController.entityId = this.idScolar;
+    		MainController.universityId = this.universityId;
+			setSceneContent("ApplyScholarship");
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
