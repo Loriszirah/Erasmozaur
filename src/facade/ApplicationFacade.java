@@ -31,9 +31,8 @@ public class ApplicationFacade {
      * @param comment 
      * @return the application with the given parameters
      */
-    public Application createApplication( Date startDate, String comment, int duration, int userId,) {
-        // TODO implement here
-        return null;
+    public Application createApplication( Date startDate, String comment, int id_student, int id_scholarship) {
+        return applicationDAO.createApplication(startDate, comment, id_student, id_scholarship);
     }
 
     /**

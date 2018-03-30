@@ -10,7 +10,7 @@ public interface ApplicationDAO {
     /**
      * 
      */
-    public Application createApplication(int userId, Date startDate, int duration , String comment);
+    public Application createApplication(Date startDate, String comment,int id_student, int id_scholarship );
 
     /**
      * 

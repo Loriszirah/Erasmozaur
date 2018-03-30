@@ -144,11 +144,11 @@ public class UniversityDAOPostgres extends AbstractDAOPostgres implements Univer
 			Statement state = conn.createStatement();
 			// Check if the username already exist
 
-			ResultSet exists = state.executeQuery("SELECT id_university, Universities.address, Users.firstname userFirstName, Users.lastname userLastName, Universities.name nameUniversity, Cities.name cityName, Countries.name countryName "
+			ResultSet exists = state.executeQuery("SELECT Universities.id_university id, Universities.address, Users.firstname userFirstName, Users.lastname userLastName, Universities.name nameUniversity, Cities.name cityName, Countries.name countryName "
 					+ "FROM Universities, Cities, Countries, Users "
 					+ "WHERE Universities.id_city = Cities.id_city "
 					+ "AND Cities.id_country = Countries.id_country "
-					+ "AND id_university = "+id_university+" "
+					+ "AND Universities.id_university = "+id_university+" "
 					+ "AND Universities.id_responsible = Users.id_user;");
 
 			String nameUniversity, addressUniversity, cityName, countryName, responsibleName;
@@ -231,7 +231,7 @@ public class UniversityDAOPostgres extends AbstractDAOPostgres implements Univer
 			Statement state = conn.createStatement();
 			// Check if the username already exist
 
-			ResultSet exists = state.executeQuery("SELECT id_university, Universities.address, Users.firstname userFirstName, Users.lastname userLastName, Universities.name nameUniversity, Cities.name cityName, Countries.name countryName "
+			ResultSet exists = state.executeQuery("SELECT Universities.id_university id, Universities.address, Users.firstname userFirstName, Users.lastname userLastName, Universities.name nameUniversity, Cities.name cityName, Countries.name countryName "
 					+ "FROM Universities, Cities, Countries, Users "
 					+ "WHERE Universities.id_city = Cities.id_city "
 					+ "AND Cities.id_country = Countries.id_country "
@@ -241,7 +241,7 @@ public class UniversityDAOPostgres extends AbstractDAOPostgres implements Univer
 			String nameUniversity, address, nameCity, nameCountry, responsibleName;
 			
 			while(exists.next()) {
-				id_university = exists.getInt("id_university");
+				id_university = exists.getInt("id");
 				nameUniversity = exists.getString("nameUniversity");
 				address = exists.getString("address");
 				responsibleName = exists.getString("userFirstName")+" "+exists.getString("userLastName");

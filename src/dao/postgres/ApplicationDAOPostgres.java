@@ -1,10 +1,13 @@
 package dao.postgres;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.*;
 import dao.*;
 import model.Application;
+import model.Scholarship;
 
 /**
  * 
@@ -40,8 +43,28 @@ public class ApplicationDAOPostgres extends AbstractDAOPostgres implements Appli
     }
 
 	@Override
-	public Application createApplication(int userId, Date startDate, int duration, String comment) {
-		// TODO Auto-generated method stub
+	public Application createApplication(Date date, String comment,int id_student, int id_scholarship) {
+		try {
+			if(!this.conn.isValid(1)) {
+				openConnection();
+			}
+			// Creation of a Statement object
+			Statement state = conn.createStatement();
+
+			//The object ResultSet contains the result of the SQL request
+			state.executeUpdate("INSERT INTO Applications (date, comment, id_student, id_scholarship) VALUES('"+date+"','"+comment+"','"+id_student+"','"+id_scholarship+"')");
+
+			// The object ResultSet contains the result of the SQL request
+			ResultSet result = state.executeQuery("SELECT * FROM Scholarships WHERE id_student = "+id_student+" AND id_scholarship='"+id_scholarship+"'");
+
+			// Get the user in the database if exists and create the user
+			if(result.next()) {
+				Application application = new Application(result.getInt("id_application"), result.getDate("date"), result.getString("comment"), result.getInt("id_student"), result.getInt("id_scholarship"));
+				return application;
+			}
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}
 		return null;
 	}
 

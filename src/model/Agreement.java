@@ -9,8 +9,10 @@ public class Agreement extends Application {
     /**
      * Default constructor
      */
-    public Agreement() {
-    }
+    public Agreement(Date date, String comment, int id_student, int id_scholarship) {
+		super(date, comment, id_student, id_scholarship);
+		// TODO Auto-generated constructor stub
+	}
 
     /**
      * 
