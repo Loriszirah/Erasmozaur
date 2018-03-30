@@ -39,6 +39,7 @@ CREATE TABLE Users (
 	birthdate Date,
 	address varchar(100),
 	id_role INTEGER NOT NULL,
+    id_university INTEGER,
 	CONSTRAINT users_email_unique UNIQUE (email),
 	CONSTRAINT pk_users PRIMARY KEY(id_user),
 	CONSTRAINT users_username_unique UNIQUE (username),
@@ -221,6 +222,11 @@ CREATE TABLE AgreementsCourses (
 	CONSTRAINT fk_agreementsCourses_scholarships FOREIGN KEY (id_agreement) REFERENCES Agreements(id_agreement)
 );
 
+ALTER TABLE Users
+    ADD CONSTRAINT fk_users_university 
+    FOREIGN KEY (id_university) 
+    REFERENCES Universities(id_university);
+
 -- Inserting Roles 
 INSERT INTO Roles(name) VALUES('Tutor');
 INSERT INTO Roles(name) VALUES('Student');
@@ -251,3 +257,4 @@ INSERT INTO Courses(name, specialization, id_university) VALUES('Resistance des 
 INSERT INTO Scholarships(description ,duration ,startdate ,enddate,domain ,id_receiving_university) VALUES ('IG3 - Scholarship',10, '2018-04-02', '2018-06-02', 'Computer science', (SELECT id_university FROM universities WHERE name = 'Polytech Montpellier'));
 INSERT INTO Scholarships(description, duration, startdate, enddate, domain, id_receiving_university) VALUES ('IG4 - Scholarship',9, '2018-04-02', '2018-06-02', 'Computer science', (SELECT id_university FROM universities WHERE name = 'Polytech Montpellier'));
 INSERT INTO Scholarships(description ,duration ,startdate ,enddate,domain ,id_receiving_university) VALUES ('MI3 - Scholarship',5, '2018-04-02', '2018-06-02', 'Micro-informatics', (SELECT id_university FROM universities WHERE name = 'Polytech Marseille'));
+
