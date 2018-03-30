@@ -43,27 +43,27 @@
             <Label layoutX="172.0" layoutY="415.0" text="Birth date" /> 
             <ChoiceBox fx:id="roles" layoutX="331.0" layoutY="502.0" prefHeight="28.0" prefWidth="142.0" /> 
             
-            <ImageView fx:id="firstNameWarning" layoutX="435.0" layoutY="173.0" visible="false">
+            <ImageView fx:id="firstNameWarning" layoutX="508.0" layoutY="130.0" visible="false">
                <image>
                   <Image url="@../../../../Downloads/warning.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="lastNameWarning" layoutX="435.0" layoutY="215.0" visible="false">
+            <ImageView fx:id="lastNameWarning" layoutX="516.0" layoutY="174.0" visible="false">
                <image>
                   <Image url="@../../../../Downloads/warning.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="emailWarning" layoutX="435.0" layoutY="256.0" visible="false">
+            <ImageView fx:id="emailWarning" layoutX="516.0" layoutY="220.0" visible="false">
                <image>
                   <Image url="@../../../../Downloads/warning.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="usernameWarning" layoutX="435.0" layoutY="296.0" visible="false">
+            <ImageView fx:id="usernameWarning" layoutX="508.0" layoutY="267.0" visible="false">
                <image>
                   <Image url="@../../../../Downloads/warning.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="passwordWarning" layoutX="435.0" layoutY="338.0" visible="false">
+            <ImageView fx:id="passwordWarning" layoutX="508.0" layoutY="315.0" visible="false">
                <image>
                   <Image url="@../../../../Downloads/warning.png" />
                </image>

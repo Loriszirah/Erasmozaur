@@ -20,6 +20,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
+import facade.RoleFacade;
 import facade.UniversityFacade;
  
 
@@ -48,6 +50,7 @@ public class IndexUniversitiesController extends MainController{
 	
 	protected ObservableList<UniversityPresenter> universities;
 	protected User currentUser = MainController.getUserFacade().getCurrentUser();
+	protected RoleFacade roleFacade = new RoleFacade();
 	
 	/**
      * The constructor.
@@ -64,6 +67,10 @@ public class IndexUniversitiesController extends MainController{
     private void initialize() {
     	if(MainController.getUserFacade().isResponsibleOfUniversity(currentUser.getId())) {
 			createUniversityButton.setVisible(false);
+    	}
+    	System.out.println(roleFacade.getRole((MainController.getUserFacade().getCurrentUser().getId_role())).getName());
+    	if(roleFacade.getRole((MainController.getUserFacade().getCurrentUser().getId_role())).getName() == "Student") {
+    		createUniversityButton.setVisible(false);
     	}
     	usernameLabel.setText(currentUser.getUsername());
     	universities = FXCollections.observableArrayList(universityFacade.getAllUniversitiesPresenter());
