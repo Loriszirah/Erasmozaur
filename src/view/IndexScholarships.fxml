@@ -37,7 +37,7 @@
             </Menu>
          </menus>
       </MenuBar>
-      <TableView fx:id="scholarshipsTableView" layoutX="13.0" layoutY="130.0" prefHeight="223.0" prefWidth="566.0">
+      <TableView fx:id="scholarshipsTableView" layoutX="13.0" layoutY="130.0" prefHeight="237.0" prefWidth="566.0">
         <columns>
           <TableColumn fx:id="universityColumn" prefWidth="151.20001220703125" text="Receiving University" />
           <TableColumn fx:id="descriptionColumn" prefWidth="96.79998779296875" text="Description" />

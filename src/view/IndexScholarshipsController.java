@@ -68,8 +68,6 @@ public class IndexScholarshipsController extends MainController{
 //			System.out.println("yoyoyoyo");
 //		}
     	scholarships = FXCollections.observableArrayList(scholarshipFacade.indexScholarshipPresenters());
-    	System.out.println("Scholarships number - "+scholarships.size());
-    	System.out.println(scholarships.get(1));
     
     	universityColumn.setCellValueFactory(new PropertyValueFactory<ScholarshipPresenter, String>("universityName"));
     	descriptionColumn.setCellValueFactory(new PropertyValueFactory<ScholarshipPresenter, String>("description"));
@@ -93,9 +91,8 @@ public class IndexScholarshipsController extends MainController{
     	
     	// if we have results, we place them in the table
     	if(scholarships.size() > 0){
-    		System.out.println("we should have results");
     		scholarshipsTableView.setItems(scholarships);
-    		System.out.println(scholarshipsTableView.getColumns().addAll(universityColumn, descriptionColumn, startDateColumn, endDateColumn, domaineColumn, durationColumn, buttonColumn));
+    		scholarshipsTableView.getColumns().addAll(universityColumn, descriptionColumn, startDateColumn, endDateColumn, domaineColumn, durationColumn, buttonColumn);
 //    		scholarshipsTableView.getColumns().add(universityColumn);
 //    		scholarshipsTableView.getColumns().add(descriptionColumn);
 //    		scholarshipsTableView.getColumns().add(domaineColumn);
