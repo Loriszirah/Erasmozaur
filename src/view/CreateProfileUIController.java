@@ -156,6 +156,7 @@ public class CreateProfileUIController extends MainController{
     	    	    	
     	if(!emptyField) {
     		try{
+    			System.out.println(universities.getValue().toString());;
 				if(userFacade.register(firstNameTextField.getText(), lastNameTextField.getText(), passwordTextField.getText(), emailTextField.getText(), usernameTextField.getText(), null, addressTextField.getText(), roles.getValue().toString(), universities.getValue().toString())){
 		    		System.out.println("The 'Register' request was succesful!");
 		    		try {

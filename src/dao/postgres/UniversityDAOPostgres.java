@@ -109,7 +109,7 @@ public class UniversityDAOPostgres extends AbstractDAOPostgres implements Univer
 				//Creation of a Statement object
 				Statement state = conn.createStatement();
 
-				ResultSet exists = state.executeQuery("SELECT * FROM Universities WHERE name = "+name+";");
+				ResultSet exists = state.executeQuery("SELECT * FROM Universities WHERE name = '"+name+"';");
 
 				String addressUniversity;
 				int id_city;

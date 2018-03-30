@@ -52,15 +52,22 @@ public class UserDAOPostgres extends AbstractDAOPostgres implements UserDAO {
 		    } else {
 		    	throw new Exception("Problem in the selection of a role");
 		    }
-		    //The object ResultSet contains the result of the SQL request
-		    state.executeUpdate("INSERT INTO Users (username, password, firstname, lastname, email, address, id_role) VALUES('"+username+"','"+password+"','"+firstName+"','"+lastName+"','"+email+"','"+address+"','"+Integer.toString(id)+"')");
 		    
+		    ResultSet exists = state.executeQuery("SELECT * FROM universities WHERE name = '"+university+"';");
+		    int id_university = 0;
+			if(exists.next()) {
+				id_university = exists.getInt("id_university");
+			}
+		    
+		    //The object ResultSet contains the result of the SQL request
+		    state.executeUpdate("INSERT INTO Users (username, password, firstname, lastname, email, address, id_role, id_university) VALUES('"+username+"','"+password+"','"+firstName+"','"+lastName+"','"+email+"','"+address+"','"+Integer.toString(id)+"','"+id_university+"')");
+		    		    
 		    // The object ResultSet contains the result of the SQL request
 		    result = state.executeQuery("SELECT * FROM users WHERE username='"+username+"'");
-			
+		    
 			// Get the user in the database if exists and create the user
 			if(result.next()) {
-				User user = new User(result.getInt("id_user"), result.getString("firstName"), result.getString("lastName"), result.getString("password"), result.getString("email"), result.getString("username"), null, result.getString("address"), result.getInt("id_role"), result.getInt("id_university"));
+				User user = new User(result.getInt("id_user"), result.getString("firstName"), result.getString("lastName"), result.getString("password"), result.getString("email"), result.getString("username"), null, result.getString("address"), result.getInt("id_role"), id_university);
 				return user;
 			}
     	}catch(SQLException e) {
@@ -137,8 +144,14 @@ public class UserDAOPostgres extends AbstractDAOPostgres implements UserDAO {
 		    	throw new Exception("Email is already taken");
 		    }
 		    
+		    ResultSet exists = state.executeQuery("SELECT * FROM universities WHERE name = '"+university+"';");
+		    int id_university = 0;
+			if(exists.next()) {
+				id_university = exists.getInt("id_university");
+			}
+		    
 		    //The object ResultSet contains the result of the SQL request
-		    state.executeUpdate("UPDATE Users SET firstName = '"+firstName+"', lastname='"+lastName+"', email='"+email+"', username='"+username+"', birthdate='"+birthDate+"', address='"+address+"' WHERE id_user='"+id_user+"';");
+		    state.executeUpdate("UPDATE Users SET firstName = '"+firstName+"', lastname='"+lastName+"', email='"+email+"', username='"+username+"', birthdate='"+birthDate+"', address='"+address+"',id_university='"+id_university+"' WHERE id_user='"+id_user+"';");
 		    
     	}catch(SQLException e) {
 		      e.printStackTrace();

@@ -32,7 +32,7 @@
                   <Font name="System Bold Italic" size="36.0" />
                </font>
             </Label>
-            <Text fx:id="errorText" fill="#e22626" layoutX="165.0" layoutY="143.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="369.59996128082275" /> 
+            <Text fx:id="errorText" fill="#e22626" layoutX="146.0" layoutY="120.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="369.59996128082275" /> 
             <TextField fx:id="lastNameTextField" layoutX="307.0" layoutY="168.0" prefHeight="26.0" prefWidth="190.0" /> 
             <TextField fx:id="firstNameTextField" layoutX="307.0" layoutY="125.0" prefHeight="26.0" prefWidth="190.0" /> 
             <TextField fx:id="emailTextField" layoutX="307.0" layoutY="215.0" prefHeight="26.0" prefWidth="190.0" /> 
