@@ -150,8 +150,24 @@ public class UserDAOPostgres extends AbstractDAOPostgres implements UserDAO {
     }
 
     public User viewUser(int id_user) {
-        // TODO implement here
-        return null;
+    	User user = null;
+		try {
+			if(!this.conn.isValid(1)) {
+				openConnection();
+			}
+			//Creation of a Statement object
+			Statement state = conn.createStatement();
+			// Check if the username already exist
+
+			ResultSet exists = state.executeQuery("SELECT * FROM Users WHERE id_user = "+id_user+";");
+			if(exists.next()) {
+				user = new User(id_user, exists.getString("firstname"), exists.getString("lastname"), exists.getString("password"), exists.getString("email"), exists.getString("username"), null, exists.getString("address"), exists.getInt("id_role"));
+			}
+		}catch(SQLException e) {
+			e.printStackTrace();
+			return null;
+		}
+		return user;
     }
     
     public boolean checkIfExistsWithEmail(int id_user, String email) {
