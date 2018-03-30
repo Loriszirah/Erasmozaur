@@ -9,7 +9,8 @@ public class Application {
     /**
      * Default constructor
      */
-    public Application(Date date, String comment, int id_student, int id_scholarship) {
+    public Application(int id_application, Date date, String comment, int id_student, int id_scholarship) {
+    this.id_application = id_application;
     	this.date = date;
     	this.comment = comment;
     	this.id_student = id_student;

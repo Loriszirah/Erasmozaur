@@ -1,5 +1,6 @@
 package view;
 import java.io.File;
+import java.io.IOException;
 import java.util.Date;
 
 import javafx.event.ActionEvent;
@@ -30,6 +31,9 @@ public class ApplyScholarshipController extends MainController{
 	@FXML
 	TextArea coverLetterTextArea;
 	
+	@FXML
+	Label scholarshipName;
+	
 	UniversityPresenter university ;
 	/**
      * The constructor.
@@ -46,8 +50,8 @@ public class ApplyScholarshipController extends MainController{
     private void initialize() {
     	//currentScholarship = scholarshipFacade.viewScholarship(MainController.entityId);
 		university = universityFacade.viewUniversityPresenter(universityId);
-		universityNameLabel.setText(university.getName());
-		
+		universityNameLabel.setText("Applying to a scolarship");
+		scholarshipName.setText(MainController.universityName);
     }
     
     @FXML
@@ -56,6 +60,13 @@ public class ApplyScholarshipController extends MainController{
     	Date date = new Date();
     	int userId = 	MainController.getUserFacade().getCurrentUser().getId()  ;  	
     	applicationFacade.createApplication(date, coverLetter,userId ,entityId); 
+		try {
+			setSceneContent("ScholarshipViewController");
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
     }
     
  

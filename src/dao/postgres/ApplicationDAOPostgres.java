@@ -45,9 +45,8 @@ public class ApplicationDAOPostgres extends AbstractDAOPostgres implements Appli
 	@Override
 	public Application createApplication(Date date, String comment,int id_student, int id_scholarship) {
 		try {
-			if(!this.conn.isValid(1)) {
 				openConnection();
-			}
+			
 			// Creation of a Statement object
 			Statement state = conn.createStatement();
 

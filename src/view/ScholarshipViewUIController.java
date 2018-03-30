@@ -113,6 +113,8 @@ public class ScholarshipViewUIController extends MainController {
 		try {
     		MainController.entityId = this.idScolar;
     		MainController.universityId = this.universityId;
+    		MainController.universityName = this.universityName;
+
 			setSceneContent("ApplyScholarship");
 		} catch (IOException e) {
 			// TODO Auto-generated catch block

@@ -45,6 +45,7 @@ public abstract class MainController {
 		protected static String roleType = "";
 		protected static int entityId = 0;
 		protected static int universityId = 0;
+		protected static String universityName ="";
 		
 		
 	public MainController(){
@@ -52,6 +53,7 @@ public abstract class MainController {
 		universityFacade = new UniversityFacade();
 		scholarshipFacade = new ScholarshipFacade();
 		courseFacade = new CourseFacade();
+		applicationFacade = new ApplicationFacade();
 	}
 	
 	/**
