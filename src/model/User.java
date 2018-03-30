@@ -51,9 +51,22 @@ public class User {
      */
     private int id_role;
     
+    /**
+     * 
+     */
+    private int id_university;
+    
     // Constructors
     
-    public User(int id_user, String name, String password, int id_role) {
+    public int getId_university() {
+		return id_university;
+	}
+
+	public void setId_university(int id_university) {
+		this.id_university = id_university;
+	}
+
+	public User(int id_user, String name, String password, int id_role) {
 		this.id_user = id_user;
 		this.firstName = name;
 		this.password = password;
@@ -61,7 +74,7 @@ public class User {
 	}
 
 	public User(int id_user, String firstName, String lastName, String password, String email, String username, Date birthDate,
-			String address, int id_role) {
+			String address, int id_role, int id_university) {
 		this.id_user = id_user;
 		this.firstName = firstName;
 		this.lastName = lastName;
@@ -71,6 +84,7 @@ public class User {
 		this.birthDate = birthDate;
 		this.address = address;
 		this.id_role = id_role;
+		this.id_university = id_university;
 	}
 	
 	// Destructor

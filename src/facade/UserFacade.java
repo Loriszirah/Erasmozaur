@@ -10,6 +10,7 @@ public class UserFacade {
 	private AbstractFactoryDAO factory = AbstractFactoryDAO.getFactory();
 	private static User currentUser;
 	private UserDAO userDAO = factory.getUserDAO();
+	private UniversityDAO UniversityDAO = factory.getUniversityDAO();
 	
     /**
      * Default constructor
@@ -52,7 +53,7 @@ public class UserFacade {
 	 * @throws Exception
 	 */
 	public boolean register(String firstName, String lastName, String password, String email, String username, Date birthDate,
-			String address, String role) throws Exception{
+			String address, String role, String university) throws Exception{
     	
     	if(checkIfExistsWithEmail(email)) {
     		if(checkIfExistsWithUsername(username)) {
@@ -67,7 +68,7 @@ public class UserFacade {
     	}
 		
 		try{
-			UserFacade.currentUser = this.userDAO.createUser(firstName, lastName, password, email, username, birthDate, address, role);
+			UserFacade.currentUser = this.userDAO.createUser(firstName, lastName, password, email, username, birthDate, address, role, university);
 			return true;
 		} catch(Exception e){
 			e.printStackTrace();
@@ -147,7 +148,7 @@ public class UserFacade {
      * @return true if there is an other user with this username, false otherwise
      */
     public boolean checkIfExistsWithUsername(int id_user, String username) {
-    	return UserDAO.checkIfExistsWithUsername(id_user, username);
+    	return userDAO.checkIfExistsWithUsername(id_user, username);
     }
     
     /**
@@ -157,7 +158,7 @@ public class UserFacade {
      * @return true if there is an other user with this email, false otherwise
      */
     public boolean checkIfExistsWithEmail(int id_user, String email) {
-    	return UserDAO.checkIfExistsWithEmail(id_user, email);
+    	return userDAO.checkIfExistsWithEmail(id_user, email);
     }
     
     /**
@@ -171,7 +172,7 @@ public class UserFacade {
      * @param address
      * @throws Exception
      */
-    public void updateUser(int id_user, String firstName, String lastName, String email, String username, Date birthDate, String address) throws Exception{
+    public void updateUser(int id_user, String firstName, String lastName, String email, String username, Date birthDate, String address, String university) throws Exception{
     	if(checkIfExistsWithEmail(id_user, email)) {
     		if(checkIfExistsWithUsername(id_user, username)) {
         		throw new Exception("This email and this username are already taken");
@@ -183,13 +184,14 @@ public class UserFacade {
     	}
     	else {
     		try {
-        		UserDAO.updateUser(id_user, firstName, lastName, email, username, birthDate, address);
+        		userDAO.updateUser(id_user, firstName, lastName, email, username, birthDate, address, university);
     			currentUser.setFirstName(firstName);
     			currentUser.setLastName(lastName);
     			currentUser.setEmail(email);
     			currentUser.setUsername(username);
     			currentUser.setBirthDate(birthDate);
     			currentUser.setAddress(address);
+    			currentUser.setId_university(UniversityDAO.getByName(university).getId_university());
     		}catch(SQLException e) {
   		      e.printStackTrace(); 	
     		}

@@ -24,7 +24,7 @@ public class UserDAOPostgres extends AbstractDAOPostgres implements UserDAO {
 		return UserDAOPostgres.instance;
 	}
 	
-    public User createUser(String firstName, String lastName, String password, String email, String username, Date birthDate, String address, String role) throws Exception {
+    public User createUser(String firstName, String lastName, String password, String email, String username, Date birthDate, String address, String role, String university) throws Exception {
     	try {
 			if(!this.conn.isValid(1)) {
 				openConnection();
@@ -60,7 +60,7 @@ public class UserDAOPostgres extends AbstractDAOPostgres implements UserDAO {
 			
 			// Get the user in the database if exists and create the user
 			if(result.next()) {
-				User user = new User(result.getInt("id_user"), result.getString("firstName"), result.getString("lastName"), result.getString("password"), result.getString("email"), result.getString("username"), null, result.getString("address"), result.getInt("id_role"));
+				User user = new User(result.getInt("id_user"), result.getString("firstName"), result.getString("lastName"), result.getString("password"), result.getString("email"), result.getString("username"), null, result.getString("address"), result.getInt("id_role"), result.getInt("id_university"));
 				return user;
 			}
     	}catch(SQLException e) {
@@ -83,7 +83,7 @@ public class UserDAOPostgres extends AbstractDAOPostgres implements UserDAO {
 			
 			// Get the user in the database if exists and create the user
 			if(result.next()) {
-				user = new User(result.getInt("id_user"), result.getString("firstname"), result.getString("lastname"), result.getString("password"), result.getString("email"), result.getString("username"), null, result.getString("address"), result.getInt("id_role"));
+				user = new User(result.getInt("id_user"), result.getString("firstname"), result.getString("lastname"), result.getString("password"), result.getString("email"), result.getString("username"), null, result.getString("address"), result.getInt("id_role"), result.getInt("id_university"));
 			}
 		}catch(SQLException e) {
 			e.printStackTrace();
@@ -117,7 +117,7 @@ public class UserDAOPostgres extends AbstractDAOPostgres implements UserDAO {
         // TODO implement here
     }
 
-    public void updateUser(int id_user, String firstName, String lastName, String email, String username, Date birthDate, String address) throws Exception{
+    public void updateUser(int id_user, String firstName, String lastName, String email, String username, Date birthDate, String address, String university) throws Exception{
     	try {
 			if(!this.conn.isValid(1)) {
 				openConnection();
@@ -138,7 +138,7 @@ public class UserDAOPostgres extends AbstractDAOPostgres implements UserDAO {
 		    }
 		    
 		    //The object ResultSet contains the result of the SQL request
-		    state.executeUpdate("UPDATE Users SET firstName = '"+firstName+"', lastname='"+lastName+"', email='"+email+"', username='"+username+"', birthdate="+null+", address='"+address+"' WHERE id_user='"+id_user+"';");
+		    state.executeUpdate("UPDATE Users SET firstName = '"+firstName+"', lastname='"+lastName+"', email='"+email+"', username='"+username+"', birthdate='"+birthDate+"', address='"+address+"' WHERE id_user='"+id_user+"';");
 		    
     	}catch(SQLException e) {
 		      e.printStackTrace();
@@ -161,7 +161,7 @@ public class UserDAOPostgres extends AbstractDAOPostgres implements UserDAO {
 
 			ResultSet exists = state.executeQuery("SELECT * FROM Users WHERE id_user = "+id_user+";");
 			if(exists.next()) {
-				user = new User(id_user, exists.getString("firstname"), exists.getString("lastname"), exists.getString("password"), exists.getString("email"), exists.getString("username"), null, exists.getString("address"), exists.getInt("id_role"));
+				user = new User(id_user, exists.getString("firstname"), exists.getString("lastname"), exists.getString("password"), exists.getString("email"), exists.getString("username"), null, exists.getString("address"), exists.getInt("id_role"), exists.getInt("id_university"));
 			}
 		}catch(SQLException e) {
 			e.printStackTrace();

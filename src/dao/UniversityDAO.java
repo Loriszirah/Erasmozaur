@@ -59,5 +59,12 @@ public interface UniversityDAO {
      * @return true if a university already exists with this name, false otherwise
      */
     public boolean checkIfExistsWithName(String name);
+    
+    /**
+     * Return a university
+     * @param name
+     * @return the university with the given name
+     */
+    public University getByName(String name);
 
 }

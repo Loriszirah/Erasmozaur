@@ -39,7 +39,7 @@ public interface UserDAO {
      * @param birthDate
      * @param address
      */
-    public void updateUser(int id_user, String firstName, String lastName, String email, String username, Date birthDate, String address) throws Exception;
+    public void updateUser(int id_user, String firstName, String lastName, String email, String username, Date birthDate, String address, String university) throws Exception;
 
     /**
      * Check if a user already exists with this username
@@ -118,13 +118,10 @@ public interface UserDAO {
      * @param username 
      * @param birthDate 
      * @param address 
-<<<<<<< Updated upstream
      * @return the user that has been created
-=======
-     * @return
      * @throws Exception 
      */
-    public User createUser(String firstName, String lastName, String password, String email, String username, Date birthDate, String address, String role) throws Exception;
+    public User createUser(String firstName, String lastName, String password, String email, String username, Date birthDate, String address, String role, String university) throws Exception;
     
     /**
      * 

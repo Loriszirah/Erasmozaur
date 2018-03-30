@@ -78,8 +78,7 @@ public class UniversityDAOPostgres extends AbstractDAOPostgres implements Univer
 			}
 			//Creation of a Statement object
 			Statement state = conn.createStatement();
-			// Check if the username already exist
-
+			
 			ResultSet exists = state.executeQuery("SELECT * FROM Universities WHERE id_university = "+id_university+";");
 
 			String nameUniversity;
@@ -96,6 +95,37 @@ public class UniversityDAOPostgres extends AbstractDAOPostgres implements Univer
 		}catch(SQLException e) {
 			e.printStackTrace();
 			return null;
+		}
+		return university;
+	}
+	
+	public University getByName(String name) {
+		University university = null;
+		if(checkIfExistsWithName(name)) {
+			try {
+				if(!this.conn.isValid(1)) {
+					openConnection();
+				}
+				//Creation of a Statement object
+				Statement state = conn.createStatement();
+
+				ResultSet exists = state.executeQuery("SELECT * FROM Universities WHERE name = "+name+";");
+
+				String addressUniversity;
+				int id_city;
+				int id_responsible;
+				int id_university;
+				if(exists.next()) {
+					addressUniversity = exists.getString("address");
+					id_city = exists.getInt("id_city");
+					id_responsible = exists.getInt("id_responsible");
+					id_university = exists.getInt("id_university");
+					university = new University(id_university,name,addressUniversity,id_city,id_responsible);
+				}
+			}catch(SQLException e) {
+				e.printStackTrace();
+				return null;
+			}
 		}
 		return university;
 	}

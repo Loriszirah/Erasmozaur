@@ -101,4 +101,13 @@ public class UniversityFacade {
     public ArrayList<City> getAllCities(){
     		return cityDAO.indexCities();
     }
+    
+    /**
+     * Return a university
+     * @param name
+     * @return the university with the given name
+     */
+	public University getByName(String name) {
+		return universityDAO.getByName(name);
+	}
 }

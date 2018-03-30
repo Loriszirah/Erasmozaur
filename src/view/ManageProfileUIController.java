@@ -12,17 +12,21 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
 import main.MainApp;
+import java.util.Date;
 import model.Role;
+import model.University;
 import model.User;
 
 import java.io.IOException;
-import java.sql.Date;
+import java.time.LocalDate;
 import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import facade.RoleFacade;
+import facade.UniversityFacade;
 import facade.UserFacade;
 
 public class ManageProfileUIController extends MainController{
@@ -60,8 +64,15 @@ public class ManageProfileUIController extends MainController{
 	@FXML
 	Text errorMessage;
 	
-	protected RoleFacade rf = new RoleFacade();
-	protected ArrayList<Role> rolesAL;
+	@FXML
+	TextField roleTextField;
+	
+	@FXML
+	ChoiceBox<String> universities;
+	
+	protected RoleFacade roleFacade = new RoleFacade();
+	protected UniversityFacade universityFacade = new UniversityFacade();
+	protected ArrayList<University> universitiesAL;
 	User currentUser = MainController.getUserFacade().getCurrentUser();
 
 	/**
@@ -78,13 +89,26 @@ public class ManageProfileUIController extends MainController{
     @FXML
     private void initialize() {
     	if(currentUser != null){
-	    		// Insert default values of the form
-	    		firstNameTextField.setText(userFacade.getCurrentUser().getFirstName());
-	    		lastNameTextField.setText(userFacade.getCurrentUser().getLastName());
-	    		usernameTextField.setText(userFacade.getCurrentUser().getUsername());
-	    		emailTextField.setText(userFacade.getCurrentUser().getEmail());
-	    		addressTextField.setText(userFacade.getCurrentUser().getAddress());
-	    }
+    		// Insert default values of the form
+    		firstNameTextField.setText(userFacade.getCurrentUser().getFirstName());
+    		lastNameTextField.setText(userFacade.getCurrentUser().getLastName());
+    		usernameTextField.setText(userFacade.getCurrentUser().getUsername());
+    		emailTextField.setText(userFacade.getCurrentUser().getEmail());
+    		addressTextField.setText(userFacade.getCurrentUser().getAddress());
+    		int id_role = userFacade.getCurrentUser().getId_role();
+    		roleTextField.setText(roleFacade.getRole(id_role).getName());
+    		
+    		// Filling the Choice box of universities
+    		universitiesAL = universityFacade.getAllUniversities();
+    		if(!universitiesAL.isEmpty()) {
+	    		for(int i = 0; i<universitiesAL.size(); i++) {
+	    			universities.getItems().add(universitiesAL.get(i).getName());
+	    			if(universitiesAL.get(i).getId_university() == userFacade.getCurrentUser().getId_university()) {
+	    				universities.setValue(universities.getItems().get(i));
+	    			}
+	    		}
+    		}
+    	}
     	else{
     		try {
 				setSceneContent("LoginOverview");
@@ -133,7 +157,8 @@ public class ManageProfileUIController extends MainController{
     	
     	if(!emptyField) {
     		try{
-				userFacade.updateUser(currentUser.getId(), firstNameTextField.getText(), lastNameTextField.getText(), emailTextField.getText(), usernameTextField.getText(), null, addressTextField.getText());
+    			Date date = Date.from(birthdateDatePicker.getValue().atStartOfDay(ZoneId.systemDefault()).toInstant());
+    			userFacade.updateUser(currentUser.getId(), firstNameTextField.getText(), lastNameTextField.getText(), emailTextField.getText(), usernameTextField.getText(), date, addressTextField.getText(), universities.getValue().toString());
 	    		errorMessage.setText("Informations updated");
 	    	} catch(Exception e){
 	    		errorMessage.setText(e.getMessage());
@@ -142,7 +167,8 @@ public class ManageProfileUIController extends MainController{
 	    		usernameTextField.setText(userFacade.getCurrentUser().getUsername());
 	    		emailTextField.setText(userFacade.getCurrentUser().getEmail());
 	    		addressTextField.setText(userFacade.getCurrentUser().getAddress());
-			}
+	    		universities.setValue(universities.getItems().get(universitiesAL.indexOf(universityFacade.getByName(universities.getValue().toString()))));
+	    	}
     	}
     	else{
     		errorMessage.setText("Missing fields");
