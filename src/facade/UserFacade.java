@@ -9,7 +9,7 @@ import dao.*;
 public class UserFacade {
 	private AbstractFactoryDAO factory = AbstractFactoryDAO.getFactory();
 	private static User currentUser;
-	private UserDAO UserDAO = factory.getUserDAO();
+	private UserDAO userDAO = factory.getUserDAO();
 	
     /**
      * Default constructor
@@ -25,7 +25,7 @@ public class UserFacade {
      */
 	public boolean login(String username, String password) {
 		try{
-			UserFacade.currentUser = this.UserDAO.login(username, password);
+			UserFacade.currentUser = this.userDAO.login(username, password);
 		}catch(Exception ex){
 			System.out.println("Exception was caught in the login!");
 		}
@@ -67,7 +67,7 @@ public class UserFacade {
     	}
 		
 		try{
-			UserFacade.currentUser = this.UserDAO.createUser(firstName, lastName, password, email, username, birthDate, address, role);
+			UserFacade.currentUser = this.userDAO.createUser(firstName, lastName, password, email, username, birthDate, address, role);
 			return true;
 		} catch(Exception e){
 			e.printStackTrace();
@@ -88,7 +88,7 @@ public class UserFacade {
      * @return true if a user already exists with this username, false otherwise
      */
 	private boolean checkIfExistsWithUsername(String username) {
-		return UserDAO.checkIfExistsWithUsername(username);
+		return userDAO.checkIfExistsWithUsername(username);
 	}
 	
 	/**
@@ -97,7 +97,7 @@ public class UserFacade {
      * @return true if a user already exists with this email, false otherwise
      */
 	private boolean checkIfExistsWithEmail(String email) {
-		return UserDAO.checkIfExistsWithEmail(email);
+		return userDAO.checkIfExistsWithEmail(email);
 	}
 	
 	/**
@@ -106,7 +106,7 @@ public class UserFacade {
 	 * @return true if the user with the given id is responsible of one or more universities, false otherwise
 	 */
 	public boolean isResponsibleOfUniversity(int id) {
-		return UserDAO.isResponsibleOfUniversity(id);
+		return userDAO.isResponsibleOfUniversity(id);
 	}
 
     /**
@@ -209,8 +209,7 @@ public class UserFacade {
      * @return the user with the given id
      */
     public User viewUser(int id_user) {
-        // TODO implement here
-        return null;
+        return userDAO.viewUser(id_user);
     }
 
     /**
