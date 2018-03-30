@@ -103,7 +103,7 @@ class UserTest {
 	void testViewUser() {
 		//Cas de test 1
 		User user = userDAO.viewUser(1);
-		User userToVerify = new User(1, "Melvil", "Donnart", "pwd", "melvil@gmail.com", "Melvil", null, "null", 1); 
+		User userToVerify = new User(1, "Melvil", "Donnart", "pwd", "melvil.donnart@gmail.com", "Melvil", null, null, 1); 
 		assertTrue("The user is well retrieve from the database", user.equals(userToVerify));
 
 		//Cas de test 2
