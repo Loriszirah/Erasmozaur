@@ -6,6 +6,7 @@ import dao.CityDAO;
 import dao.ScholarshipDAO;
 import dao.UniversityDAO;
 import model.*;
+import presenters.ScholarshipPresenter;
 
 /**
  * 
@@ -60,8 +61,22 @@ public class ScholarshipFacade {
     /**
      * @return an array list of all the scholarships
      */
-    public  ArrayList<Scholarship> getAllScholarship() {
+    public ArrayList<Scholarship> getAllScholarships() {
         return scholarshipDAO.getAllScholarships();
+    }
+    
+    /**
+     * @return an array list of all the scholarships
+     */
+    public ArrayList<Scholarship> indexScholarships() {
+    	return scholarshipDAO.getAllScholarships();
+    }
+    
+    /**
+     * @return an array list of all the scholarships
+     */
+    public ArrayList<ScholarshipPresenter> indexScholarshipPresenters() {
+    	return scholarshipDAO.getAllScholarshipPresenters();
     }
     
     /**

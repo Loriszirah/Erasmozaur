@@ -93,12 +93,14 @@ public class ScholarshipDAOPostgres extends AbstractDAOPostgres implements Schol
 			}
 			//Creation of a Statement object
 			Statement state = conn.createStatement();
-			// Check if the username already exist
 
-			ResultSet exists = state.executeQuery("SELECT * FROM Scholarships;");
-
-			while(exists.next()) {
-				scholarships.add(new Scholarship(exists.getInt("id_scholarship"),exists.getString("description"),exists.getInt("duration"),exists.getDate("startdate"),exists.getDate("enddate"),exists.getString("domain"),exists.getInt("id_receiving_university") ));
+			ResultSet exists = state.executeQuery("SELECT * FROM Scholarships");
+//			System.out.println("Size wtf - "+exists.getFetchSize());
+//
+			if(exists.next()){
+				while(exists.next()) {
+					scholarships.add(new Scholarship(exists.getInt("id_scholarship"),exists.getString("description"),exists.getInt("duration"),exists.getDate("startdate"),exists.getDate("enddate"),exists.getString("domain"),exists.getInt("id_receiving_university")));
+				}
 			}
 		}catch(SQLException e) {
 			e.printStackTrace();
@@ -107,6 +109,42 @@ public class ScholarshipDAOPostgres extends AbstractDAOPostgres implements Schol
 		return scholarships;
     }
     
+    /**
+     * @return
+     */
+    public ArrayList<ScholarshipPresenter> getAllScholarshipPresenters() {
+    	ArrayList<ScholarshipPresenter> scholarships = new ArrayList<ScholarshipPresenter>();
+		try {
+			if(!this.conn.isValid(1)) {
+				openConnection();
+			}
+			//Creation of a Statement object
+			Statement state = conn.createStatement();
+			
+			ResultSet exists = state.executeQuery("SELECT id_scholarship, description, duration, startdate, enddate, domain, Universities.name universityName "
+					+ "FROM Scholarships, Universities "
+					+ "WHERE Scholarships.id_receiving_university = Universities.id_university ;");
+
+			int id_scholarship, duration;
+			Date startdate, enddate;
+			String description, domain, universityName;
+			
+			while(exists.next()) {
+				id_scholarship = exists.getInt("id_scholarship");
+				description = exists.getString("description");
+				duration = exists.getInt("duration");
+				startdate = exists.getDate("startdate");
+				enddate = exists.getDate("enddate");
+				domain = exists.getString("domain");
+				universityName = exists.getString("universityName");
+				scholarships.add(new ScholarshipPresenter(id_scholarship, description, duration, startdate, enddate, domain, universityName));
+			}
+		} catch(SQLException e) {
+			e.printStackTrace();
+			return null;
+		}
+		return scholarships;
+    }
 
     public ArrayList<Scholarship> getAllScholarshipsByUniversity(int id_sending_university) {
     	ArrayList<Scholarship> scholarships = new ArrayList<Scholarship>();

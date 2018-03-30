@@ -47,6 +47,12 @@ public interface ScholarshipDAO {
     public ArrayList<Scholarship> getAllScholarships();
     
     /**
+     * List all scholarships presenters 
+     * @return a list of scholarships presenters
+     */
+    public ArrayList<ScholarshipPresenter> getAllScholarshipPresenters();
+    
+    /**
      * List all scholarships for a university
      * @param id_sending_university ID of the university sending a student
      * @return an ArrayList of all scholarships for a university
