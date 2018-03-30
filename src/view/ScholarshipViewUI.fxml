@@ -13,7 +13,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="538.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/9.0.4" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.ScholarshipViewUIController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/9.0.4" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.ScholarshipViewUIController">
    <children>
       <ImageView fitHeight="106.0" fitWidth="110.0" layoutX="29.0" layoutY="32.0" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -39,17 +39,17 @@
          </menus>
       </MenuBar>
       <Button fx:id="backButton" layoutX="521.0" layoutY="72.0" mnemonicParsing="false" onAction="#backButton" text="Back" />
-      <Text layoutX="80.0" layoutY="270.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Duration :" wrappingWidth="133.7700515985489">
+      <Text layoutX="130.0" layoutY="205.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Duration :" wrappingWidth="133.7700515985489">
          <font>
             <Font size="16.0" />
          </font>
       </Text>
-      <Text layoutX="81.0" layoutY="240.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Description :" wrappingWidth="133.7700515985489">
+      <Text layoutX="130.0" layoutY="175.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Description :" wrappingWidth="133.7700515985489">
          <font>
             <Font size="16.0" />
          </font>
       </Text>
-      <Text layoutX="82.0" layoutY="207.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Receiving university :" wrappingWidth="175.7700514793396">
+      <Text layoutX="130.0" layoutY="145.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Receiving university :" wrappingWidth="175.7700514793396">
          <font>
             <Font size="16.0" />
          </font>
@@ -59,54 +59,54 @@
             <Font name="System Bold" size="24.0" />
          </font>
       </Label>
-      <Label fx:id="monthsScholarship" layoutX="270.0" layoutY="254.0" text="MonthsScholarship">
+      <Label fx:id="monthsScholarship" layoutX="310.0" layoutY="188.0" text="MonthsScholarship">
          <font>
             <Font size="16.0" />
          </font>
       </Label>
-      <Text layoutX="80.0" layoutY="316.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Start Date :" wrappingWidth="133.7700515985489">
+      <Text layoutX="130.0" layoutY="235.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Start Date :" wrappingWidth="133.7700515985489">
          <font>
             <Font size="16.0" />
          </font>
       </Text>
-      <Text layoutX="80.0" layoutY="391.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Domain :" wrappingWidth="133.7700515985489">
+      <Text layoutX="130.0" layoutY="295.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Domain :" wrappingWidth="133.7700515985489">
          <font>
             <Font size="16.0" />
          </font>
       </Text>
-      <Text layoutX="80.0" layoutY="427.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Courses :" wrappingWidth="133.7700515985489">
+      <Text layoutX="130.0" layoutY="325.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Courses :" wrappingWidth="133.7700515985489">
          <font>
             <Font size="16.0" />
          </font>
       </Text>
-      <ListView fx:id="coursesScholarship" layoutX="270.0" layoutY="411.0" prefHeight="64.0" prefWidth="255.0" />
+      <ListView fx:id="coursesScholarship" layoutX="310.0" layoutY="313.0" prefHeight="83.0" prefWidth="256.0" />
       <Button fx:id="applyButton" layoutX="452.0" layoutY="72.0" mnemonicParsing="false" text="Apply" />
-      <Label fx:id="startDateScholarship" layoutX="270.0" layoutY="300.0" text="StartDateScholarship">
+      <Label fx:id="startDateScholarship" layoutX="310.0" layoutY="220.0" text="StartDateScholarship">
          <font>
             <Font size="16.0" />
          </font>
       </Label>
-      <Label fx:id="domainScholarship" layoutX="270.0" layoutY="375.0" text="DomainScholarship">
+      <Label fx:id="domainScholarship" layoutX="310.0" layoutY="279.0" text="DomainScholarship">
          <font>
             <Font size="16.0" />
          </font>
       </Label>
-      <Label fx:id="descriptionScholarship" layoutX="270.0" layoutY="225.0" text="DescriptionScholarship">
+      <Label fx:id="descriptionScholarship" layoutX="310.0" layoutY="159.0" text="DescriptionScholarship">
          <font>
             <Font size="16.0" />
          </font>
       </Label>
-      <Label fx:id="nameScholarship" layoutX="270.0" layoutY="189.0" text="UniversityName">
+      <Label fx:id="nameScholarship" layoutX="310.0" layoutY="129.0" text="UniversityName">
          <font>
             <Font size="16.0" />
          </font>
       </Label>
-      <Text layoutX="80.0" layoutY="358.0" strokeType="OUTSIDE" strokeWidth="0.0" text="End date :" wrappingWidth="133.7700515985489">
+      <Text layoutX="130.0" layoutY="265.0" strokeType="OUTSIDE" strokeWidth="0.0" text="End date :" wrappingWidth="133.7700515985489">
          <font>
             <Font size="16.0" />
          </font>
       </Text>
-      <Label fx:id="endDateScholarship" layoutX="270.0" layoutY="344.0" text="EndDateScholarship">
+      <Label fx:id="endDateScholarship" layoutX="310.0" layoutY="249.0" text="EndDateScholarship">
          <font>
             <Font size="16.0" />
          </font>
