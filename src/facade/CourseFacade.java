@@ -27,9 +27,8 @@ public class CourseFacade {
      * @param specialization 
      * @return the course with the specified arguments
      */
-    public Course createCourse(String name, String specialization) {
-        // TODO implement here
-        return null;
+    public Course createCourse(String name, String specialization, int id_university) {
+        return courseDAO.createCourse(name, specialization, id_university);
     }
 
     /**
@@ -68,9 +67,8 @@ public class CourseFacade {
      * @param id_university 
      * @return an array list of all the courses of the given university
      */
-    public ArrayList<Course> getAllCoursesByUniversity(int id_university) {
-        // TODO implement here
-        return null;
+    public ArrayList<String> getAllCoursesFullNamesByUniversity(int id_university) {
+        return courseDAO.getAllCourseFullNamesForUniversity(id_university);
     }
 
     /**

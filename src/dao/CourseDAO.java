@@ -45,6 +45,12 @@ public interface CourseDAO {
      * @param id_university 
      * @return
      */
+    public ArrayList<String> getAllCourseFullNamesForUniversity(int id_university);
+    
+    /**
+     * @param id_university 
+     * @return
+     */
     public ArrayList<Course> getAllCoursesByUniversity(int id_university);
 
     /**

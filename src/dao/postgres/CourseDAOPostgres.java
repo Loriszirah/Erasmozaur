@@ -39,13 +39,13 @@ public class CourseDAOPostgres extends AbstractDAOPostgres implements CourseDAO 
 			Statement state = conn.createStatement();
 
 			//The object ResultSet contains the result of the SQL request
-			state.executeUpdate("INSERT INTO Course (name, specialization, id_university) VALUES('"+name+"','"+specialization+"','"+id_university+"')");
+			state.executeUpdate("INSERT INTO Courses (name, specialization, id_university) VALUES('"+name+"','"+specialization+"','"+id_university+"')");
 
 			// The object ResultSet contains the result of the SQL request
 			ResultSet result = state.executeQuery("SELECT * FROM Courses "
-					+ "WHERE name='"+name+"' AND id_university="+id_university+");");
+					+ "WHERE name='"+name+"' AND id_university="+id_university+";");
 
-			// Get the user in the database if exists and create the user
+			// Get the course in the database if exists and create the user
 			if(result.next()) {
 				Course course = new Course(result.getInt("id_course"), result.getString("name"), result.getString("specialization"), result.getInt("id_university"));
 				return course;
@@ -94,6 +94,32 @@ public class CourseDAOPostgres extends AbstractDAOPostgres implements CourseDAO 
 	public ArrayList<Course> getAllCourses() {
 		// TODO implement here
 		return null;
+	}
+	
+	/**
+	 * @param id_university 
+	 * @return
+	 */
+	public ArrayList<String> getAllCourseFullNamesForUniversity(int id_university) {
+		ArrayList<String> courses = new ArrayList<String>();
+		try {
+			if(!this.conn.isValid(1)) {
+				openConnection();
+			}
+			//Creation of a Statement object
+			Statement state = conn.createStatement();
+			// Check if the username already exist
+
+			ResultSet exists = state.executeQuery("SELECT * FROM Courses Where id_university='"+id_university+"';");
+			
+			while(exists.next()) {
+				courses.add(exists.getString("name")+" ("+exists.getString("specialization")+")");
+			}
+		} catch(SQLException e) {
+			e.printStackTrace();
+			return null;
+		}
+		return courses;
 	}
 
 	/**

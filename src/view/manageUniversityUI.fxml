@@ -6,6 +6,7 @@
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.SeparatorMenuItem?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
@@ -39,35 +40,39 @@
             </Menu>
          </menus>
       </MenuBar>
-      <Button fx:id="backButton" layoutX="477.0" layoutY="72.0" mnemonicParsing="false" text="Back" />
-      <Text layoutX="90.0" layoutY="230.0" strokeType="OUTSIDE" strokeWidth="0.0" text="City :" wrappingWidth="133.7700515985489">
+      <Button fx:id="backButton" layoutX="465.0" layoutY="72.0" mnemonicParsing="false" onMouseClicked="#backAction" text="Back to Index" />
+      <Text layoutX="99.0" layoutY="229.0" strokeType="OUTSIDE" strokeWidth="0.0" text="City :" wrappingWidth="133.7700515985489">
          <font>
             <Font size="16.0" />
          </font>
       </Text>
-      <Text layoutX="90.0" layoutY="190.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Responsible :" wrappingWidth="133.7700515985489">
+      <Text layoutX="99.0" layoutY="189.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Responsible :" wrappingWidth="133.7700515985489">
          <font>
             <Font size="16.0" />
          </font>
       </Text>
-      <Text layoutX="90.0" layoutY="150.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Address :" wrappingWidth="133.7700514793396">
+      <Text layoutX="99.0" layoutY="149.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Address :" wrappingWidth="133.7700514793396">
          <font>
             <Font size="16.0" />
          </font>
       </Text>
-      <Text layoutX="90.0" layoutY="269.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Country :" wrappingWidth="133.7700515985489">
+      <Text layoutX="99.0" layoutY="269.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Country :" wrappingWidth="133.7700515985489">
          <font>
             <Font size="16.0" />
          </font>
       </Text>
-      <Text layoutX="90.0" layoutY="313.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Courses :" wrappingWidth="133.7700515985489">
+      <Text layoutX="99.0" layoutY="308.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Courses :" wrappingWidth="133.7700515985489">
          <font>
             <Font size="16.0" />
          </font>
       </Text>
-      <TextField fx:id="coursesTextField" layoutX="219.0" layoutY="445.0" />
-      <ListView fx:id="coursesListView" layoutX="219.0" layoutY="291.0" prefHeight="135.0" prefWidth="200.0" />
-      <Button fx:id="addACourseButton" layoutX="391.0" layoutY="445.0" mnemonicParsing="false" text="Add a course" />
+      <TextField fx:id="courseNameTextField" layoutX="219.0" layoutY="419.0" prefHeight="26.0" prefWidth="198.0" />
+      <ScrollPane hbarPolicy="NEVER" layoutX="219.0" layoutY="291.0">
+         <content>
+            <ListView fx:id="coursesListView" prefHeight="108.0" prefWidth="332.0" />
+         </content>
+      </ScrollPane>
+      <Button fx:id="addCourseButton" layoutX="464.0" layoutY="432.0" mnemonicParsing="false" onMouseClicked="#createCourseAction" text="Add a course" />
       <Label fx:id="universityNameLabel" layoutX="178.0" layoutY="67.0" prefHeight="14.0" prefWidth="285.0" text="University name">
          <font>
             <Font name="System Bold" size="24.0" />
@@ -93,5 +98,8 @@
             <Font size="16.0" />
          </font>
       </Label>
+      <TextField fx:id="courseSpecializationTextField" layoutX="219.0" layoutY="451.0" prefHeight="26.0" prefWidth="198.0" />
+      <Label layoutX="121.0" layoutY="423.0" text="Course name :" />
+      <Label layoutX="119.0" layoutY="455.0" text="Specialization :" />
    </children>
 </AnchorPane>

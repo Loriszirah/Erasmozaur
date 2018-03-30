@@ -231,11 +231,23 @@ INSERT INTO Roles(name) VALUES('Admin');
 INSERT INTO Users(username,password,firstname,lastname,email,id_role) VALUES('Melvil','pwd','Melvil','Donnart','melvil.donnart@gmail.com',(SELECT id_role FROM Roles WHERE name = 'Tutor'));
 INSERT INTO Users(username,password,firstname,lastname,email,id_role) VALUES('Godefroi','pwd','Godefroi','Roussel','godefroi.roussel@gmail.com',(SELECT id_role FROM Roles WHERE name = 'Responsible'));
 INSERT INTO Users(username,password,firstname,lastname,email,id_role) VALUES('Loris','pwd','Loris','Zirah','loris.zirah@gmail.com',(SELECT id_role FROM Roles WHERE name = 'Student'));
+INSERT INTO Users(username,password,firstname,lastname,email,id_role) VALUES('Stefan','pwd','Stefan','Copetchi','ragnar.lothbrok@gmail.com',(SELECT id_role FROM Roles WHERE name = 'Student'));
 
-
+-- Inserting Countries & Cities
 INSERT INTO Countries(name) VALUES('France');
 INSERT INTO Cities(name, id_country) VALUES('Montpellier', (SELECT id_country FROM countries WHERE name = 'France'));
+
+-- Inserting Universities
 INSERT INTO Universities(name,address,id_city,id_responsible) VALUES('Polytech Montpellier','Rond Point Donut',(SELECT id_city FROM cities WHERE name = 'Montpellier'), (SELECT id_user FROM users WHERE email = 'loris.zirah@gmail.com'));
 INSERT INTO Universities(name,address,id_city,id_responsible) VALUES('Polytech Marseille','Rond Point Donut',(SELECT id_city FROM cities WHERE name = 'Montpellier'), (SELECT id_user FROM users WHERE email = 'loris.zirah@gmail.com'));
-INSERT INTO Scholarships(description ,duration ,startdate ,enddate,domain ,id_receiving_university) VALUES ('IG3 - Scholarship',3, '2018-04-02', '2018-06-02', 'Computer science', (SELECT id_university FROM universities WHERE name = 'Polytech Montpellier'));
-INSERT INTO Scholarships(description, duration, startdate, enddate, domain, id_receiving_university) VALUES ('IG4 - Scholarship',3, '2018-04-02', '2018-06-02', 'Computer science', (SELECT id_university FROM universities WHERE name = 'Polytech Montpellier'));
+
+-- Inserting Courses
+INSERT INTO Courses(name, specialization, id_university) VALUES('Genie Logiciel', 'Informatique et Gestion', (SELECT id_university FROM universities WHERE name = 'Polytech Montpellier'));
+INSERT INTO Courses(name, specialization, id_university) VALUES('Dev. App. Mobiles', 'Informatique et Gestion', (SELECT id_university FROM universities WHERE name = 'Polytech Montpellier'));
+INSERT INTO Courses(name, specialization, id_university) VALUES('Comptabilite', 'Informatique et Gestion', (SELECT id_university FROM universities WHERE name = 'Polytech Montpellier'));
+INSERT INTO Courses(name, specialization, id_university) VALUES('Resistance des Materiaux', 'Materiaux', (SELECT id_university FROM universities WHERE name = 'Polytech Montpellier'));
+
+-- Inserting Scholarships
+INSERT INTO Scholarships(description ,duration ,startdate ,enddate,domain ,id_receiving_university) VALUES ('IG3 - Scholarship',10, '2018-04-02', '2018-06-02', 'Computer science', (SELECT id_university FROM universities WHERE name = 'Polytech Montpellier'));
+INSERT INTO Scholarships(description, duration, startdate, enddate, domain, id_receiving_university) VALUES ('IG4 - Scholarship',9, '2018-04-02', '2018-06-02', 'Computer science', (SELECT id_university FROM universities WHERE name = 'Polytech Montpellier'));
+INSERT INTO Scholarships(description ,duration ,startdate ,enddate,domain ,id_receiving_university) VALUES ('MI3 - Scholarship',5, '2018-04-02', '2018-06-02', 'Micro-informatics', (SELECT id_university FROM universities WHERE name = 'Polytech Marseille'));
