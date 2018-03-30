@@ -43,8 +43,8 @@ class UserTest {
 	void testCreateUser() {
 		//Cas de test 1
 		try {
-			User user = userDAO.createUser("Fabien", "Turgut", "pwd", "fabien@gmail.com", "Fab", null, "Polytech Montpellier", "Student");
-			User userToVerify = new User(user.getId(), "Fabien", "Turgut", "pwd", "fabien@gmail.com", "Fab", null, "Polytech Montpellier", 2);
+			User user = userDAO.createUser("Fabien", "Turgut", "pwd", "fabien@gmail.com", "Fab", null, "Polytech Montpellier", "Student", "Polytech Montpellier");
+			User userToVerify = new User(user.getId(), "Fabien", "Turgut", "pwd", "fabien@gmail.com", "Fab", null, "Polytech Montpellier", 2, 1);
 			assertTrue("Both objects are equals.", user.equals(userToVerify));
 		} catch (Exception e) {
 			fail("Fail to create an user in database");
@@ -103,7 +103,7 @@ class UserTest {
 	void testViewUser() {
 		//Cas de test 1
 		User user = userDAO.viewUser(1);
-		User userToVerify = new User(1, "Melvil", "Donnart", "pwd", "melvil.donnart@gmail.com", "Melvil", null, null, 1); 
+		User userToVerify = new User(1, "Melvil", "Donnart", "pwd", "melvil.donnart@gmail.com", "Melvil", null, null, 1, 1); 
 		assertTrue("The user is well retrieve from the database", user.equals(userToVerify));
 
 		//Cas de test 2
