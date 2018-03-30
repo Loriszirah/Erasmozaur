@@ -9,8 +9,11 @@
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.SeparatorMenuItem?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
 <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="595.0" prefWidth="697.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.ManageProfileUIController">
    <children>
@@ -32,10 +35,10 @@
       <TextField fx:id="emailTextField" layoutX="274.0" layoutY="250.0" />
       <TextField fx:id="usernameTextField" layoutX="274.0" layoutY="290.0" />
       <TextField fx:id="addressTextField" layoutX="274.0" layoutY="336.0" />
-      <DatePicker layoutX="276.0" layoutY="455.0" prefHeight="27.0" prefWidth="167.0" />
+      <DatePicker fx:id="birthdateDatePicker" layoutX="276.0" layoutY="455.0" prefHeight="27.0" prefWidth="167.0" />
       <Label layoutX="156.0" layoutY="460.0" text="Birth date" />
-      <Button fx:id="cancelButton" layoutX="238.0" layoutY="535.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="90.0" text="Cancel" />
-      <Button fx:id="validateButton" layoutX="385.0" layoutY="535.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="90.0" text="Validate" />
+      <Button fx:id="cancelButton" layoutX="238.0" layoutY="535.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="90.0" text="Cancel" onMouseClicked="#cancelButton"/>
+      <Button fx:id="validateButton" layoutX="385.0" layoutY="535.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="90.0" text="Validate" onMouseClicked="#submitFormButton"/>
       <MenuBar prefHeight="29.0" prefWidth="697.0">
          <menus>
             <Menu mnemonicParsing="false" text="Go to">
@@ -55,5 +58,26 @@
          </menus>
       </MenuBar>
       <ChoiceBox layoutX="273.0" layoutY="379.0" prefWidth="150.0" />
+      <ImageView fx:id="emailWarning" layoutX="437.0" layoutY="255.0" visible="false">
+         <image>
+            <Image url="@../../../../Downloads/warning.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="usernameWarning" layoutX="437.0" layoutY="296.0" visible="false">
+         <image>
+            <Image url="@../../../../Downloads/warning.png" />
+         </image>
+      </ImageView>
+      <Text fx:id="errorMessage" layoutX="236.0" layoutY="159.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="225.3367156982422" />
+      <ImageView fx:id="lastnameWarning" layoutX="437.0" layoutY="215.0" visible="false">
+         <image>
+            <Image url="@../../../../Downloads/warning.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="firstnameWarning" layoutX="437.0" layoutY="172.0" visible="false">
+         <image>
+            <Image url="@../../../../Downloads/warning.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>

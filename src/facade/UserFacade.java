@@ -1,4 +1,5 @@
 package facade;
+import java.sql.SQLException;
 import java.util.*;
 import model.*;
 import dao.*;
@@ -16,6 +17,12 @@ public class UserFacade {
     public UserFacade() {
     }
     
+    /**
+     * Try to login the user to the application with the given parameters
+     * @param username
+     * @param password
+     * @return true if the login was successful, false otherwise
+     */
 	public boolean login(String username, String password) {
 		try{
 			UserFacade.currentUser = this.UserDAO.login(username, password);
@@ -31,6 +38,19 @@ public class UserFacade {
 		}
 	}
 	
+	/**
+	 * Try to register the user with the given parameters
+	 * @param firstName
+	 * @param lastName
+	 * @param password
+	 * @param email
+	 * @param username
+	 * @param birthDate
+	 * @param address
+	 * @param role
+	 * @return true if the user has been registered, false otherwise
+	 * @throws Exception
+	 */
 	public boolean register(String firstName, String lastName, String password, String email, String username, Date birthDate,
 			String address, String role) throws Exception{
     	
@@ -55,6 +75,9 @@ public class UserFacade {
 		}	
 	}
 	
+	/**
+	 * @return the current user logged into the application
+	 */
 	public User getCurrentUser(){
 		return UserFacade.currentUser;
 	}
@@ -77,11 +100,17 @@ public class UserFacade {
 		return UserDAO.checkIfExistsWithEmail(email);
 	}
 	
+	/**
+	 * Check if a user is the responsible of a university
+	 * @param id
+	 * @return true if the user with the given id is responsible of one or more universities, false otherwise
+	 */
 	public boolean isResponsibleOfUniversity(int id) {
 		return UserDAO.isResponsibleOfUniversity(id);
 	}
 
     /**
+     * Create a user
      * @param firstName 
      * @param lastName 
      * @param password 
@@ -89,7 +118,7 @@ public class UserFacade {
      * @param username 
      * @param birthDate 
      * @param address 
-     * @return
+     * @return the user with the given parameters
      */
     public User createUser(String firstName, String lastName, String password, String email, String username, Date birthDate, String address) {
         // TODO implement here
@@ -97,7 +126,7 @@ public class UserFacade {
     }
 
     /**
-     * Leave the university that theh user belongs to
+     * Leave the university that the user belongs to
      */
     public void leaveUniversity() {
         // TODO implement here
@@ -112,10 +141,59 @@ public class UserFacade {
     }
 
     /**
-     * 
+     * Check if a user already exists with this username excepting the user with the given id
+     * @param id_user
+     * @param username
+     * @return true if there is an other user with this username, false otherwise
      */
-    public void updateUser() {
-        // TODO implement here
+    public boolean checkIfExistsWithUsername(int id_user, String username) {
+    	return UserDAO.checkIfExistsWithUsername(id_user, username);
+    }
+    
+    /**
+     * Check if a user already exists with this email exception the user with the given id
+     * @param id_user
+     * @param email
+     * @return true if there is an other user with this email, false otherwise
+     */
+    public boolean checkIfExistsWithEmail(int id_user, String email) {
+    	return UserDAO.checkIfExistsWithEmail(id_user, email);
+    }
+    
+    /**
+     * Update the user with the given parameters
+     * @param id_user
+     * @param firstName
+     * @param lastName
+     * @param email
+     * @param username
+     * @param birthDate
+     * @param address
+     * @throws Exception
+     */
+    public void updateUser(int id_user, String firstName, String lastName, String email, String username, Date birthDate, String address) throws Exception{
+    	if(checkIfExistsWithEmail(id_user, email)) {
+    		if(checkIfExistsWithUsername(id_user, username)) {
+        		throw new Exception("This email and this username are already taken");
+    		}
+    		throw new Exception("This email is already taken");
+    	}
+    	else if(checkIfExistsWithUsername(id_user,username)) {
+    		throw new Exception("This username is already taken");
+    	}
+    	else {
+    		try {
+        		UserDAO.updateUser(id_user, firstName, lastName, email, username, birthDate, address);
+    			currentUser.setFirstName(firstName);
+    			currentUser.setLastName(lastName);
+    			currentUser.setEmail(email);
+    			currentUser.setUsername(username);
+    			currentUser.setBirthDate(birthDate);
+    			currentUser.setAddress(address);
+    		}catch(SQLException e) {
+  		      e.printStackTrace(); 	
+    		}
+    	}
     }
 
     /**

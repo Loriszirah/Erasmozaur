@@ -117,8 +117,32 @@ public class UserDAOPostgres extends AbstractDAOPostgres implements UserDAO {
         // TODO implement here
     }
 
-    public void updateUser(int id_user) {
-        // TODO implement here
+    public void updateUser(int id_user, String firstName, String lastName, String email, String username, Date birthDate, String address) throws Exception{
+    	try {
+			if(!this.conn.isValid(1)) {
+				openConnection();
+			}
+		    // Creation of a Statement object
+		    Statement state = conn.createStatement();
+		    
+		    if (checkIfExistsWithUsername(id_user, username)) {	    
+			    if (checkIfExistsWithEmail(id_user, email)){
+			    	throw new Exception("Email and username are already taken");
+			    }
+			    else {
+			    	throw new Exception("Username is already taken");
+			    }
+		    }
+		    else if(checkIfExistsWithEmail(id_user, email)) {
+		    	throw new Exception("Email is already taken");
+		    }
+		    
+		    //The object ResultSet contains the result of the SQL request
+		    state.executeUpdate("UPDATE Users SET firstName = '"+firstName+"', lastname='"+lastName+"', email='"+email+"', username='"+username+"', birthdate="+null+", address='"+address+"' WHERE id_user='"+id_user+"';");
+		    
+    	}catch(SQLException e) {
+		      e.printStackTrace();
+		}
     }
 
     public void deleteUser(int id_user) {
@@ -128,6 +152,46 @@ public class UserDAOPostgres extends AbstractDAOPostgres implements UserDAO {
     public User viewUser(int id_user) {
         // TODO implement here
         return null;
+    }
+    
+    public boolean checkIfExistsWithEmail(int id_user, String email) {
+    	try{
+    		if(!this.conn.isValid(1)) {
+				openConnection();
+			}
+		    //Creation of a Statement object
+		    Statement state = conn.createStatement();
+		    
+		    ResultSet existsEmail = state.executeQuery("SELECT COUNT(*) as nb FROM Users WHERE email ='"+email+"' AND id_user!='"+id_user+"';");
+		    if(existsEmail.next()) {
+		    	return existsEmail.getInt("nb")>0;
+		    }
+    	} catch(SQLException e) {
+		      e.printStackTrace();
+		      return false;
+		}
+    	return false;
+    }
+
+    
+    public boolean checkIfExistsWithUsername(int id_user, String username) {
+    	try{
+    		if(!this.conn.isValid(1)) {
+				openConnection();
+			}
+		    //Creation of a Statement object
+		    Statement state = conn.createStatement();
+		    
+	    	// Check if the username already exist
+		    ResultSet exists = state.executeQuery("SELECT COUNT(*) as nb FROM Users WHERE username ='"+username+"' AND id_user!='"+id_user+"';");
+		    if(exists.next()) {
+		    	return exists.getInt("nb")>0;
+		    }
+    	} catch(SQLException e) {
+		      e.printStackTrace();
+		      return false;
+		}
+    	return false;
     }
    
     public boolean checkIfExistsWithUsername(String username) {

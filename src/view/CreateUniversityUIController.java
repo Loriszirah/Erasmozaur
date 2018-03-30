@@ -60,6 +60,9 @@ public class CreateUniversityUIController extends MainController {
     	}
     }
 	
+    /**
+     * Check if the fields are correctly given and try to create the university
+     */
 	@FXML
 	public void createUniversityButton() {
 		if(nameTextField.getText().isEmpty()) {
@@ -81,10 +84,13 @@ public class CreateUniversityUIController extends MainController {
 		}
 	}
 	
+	/**
+	 * Cancel the creation of the university
+	 */
 	@FXML
 	public void cancelCreateUniversityButton() {
 		try {
-			setSceneContent("HomePageUI");
+			setSceneContent("IndexUniversities");
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

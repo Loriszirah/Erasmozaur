@@ -14,9 +14,32 @@ public interface UserDAO {
     public void leaveUniversity();
 
     /**
+     * Check if a user already exists with this username excepting the user with the given id
      * @param id_user
+     * @param username
+     * @return true if there is an other user with this username, false otherwise
      */
-    public void updateUser(int id_user);
+    public boolean checkIfExistsWithUsername(int id_user, String username);
+    
+    /**
+     * Check if a user already exists with this email exception the user with the given id
+     * @param id_user
+     * @param email
+     * @return true if there is an other user with this email, false otherwise
+     */
+    public boolean checkIfExistsWithEmail(int id_user, String email);
+    
+    /**
+     * Update the user with the given parameters
+     * @param id_user
+     * @param firstName
+     * @param lastName
+     * @param email
+     * @param username
+     * @param birthDate
+     * @param address
+     */
+    public void updateUser(int id_user, String firstName, String lastName, String email, String username, Date birthDate, String address) throws Exception;
 
     /**
      * Check if a user already exists with this username

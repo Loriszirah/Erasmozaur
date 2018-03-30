@@ -11,30 +11,6 @@ public class User {
      */
     public int id_user;
 
-    public int getId() {
-		return id_user;
-	}
-
-	public void setId(int id_user) {
-		this.id_user = id_user;
-	}
-
-	public String getPassword() {
-		return password;
-	}
-
-	public void setPassword(String password) {
-		this.password = password;
-	}
-
-	public Integer getId_role() {
-		return id_role;
-	}
-
-	public void setId_role(Integer id_role) {
-		this.id_role = id_role;
-	}
-
 	/**
      * 
      */
@@ -73,19 +49,19 @@ public class User {
     /**
      * 
      */
-    private Integer id_role;
+    private int id_role;
     
     // Constructors
     
-    public User(Integer id_user, String name, String password, Integer id_role) {
+    public User(int id_user, String name, String password, int id_role) {
 		this.id_user = id_user;
 		this.firstName = name;
 		this.password = password;
 		this.id_role = id_role;
 	}
 
-	public User(Integer id_user, String firstName, String lastName, String password, String email, String username, Date birthDate,
-			String address, Integer id_role) {
+	public User(int id_user, String firstName, String lastName, String password, String email, String username, Date birthDate,
+			String address, int id_role) {
 		this.id_user = id_user;
 		this.firstName = firstName;
 		this.lastName = lastName;
@@ -104,7 +80,30 @@ public class User {
 	  }
 	
 	// Getters & Setters
+    public int getId() {
+		return id_user;
+	}
+    
+	public void setId(int id_user) {
+		this.id_user = id_user;
+	}
 
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	public int getId_role() {
+		return id_role;
+	}
+
+	public void setId_role(Integer id_role) {
+		this.id_role = id_role;
+	}
+	
 	public String getFirstName() {
 		return firstName;
 	}
