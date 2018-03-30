@@ -31,7 +31,7 @@ public class ApplicationFacade {
      * @param comment 
      * @return the application with the given parameters
      */
-    public Application createApplication(int userId, Date startDate, int duration, String comment) {
+    public Application createApplication( Date startDate, String comment, int duration, int userId,) {
         // TODO implement here
         return null;
     }

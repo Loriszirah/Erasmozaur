@@ -80,7 +80,7 @@
          </font>
       </Text>
       <ListView fx:id="coursesScholarship" layoutX="310.0" layoutY="313.0" prefHeight="83.0" prefWidth="256.0" />
-      <Button fx:id="applyButton" layoutX="452.0" layoutY="72.0" mnemonicParsing="false" text="Apply" />
+      <Button fx:id="applyButton" layoutX="452.0" layoutY="72.0" mnemonicParsing="false" text="Apply" onAction="#applyButton" />
       <Label fx:id="startDateScholarship" layoutX="310.0" layoutY="220.0" text="StartDateScholarship">
          <font>
             <Font size="16.0" />
