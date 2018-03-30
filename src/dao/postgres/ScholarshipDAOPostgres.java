@@ -70,7 +70,17 @@ public class ScholarshipDAOPostgres extends AbstractDAOPostgres implements Schol
      * @param id_scholarship
      */
     public void deleteScholarship(int id_scholarship) {
-        // TODO implement here
+    	try {
+			if(!this.conn.isValid(1)) {
+				openConnection();
+			}
+			// Creation of a Statement object
+			Statement state = conn.createStatement();
+			state.executeUpdate("DELETE FROM Scholarships WHERE id_scholarship = "+id_scholarship);
+
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}
     }
 
     /**

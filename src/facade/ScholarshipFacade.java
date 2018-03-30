@@ -47,7 +47,7 @@ public class ScholarshipFacade {
      * @param id_scholarship
      */
     public void deleteScholarship(int id_scholarship) {
-        // TODO implement here
+        scholarshipDAO.deleteScholarship(id_scholarship);
     }
 
     /**
@@ -55,7 +55,6 @@ public class ScholarshipFacade {
      * @return a scholarship with the given id
      */
     public Scholarship viewScholarship(int id_scholarship) {
-        // TODO implement here
         return scholarshipDAO.viewScholarship(id_scholarship);
     }
 
