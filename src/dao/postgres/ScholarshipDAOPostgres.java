@@ -59,7 +59,7 @@ public class ScholarshipDAOPostgres extends AbstractDAOPostgres implements Schol
     }
 
     /**
-     * @param id_scholarship
+     * @param scholarship
      */
     public void updateScholarship(Scholarship scholarship) {
         // TODO implement here

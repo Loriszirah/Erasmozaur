@@ -6,11 +6,10 @@ package model;
 public class Course {
 
     /**
-     * Default constructor
-     * @param j 
-     * @param string2 
-     * @param string 
-     * @param i 
+     * @param id_course
+     * @param name
+     * @param specialization
+     * @param id_university
      */
     public Course(int id_course, String name, String specialization, int id_university) {
     	

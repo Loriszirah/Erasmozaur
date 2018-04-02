@@ -12,14 +12,13 @@ public interface ScholarshipDAO {
 
     /**
      * Create a scholarship
-     * @param description Description of the scholarship
-     * @param duration Duration of the scholarship in months
-     * @param startDate Date of the beginning of the scholarship
-     * @param endDate Date of the ending of the scholarship
-     * @param domain It's the specialty of this scholarship
-     * @param id_sending_university The id of the university sending the student
-     * @param id_receiving_university The id of the university receiving the student
-     * @return the scholarship with all these informations
+     * @param description
+     * @param duration
+     * @param startDate
+     * @param endDate
+     * @param domain
+     * @param id_receiving_university
+     * @return a scholarship with the given parameters
      */
     public Scholarship createScholarship(String description, int duration, Date startDate, Date endDate, String domain, int id_receiving_university);
 

@@ -55,7 +55,7 @@ public interface UniversityDAO {
     
     /**
      * Check if a university already exists with this name
-     * @param username 
+     * @param name 
      * @return true if a university already exists with this name, false otherwise
      */
     public boolean checkIfExistsWithName(String name);

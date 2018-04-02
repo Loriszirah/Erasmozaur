@@ -18,14 +18,13 @@ public class ApplicationFacade {
      */
     public ApplicationFacade() {
     }
-
-
+    
     /**
      * Create an application
-     * @param userId 
-     * @param startDate 
-     * @param duration 
-     * @param comment 
+     * @param startDate
+     * @param comment
+     * @param id_student
+     * @param id_scholarship
      * @return the application with the given parameters
      */
     public Application createApplication( Date startDate, String comment, int id_student, int id_scholarship) {

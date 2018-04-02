@@ -16,7 +16,6 @@ public interface CityDAO {
 
     /**
      * @param city 
-     * @return
      */
     public void updateCity(City city);
 

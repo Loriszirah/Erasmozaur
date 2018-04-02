@@ -4,10 +4,10 @@ package dao;
  * 
  */
 public abstract class AbstractFactoryDAO {
+	
 	/**
-	 * Method to get a factory of DAO
-	 * @param factory : a string describing the database to use
-	 * @return AbstractFactoryDAO
+	 * Methode to get a factory of DAO
+	 * @return an AbstractFactoryDAO
 	 */
 	public static AbstractFactoryDAO getFactory(){
 		return PostgresFactoryDAO.getInstance();
