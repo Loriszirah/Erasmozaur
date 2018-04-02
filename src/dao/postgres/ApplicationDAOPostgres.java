@@ -1,24 +1,19 @@
 package dao.postgres;
-import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.*;
-import dao.*;
+import java.util.ArrayList;
+import java.util.Date;
+
+import dao.ApplicationDAO;
 import model.Application;
-import model.Scholarship;
 
 /**
  * 
  */
 public class ApplicationDAOPostgres extends AbstractDAOPostgres implements ApplicationDAO {
  	private static ApplicationDAOPostgres instance = new ApplicationDAOPostgres();
- 	protected String url;
-    protected String userDB;
-    protected String passwdDB;
-    protected Connection conn;
-	
 	
 	public static ApplicationDAOPostgres getApplicationDAOPostgres() {
 		return ApplicationDAOPostgres.instance;

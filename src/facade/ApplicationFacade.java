@@ -3,9 +3,6 @@ import java.util.*;
 
 import dao.AbstractFactoryDAO;
 import dao.ApplicationDAO;
-import dao.CityDAO;
-import dao.ScholarshipDAO;
-import dao.UniversityDAO;
 import model.*;
 
 /**

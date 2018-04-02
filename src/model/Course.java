@@ -1,5 +1,4 @@
 package model;
-import java.util.*;
 
 /**
  * 
@@ -36,6 +35,14 @@ public class Course {
      * 
      */
     private int id_university;
+
+	public int getId_university() {
+		return id_university;
+	}
+
+	public void setId_university(int id_university) {
+		this.id_university = id_university;
+	}
 
 	public int getId_course() {
 		return id_course;

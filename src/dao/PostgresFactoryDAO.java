@@ -1,7 +1,15 @@
 package dao;
-import java.util.*;
-
-import dao.postgres.*;
+import dao.postgres.ApplicationDAOPostgres;
+import dao.postgres.CityDAOPostgres;
+import dao.postgres.CountryDAOPostgres;
+import dao.postgres.CourseDAOPostgres;
+import dao.postgres.DocumentDAOPostgres;
+import dao.postgres.EvaluationDAOPostgres;
+import dao.postgres.ReviewDAOPostgres;
+import dao.postgres.RoleDAOPostgres;
+import dao.postgres.ScholarshipDAOPostgres;
+import dao.postgres.UniversityDAOPostgres;
+import dao.postgres.UserDAOPostgres;
 
 /**
  * 

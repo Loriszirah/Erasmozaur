@@ -9,9 +9,11 @@ public class Agreement extends Application {
     /**
      * Default constructor
      */
-    public Agreement(Date date, String comment, int id_student, int id_scholarship) {
-		super(date, comment, id_student, id_scholarship);
-		// TODO Auto-generated constructor stub
+    public Agreement(int id_application, Date date, String comment, int id_student, int id_scholarship, Date startDate, Date endDate, String commentAgreement) {
+		super(id_application, date, comment, id_student, id_scholarship);
+		this.startDate = startDate;
+		this.endDate = endDate;
+		this.commentAgreement = commentAgreement;
 	}
 
     /**
@@ -32,7 +34,7 @@ public class Agreement extends Application {
     /**
      * 
      */
-    private String comment;
+    private String commentAgreement;
     
     // Getters & Setters
 
@@ -50,6 +52,14 @@ public class Agreement extends Application {
 
 	public void setStartDate(Date startDate) {
 		this.startDate = startDate;
+	}
+
+	public String getCommentAgreement() {
+		return commentAgreement;
+	}
+
+	public void setCommentAgreement(String commentAgreement) {
+		this.commentAgreement = commentAgreement;
 	}
 
 	public Date getEndDate() {

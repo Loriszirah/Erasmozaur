@@ -1,8 +1,9 @@
 package dao;
-import java.util.*;
-import model.*;
+import java.util.ArrayList;
+import java.util.Date;
+
+import model.Scholarship;
 import presenters.ScholarshipPresenter;
-import presenters.UniversityPresenter;
 
 /**
  * 

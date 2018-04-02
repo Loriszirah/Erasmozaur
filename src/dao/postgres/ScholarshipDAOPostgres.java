@@ -1,14 +1,13 @@
 package dao.postgres;
-import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.*;
-import dao.*;
-import model.*;
+import java.util.ArrayList;
+import java.util.Date;
+
+import dao.ScholarshipDAO;
+import model.Scholarship;
 import presenters.ScholarshipPresenter;
-import presenters.UniversityPresenter;
 
 /**
  * 

@@ -1,7 +1,8 @@
 package dao;
-import java.sql.SQLException;
-import java.util.*;
-import model.*;
+import java.util.ArrayList;
+import java.util.Date;
+
+import model.User;
 
 /**
  * 

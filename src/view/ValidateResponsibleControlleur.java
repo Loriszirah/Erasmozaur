@@ -1,10 +1,8 @@
 package view;
 
-import javafx.scene.control.TableView;
-
-
-import javafx.fxml.FXML;
 import facade.UserFacade;
+import javafx.fxml.FXML;
+import javafx.scene.control.TableView;
 
 public class ValidateResponsibleControlleur {
 	@FXML

@@ -1,19 +1,5 @@
 package view;
 
-import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
-import javafx.stage.Stage;
-import main.MainApp;
-import main.Context;
-
 import java.io.IOException;
 import java.util.logging.Logger;
 
@@ -22,6 +8,14 @@ import facade.CourseFacade;
 import facade.ScholarshipFacade;
 import facade.UniversityFacade;
 import facade.UserFacade;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
+import main.Context;
+import main.MainApp;
 
 public abstract class MainController {
 	

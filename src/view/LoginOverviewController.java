@@ -1,18 +1,12 @@
 package view;
 
-import javafx.fxml.FXML;
-import javafx.scene.control.Label;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
-import javafx.scene.paint.Color;
-import main.Context;
-import main.MainApp;
-
 import java.io.IOException;
 import java.util.logging.Level;
 
-import facade.UserFacade;
+import javafx.fxml.FXML;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
+import javafx.scene.paint.Color;
 
 public class LoginOverviewController extends MainController {
 	

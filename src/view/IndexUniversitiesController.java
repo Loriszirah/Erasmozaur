@@ -1,28 +1,18 @@
 package view;
+import java.io.IOException;
+
+import facade.RoleFacade;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
-import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import main.ActionButtonTableCell;
-import main.MainApp;
-import model.Role;
-import model.University;
 import model.User;
 import presenters.UniversityPresenter;
-
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-
-import facade.RoleFacade;
-import facade.UniversityFacade;
  
 
 public class IndexUniversitiesController extends MainController{

@@ -1,13 +1,12 @@
 package dao.postgres;
-import java.util.*;
-import dao.*;
-import model.*;
-import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.ResultSet;
-import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.Date;
+
+import dao.UserDAO;
+import model.User;
 
 /**
  * 
@@ -151,7 +150,7 @@ public class UserDAOPostgres extends AbstractDAOPostgres implements UserDAO {
 			}
 		    
 		    //The object ResultSet contains the result of the SQL request
-		    state.executeUpdate("UPDATE Users SET firstName = '"+firstName+"', lastname='"+lastName+"', email='"+email+"', username='"+username+"', birthdate='"+birthDate+"', address='"+address+"',id_university='"+id_university+"' WHERE id_user='"+id_user+"';");
+		    state.executeUpdate("UPDATE Users SET firstName = '"+firstName+"', lastname='"+lastName+"', email='"+email+"', username='"+username+"', birthdate="+birthDate+", address='"+address+"',id_university='"+id_university+"' WHERE id_user='"+id_user+"';");
 		    
     	}catch(SQLException e) {
 		      e.printStackTrace();

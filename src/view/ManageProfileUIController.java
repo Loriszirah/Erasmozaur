@@ -1,33 +1,19 @@
 package view;
 
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.DatePicker;
-import javafx.scene.control.Label;
-import javafx.scene.control.MenuItem;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
-import main.MainApp;
-import java.util.Date;
-import model.Role;
 import model.University;
 import model.User;
 
 import java.io.IOException;
-import java.time.LocalDate;
-import java.time.ZoneId;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 import facade.RoleFacade;
 import facade.UniversityFacade;
-import facade.UserFacade;
 
 public class ManageProfileUIController extends MainController{
 	
@@ -157,8 +143,7 @@ public class ManageProfileUIController extends MainController{
     	
     	if(!emptyField) {
     		try{
-    			Date date = Date.from(birthdateDatePicker.getValue().atStartOfDay(ZoneId.systemDefault()).toInstant());
-    			userFacade.updateUser(currentUser.getId(), firstNameTextField.getText(), lastNameTextField.getText(), emailTextField.getText(), usernameTextField.getText(), date, addressTextField.getText(), universities.getValue().toString());
+    			userFacade.updateUser(currentUser.getId(), firstNameTextField.getText(), lastNameTextField.getText(), emailTextField.getText(), usernameTextField.getText(), userFacade.getCurrentUser().getBirthDate(), addressTextField.getText(), universities.getValue().toString());
 	    		errorMessage.setText("Informations updated");
 	    	} catch(Exception e){
 	    		errorMessage.setText(e.getMessage());

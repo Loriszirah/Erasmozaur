@@ -2,24 +2,15 @@ package view;
 
 import java.io.IOException;
 import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.Locale;
 
-import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
-import javafx.scene.control.TextField;
-import javafx.scene.text.Text;
-import model.Scholarship;
 import presenters.ScholarshipPresenter;
-import presenters.UniversityPresenter;
-import model.Scholarship;
-import presenters.ScholarshipPresenter;
-import facade.ScholarshipFacade;
 
 public class ScholarshipViewUIController extends MainController {
 	@FXML

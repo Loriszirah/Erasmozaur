@@ -12,9 +12,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import main.ActionButtonTableCell;
-import model.Scholarship;
 import presenters.ScholarshipPresenter;
-import facade.ScholarshipFacade;
 
 public class IndexScholarshipsController extends MainController{
 	@FXML
@@ -63,10 +61,6 @@ public class IndexScholarshipsController extends MainController{
     @FXML
     private void initialize() {
     	usernameLabel.setText(userFacade.getCurrentUser().getUsername());
-    	
-//		if(scholarshipFacade == null) {
-//			System.out.println("yoyoyoyo");
-//		}
     	scholarships = FXCollections.observableArrayList(scholarshipFacade.indexScholarshipPresenters());
     
     	universityColumn.setCellValueFactory(new PropertyValueFactory<ScholarshipPresenter, String>("universityName"));
@@ -76,7 +70,6 @@ public class IndexScholarshipsController extends MainController{
     	endDateColumn.setCellValueFactory(new PropertyValueFactory<ScholarshipPresenter, Date>("endDate"));
     	domaineColumn.setCellValueFactory(new PropertyValueFactory<ScholarshipPresenter, String>("domain"));
     	buttonColumn.setCellFactory(ActionButtonTableCell.<ScholarshipPresenter>forTableColumn("Details", (ScholarshipPresenter s) -> {
-//    		joinUniversityTable.getItems().remove(u);
     		entityId = s.getId_scolarship();
     		try {
 				setSceneContent("ScholarshipViewUI");
@@ -93,10 +86,6 @@ public class IndexScholarshipsController extends MainController{
     	if(scholarships.size() > 0){
     		scholarshipsTableView.setItems(scholarships);
     		scholarshipsTableView.getColumns().addAll(universityColumn, descriptionColumn, startDateColumn, endDateColumn, domaineColumn, durationColumn, buttonColumn);
-//    		scholarshipsTableView.getColumns().add(universityColumn);
-//    		scholarshipsTableView.getColumns().add(descriptionColumn);
-//    		scholarshipsTableView.getColumns().add(domaineColumn);
-//    		scholarshipsTableView.getColumns().add(buttonColumn);
     	}
     }
 	
